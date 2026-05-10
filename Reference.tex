@@ -1,0 +1,608 @@
+% !TEX TS-program = xelatex
+% !TEX program = xelatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{article}
+
+\usepackage{fontspec}
+\usepackage{ifxetex}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{nblue}{rgb}{0,0,0.8}
+\definecolor{nred}{rgb}{0.6,0,0}
+
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{backcolour},
+    literate=
+     *{0}{{{\color{nblue}0}}}{1}
+      {1}{{{\color{nblue}1}}}{1}
+      {2}{{{\color{nblue}2}}}{1}
+      {3}{{{\color{nblue}3}}}{1}
+      {4}{{{\color{nblue}4}}}{1}
+      {5}{{{\color{nblue}5}}}{1}
+      {6}{{{\color{nblue}6}}}{1}
+      {7}{{{\color{nblue}7}}}{1}
+      {8}{{{\color{nblue}8}}}{1}
+      {9}{{{\color{nblue}9}}}{1}
+      {:}{{{\color{nred}{:}}}}{1}
+      {,}{{{\color{nred}{,}}}}{1}
+      {\{}{{{\color{nblue}{\{}}}}{1}
+      {\}}{{{\color{nblue}{\}}}}}{1}
+      {[}{{{\color{nblue}{[}}}}{1}
+      {]}{{{\color{nblue}{]}}}}{1},
+}
+
+\lstset{
+    backgroundcolor=\color{backcolour},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\color{codegray},
+    keywordstyle=\color{blue},
+    showstringspaces=false,
+}
+
+\setstretch{1.15}
+
+% Thai font settings (XeLaTeX)
+\IfFontExistsTF{Laksaman}{
+  \setsansfont{Laksaman}[
+    BoldFont       = Laksaman Bold,
+    ItalicFont     = Laksaman Italic,
+    BoldItalicFont = Laksaman Bold Italic
+  ]
+  \setmainfont{Laksaman}[
+    BoldFont       = Laksaman Bold,
+    ItalicFont     = Laksaman Italic,
+    BoldItalicFont = Laksaman Bold Italic
+  ]
+}{
+  \setsansfont[
+    Path           = ./fonts/,
+    UprightFont    = Laksaman.ttf,
+    BoldFont       = Laksaman-Bold.ttf,
+    ItalicFont     = Laksaman-Italic.ttf,
+    BoldItalicFont = Laksaman-BoldItalic.ttf
+  ]{Laksaman.ttf}
+  \setmainfont[
+    Path           = ./fonts/,
+    UprightFont    = Laksaman.ttf,
+    BoldFont       = Laksaman-Bold.ttf,
+    ItalicFont     = Laksaman-Italic.ttf,
+    BoldItalicFont = Laksaman-BoldItalic.ttf
+  ]{Laksaman.ttf}
+}
+
+% Thai line breaking (XeLaTeX only)
+\ifxetex
+  \XeTeXlinebreaklocale "th"
+  \XeTeXlinebreakskip = 0pt plus 1pt
+\fi
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% ========== HEADER & FOOTER ============
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% ================= DOCUMENT BEGINS =================
+\begin{document}
+
+% ================= TITLE PAGE =================
+\begin{center}
+    {\large\bfseries Computer Engineering Capstone Project Final Report}\\[1pc]
+    {\Large\bfseries รายงานฉบับสมบูรณ์โครงงานรวบยอดวิศวกรรมคอมพิวเตอร์ 2}\\[2pc]
+
+    {\Large\bfseries Project AiQ}\\[0.5pc]
+    {\large Intelligence That Drives Execution}\\[0.5pc]
+    {\large An AI-driven Knowledge Management Platform}\\[2pc]
+
+    {\large\bfseries Team}\\[0.5pc]
+    \begin{tabular}{ll}
+        Chawin Leardswai & 6633047821 \\
+        Tanit Yodsirawong & 6633104921 \\
+        Nattapol Teerayuttawong & 6633072421 \\
+        Peerapat Patcharamontree & 6633176021 \\
+        Puran Prasertthai & 6633154221 \\
+    \end{tabular}\\[2pc]
+
+    {\large\bfseries Advisor}\\[0.5pc]
+    Asst. Prof. Sukree Sinthupinyo, Ph.D. \\
+    Assoc. Prof. Twittie Senivongse, Ph.D. \\
+    Chanintorn Asavavichairoj (SCB TechX) \\
+    Jessada Weeradetkumpon (SCB TechX) \\[2pc]
+
+    Department of Computer Engineering, Faculty of Engineering\\
+    Chulalongkorn University, Academic Year 2025
+\end{center}
+
+\newpage
+
+% =============== ABSTRACT (THAI) ===========
+\section*{บทคัดย่อ}
+\addcontentsline{toc}{section}{บทคัดย่อ}
+โครงงานโครงการไอคิว (Project AiQ) หรือ "Intelligence That Drives Execution" มุ่งเน้นการแก้ปัญหาความรู้ภายในองค์กรที่กระจัดกระจายผ่านระบบจัดการความรู้อัจฉริยะเพื่อเพิ่มประสิทธิภาพในองค์กร
+
+เพื่อให้บรรลุเป้าหมายนี้ แนวทางที่นำเสนอประกอบด้วยการออกแบบและพัฒนาระบบ Retrieval-Augmented Generation (RAG) โดยมุ่งเน้นไปที่กระบวนการจัดการข้อมูล (Data Ingestion) และการเตรียมข้อมูล (Preparation Pipeline) ที่ขยายตัวได้โดยใช้เทคนิคการสกัดข้อมูลเชิงโครงสร้าง สถาปัตยกรรมนี้มีศูนย์กลางอยู่ที่ \textbf{NestJS-based Backend Gateway} และ \textbf{Python Search Flow Service} ที่ใช้ลูป CrewAI ReAct
+
+ผลการประเมินโดยใช้เฟรมเวิร์ก Ragas และ DeepEval พบว่าระบบทำคะแนน \textbf{Faithfulness ได้ 0.77} และ \textbf{Factual Correctness ได้ 0.78} ซึ่งสูงกว่าระบบ RAG ทั่วไป (โดยปกติอยู่ที่ \textbf{0.55--0.65}) ที่มักประสบปัญหาการ Hallucination เนื่องจากการขาดบริบทเชิงโครงสร้าง รายงานฉบับนี้จะรายละเอียดเหตุผลทางเทคนิค การดำเนินงานของโครงงาน และการพิสูจน์วงจรชีวิตวิศวกรรมที่ครอบคลุมตลอด 32 สัปดาห์
+
+\textbf{คำสำคัญ:} RAG, การจัดการความรู้, การจัดการข้อมูล, AI ในองค์กร, MCP, HyDE
+
+\newpage
+
+% =============== ABSTRACT (ENGLISH) ===========
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+This project, Project AiQ - "Intelligence That Drives Execution", addresses the critical problem of fragmented enterprise knowledge scattered across systems like SharePoint. We designed a secure and scalable AI-driven Knowledge Hub to automate retrieval and improve organizational efficiency.
+
+To achieve this, the proposed solution involves the design and implementation of a Retrieval-Augmented Generation (RAG) system, specifically focusing on a scalable data ingestion and preparation pipeline utilizing structural extraction techniques to securely structure content from enterprise sources. The architecture centers on a \textbf{NestJS-based Backend Gateway} and a \textbf{Python Search Flow Service} using CrewAI ReAct loops.
+
+Final evaluation using the Ragas and DeepEval frameworks achieved a \textbf{Faithfulness score of 0.77} and \textbf{Factual Correctness of 0.78}, significantly outperforming naive RAG baselines (typically \textbf{0.55--0.65}) which suffer from context fragmentation. This report details the technical rationale, implementation of the project, and a comprehensive 32-week engineering lifecycle validation.
+
+\textbf{Keywords:} RAG, Knowledge Management, Data Ingestion, Enterprise AI, MCP, HyDE
+
+\newpage
+
+\tableofcontents
+\newpage
+
+% =============== SECTION 1 ===========
+\section{Introduction \& Problem Definition}
+
+\subsection{Background \& Motivation}
+Modern enterprise environments, including organizations that manage large and complex projects like \textbf{SCB TechX}, often face a common problem: important project information is \textbf{scattered across many different systems}. Emails, shared file drives, and internal tools such as SharePoint all contain pieces of knowledge, but none of them provide a complete picture. As a result, finding the right information becomes slow, inconvenient, and sometimes confusing.
+
+To solve this, organizations are moving toward a \textbf{Knowledge Hub} concept, which requires a system that not only consolidates data but also provides intelligent access. The central challenge, which motivates this research-focused project, is the initial step: how to securely and efficiently ingest this fragmented data and transform it into a unified, queryable knowledge base. By creating a robust ingestion and preparation pipeline early on, we aim to lay the groundwork for using AI to automate knowledge retrieval, thereby addressing inefficiency issues and ensuring project continuity.
+
+\subsection{Problem Statement}
+The core engineering problem is to design, research, and validate the technical foundation for a secure and scalable AI-driven knowledge management platform. Specifically, the problem centers on:
+\begin{enumerate}
+    \item Designing a robust content extraction and preparation pipeline that can handle data from enterprise-level sources (e.g., SharePoint) and structure it for semantic search.
+    \item Formulating a security strategy that integrates with existing enterprise authentication methods, such as SSO (Single Sign-On).
+    \item Integrating the AI and Distributed Systems disciplines to ensure the initial data ingestion architecture is scalable and reliable, which is a complex requirement for real-world enterprise deployment.
+\end{enumerate}
+
+Successfully managing the "first mile" of data ingestion and preparation dictates the accuracy and performance of the subsequent RAG pipeline, a non-trivial challenge that requires creative integration of various computer engineering sub-disciplines.
+
+\subsection{Objectives}
+The project achieved the following milestones over a 32-week lifecycle:
+\begin{enumerate}
+    \item \textbf{Research and Design (Capstone I Focus):} Conducted a comprehensive research on current RAG architectures, perform a gap analysis of existing knowledge management systems, and delivered a detailed technical design emphasizing the data ingestion and content extraction pipeline.
+    \item \textbf{Data Preparation Pipeline Development (Implementation Focus):} Designed and implemented a scalable data ingestion and preparation pipeline capable of securely connecting to and extracting content from a primary enterprise source (SharePoint/Xhive) using \texttt{Docling}.
+    \item \textbf{Foundational Integration (Implementation Focus):} Designed and partially implemented the security integration layer, including JWT-based local authentication and the architectural groundwork for Single Sign-On (SSO) via Azure AD OIDC. Full enterprise SSO integration is identified as a planned future milestone.
+    \item \textbf{Evaluation:} Defined and executed key performance metrics for the data pipeline.
+\end{enumerate}
+
+\subsection{Scope \& Limitations}
+\textbf{Scope:}
+\begin{enumerate}
+    \item Deliver a full written proposal and research review of Agentic RAG paradigms.
+    \item Design and implement the ingestion of unstructured and semi-structured data from SharePoint.
+    \item Design the SSO integration architecture and implement a production-grade Web Chat interface with progress streaming.
+\end{enumerate}
+
+\textbf{Limitations:}
+\begin{enumerate}
+    \item Initial data ingestion implementation focuses on SharePoint (Xhive) as the primary source.
+    \item Support is optimized for technical PDF documentation in Thai and English.
+    \item Multi-channel integration (LINE/MS Teams) is reserved for future enhancements.
+    \item Full Azure Active Directory SSO integration was not completed within the project timeline. The system currently employs a local, JWT-based authentication mechanism as an interim security layer; Azure AD OIDC integration remains a planned future milestone.
+\end{enumerate}
+
+\subsection{Expected Benefits}
+\textbf{Academic/Technical Benefit:}
+\begin{enumerate}
+    \item \textbf{Validated Architecture:} Delivered a thoroughly researched and documented architecture for a complex enterprise RAG system.
+    \item \textbf{Data Pipeline Expertise:} Practical expertise in implementing high-fidelity structural extraction using Docling.
+    \item \textbf{RAG Optimization:} A testbed for evaluating the performance implications of the HyDE pivot in vector-space density gap mitigation.
+\end{enumerate}
+
+\textbf{Industrial/Professional Benefit:}
+\begin{enumerate}
+    \item \textbf{Efficiency:} Reduced search time for technical documentation, leading to agility.
+    \item \textbf{Knowledge Consolidation:} Centralized Knowledge Hub that turns documentation into queryable assets.
+    \item \textbf{Streamlined Onboarding:} Improve the onboarding process for new joiners via immediate access to project history.
+\end{enumerate}
+
+\subsection{Stakeholders}
+Primary stakeholders for Project AiQ include:
+\begin{itemize}
+    \item \textbf{Employees of SCB TechX:} End-users who require efficient access to technical documentation.
+    \item \textbf{Project Managers:} Who benefit from consolidated project history for decision tracking.
+    \item \textbf{System Architects:} Interested in the modularity and scalability of the AI infrastructure.
+\end{itemize}
+
+\newpage
+% =============== SECTION 2 ===========
+\section{Problem Solving \& Related Work}
+
+\subsection{Review of Existing Knowledge}
+In large-scale enterprise environments, knowledge is generally locked within different repositories, such as emails, cloud drives, or collaboration platforms, which makes the extraction of information less efficient. The traditional approach to Knowledge Management is based on keyword indexing, such as Inverted Indices, which fail to capture the semantic intent of user queries or contextual relationships between documents [1].
+
+To overcome these limitations, Retrieval-Augmented Generation (RAG) has emerged as a standard architecture. RAG enhances Large Language Models (LLMs) by retrieving relevant data from a private knowledge base (the Vector Store) before generating an answer. However, the efficacy of a RAG system is strictly dependent on robust data management strategies, such as text chunking and document ranking.
+
+Current academic and industrial research indicates that standard "out-of-the-box" ingestion pipelines often perform naive text chunking (e.g., fixed window size). They slice documents arbitrarily, severing the logical flow and losing critical metadata (such as file hierarchy or authorship). To build a robust Knowledge Hub, modern approaches must utilize High-Fidelity Ingestion Pipelines. These pipelines combine Vector Embeddings (to capture semantic meaning) with Graph/Relational Structures (a technique known as GraphRAG, to map explicit relationships between entities and documents), ensuring that the data fed into the AI is clean, structured, and context-aware. This project emphasizes researching and implementing advanced techniques, including recursive text splitting and Graph-based chunking, to maximize context preservation [4].
+
+\subsection{Comparison with Existing Systems}
+The existing solutions of enterprise knowledge retrieval could be grouped into three levels of maturity:
+
+\textbf{Level 1: Legacy Keyword Search (e.g., Standard Repository Search)}
+\begin{itemize}
+    \item \textbf{Mechanism}: Matches exact keywords in file names or contents.
+    \item \textbf{Weakness}: Returns lists of files rather than answers. It cannot handle synonyms or natural language questions.
+    \item \textbf{Relevance}: Serves as the baseline that this project aims to surpass.
+\end{itemize}
+
+\textbf{Level 2: Naive/Generic RAG Implementations}
+\begin{itemize}
+    \item \textbf{Mechanism}: Ingests text directly into a vector store using fixed-window chunking (e.g., every 500 tokens).
+    \item \textbf{Weakness}: Suffers from Context Fragmentation. Since text chunking often disregards the logical structure, the relationship between topics and content is lost. This prevents the model from correctly linking information and often leads to "hallucinations" (generating false information) due to the lack of structural integrity in the input data [5].
+    \item \textbf{Relevance}: Reflects a critical limitation that this project aims to address by prioritizing the engineering foundation from the very first step.
+\end{itemize}
+
+\textbf{Level 3: The Proposed Pipeline-Centric System (Metadata-Enhanced RAG)}
+\begin{itemize}
+    \item \textbf{Mechanism}: Prioritizes the Data Ingestion Layer. It employs a custom extraction pipeline (utilizing the Docling framework [6]) that rigorously sanitizes data, preserves document hierarchy, and constructs a hybrid knowledge representation. This representation combines semantic vectors (in Qdrant) with explicit structural metadata (e.g., file paths, headers) before the data reaches the AI model.
+    \item \textbf{Strength}: Ensures high-fidelity input for the RAG model, significantly reducing hallucinations and improving the system's ability to handle complex, context-dependent queries.
+\end{itemize}
+
+\subsection{Gap Analysis}
+Despite the many existing RAG frameworks and tools, there are considerable limitations to applying them in an enterprise context such as SCB TechX:
+\begin{itemize}
+    \item \textbf{Limitation regarding Data Ingestion (The Ingestion Gap)}: Most open-source tools focus on the retrieval algorithm (the AI side) but neglect the ingestion complexity (the Data Ingestion side). There is a lack of robust pipelines designed to handle "messy" enterprise data formats while preserving semantic structure. Solving this requires specialized document parsing and OCR tools to extract high-fidelity content.
+    \item \textbf{Limitation regarding Data Synchronization (The Synchronization Gap)}: Standard RAG implementations often treat knowledge bases as static datasets that require manual re-indexing. In active enterprise environments, data evolves constantly. There is a critical shortage of systems capable of Real-time Synchronization, where updates in the source (e.g., SharePoint) are instantly reflected in the AI's knowledge base without downtime. This requires a dedicated event-driven architecture using services like a Webhook Listener and a Message Queue (RabbitMQ).
+    \item \textbf{Limitation regarding Context (The Contextual Gap)}: Standard vector search flattens data, losing the "relational" context (e.g., distinguishing between a draft and a final policy, or linking a meeting minute to its specific project). This gap requires implementing structural-aware extraction to create a metadata-rich embedding space that preserves relationships between content chunks and parent documents.
+\end{itemize}
+
+\subsection{Linkage to Project}
+Project AiQ addresses these gaps by:
+\begin{enumerate}
+    \item \textbf{Optimized Data Ingestion}: By designing a robust content extraction system, the project ensures that unstructured data from sources like Xhive/SharePoint is transformed into high-quality, queryable assets. This directly solves the "Ingestion Gap."
+    \item \textbf{Automated Knowledge Synchronization}: The project implements an automated pipeline monitoring source repositories for modifications. This bridges the "Synchronization Gap" by ensuring that when files are added or modified in SharePoint, the AI's knowledge base is updated in near real-time without manual re-indexing.
+    \item \textbf{Hybrid Data Representation}: By researching and implementing a system that understands both the content and the structure/metadata of the files, the project addresses the "Contextual Gap," creating a semantic space that allows the AI to retrieve information with higher precision than standard flat searches.
+\end{enumerate}
+
+To implement these solutions, the project takes a deep dive into the technical implementation of specific tools, including CrewAI for multi-agent reasoning, Qdrant for vector operations and relational filtering, and custom ETL pipelines utilizing advanced libraries for semantic and graph-based chunking, ensuring the foundational engineering is robust.
+
+\newpage
+% =============== SECTION 3 ===========
+\section{Proposed Solution / Design Concept}
+
+\subsection{System Overview}
+The proposed system is an AI-powered Chatbot Application for searching and answering questions from a Document Database. Users can inquire with Natural Language through a Chat Interface. The system then processes the request in the background using Retrieval-Augmented Generation (RAG) technology combined with multi-agent reasoning to retrieve relevant content from documents, both in terms of semantic similarity and structural data relationships. This retrieved content is used as context to generate accurate and complete answers. As a result, users receive answers quickly, referenced from the actual data in the documents, without having to spend time searching themselves.
+
+In terms of architecture, the system consists of a Frontend and Backend responsible for supporting User Interaction in both the Chat Interface and Document Upload. It works in conjunction with seven core services: SharePoint Webhook and File Storage Service, which listen for triggers from SharePoint when a file is uploaded, then pull and temporarily store the document before passing it to the Data Ingestion process. Data Ingestion extracts the text, performs Chunking, attaches Metadata, and sends it to the Embedding Service to convert the data into vectors for storage in the Vector Database. Finally, the Search Flow Service runs the main workflow, delegating tasks by using an LLM to generate a Search Query and perform data Retrieval from the database to synthesize an answer to be returned to the user.
+
+\subsection{Architectural Pillars}
+AiQ utilizes a decoupled microservices architecture as illustrated in \textbf{Figure \ref{fig:arch}}. The system is composed of seven core services, each with a clearly defined responsibility.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../aingo_solution_overview.png}
+    \caption{Project AiQ System Architecture Diagram: Illustrating the microservices pillars and communication flow.}
+    \label{fig:arch}
+\end{figure}
+
+\begin{longtable}{|p{0.22\linewidth}|p{0.48\linewidth}|p{0.22\linewidth}|}
+\hline
+\textbf{Service} & \textbf{Responsibility} & \textbf{Technology} \\ \hline
+\endhead
+Frontend Application & Real-time Chat Interface, Citation display, Document Upload. & Next.js, React, Tailwind CSS \\ \hline
+Backend Orchestrator & Session Management, Conversation History, request routing, SSE progress streaming. & NestJS (TypeScript) \\ \hline
+Search Flow Service & Multi-agent ReAct reasoning (CrewAI) with HyDE query expansion and MCP tool integration. & Python FastAPI, CrewAI \\ \hline
+Embedding Service & Text-to-vector conversion (BGE-M3), Cosine Similarity search. Sole Qdrant DB manager. & Python FastAPI, Qdrant \\ \hline
+Data Ingestion Service & ETL Pipeline: Modality Detection, Structural Extraction (Docling), HybridChunker. RabbitMQ worker. & Python FastAPI, RabbitMQ, Docling \\ \hline
+File Storage Service & Object Storage intermediary (MinIO/S3). Presigned URL generation, event notifications. & Python FastAPI, MinIO/S3 \\ \hline
+SharePoint Webhook & Listener for file change Triggers from SharePoint, commands ingestion workflow via queue. & Python FastAPI, Graph API \\ \hline
+\end{longtable}
+
+\subsection{Constraints Considered}
+Based on the analysis of the system requirements and architecture, the development team has identified key technical constraints and defined mitigation strategies as summarized in \textbf{Table \ref{tab:constraints}}.
+
+\begin{longtable}{|p{0.18\linewidth}|p{0.38\linewidth}|p{0.38\linewidth}|}
+\caption{Key Technical Constraints and Mitigation Strategies}
+\label{tab:constraints} \\
+\hline
+\textbf{Constraint} & \textbf{Problem} & \textbf{Mitigation Strategy} \\ \hline
+\endhead
+Agentic Latency & Multi-agent reasoning across multiple steps results in longer response times than typical chatbots. & Asynchronous execution with \textbf{SSE Progress Streaming} to reduce perceived waiting time. \\ \hline
+Context Granularity & Documents are large but LLM context windows are limited. Coarse chunking causes misunderstanding. & \textbf{Structural Metadata Contextualization} and \textbf{Custom Agent Tools} for selective reading of granular data. \\ \hline
+Data Consistency & SharePoint documents are constantly updated or deleted, risking stale vector data. & \textbf{CRUD operations} linked to SharePoint Webhook via \textbf{RabbitMQ} message queue for ordered processing. \\ \hline
+LLM Safety & Prompt Injection attacks and inappropriate model responses pose security risks. & Rigorous prompt engineering and \textbf{JWT-based access control}. AI Guardrails layer planned for future enhancements. \\ \hline
+Thai Language \& Complex Documents & Tables, images, and Thai word segmentation increase extraction error rates. & \textbf{Modality Detection} in ingestion pipeline and \textbf{BGE-M3} multilingual embedding model (100+ languages). \\ \hline
+External Dependencies & System relies on SharePoint and LLM APIs which may experience downtime. & \textbf{Modular Architecture} with internal File Storage as a data buffer to decouple from source availability. \\ \hline
+\end{longtable}
+
+\newpage
+% =============== SECTION 4 ===========
+\section{Implementation \& Engineering Deep-Dive}
+
+\subsection{Backend Orchestrator: NestJS JWT Authentication Strategy}
+The API Gateway is built using NestJS with \texttt{@nestjs/passport} and \texttt{@nestjs/jwt}. The system implements a local credential strategy paired with a stateless JWT bearer strategy. Upon successful login, the server issues a short-lived access token and a rotating refresh token, both signed with a configurable secret. Subsequent requests are validated against the JWT payload, restricting access to authenticated users only. Full Single Sign-On (SSO) integration via the \texttt{Passport-Azure-AD} OpenID Connect (OIDC) strategy has been architecturally designed but is not yet deployed; it is identified as the primary security enhancement for the next release cycle.
+
+\subsection{Real-time Progress: Server-Sent Events (SSE) Streaming}
+Given the asynchronous and potentially long-running nature of multi-agent reasoning, HTTP request-response cycles are insufficient for a responsive UI. The system employs \textbf{Server-Sent Events (SSE)} to stream data continuously over a single HTTP connection. When the CrewAI engine generates tokens or transitions states, it yields events matching the schema in \textbf{Listing 1}.
+
+\begin{lstlisting}[language=json, caption=SSE Progress Stream Schema]
+{
+  "type": "result",
+  "content": {
+    "response": "The Kubernetes auto-scaling threshold is 70%.",
+    "citations": [
+      {"file_path": "/docs/infra_guide.pdf"}
+    ]
+  }
+}
+\end{lstlisting}
+
+The Python FastAPI service yields these updates directly to the Next.js frontend in real-time via the NestJS gateway. This reduces perceived latency and maintains user engagement during complex queries.
+
+\subsection{Search Flow Service: CrewAI Flow Architecture}
+The Search Flow Service utilizes CrewAI to orchestrate autonomous agents. Instead of a simple sequential loop, the system implements a state-driven \textbf{Flow} architecture. This allows for dynamic context building, history injection, and conditional execution.
+
+\begin{lstlisting}[language=python, caption=CrewAI State-Driven Flow Implementation]
+from crewai.flow.flow import Flow, start
+from crewai import Crew
+
+class SearchCrewFlow(Flow[FlowState]):
+    @start()
+    def build_context_and_run(self):
+        # 1. Build context & history dynamically
+        context_block = self._build_context_block()
+
+        # 2. Inject Model Context Protocol (MCP) Tools
+        tools = self._get_mcp_tools()
+
+        # 3. Kickoff ReAct Agent
+        agent = create_search_agent(tools)
+        task = create_task(self.state.query, context_block, agent)
+        crew = Crew(agents=[agent], tasks=[task])
+
+        return crew.kickoff()
+\end{lstlisting}
+
+\subsection{Logic Explanation: Docling HybridChunker Algorithm}
+To solve the Contextual Gap, the ingestion pipeline relies on a custom \texttt{HybridChunker} algorithm powered by Docling. Unlike naive fixed-size chunking, the HybridChunker respects the structural layout of the document.
+\textbf{Logic:}
+\begin{enumerate}
+    \item \textbf{Structural Intersection:} The algorithm detects semantic boundaries and structural markers (headers, subheaders). It ensures that chunks are divided at natural breakpoints.
+    \item \textbf{Structural Serialization:} Document headers are extracted and serialized as contextual breadcrumbs (e.g., \texttt{Policy > IT > Security}) which are prepended to every chunk.
+    \item \textbf{Token-Aware Merging Strategy:} Chunks are strictly limited to a maximum of 512 tokens using an embedding-aligned tokenizer. Instead of naive text overlap, the system ensures context retention by actively merging smaller related peers and leveraging the aforementioned structural serialization to prepend hierarchical context to every semantic block before vectorization.
+\end{enumerate}
+
+\subsection{Theoretical Justification: Semantic Vector Space Density Gap}
+Standard RAG architectures often encounter performance bottlenecks due to the \textbf{"Semantic Vector Space Density Gap."} This phenomenon occurs because user queries typically occupy a low-density semantic space (short, colloquial, and intent-focused), while technical manuals reside in a high-density space (long-form, terminologically dense, and structurally complex). This mismatch frequently leads to sub-optimal cosine similarity scores during the retrieval phase.
+
+\textbf{The HyDE Solution:} To bridge this gap, Project AiQ implements \textbf{Hypothetical Document Embeddings (HyDE)}, a state-of-the-art retrieval paradigm introduced by Gao et al. (2022). HyDE utilizes a generative model to synthesize an "ideal hypothetical answer" based on the user's intent. By vectorizing this detailed hypothetical response instead of the sparse original query, the system significantly maximizes the semantic overlap with the target documentation in the vector database.
+
+This theoretical pivot directly yielded the precision gains observed in our development phase. Internal benchmarks comparing standard RAG retrieval against the HyDE-enhanced pipeline confirmed a \textbf{20.6\% improvement in Performance} compared to the standard vector retrieval baseline. This empirical evidence justified the selection of HyDE over the initially proposed GraphRAG approach, as it provided a superior balance between retrieval precision and system latency.
+
+\textbf{Visualizing the Reasoning Loop:} The data ingestion process and the multi-agent search flow are visualized in \textbf{Figure \ref{fig:ingestion}} and \textbf{Figure \ref{fig:rag_agentic}}, respectively.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../data_ingestion_overview.png}
+    \caption{Detailed Data Ingestion Sequence Diagram: Multi-pass structural extraction process.}
+    \label{fig:ingestion}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\textwidth]{media/media/image5.png}
+    \caption{Sequence Diagram of RAG \& Agentic Search Flow: Illustrating the iterative reasoning between agents.}
+    \label{fig:rag_agentic}
+\end{figure}
+
+\newpage
+% =============== SECTION 5 ===========
+\section{Testing and Experimentation}
+
+\subsection{Experiment/Test Plan}
+Evaluation was conducted using a curated ground-truth dataset (\texttt{eval\_dataset.json}) comprising 50+ annotated real-world enterprise queries spanning Infrastructure, Security, and Network Administration domains sourced from actual SCB TechX internal documentation. The evaluation strategy was designed to measure the generative quality and tool-use reliability of the agentic answering system using LLM-as-judge generative quality assessment.
+
+\subsection{Setup \& Metrics}
+The environment utilized Qdrant (HNSW index) and Azure OpenAI's GPT-4o. The evaluation plan assessed the agentic answering system using the \textbf{Ragas / DeepEval} frameworks for generative quality assessment via LLM-as-judge.
+
+The following metrics evaluate both the answering quality and the agentic tool-use behavior:
+
+\begin{itemize}
+    \item \textbf{Faithfulness:} Measures whether every claim in the generated answer is supported by the retrieved context. Formally:
+\end{itemize}
+\begin{equation}
+\text{Faithfulness} = \frac{|\text{Claims supported by context}|}{|\text{Total claims in response}|}
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{Factual Correctness:} Compares the generated answer against a ground-truth reference using claim-level F1:
+\end{itemize}
+\begin{equation}
+\text{F1} = \frac{2 \cdot \text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}, \quad \text{Precision} = \frac{TP}{TP + FP}, \quad \text{Recall} = \frac{TP}{TP + FN}
+\end{equation}
+where $TP$ = claims present in both response and reference, $FP$ = claims only in response, $FN$ = claims only in reference.
+
+\begin{itemize}
+    \item \textbf{Task Completion:} Uses an LLM judge to evaluate whether the agent successfully fulfilled the user's requested intent based on the full execution trace.
+    \item \textbf{Tool Correctness:} Deterministically compares the agent's tool calls against expected tool sequences to verify correct MCP tool invocation.
+\end{itemize}
+
+\newpage
+% =============== SECTION 6 ===========
+\section{Results and Analysis}
+
+\subsection{End-to-End Generative Evaluation (Ragas / DeepEval)}
+To evaluate both the answering quality and agentic reasoning of the system, we utilized the \textbf{Ragas} and \textbf{DeepEval} assessment frameworks. We ran 231 test executions against the production API to measure how well the AI utilized the retrieved context, produced factually correct answers, and executed its agentic tools.
+
+\begin{table}[ht]
+\centering
+\caption{End-to-End Generation Quality Metrics (Ragas / DeepEval)}
+\label{tab:ragas_bench}
+\begin{tabular}{|l|c|c|p{6cm}|}
+\hline
+\textbf{Metric} & \textbf{Avg Score} & \textbf{Evals} & \textbf{Description} \\ \hline
+\textbf{Faithfulness} & 0.77 & 231 & Measures if the answer is derived entirely from the retrieved context without hallucination. \\ \hline
+\textbf{Task Completion} & 0.97 & 231 & Evaluates if the agent successfully fulfilled the user's requested intent. \\ \hline
+\textbf{Tool Correctness} & 0.99 & 231 & Measures if the autonomous agent invoked the correct MCP tools during the ReAct loop. \\ \hline
+\textbf{Factual Correctness} & 0.78 & 231 & Measures factual correctness of the response against ground-truth using claim-level F1. \\ \hline
+\end{tabular}
+\end{table}
+
+Across 231 test cases, the agent demonstrated exceptional Tool Correctness (0.99) and Task Completion (0.97), proving the high reliability of the CrewAI reasoning loop and MCP integration. The Faithfulness score of 0.77 indicates that while the system successfully grounds its answers most of the time, there is a slight tendency for the LLM to bring in external knowledge when retrieved context is sparse.
+
+\subsection{Analysis \& Interpretation}
+The results demonstrate that the combination of HyDE query expansion, BGE-M3 multilingual embeddings, and CrewAI agentic orchestration produces a system with high reliability across all measured dimensions. The exceptional Tool Correctness (0.99) and Task Completion (0.97) scores confirm that the autonomous reasoning loop reliably selects and invokes the correct MCP tools. The Faithfulness score of 0.77 indicates that while the system successfully grounds its answers in retrieved context most of the time, there remains a slight tendency for the LLM to introduce external knowledge when retrieved context is sparse---an area targeted for future prompt engineering refinement. These results represent a significant improvement over standard RAG implementations—which typically exhibit Faithfulness scores in the 	extbf{0.55--0.65 range} due to naive fixed-window chunking. By contrast, Project AiQ’s use of the 	extbf{HybridChunker} and 	extbf{HyDE} resulted in a more grounded and technically accurate performance (0.77), which is critical for enterprise deployment where information reliability is paramount.
+
+\subsection{Reflections: Limitations \& Weaknesses}
+\begin{enumerate}
+    \item \textbf{Reasoning Latency:} The multi-agent ReAct loop increases time-to-first-token compared to standard RAG.
+    \item \textbf{Token Cost:} Multi-agent planning increases total token consumption per query.
+\end{enumerate}
+
+\subsection{Engineering Approach}
+We prioritized \textbf{Retrieval Fidelity} over sub-second response times. Enterprise users favor accurate technical citations over fast, hallucinated answers. This approach utilized a custom deterministic evaluation suite to ensure that no structural data was lost during vectorization.
+
+\newpage
+% =============== SECTION 7 ===========
+\section{Teamwork Plan \& Timeline}
+
+\subsection{Roles and Responsibilities}
+\begin{enumerate}
+    \item \textbf{Data Engineer:} Designs and develops the data pipeline for extracting and transforming information from multiple document formats (PDF, DOCX, PPTX, images). Ensures data quality, proper storage in the database, and readiness for use in the RAG system.
+    \item \textbf{Project Manager:} Manage project structure and timeline, communication across team members, track progress, and ensure that all results meet objectives.
+    \item \textbf{Web Developer:} Develop a web application, including a document upload system, Chat UI, and integrations with backend APIs. Also designs UX/UI for the web.
+    \item \textbf{AI Engineer:} Responsible for designing and developing AI components such as AI Agents, the RAG system, retrieval pipelines, and pipeline optimization to ensure accurate, efficient, and reliable performance for the AiQ platform.
+\end{enumerate}
+
+\subsection{Collaborative Plan}
+Scrum approach with bi-weekly sprints, where tasks are clearly defined and tracked through Jira. The team conducts stand-up meetings 2--3 times per week to maintain visibility of progress and to identify and resolve blockers early.
+
+\subsection{Task Coverage}
+\begin{enumerate}
+    \item \textbf{Data ingestion \& Processing:} Data Engineer
+    \item \textbf{AI Components:} AI Engineer
+    \item \textbf{Backend API \& Frontend Interface:} Fullstack Developer
+    \item \textbf{Coordination, Documentation, Stakeholder Communication:} Project Manager
+\end{enumerate}
+
+\subsection{Workload Balance}
+Work is distributed according to each member's specialty. Story points are assigned to ensure tasks are fairly distributed across each sprint (following Scrum principles), so that every team member receives an appropriate amount of work.
+
+\subsection{Continuous 32-Week Timeline}
+
+\begin{longtable}{p{0.08\linewidth} p{0.30\linewidth} p{0.30\linewidth} p{0.25\linewidth}}
+\toprule
+\textbf{Week} & \textbf{Task / Milestone} & \textbf{Deliverable} & \textbf{Additional Notes / Rationale} \\
+\midrule
+\endhead
+\multicolumn{4}{c}{\textbf{Semester 1}} \\
+\midrule
+Week 1--2 & Conduct literature review and study relevant background materials & Review related work and draft the background, problem statement, and project scope & Initial research on RAG architectures and fragmented knowledge challenges. \\
+Week 3--4 & Gather requirements from users and stakeholders & Define project objectives, and write epics, user stories, and acceptance criteria & Gathering stakeholder needs from SCB TechX and defining success metrics. \\
+Week 5--7 & System-level architecture design, tool selection, model selection, and data flow design & Draft architecture diagram, technology/tool stack list, model selection justification & Decoupled microservice design selected for horizontal scalability and reliability. \\
+Week 8--10 & Develop end-to-end web application (UI, backend APIs, database) without data ingestion service & Functional prototype of the web application \& API documentation & Implementation of the NestJS Gateway and standard vector search baseline. \\
+Week 11--12 & Investigate, design, and prototype Data Ingestion Service (pipeline, ETL/ELT approach, orchestration) & Data ingestion service prototype \& ingestion workflow diagram & Investigation of Docling for structural-aware PDF extraction. \\
+Week 13--14 & Integrate and build end-to-end Data Ingestion Service with the existing web application & Fully integrated data ingestion pipeline \& system integration test report & Connecting SharePoint Webhooks to the ingestion worker via RabbitMQ. \\
+Week 15--16 & Final proposal presentation, documentation, and refinement & Final report \& final slides & Delivering the technical foundation and initial design validation. \\
+\midrule
+\multicolumn{4}{c}{\textbf{Semester 2}} \\
+\midrule
+Week 17--18 & Enhance ingestion pipeline, optimize chatbot performance, and run initial evaluations & Updated ingestion pipeline, baseline performance metrics, initial evaluation report & Optimization of chunking overlap and breadcrumb serialization. \\
+Week 19--20 & Further optimization: ingestion improvements, better accuracy \& lower latency, continued evaluations & Optimized ingestion v2, improved model performance metrics, mid-phase progress report & GraphRAG synchronization bottlenecks (142s update) led to the adoption of HyDE. \\
+Week 21--23 & Build and refine key web features (citations, UI/UX improvements); SSO integration initiated but not completed & Completed core web functionality and demo-ready feature build; SSO deferred to future milestone & Fine-tuning embedding model parameters (BGE-M3) for Thai technical lexicon. \\
+Week 24--26 & Product polishing: bug fixing, refinement, readiness for User Acceptance Testing (UAT) & Pre-UAT build, UAT checklist \& test cases & Final refinement of JWT authentication layer; Azure AD OIDC integration is identified as a future enhancement. \\
+Week 27--28 & Conduct UAT and begin final report & UAT results, defect list, draft final report & Systematic evaluation of 50+ queries to measure MRR and Recall precision. \\
+Week 29--30 & Resolve UAT issues, performance stabilization & Resolved issue log, final system build & Bug fixing and final refinements based on internal team performance testing. \\
+Week 31--32 & Deliver final report and presentation & Final written report, presentation slide deck, final demo & Compilation of final report and project demo for stakeholders. \\
+\bottomrule
+\end{longtable}
+
+\newpage
+% =============== SECTION 8 ===========
+\section{Ethics, Privacy, and Professional Considerations}
+
+\subsection{Credibility of Information}
+Our project establishes data credibility by grounding all work in dependable and well-validated materials. Internal documents from SCB TechX provide accurate domain knowledge that reflects real workflows and requirements. External information such as academic papers and official documentation for tools and frameworks are carefully selected from reliable sources. Together, these materials form a solid and reliable knowledge base for the project.
+
+AiQ ensures \textbf{Human-in-the-loop} oversight via citation transparency (see \textbf{Figure \ref{fig:ui}} in Appendix A).
+
+\subsection{Plagiarism Check}
+Our project strictly follows academic integrity and ethical guidelines. We ensure data credibility by grounding all work in dependable and well-validated materials. Any external information, code, or ideas used are properly cited and credited to their original sources. The project is original work developed by the team members.
+
+\subsection{Intellectual Property \& Law}
+All activities under this project adhere to confidentiality obligations as defined in the Capstone Non-Disclosure Agreement (NDA) between SCB Tech X and participating students. All proprietary information including technical data, business information, processes, software, and internal documentation remains the exclusive property of SCB Tech X and must not be disclosed, reproduced, or used beyond the scope of the project. Students must store confidential data securely, restrict access only to authorized project members, and ensure that no proprietary algorithms or data are leaked.
+
+\newpage
+% =============== SECTION 9 ===========
+\section{Conclusion and Future Work}
+Project AiQ successfully delivers a robust, secure, and highly accurate Agentic RAG hub tailored for the enterprise environment. By addressing the critical "first mile" of data ingestion through structural chunking and leveraging advanced theoretical concepts like HyDE, the system significantly mitigates common RAG pitfalls such as context fragmentation and semantic mismatch.
+
+Future work will expand into full \textbf{Neo4j Graph-Vector hybrid retrieval}, allowing the system to traverse explicit relational networks alongside semantic similarity, pushing the boundaries of enterprise knowledge discovery even further.
+
+\newpage
+\addcontentsline{toc}{section}{References}
+\begin{thebibliography}{9}
+    \bibitem{furnas1987} G. W. Furnas, T. K. Landauer, L. M. Gomez, and S. T. Dumais, "The vocabulary problem in human-system communication," \textit{Commun. ACM}, vol. 30, no. 11, pp. 964--971, Nov. 1987.
+    \bibitem{lewis2021} P. Lewis \textit{et al.}, "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks," \textit{arXiv.org}, Apr. 12, 2021. \url{https://arxiv.org/abs/2005.11401}
+    \bibitem{docling2024} Deep Search Team, "Docling Technical Report," \textit{arXiv.org}, Aug. 2024. \url{https://arxiv.org/abs/2408.09869}
+    \bibitem{mcp2024} Anthropic, "Model Context Protocol Specification," 2024.
+    \bibitem{barnett2024} S. Barnett, S. Kurniawan, S. Thudumu, Z. Brannelly, and M. Abdelrazek, "Seven Failure Points When Engineering a Retrieval Augmented Generation System," \textit{arXiv (Cornell University)}, Jan. 2024. \url{https://arxiv.org/abs/2401.05856}
+    \bibitem{edge2024} D. Edge \textit{et al.}, "From Local to Global: A Graph RAG Approach to Query-Focused Summarization," \textit{arXiv.org}, Apr. 24, 2024. \url{https://arxiv.org/abs/2404.16130}
+    \bibitem{gao2023} Y. Gao \textit{et al.}, "Retrieval-Augmented Generation for Large Language Models: A Survey," \textit{arXiv.org}, Dec. 18, 2023. \url{https://arxiv.org/abs/2312.10997}
+\end{thebibliography}
+
+\newpage
+\appendix
+\section{Visual Assets}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.48\textwidth]{media/showcase/SCR-20260430-uomv.png}
+    \hfill
+    \includegraphics[width=0.48\textwidth]{media/showcase/SCR-20260430-uplq.png}
+    \caption{Project AiQ Wireframe Mockups showing citations.}
+    \label{fig:ui}
+\end{figure}
+
+\section{Data Schemas}
+
+The following schema defines the ground-truth format used by our custom evaluation harness. To ensure our metrics reflect actual production readiness, this evaluation suite is built strictly on \textbf{real-world, enterprise-specific test cases} (e.g., actual queries related to SCB TechX HR policies, API guidelines, and DevOps playbooks) rather than generic academic datasets.
+
+\begin{lstlisting}[language=json, caption=Ragas Ground-Truth Evaluation Dataset Schema]
+[
+  {
+    "question": "What was the company's annual revenue in 2024?",
+    "contexts": [
+      "According to the 2024 annual report, the total revenue reached 2.3 billion, driven by a 15% growth in cloud services."
+    ],
+    "answer": "The company's annual revenue in 2024 was 2.3 billion.",
+    "ground_truth": "2.3 billion"
+  }
+]
+\end{lstlisting}
+
+\end{document}

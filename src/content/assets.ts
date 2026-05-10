@@ -1,0 +1,42 @@
+/**
+ * Central asset registry.
+ *
+ * Import every static file here and re-export with a descriptive name.
+ * Slide components and content files import from this module instead of
+ * reaching directly into src/assets/.
+ */
+
+// ── Evolution ──────────────────────────────────────────────────────────────
+export { default as keywordImg }       from '../assets/images/evolution/keyword.jpeg';
+export { default as ragImg }           from '../assets/images/evolution/rag.jpeg';
+export { default as proposeImg }       from '../assets/images/evolution/propose.jpeg';
+export { default as keywordSearchPng } from '../assets/images/evolution/keyword-search.png';
+
+// ── General ────────────────────────────────────────────────────────────────
+export { default as heroImg }          from '../assets/images/general/hero.png';
+export { default as systemOverviewImg }from '../assets/images/general/system-overview.png';
+
+// ── Problems ───────────────────────────────────────────────────────────────
+export { default as messyBox }         from '../assets/images/problems/messy-box.png';
+
+// ── Profile ────────────────────────────────────────────────────────────────
+export { default as atomCloseImg }     from '../assets/images/profile/atom-close.jpeg';
+export { default as atomImg }          from '../assets/images/profile/atom.jpeg';
+export { default as bornImg }          from '../assets/images/profile/born.jpg';
+export { default as masImg }           from '../assets/images/profile/mas.jpeg';
+export { default as prodImg }          from '../assets/images/profile/prod.jpeg';
+export { default as ponImg }           from '../assets/images/profile/pon.jpeg';
+
+// ── Results ────────────────────────────────────────────────────────────────
+export { default as relaxImg }         from '../assets/images/results/relax.png';
+export { default as frustImg }         from '../assets/images/results/frust.png';
+
+// ── Textures ───────────────────────────────────────────────────────────────
+export { default as lanyardTexture }   from '../assets/images/textures/lanyard.png';
+
+// ── Video ──────────────────────────────────────────────────────────────────
+export { default as demoVideo }        from '../assets/vid/AINGO-DEMO.mp4';
+export { default as sourceExplorerVid }from '../assets/vid/feature/source-explorer.mp4';
+export { default as filterVid }        from '../assets/vid/feature/filter.mp4';
+export { default as branchVid }        from '../assets/vid/feature/branch.mp4';
+export { default as sourceManageVid }  from '../assets/vid/feature/source-manage.mp4';
