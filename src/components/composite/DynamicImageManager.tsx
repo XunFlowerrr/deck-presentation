@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ThaiText } from "../primitives/ThaiText.tsx";
+import defaultImages from "../../content/dynamic-images.json";
 
 interface DynamicImage {
   id: string;
@@ -24,7 +25,7 @@ interface DynamicImageManagerProps {
 }
 
 export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
-  const [images, setImages] = useState<DynamicImage[]>([]);
+  const [images, setImages] = useState<DynamicImage[]>(defaultImages as DynamicImage[]);
   const [isEditing, setIsEditing] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [draggedId, setDraggedId] = useState<string | null>(null);
@@ -33,6 +34,7 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
   const [saveStatus, setSaveStatus] = useState<string | null>(null);
   const [isDraggingOver, setIsDraggingOver] = useState(false);
   const [isBtnHovered, setIsBtnHovered] = useState(false);
+  const [isApiAvailable, setIsApiAvailable] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -47,6 +49,7 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
           const data = await response.json();
           if (data.success && Array.isArray(data.images)) {
             setImages(data.images);
+            setIsApiAvailable(true);
             return;
           }
         }
@@ -54,6 +57,7 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
         console.warn("Failed to load layout from API, trying localStorage...", err);
       }
 
+      setIsApiAvailable(false);
       // Fallback to localStorage
       const stored = localStorage.getItem("aiq-dynamic-images");
       if (stored) {
@@ -83,12 +87,15 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
       });
       if (response.ok) {
         setSaveStatus("Saved to disk!");
+        setIsApiAvailable(true);
       } else {
         setSaveStatus("Saved locally in browser");
+        setIsApiAvailable(false);
       }
     } catch (err) {
       console.warn("Failed to save to disk. Saved locally in browser.", err);
       setSaveStatus("Saved locally in browser");
+      setIsApiAvailable(false);
     }
 
     setIsSaving(false);
@@ -164,7 +171,7 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
           }
         }
 
-        // Load image to get natural aspect ratio
+        // Load image using local base64 data (instant, never fails!)
         const tempImg = new Image();
         tempImg.onload = () => {
           const ratio = tempImg.naturalWidth / tempImg.naturalHeight;
@@ -174,7 +181,7 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
           const newImage: DynamicImage = {
             id: String(Date.now()),
             slideNum,
-            src: imageUrl,
+            src: base64Data, // Use base64 locally so it renders immediately
             originalName: file.name,
             x: 200,
             y: 200,
@@ -189,12 +196,23 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
             zIndex: images.length > 0 ? Math.max(...images.map((i) => i.zIndex)) + 1 : 1,
           };
 
-          const updated = [...images, newImage];
-          setImages(updated);
+          // Update state with base64 for instant rendering
+          const updatedState = [...images, newImage];
+          setImages(updatedState);
           setSelectedId(newImage.id);
-          saveLayout(updated);
+
+          // Save to server config with the actual static disk URL (so it loads from disk next time)
+          const imageToSave = { ...newImage, src: imageUrl };
+          const updatedSave = [...images.filter(i => i.id !== newImage.id), imageToSave];
+          saveLayout(updatedSave);
         };
-        tempImg.src = imageUrl;
+
+        tempImg.onerror = (e) => {
+          console.error("Failed to decode uploaded image base64 data", e);
+          alert("Failed to preview uploaded image.");
+        };
+
+        tempImg.src = base64Data;
 
       } catch (err) {
         console.error("Error uploading image", err);
@@ -712,6 +730,13 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
             >
               ✕
             </button>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 10, fontWeight: 700, marginTop: -8 }}>
+            <span style={{ width: 6, height: 6, borderRadius: "50%", backgroundColor: isApiAvailable ? "#10B981" : "#F59E0B" }} />
+            <span style={{ color: isApiAvailable ? "#10B981" : "#F59E0B", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              {isApiAvailable ? "Connected to Disk" : "Browser Storage Only"}
+            </span>
           </div>
 
           <hr style={{ border: "none", borderTop: "1px solid #F3F4F6", margin: 0 }} />
