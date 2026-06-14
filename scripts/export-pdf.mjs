@@ -9,7 +9,6 @@ import puppeteer from "puppeteer";
 const CHROME_PATH =
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const DEV_URL = "http://localhost:5173";
-const TOTAL_SLIDES = 11; // Cover + TheProblem + OurIdea + Dataset + OurPipeline + Experiment1 + Experiment2 + Results + RelatedWork + Challenges + ThankYou
 const ANIMATION_DELAY = 1500; // ms — wait for framer-motion transitions
 const OUTPUT = "presentation.pdf";
 
@@ -35,6 +34,10 @@ async function main() {
   console.log(`📄  Navigating to ${DEV_URL}…`);
   await page.goto(DEV_URL, { waitUntil: "networkidle0", timeout: 30000 });
   await sleep(ANIMATION_DELAY);
+
+  // Retrieve total slides dynamically from the page context
+  const TOTAL_SLIDES = await page.evaluate(() => window.__total_slides || 12);
+  console.log(`📊  Detected slide count dynamically: ${TOTAL_SLIDES} slides`);
 
   const screenshots = [];
 

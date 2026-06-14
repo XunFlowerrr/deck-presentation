@@ -4,7 +4,8 @@ import defaultImages from "../../content/dynamic-images.json";
 
 interface DynamicImage {
   id: string;
-  slideNum: number;
+  slideNum?: number;
+  slideId: string;
   src: string;
   originalName?: string;
   x: number;
@@ -18,13 +19,16 @@ interface DynamicImage {
   cropTop: number; // %
   cropBottom: number; // %
   zIndex: number;
+  flipH?: boolean;
+  flipV?: boolean;
 }
 
 interface DynamicImageManagerProps {
   slideNum: number;
+  slideId: string;
 }
 
-export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
+export function DynamicImageManager({ slideNum, slideId }: DynamicImageManagerProps) {
   const [images, setImages] = useState<DynamicImage[]>(defaultImages as DynamicImage[]);
   const imagesRef = useRef<DynamicImage[]>(images);
 
@@ -51,6 +55,17 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
 
   // Load layout from disk or fallback to localStorage
   useEffect(() => {
+    // Proactively clear bloated base64 data from localStorage to reclaim the 5MB quota
+    try {
+      const stored = localStorage.getItem("aiq-dynamic-images");
+      if (stored && stored.includes("data:image/")) {
+        console.warn("[Storage] Purging bloated base64 images from localStorage to free up browser quota...");
+        localStorage.removeItem("aiq-dynamic-images");
+      }
+    } catch (e) {
+      console.error("[Storage] Failed to clear localStorage", e);
+    }
+
     async function loadLayout() {
       try {
         const response = await fetch("/api/load-layout");
@@ -85,10 +100,14 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
     setIsSaving(true);
     setSaveStatus(null);
     
-    // Save to localStorage as a robust fallback
-    localStorage.setItem("aiq-dynamic-images", JSON.stringify(updatedImages));
-
     try {
+      // Save to localStorage as a robust fallback
+      try {
+        localStorage.setItem("aiq-dynamic-images", JSON.stringify(updatedImages));
+      } catch (e) {
+        console.warn("Failed to write to localStorage (quota exceeded)", e);
+      }
+
       const response = await fetch("/api/save-layout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -190,6 +209,7 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
           const newImage: DynamicImage = {
             id: String(Date.now()),
             slideNum,
+            slideId,
             src: base64Data, // Use base64 locally so it renders immediately
             originalName: file.name,
             x: 200,
@@ -214,6 +234,13 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
           const imageToSave = { ...newImage, src: imageUrl };
           const updatedSave = [...imagesRef.current.filter(i => i.id !== newImage.id), imageToSave];
           saveLayout(updatedSave);
+
+          // Swap base64 for the clean disk path after 1.5 seconds to prevent browser storage quota issues
+          setTimeout(() => {
+            setImages((prev) =>
+              prev.map((img) => (img.id === newImage.id ? { ...img, src: imageUrl } : img))
+            );
+          }, 1500);
         };
 
         tempImg.onerror = (e) => {
@@ -364,7 +391,7 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
     if (draggedId) {
       setDraggedId(null);
       setDragMode(null);
-      saveLayout(images);
+      saveLayout(imagesRef.current);
     }
   };
 
@@ -450,18 +477,18 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
   };
 
   // Selection state & updates
-  const updateSelectedProp = (prop: keyof DynamicImage, val: number) => {
+  const updateSelectedProp = (prop: keyof DynamicImage, val: any) => {
     if (!selectedId) return;
     const updated = images.map((i) => (i.id === selectedId ? { ...i, [prop]: val } : i));
     setImages(updated);
   };
 
   const handleSelectedPropChangeComplete = () => {
-    saveLayout(images);
+    saveLayout(imagesRef.current);
   };
 
   const selectedImage = images.find((i) => i.id === selectedId);
-  const slideImages = images.filter((i) => i.slideNum === slideNum);
+  const slideImages = images.filter((i) => i.slideId === slideId || (!i.slideId && i.slideNum === slideNum));
 
   return (
     <div
@@ -518,7 +545,7 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
               top: img.y,
               width: img.width,
               height: img.height,
-              transform: `rotate(${img.rotation}deg) scale(${img.scale})`,
+              transform: `rotate(${img.rotation}deg) scale(${img.scale}) scaleX(${img.flipH ? -1 : 1}) scaleY(${img.flipV ? -1 : 1})`,
               transformOrigin: "center center",
               zIndex: img.zIndex,
               cursor: isEditing ? "move" : "default",
@@ -726,6 +753,7 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
             onChange={(e) => {
               if (e.target.files && e.target.files[0]) {
                 handleFileUpload(e.target.files[0]);
+                e.target.value = ""; // Reset value to allow uploading the same file again consecutively
               }
             }}
           />
@@ -847,6 +875,78 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
               onMouseUp={handleSelectedPropChangeComplete}
               style={{ width: "100%", accentColor: "#7C3AED" }}
             />
+          </div>
+
+          {/* Flip Section */}
+          <div>
+            <span style={{ fontSize: 11, fontWeight: 800, color: "#111827", display: "block", marginBottom: 8 }}>
+              <ThaiText en="Flip Image">กลับรูปภาพ</ThaiText>
+            </span>
+            <div style={{ display: "flex", gap: 10 }}>
+              <button
+                onClick={() => {
+                  const newFlipH = !selectedImage.flipH;
+                  updateSelectedProp("flipH", newFlipH);
+                  const updated = images.map((i) =>
+                    i.id === selectedImage.id ? { ...i, flipH: newFlipH } : i
+                  );
+                  saveLayout(updated);
+                }}
+                style={{
+                  flex: 1,
+                  padding: "6px 12px",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  color: selectedImage.flipH ? "white" : "#374151",
+                  backgroundColor: selectedImage.flipH ? "#7C3AED" : "#F3F4F6",
+                  border: "none",
+                  borderRadius: 6,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 6,
+                  transition: "background-color 0.15s, color 0.15s",
+                }}
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 2v20M4 12h16M4 18l-2-6 2-6M20 18l2-6-2-6"/>
+                </svg>
+                <ThaiText en="Horizontal">แนวนอน</ThaiText>
+              </button>
+
+              <button
+                onClick={() => {
+                  const newFlipV = !selectedImage.flipV;
+                  updateSelectedProp("flipV", newFlipV);
+                  const updated = images.map((i) =>
+                    i.id === selectedImage.id ? { ...i, flipV: newFlipV } : i
+                  );
+                  saveLayout(updated);
+                }}
+                style={{
+                  flex: 1,
+                  padding: "6px 12px",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  color: selectedImage.flipV ? "white" : "#374151",
+                  backgroundColor: selectedImage.flipV ? "#7C3AED" : "#F3F4F6",
+                  border: "none",
+                  borderRadius: 6,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 6,
+                  transition: "background-color 0.15s, color 0.15s",
+                }}
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M2 12h20M12 4v16M18 4l-6-2-6 2M18 20l-6 2-6-2"/>
+                </svg>
+                <ThaiText en="Vertical">แนวตั้ง</ThaiText>
+              </button>
+            </div>
           </div>
 
           <hr style={{ border: "none", borderTop: "1px solid #F3F4F6", margin: 0 }} />

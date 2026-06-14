@@ -6,7 +6,7 @@ const GLOWS = [
   { top: -200, right: -120, size: 800, color: "124, 58, 237", opacity: 0.12 },
 ];
 
-export function Results() {
+export function Experiment3() {
   const tableData = {
     headers: ["support = 10", "support = 25", "support = 50", "support = 100"],
     rows: [
@@ -36,9 +36,9 @@ export function Results() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Performance"
-        title="Final Evaluation"
-        highlight="Results."
+        label="Model Feasibility"
+        title="Experiment 3: Can We Predict "
+        highlight="Individual Emotions?"
       />
 
       <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 32, justifyContent: "center" }}>

@@ -16,7 +16,7 @@ export default defineConfig({
   },
   server: {
     watch: {
-      ignored: ['**/src/content/dynamic-images.json', '**/public/uploaded-images/**']
+      ignored: (path: string) => path.includes('dynamic-images.json') || path.includes('public/uploaded-images')
     }
   },
   plugins: [
@@ -31,14 +31,14 @@ export default defineConfig({
         }
       },
       configureServer(server) {
-        // Helper to parse request body safely without stream hangs
-        const readBody = (req: any): Promise<string> => {
-          return new Promise((resolve, reject) => {
-            let data = '';
-            req.on('data', (chunk: any) => { data += chunk; });
-            req.on('end', () => resolve(data));
-            req.on('error', (err: any) => reject(err));
-          });
+        // Helper to parse request body safely without stream hangs using native async iterator
+        const readBody = async (req: any): Promise<string> => {
+          let data = '';
+          req.setEncoding('utf8');
+          for await (const chunk of req) {
+            data += chunk;
+          }
+          return data;
         };
 
         server.middlewares.use(async (req, res, next) => {
@@ -79,6 +79,33 @@ export default defineConfig({
               res.end(JSON.stringify({ error: err.message }));
             }
             return;
+          }
+
+          if (req.method === 'GET' && req.url && req.url.startsWith('/uploaded-images/')) {
+            try {
+              const urlPath = req.url.split('?')[0]; // strip query parameters if any
+              const filename = path.basename(urlPath);
+              const filePath = path.resolve(__dirname, 'public/uploaded-images', filename);
+              
+              if (fs.existsSync(filePath)) {
+                const ext = path.extname(filePath).toLowerCase();
+                let contentType = 'image/png';
+                if (ext === '.jpg' || ext === '.jpeg') contentType = 'image/jpeg';
+                else if (ext === '.gif') contentType = 'image/gif';
+                else if (ext === '.svg') contentType = 'image/svg+xml';
+                else if (ext === '.webp') contentType = 'image/webp';
+
+                res.setHeader('Content-Type', contentType);
+                fs.createReadStream(filePath).pipe(res);
+                return;
+              } else {
+                res.statusCode = 404;
+                res.end('Not Found');
+                return;
+              }
+            } catch (err) {
+              console.error('[API] Error serving uploaded image:', err);
+            }
           }
 
           if (req.method === 'POST' && req.url === '/api/save-layout') {

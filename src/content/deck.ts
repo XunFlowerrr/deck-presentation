@@ -3,45 +3,68 @@
  * which order and how they are grouped into sections.
  */
 
-import type { DeckSection } from './types';
+import type { DeckSection, SlideComponent } from './types';
 
 import { Cover } from '../slides/Cover';
+import { WhatIsBeauty } from '../slides/WhatIsBeauty';
 import { TheProblem } from '../slides/TheProblem';
 import { OurIdea } from '../slides/OurIdea';
+import { ResearchQuestions } from '../slides/ResearchQuestions';
 import { Dataset } from '../slides/Dataset';
 import { OurPipeline } from '../slides/OurPipeline';
 import { Experiment1 } from '../slides/Experiment1';
 import { Experiment2 } from '../slides/Experiment2';
-import { Results } from '../slides/Results';
+import { Experiment3 } from '../slides/Experiment3';
 import { RelatedWork } from '../slides/RelatedWork';
 import { Challenges } from '../slides/Challenges';
 import { ThankYou } from '../slides/ThankYou';
+
+// Helper to assign static slideId properties to components to prevent HMR/minification mismatch
+function defineSlide(component: any, slideId: string): SlideComponent {
+  const slide = component as SlideComponent;
+  slide.slideId = slideId;
+  return slide;
+}
+
+const CoverComponent = defineSlide(Cover, 'Cover');
+const WhatIsBeautyComponent = defineSlide(WhatIsBeauty, 'WhatIsBeauty');
+const TheProblemComponent = defineSlide(TheProblem, 'TheProblem');
+const OurIdeaComponent = defineSlide(OurIdea, 'OurIdea');
+const ResearchQuestionsComponent = defineSlide(ResearchQuestions, 'ResearchQuestions');
+const DatasetComponent = defineSlide(Dataset, 'Dataset');
+const OurPipelineComponent = defineSlide(OurPipeline, 'OurPipeline');
+const Experiment1Component = defineSlide(Experiment1, 'Experiment1');
+const Experiment2Component = defineSlide(Experiment2, 'Experiment2');
+const Experiment3Component = defineSlide(Experiment3, 'Experiment3');
+const RelatedWorkComponent = defineSlide(RelatedWork, 'RelatedWork');
+const ChallengesComponent = defineSlide(Challenges, 'Challenges');
+const ThankYouComponent = defineSlide(ThankYou, 'ThankYou');
 
 // ── Deck ───────────────────────────────────────────────────────────────────
 const deck: DeckSection[] = [
   {
     label: 'Intro',
-    slides: [Cover],
+    slides: [CoverComponent],
   },
   {
     label: 'Problem',
-    slides: [TheProblem, OurIdea],
+    slides: [WhatIsBeautyComponent, TheProblemComponent, OurIdeaComponent, ResearchQuestionsComponent],
   },
   {
     label: 'Method',
-    slides: [Dataset, OurPipeline],
+    slides: [DatasetComponent, OurPipelineComponent],
   },
   {
     label: 'Experiments',
-    slides: [Experiment1, Experiment2, Results],
+    slides: [Experiment1Component, Experiment2Component, Experiment3Component],
   },
   {
     label: 'Discussion',
-    slides: [RelatedWork, Challenges],
+    slides: [RelatedWorkComponent, ChallengesComponent],
   },
   {
     label: 'Outro',
-    slides: [ThankYou],
+    slides: [ThankYouComponent],
   },
 ];
 

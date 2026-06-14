@@ -38,6 +38,10 @@ export default function App() {
   const { currentIndex, direction, goTo } = state;
   const CurrentSlide = slides[currentIndex];
 
+  if (typeof window !== "undefined") {
+    (window as any).__total_slides = slides.length;
+  }
+
   const currentSlideNum = currentIndex + 1;
   const isCoverSlide = currentSlideNum === 1;
   const isVideoSlide = CurrentSlide === DemoVideo;
@@ -106,7 +110,10 @@ export default function App() {
         >
           <SlideContext.Provider value={{ slideNum: currentSlideNum, goTo }}>
             <CurrentSlide />
-            <DynamicImageManager slideNum={currentSlideNum} />
+            <DynamicImageManager 
+              slideNum={currentSlideNum} 
+              slideId={(CurrentSlide as any).slideId || CurrentSlide.name || String(currentSlideNum)} 
+            />
           </SlideContext.Provider>
         </motion.div>
       </AnimatePresence>

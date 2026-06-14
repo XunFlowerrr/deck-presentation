@@ -25,7 +25,7 @@ export interface GlowConfig {
 // ── Deck ───────────────────────────────────────────────────────────────────
 
 /** A slide component — takes no props. */
-export type SlideComponent = ComponentType;
+export type SlideComponent = ComponentType & { slideId?: string };
 
 /** One section in the presentation deck. */
 export interface DeckSection {

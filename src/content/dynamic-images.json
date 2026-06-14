@@ -14,7 +14,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 1
+    "zIndex": 1,
+    "slideId": "TheProblem"
   },
   {
     "id": "1781433836883",
@@ -31,7 +32,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 2
+    "zIndex": 2,
+    "slideId": "TheProblem"
   },
   {
     "id": "1781434987182",
@@ -48,7 +50,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 3
+    "zIndex": 3,
+    "slideId": "Cover"
   },
   {
     "id": "1781435056141",
@@ -65,7 +68,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 4
+    "zIndex": 4,
+    "slideId": "Cover"
   },
   {
     "id": "1781435134000",
@@ -82,7 +86,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 5
+    "zIndex": 5,
+    "slideId": "Cover"
   },
   {
     "id": "1781435852239",
@@ -99,7 +104,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 6
+    "zIndex": 6,
+    "slideId": "TheProblem"
   },
   {
     "id": "1781436315628",
@@ -116,7 +122,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 7
+    "zIndex": 7,
+    "slideId": "TheProblem"
   },
   {
     "id": "1781436657173",
@@ -133,7 +140,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 9
+    "zIndex": 9,
+    "slideId": "OurIdea"
   },
   {
     "id": "1781437242001",
@@ -150,7 +158,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 10
+    "zIndex": 10,
+    "slideId": "Dataset"
   },
   {
     "id": "1781437399157",
@@ -167,7 +176,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 11
+    "zIndex": 11,
+    "slideId": "Dataset"
   },
   {
     "id": "1781437613301",
@@ -184,7 +194,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 12
+    "zIndex": 12,
+    "slideId": "OurPipeline"
   },
   {
     "id": "1781437866916",
@@ -201,7 +212,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 13
+    "zIndex": 13,
+    "slideId": "Experiment1"
   },
   {
     "id": "1781437970343",
@@ -218,7 +230,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 14
+    "zIndex": 14,
+    "slideId": "Experiment2"
   },
   {
     "id": "1781438123307",
@@ -235,7 +248,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 15
+    "zIndex": 15,
+    "slideId": "Dataset"
   },
   {
     "id": "1781438231733",
@@ -252,7 +266,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 16
+    "zIndex": 16,
+    "slideId": "Experiment3"
   },
   {
     "id": "1781438550314",
@@ -269,7 +284,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 17
+    "zIndex": 17,
+    "slideId": "RelatedWork"
   },
   {
     "id": "1781439789951",
@@ -286,7 +302,8 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 18
+    "zIndex": 18,
+    "slideId": "Challenges"
   },
   {
     "id": "1781439824280",
@@ -303,6 +320,242 @@
     "cropRight": 0,
     "cropTop": 0,
     "cropBottom": 0,
-    "zIndex": 19
+    "zIndex": 19,
+    "slideId": "Challenges"
+  },
+  {
+    "id": "1781450819447",
+    "slideNum": 2,
+    "slideId": "WhatIsBeauty",
+    "src": "/uploaded-images/1781450819443_fukidashi_bw02.png",
+    "originalName": "fukidashi_bw02.png",
+    "x": 932,
+    "y": 361,
+    "width": 500,
+    "height": 486.4217252396166,
+    "rotation": 0,
+    "scale": 0.45,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 20,
+    "flipH": true
+  },
+  {
+    "id": "1781450822809",
+    "slideNum": 2,
+    "slideId": "WhatIsBeauty",
+    "src": "/uploaded-images/1781450822807_fukidashi_bw02.png",
+    "originalName": "fukidashi_bw02.png",
+    "x": 1530,
+    "y": 54,
+    "width": 500,
+    "height": 486.4217252396166,
+    "rotation": 0,
+    "scale": 0.45,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 25
+  },
+  {
+    "id": "1781450829882",
+    "slideNum": 2,
+    "slideId": "WhatIsBeauty",
+    "src": "/uploaded-images/1781450829878_businessman2_kangaechu.png",
+    "originalName": "businessman2_kangaechu.png",
+    "x": 1407,
+    "y": 129,
+    "width": 500,
+    "height": 632.9113924050632,
+    "rotation": 0,
+    "scale": 0.34,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 22
+  },
+  {
+    "id": "1781450836104",
+    "slideNum": 2,
+    "slideId": "WhatIsBeauty",
+    "src": "/uploaded-images/1781450836098_businesswoman2_kangaechu.png",
+    "originalName": "businesswoman2_kangaechu.png",
+    "x": 1025,
+    "y": 477,
+    "width": 500,
+    "height": 632.9113924050632,
+    "rotation": 0,
+    "scale": 0.33,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 23
+  },
+  {
+    "id": "1781451212849",
+    "slideNum": 2,
+    "slideId": "WhatIsBeauty",
+    "src": "/uploaded-images/1781451212830_broken-heart.png",
+    "originalName": "broken-heart.png",
+    "x": 1479,
+    "y": 34,
+    "width": 500,
+    "height": 500,
+    "rotation": -12,
+    "scale": 0.1,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 26
+  },
+  {
+    "id": "1781451226128",
+    "slideNum": 2,
+    "slideId": "WhatIsBeauty",
+    "src": "/uploaded-images/1781451226111_utsu_boy.png",
+    "originalName": "utsu_boy.png",
+    "x": 1555,
+    "y": 20,
+    "width": 500,
+    "height": 523.543990086741,
+    "rotation": 7,
+    "scale": 0.15,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 27
+  },
+  {
+    "id": "1781451243916",
+    "slideNum": 2,
+    "slideId": "WhatIsBeauty",
+    "src": "/uploaded-images/1781451243899_building_house5.png",
+    "originalName": "building_house5.png",
+    "x": 902,
+    "y": 355,
+    "width": 500,
+    "height": 462.88209606986896,
+    "rotation": -9,
+    "scale": 0.16,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 28
+  },
+  {
+    "id": "1781451260126",
+    "slideNum": 2,
+    "slideId": "WhatIsBeauty",
+    "src": "/uploaded-images/1781451260123_love_woman.png",
+    "originalName": "love_woman.png",
+    "x": 981,
+    "y": 269,
+    "width": 500,
+    "height": 643.389199255121,
+    "rotation": 8,
+    "scale": 0.1,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 29
+  },
+  {
+    "id": "1781452791799",
+    "slideNum": 5,
+    "slideId": "ResearchQuestions",
+    "src": "/uploaded-images/1781452791793_prediction.png",
+    "originalName": "prediction.png",
+    "x": 656,
+    "y": 41,
+    "width": 500,
+    "height": 500,
+    "rotation": 0,
+    "scale": 0.2,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 30
+  },
+  {
+    "id": "1781452874935",
+    "slideNum": 5,
+    "slideId": "ResearchQuestions",
+    "src": "/uploaded-images/1781452874931_up-right-arrow.png",
+    "originalName": "up-right-arrow.png",
+    "x": 1576,
+    "y": 135,
+    "width": 500,
+    "height": 500,
+    "rotation": 140,
+    "scale": 0.1,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 31
+  },
+  {
+    "id": "1781452879367",
+    "slideNum": 5,
+    "slideId": "ResearchQuestions",
+    "src": "/uploaded-images/1781452879365_color-palette.png",
+    "originalName": "color-palette.png",
+    "x": 1538,
+    "y": 198,
+    "width": 500,
+    "height": 500,
+    "rotation": 0,
+    "scale": 0.21,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 32
+  },
+  {
+    "id": "1781452883109",
+    "slideNum": 5,
+    "slideId": "ResearchQuestions",
+    "src": "/uploaded-images/1781452883107_forest.png",
+    "originalName": "forest.png",
+    "x": 1535,
+    "y": 45,
+    "width": 500,
+    "height": 500,
+    "rotation": 0,
+    "scale": 0.21,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 33
+  },
+  {
+    "id": "1781452938967",
+    "slideNum": 5,
+    "slideId": "ResearchQuestions",
+    "src": "/uploaded-images/1781452938964_up-right-arrow.png",
+    "originalName": "up-right-arrow.png",
+    "x": 1496,
+    "y": 138,
+    "width": 500,
+    "height": 500,
+    "rotation": -42,
+    "scale": 0.1,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 34
   }
 ]
