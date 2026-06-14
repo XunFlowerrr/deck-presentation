@@ -458,10 +458,10 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
                 width: "100%",
                 height: "100%",
                 position: "relative",
-                outline: isEditing && isSelected ? "3px solid #7C3AED" : isEditing ? "1px dashed rgba(124,58,237,0.4)" : "none",
+                outline: isEditing && isSelected ? "3px solid #7C3AED" : isEditing ? "1px dashed rgba(124, 58, 237,0.4)" : "none",
                 outlineOffset: "2px",
                 borderRadius: 4,
-                boxShadow: isEditing && isSelected ? "0 10px 30px rgba(124,58,237,0.25)" : "none",
+                boxShadow: isEditing && isSelected ? "0 10px 30px rgba(124, 58, 237,0.25)" : "none",
               }}
             >
               <img
@@ -510,7 +510,7 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
                       borderRadius: "50%",
                       backgroundColor: "#7C3AED",
                       border: "2px solid white",
-                      boxShadow: "0 2px 8px rgba(124,58,237,0.5)",
+                      boxShadow: "0 2px 8px rgba(124, 58, 237,0.5)",
                       cursor: "alias",
                       transform: "translateX(-50%)",
                       zIndex: 100,
@@ -631,7 +631,7 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
               fontSize: 12,
               fontWeight: 700,
               cursor: "pointer",
-              boxShadow: "0 4px 14px rgba(124,58,237,0.3)",
+              boxShadow: "0 4px 14px rgba(124, 58, 237,0.3)",
               display: "flex",
               alignItems: "center",
               gap: 8,

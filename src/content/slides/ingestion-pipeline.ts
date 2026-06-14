@@ -36,7 +36,7 @@ export const pipelineSteps: PipelineStep[] = [
       en: 'Use HybridChunker to detect semantic boundaries and split content into chunks at appropriate breakpoints, such as section headers and subsections.',
     },
     color: '#7C3AED',
-    rgb: '124,58,237',
+    rgb: '124, 58, 237',
     grad: ['#7C3AED', '#A855F7'],
   },
   {

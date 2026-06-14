@@ -13,10 +13,10 @@ import {
 
 function getRoleColor(role: string) {
   if (role.includes("Web")) return { color: "#06B6D4", rgb: "6,182,212" };
-  if (role.includes("UX")) return { color: "#EC4899", rgb: "236,72,153" };
+  if (role.includes("UX")) return { color: "#EC4899", rgb: "236, 72, 153" };
   if (role.includes("Project")) return { color: "#3B82F6", rgb: "59,130,246" };
   if (role.includes("Data")) return { color: "#F59E0B", rgb: "245,158,11" };
-  if (role.includes("AI")) return { color: "#7C3AED", rgb: "124,58,237" };
+  if (role.includes("AI")) return { color: "#7C3AED", rgb: "124, 58, 237" };
   return { color: "#6B7280", rgb: "107,114,128" };
 }
 
@@ -139,7 +139,7 @@ export function MeetTheTeam() {
           top: -200,
           right: -100,
           size: 800,
-          color: "124,58,237",
+          color: "124, 58, 237",
           opacity: 0.05,
         },
         {

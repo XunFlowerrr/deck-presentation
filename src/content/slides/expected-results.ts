@@ -17,9 +17,9 @@ export interface BadgeItem {
 }
 
 export const academicBadges: BadgeItem[] = [
-  { label: 'Validated Architecture', color: '#7C3AED', rgb: '124,58,237' },
-  { label: 'Data Pipeline Expertise', color: '#7C3AED', rgb: '124,58,237' },
-  { label: 'RAG Optimization', color: '#7C3AED', rgb: '124,58,237' },
+  { label: 'Validated Architecture', color: '#7C3AED', rgb: '124, 58, 237' },
+  { label: 'Data Pipeline Expertise', color: '#7C3AED', rgb: '124, 58, 237' },
+  { label: 'RAG Optimization', color: '#7C3AED', rgb: '124, 58, 237' },
 ];
 
 export const industrialBadges: BadgeItem[] = [

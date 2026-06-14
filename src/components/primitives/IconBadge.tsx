@@ -4,7 +4,7 @@ interface IconBadgeProps {
   children: ReactNode;
   /** Two-stop gradient as `[from, to]` hex (e.g. ["#7C3AED", "#A855F7"]). */
   gradient: [string, string];
-  /** Optional drop shadow color, e.g. `"rgba(124,58,237,0.35)"`. */
+  /** Optional drop shadow color, e.g. `"rgba(124, 58, 237,0.35)"`. */
   shadow?: string;
   /** Edge size in px. Defaults to 32. */
   size?: number;

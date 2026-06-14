@@ -51,7 +51,7 @@ export const levels: LevelItem[] = [
     num: '03',
     label: 'The Proposed System',
     accent: '#7C3AED',
-    accentRgb: '124,58,237',
+    accentRgb: '124, 58, 237',
     status: 'Aingo',
     desc: {
       th: 'อัปเกรด Data Pipeline ทำให้ได้ Data ที่มีความเที่ยงตรง มี Agent ที่ฉลาดสำหรับการตอบคำถาม',

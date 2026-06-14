@@ -13,7 +13,7 @@ import {
 import { DISTANCE, fadeInRight, heroTitle } from "../lib/motion.ts";
 
 const GLOWS = [
-  { top: -280, right: -160, size: 800, color: "124,58,237", opacity: 0.12 },
+  { top: -280, right: -160, size: 800, color: "124, 58, 237", opacity: 0.12 },
 ];
 
 const cardStyle = {
@@ -134,7 +134,7 @@ export function ProblemOverview() {
                   </span>
                   <Pill
                     color="#EC4899"
-                    rgb="236,72,153"
+                    rgb="236, 72, 153"
                     fontSize={13}
                     letterSpacing="0.04em"
                     uppercase={false}

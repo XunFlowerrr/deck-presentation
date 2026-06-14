@@ -15,6 +15,7 @@ export { default as keywordSearchPng } from '../assets/images/evolution/keyword-
 // ── General ────────────────────────────────────────────────────────────────
 export { default as heroImg }          from '../assets/images/general/hero.png';
 export { default as systemOverviewImg }from '../assets/images/general/system-overview.png';
+export { default as piaaSampleImg }    from '../assets/images/general/piaa_sample.png';
 
 // ── Problems ───────────────────────────────────────────────────────────────
 export { default as messyBox }         from '../assets/images/problems/messy-box.png';

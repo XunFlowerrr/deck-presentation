@@ -287,7 +287,7 @@ export function InteractiveRAG() {
             <IconBadge
               size={64}
               radius={20}
-              gradient={["#3B82F6", "#8B5CF6"]}
+              gradient={["#3B82F6", "#7C3AED"]}
               shadow="rgba(59,130,246,0.3)"
             >
               <SearchFlowServiceIcon />
@@ -331,7 +331,7 @@ export function InteractiveRAG() {
                   ระบบค้นหาเอกสารและส่งกลับมาเพียงแค่รายการ Citations (IDs)
                 </ThaiText>
               }
-              color="#8B5CF6"
+              color="#7C3AED"
             />
             <TimelineNode
               step="3"

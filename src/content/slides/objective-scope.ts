@@ -73,8 +73,8 @@ export const scopes: ScopeItem[] = [
       en: 'Build AI agents and the Search Flow Service for retrieval and answer processing.',
     },
     tag: 'Agents · Search Flow',
-    tagRgb: '139,92,246',
-    pillColor: '#8B5CF6',
+    tagRgb: '124, 58, 237',
+    pillColor: '#7C3AED',
     iconKey: 'AISystem',
   },
   {

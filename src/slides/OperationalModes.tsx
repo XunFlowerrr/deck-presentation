@@ -20,7 +20,7 @@ import {
 } from "../content/slides/operational-modes";
 
 const GLOWS = [
-  { top: -200, right: -100, size: 640, color: "124,58,237", opacity: 0.1 },
+  { top: -200, right: -100, size: 640, color: "124, 58, 237", opacity: 0.1 },
   { bottom: -150, left: -80, size: 500, color: "249,115,22", opacity: 0.08 },
 ];
 
@@ -159,7 +159,7 @@ export function OperationalModes() {
                     size={100}
                     radius={28}
                     gradient={["#7C3AED", "#D946EF"]}
-                    shadow="rgba(124,58,237,0.3)"
+                    shadow="rgba(124, 58, 237,0.3)"
                   >
                     <div style={{ color: "white" }}>
                       <RobotIcon />

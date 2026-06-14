@@ -29,7 +29,7 @@ export const overviewCards: OverviewCard[] = [
     titleColor: '#EC4899',
     pillLabel: 'Core Problem',
     pillColor: '#EC4899',
-    pillRgb: '236,72,153',
+    pillRgb: '236, 72, 153',
     body: {
       th: 'เมื่อเวลาผ่านไปบริษัทเติบโตขึ้น มีประสบการณ์และความรู้มากขึ้น เราก็คาดหวังว่าประสบการณ์และความรู้เหล่านี้จะช่วยพลักดันบริษัทไปข้างหน้าได้เร็วขึ้น แต่มันกลับช้าลงเพราะความไม่เป็นระเบียบและความกระจัดกระจาย ขององค์ความรู้เหล่านั้น',
       en: 'As a company grows, it accumulates experience and knowledge that should accelerate progress. Instead, it slows down — that knowledge becomes disorganized and scattered across the organization.',

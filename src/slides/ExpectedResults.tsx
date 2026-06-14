@@ -19,7 +19,7 @@ const { relaxImg, frustImg } = images;
 
 const GLOWS = [
   { top: -220, right: -100, size: 680, color: "16,185,129", opacity: 0.09 },
-  { bottom: -160, left: -80, size: 540, color: "124,58,237", opacity: 0.08 },
+  { bottom: -160, left: -80, size: 540, color: "124, 58, 237", opacity: 0.08 },
 ];
 
 const CHECK = (
@@ -159,8 +159,8 @@ export function ExpectedResults() {
             style={{
               flex: 1,
               borderRadius: 16,
-              border: "1px solid rgba(124,58,237,0.15)",
-              background: "rgba(124,58,237,0.04)",
+              border: "1px solid rgba(124, 58, 237,0.15)",
+              background: "rgba(124, 58, 237,0.04)",
               padding: "18px 20px",
               display: "flex",
               flexDirection: "column",

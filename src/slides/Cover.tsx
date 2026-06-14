@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
 import { AccentLine, GradientText, SlideShell } from "../components/index.ts";
 import { bodyText, bottomStrip, heroTitle, topBar } from "../lib/motion.ts";
-import { coverContent } from "../content/slides/cover";
 
 const GLOWS = [
-  { top: -320, right: -180, size: 960, color: "124,58,237", opacity: 0.18 },
-  { bottom: -200, left: -120, size: 640, color: "168,85,247", opacity: 0.09 },
+  { top: -320, right: -180, size: 960, color: "124, 58, 237", opacity: 0.18 }, // Purple
+  { bottom: -200, left: -120, size: 640, color: "236, 72, 153", opacity: 0.12 }, // Pink
 ];
 
 export function Cover() {
@@ -26,8 +25,8 @@ export function Cover() {
               width: 8,
               height: 8,
               borderRadius: "50%",
-              background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-              boxShadow: "0 0 8px rgba(124,58,237,0.6)",
+              background: "linear-gradient(135deg, #7C3AED, #EC4899)",
+              boxShadow: "0 0 8px rgba(124, 58, 237,0.6)",
             }}
           />
           <span
@@ -39,7 +38,7 @@ export function Cover() {
               fontWeight: 700,
             }}
           >
-            {coverContent.projectTag}
+            Research Presentation
           </span>
         </div>
 
@@ -47,18 +46,18 @@ export function Cover() {
           <span
             style={{
               fontSize: 16,
-              color: "#C4B5FD",
+              color: "#7C3AED",
               letterSpacing: "0.08em",
-              fontWeight: 500,
+              fontWeight: 600,
             }}
           >
-            {coverContent.category}
+            Aesthetic Assessment
           </span>
           <div style={{ width: 1, height: 14, background: "#E5E7EB" }} />
           <span
             style={{ fontSize: 16, color: "#9CA3AF", letterSpacing: "0.06em" }}
           >
-            {coverContent.year}
+            June 2026
           </span>
         </div>
       </motion.div>
@@ -72,30 +71,43 @@ export function Cover() {
           justifyContent: "center",
         }}
       >
-        <motion.h1
-          {...heroTitle()}
+        <motion.span
+          {...bodyText(0.1)}
           style={{
-            fontSize: 150,
-            fontWeight: 900,
-            letterSpacing: "-4px",
-            lineHeight: 1.0,
-            margin: "0 0 48px",
-            color: "#0A0A0A",
-            userSelect: "none",
-            paddingTop: 8,
+            fontSize: 24,
+            fontWeight: 700,
+            color: "#7C3AED",
+            textTransform: "uppercase",
+            letterSpacing: "0.15em",
+            marginBottom: 16,
           }}
         >
-          {coverContent.titleLine1}
+          Early-stage Results
+        </motion.span>
+
+        <motion.h1
+          {...heroTitle(0.12, 48)}
+          style={{
+            fontSize: 100,
+            fontWeight: 900,
+            letterSpacing: "-3px",
+            lineHeight: 1.15,
+            margin: "0 0 36px",
+            color: "#0A0A0A",
+            userSelect: "none",
+          }}
+        >
+          Emotion-Mediated
           <br />
-          {coverContent.titleLine2}
+          Personalized Image
           <br />
-          <GradientText>{coverContent.titleHighlight}</GradientText>
+          <GradientText>Aesthetic Assessment</GradientText>
         </motion.h1>
 
         <AccentLine delay={0.55} width={140} style={{ marginBottom: 36 }} />
 
         <motion.p
-          {...bodyText()}
+          {...bodyText(0.72)}
           style={{
             fontSize: 34,
             color: "#6B7280",
@@ -105,28 +117,30 @@ export function Cover() {
             lineHeight: 1.5,
           }}
         >
-          {coverContent.tagline}
+          Predicting individual aesthetic preferences through emotional responses
         </motion.p>
       </div>
 
       {/* Bottom strip */}
       <motion.div
-        {...bottomStrip()}
+        {...bottomStrip(1.0)}
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          borderTop: "1px solid #F3F4F6",
+          paddingTop: 24,
         }}
       >
         <div style={{ display: "flex", gap: 28 }}>
-          {(coverContent.bottomTags as readonly string[]).map((tag, i) => (
+          {["PIAA", "Emotion Mediation", "XPASS-Vis"].map((tag, i) => (
             <span
               key={tag}
               style={{
-                fontSize: 14,
+                fontSize: 16,
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
-                color: i === 0 ? "#7C3AED" : "#D1D5DB",
+                color: i === 0 ? "#7C3AED" : "#9CA3AF",
                 fontWeight: 600,
               }}
             >
@@ -135,9 +149,14 @@ export function Cover() {
           ))}
         </div>
         <span
-          style={{ fontSize: 14, color: "#E5E7EB", letterSpacing: "0.08em" }}
+          style={{
+            fontSize: 20,
+            color: "#374151",
+            fontWeight: 600,
+            letterSpacing: "0.02em",
+          }}
         >
-          {coverContent.bottomRight}
+          Presenter: <span style={{ color: "#7C3AED" }}>Your Name</span> &nbsp;|&nbsp; Date: <span style={{ color: "#7C3AED" }}>June 14, 2026</span>
         </span>
       </motion.div>
     </SlideShell>

@@ -32,7 +32,7 @@ import {
 } from "../content/slides/objective-scope";
 
 const GLOWS = [
-  { top: -260, right: -120, size: 720, color: "124,58,237", opacity: 0.11 },
+  { top: -260, right: -120, size: 720, color: "124, 58, 237", opacity: 0.11 },
   { bottom: -180, left: -80, size: 580, color: "16,185,129", opacity: 0.08 },
 ];
 

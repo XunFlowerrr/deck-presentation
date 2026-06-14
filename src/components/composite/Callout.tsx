@@ -23,7 +23,7 @@ export function Callout({
   children,
   eyebrow,
   color = "#7C3AED",
-  rgb = "124,58,237",
+  rgb = "124, 58, 237",
   bgOpacity = 0.04,
   padding = "12px 16px",
   style,

@@ -22,7 +22,7 @@ interface IconTileProps {
  */
 export function IconTile({
   children,
-  rgb = "124,58,237",
+  rgb = "124, 58, 237",
   size = 40,
   radius = 11,
   bgOpacity = 0.08,

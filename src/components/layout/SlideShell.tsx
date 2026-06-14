@@ -59,7 +59,7 @@ export function SlideShell({
             height: g.size ?? 900,
             transform: g.transform,
             borderRadius: "50%",
-            background: `radial-gradient(circle, rgba(${g.color ?? "124,58,237"},${g.opacity ?? 0.15}) 0%, transparent 65%)`,
+            background: `radial-gradient(circle, rgba(${g.color ?? "124, 58, 237"},${g.opacity ?? 0.15}) 0%, transparent 65%)`,
             pointerEvents: "none",
           }}
         />

@@ -17,7 +17,7 @@ export interface GlowConfig {
   left?: number | string;
   right?: number | string;
   size: number;
-  /** "r,g,b" format, e.g. "124,58,237" */
+  /** "r,g,b" format, e.g. "124, 58, 237" */
   color: string;
   opacity: number;
 }

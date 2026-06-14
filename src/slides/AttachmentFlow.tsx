@@ -72,8 +72,8 @@ const STEP_CONFIG = [
     id: 2,
     from: "ai" as NodeKey,
     to: "embed" as NodeKey,
-    color: "#8B5CF6",
-    rgb: "139,92,246",
+    color: "#7C3AED",
+    rgb: "124, 58, 237",
     labelKey: "step2",
     beamProps: {
       startXOffset: 15,
@@ -695,7 +695,7 @@ export function AttachmentFlow() {
             labelKey="step2"
             editMode={editMode}
             title="STEP 2"
-            color="#8B5CF6"
+            color="#7C3AED"
             isActive={isLabelActive("step2")}
             isInactive={isLabelInactive("step2")}
             desc={

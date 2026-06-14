@@ -19,7 +19,7 @@ import { messyBox } from "../content/assets";
 import { gaps, whySystemFailsHeader } from "../content/slides/why-system-fails";
 
 const GLOWS = [
-  { top: -300, right: -160, size: 800, color: "124,58,237", opacity: 0.13 },
+  { top: -300, right: -160, size: 800, color: "124, 58, 237", opacity: 0.13 },
   { bottom: -200, left: -80, size: 640, color: "239,68,68", opacity: 0.07 },
 ];
 
@@ -250,7 +250,7 @@ export function WhySystemFails() {
                 delay: 1.7,
                 dur: 5.0,
                 xOff: 40,
-                color: "#8B5CF6",
+                color: "#7C3AED",
               },
               {
                 label: "README.txt",
@@ -364,7 +364,7 @@ export function WhySystemFails() {
           <Callout
             eyebrow={null}
             bgOpacity={0.04}
-            style={{ borderLeftColor: "rgba(124,58,237,0.5)" }}
+            style={{ borderLeftColor: "rgba(124, 58, 237,0.5)" }}
           >
             <div
               style={{

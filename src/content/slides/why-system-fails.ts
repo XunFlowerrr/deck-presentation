@@ -56,6 +56,6 @@ export const gaps: GapItem[] = [
       en: 'Conventional RAG treats the knowledge base as a static dataset and lacks an event-driven architecture, so the data goes stale.',
     },
     accent: '#7C3AED',
-    accentRgb: '124,58,237',
+    accentRgb: '124, 58, 237',
   },
 ];

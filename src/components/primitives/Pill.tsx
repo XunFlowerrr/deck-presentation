@@ -29,7 +29,7 @@ interface PillProps {
 export function Pill({
   children,
   color = "#7C3AED",
-  rgb = "124,58,237",
+  rgb = "124, 58, 237",
   dot = false,
   dotGlow = false,
   letterSpacing = "0.08em",

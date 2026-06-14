@@ -82,7 +82,7 @@ export function FutureWork() {
           top: -200,
           right: -100,
           size: 800,
-          color: "124,58,237",
+          color: "124, 58, 237",
           opacity: 0.05,
         },
         {
@@ -256,13 +256,13 @@ export function FutureWork() {
           style={{
             flex: 1.1,
             background:
-              "linear-gradient(135deg, rgba(124,58,237,0.04) 0%, rgba(168,85,247,0.02) 100%)",
+              "linear-gradient(135deg, rgba(124, 58, 237,0.04) 0%, rgba(168, 85, 247,0.02) 100%)",
             borderRadius: 20,
             padding: "28px 32px",
-            border: "1px solid rgba(124,58,237,0.12)",
+            border: "1px solid rgba(124, 58, 237,0.12)",
             display: "flex",
             flexDirection: "column",
-            boxShadow: "0 10px 40px rgba(124,58,237,0.05)",
+            boxShadow: "0 10px 40px rgba(124, 58, 237,0.05)",
           }}
         >
           <h3 style={{ margin: "0 0 24px 0", fontSize: 30, fontWeight: 800 }}>

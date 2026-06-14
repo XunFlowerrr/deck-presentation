@@ -22,7 +22,7 @@ interface BigGhostNumberProps {
  */
 export function BigGhostNumber({
   children,
-  rgb = "124,58,237",
+  rgb = "124, 58, 237",
   size = 56,
   align = "right",
   width,

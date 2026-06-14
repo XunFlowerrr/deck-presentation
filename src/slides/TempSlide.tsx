@@ -41,7 +41,7 @@ export function TempSlide() {
             <h3 style={{ fontSize: 18, color: "#666", fontWeight: 600 }}>Variant: Line (Continuous)</h3>
             <span style={{ fontSize: 14, color: "#888", fontFamily: "monospace" }}>height: 4px</span>
           </div>
-          <ProgressTracker sections={sections} current={current} variant="line" activeColor="#8B5CF6" />
+          <ProgressTracker sections={sections} current={current} variant="line" activeColor="#7C3AED" />
         </div>
 
         {/* Thick Line Variant */}

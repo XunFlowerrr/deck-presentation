@@ -1,273 +1,186 @@
 import { motion } from "framer-motion";
-import {
-  AlertCircleIcon,
-  Callout,
-  ClockIcon,
-  CostIcon,
-  HorizontalDivider,
-  IconCard,
-  IconTile,
-  Lanyard,
-  Pill,
-  ScatterIcon,
-  SearchFailIcon,
-  SectionTitle,
-  SlideHeader,
-  SlideShell,
-  ThaiText,
-} from "../components/index.ts";
-import { fadeIn, fadeInRight } from "../lib/motion.ts";
-import { scenario, theProblemHeader } from "../content/slides/the-problem";
+import { SlideHeader, SlideShell, GradientText } from "../components/index.ts";
+import { fadeIn, fadeInRight, cardRise } from "../lib/motion.ts";
+import { piaaSampleImg } from "../content/assets.ts";
 
 const GLOWS = [
   { bottom: -260, left: -140, size: 680, color: "239,68,68", opacity: 0.07 },
-  { top: -180, right: -100, size: 560, color: "124,58,237", opacity: 0.1 },
+  { top: -180, right: -100, size: 560, color: "124, 58, 237", opacity: 0.1 },
 ];
 
 export function TheProblem() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label={theProblemHeader.label}
-        title={theProblemHeader.title}
-        highlight={theProblemHeader.highlight}
+        label="Introduction"
+        title="The Core"
+        highlight="Problem."
       />
 
-      <div style={{ flex: 1, display: "flex", gap: 24, minHeight: 0 }}>
-        {/* Lanyard — left column */}
+      <div style={{ flex: 1, display: "flex", gap: 56, alignItems: "center", minHeight: 0 }}>
+        {/* Left Column: Image with Rating Overlays */}
         <motion.div
           {...fadeIn(0.3)}
           style={{
-            flex: 1.1,
-            minHeight: 0,
+            flex: 1.2,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            position: "relative",
           }}
         >
-          <div style={{ flex: 1, width: "100%", position: "relative" }}>
-            <Lanyard
-              position={[0, 0, 11]}
-              gravity={[0, -40, 0]}
-              fov={22}
-              transparent
-              name="Atom"
-              profileImage={scenario.profileImage}
-            />
-          </div>
-
-          <motion.div
-            {...fadeIn(0.6)}
+          <div
             style={{
-              padding: "24px 28px",
-              background: "rgba(124, 58, 237, 0.03)",
-              borderRadius: "20px",
-              border: "1px solid rgba(124, 58, 237, 0.1)",
-              marginTop: "12px",
+              position: "relative",
               width: "100%",
               maxWidth: "520px",
-              position: "relative",
-              display: "flex",
-              flexDirection: "column",
-              gap: 12,
-              alignItems: "center",
+              borderRadius: "24px",
+              overflow: "hidden",
+              boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+              border: "1px solid #E5E7EB",
             }}
           >
-            <Pill color="#7C3AED">Scenario</Pill>
-
-            <p
+            <img
+              src={piaaSampleImg}
+              alt="Sample Sunset Landscape"
               style={{
-                margin: 0,
-                fontSize: "1.05rem",
-                lineHeight: 1.65,
-                color: "#4B5563",
-                textAlign: "center",
+                width: "100%",
+                display: "block",
+                aspectRatio: "1/1",
+                objectFit: "cover",
+              }}
+            />
+
+            {/* Person A Overlay */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              style={{
+                position: "absolute",
+                top: "30px",
+                left: "24px",
+                background: "rgba(255, 255, 255, 0.95)",
+                backdropFilter: "blur(8px)",
+                padding: "14px 20px",
+                borderRadius: "16px",
+                boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+                border: "1px solid rgba(16, 185, 129, 0.2)",
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
               }}
             >
-              <ThaiText
-                en={
-                  <>
-                    Meet <strong>Atom</strong>, a new Project Manager joining{" "}
-                    <strong>AINGO</strong>. He needs to find the technical
-                    specifications for a project launched last quarter.
-                  </>
-                }
-              >
-                พบกับ <strong>Atom</strong> ซึ่ง Project Manager หน้าใหม่
-                เข้ามาทำงานที่บริษัท <strong>AINGO</strong> และต้องการหา
-                Technical Specifications
-                ของโครงการที่เปิดตัวไปเมื่อไตรมาสที่แล้ว
-              </ThaiText>
-            </p>
-          </motion.div>
+              <div
+                style={{
+                  width: 12,
+                  height: 12,
+                  borderRadius: "50%",
+                  backgroundColor: "#10B981",
+                  boxShadow: "0 0 8px #10B981",
+                }}
+              />
+              <div>
+                <div style={{ fontSize: 16, fontWeight: 700, color: "#6B7280" }}>Person A</div>
+                <div style={{ fontSize: 24, fontWeight: 800, color: "#111827" }}>
+                  Rating: <span style={{ color: "#10B981" }}>6/7</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Person B Overlay */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.0, duration: 0.5 }}
+              style={{
+                position: "absolute",
+                bottom: "30px",
+                right: "24px",
+                background: "rgba(255, 255, 255, 0.95)",
+                backdropFilter: "blur(8px)",
+                padding: "14px 20px",
+                borderRadius: "16px",
+                boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+                border: "1px solid rgba(239, 68, 68, 0.2)",
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+              }}
+            >
+              <div
+                style={{
+                  width: 12,
+                  height: 12,
+                  borderRadius: "50%",
+                  backgroundColor: "#EF4444",
+                  boxShadow: "0 0 8px #EF4444",
+                }}
+              />
+              <div>
+                <div style={{ fontSize: 16, fontWeight: 700, color: "#6B7280" }}>Person B</div>
+                <div style={{ fontSize: 24, fontWeight: 800, color: "#111827" }}>
+                  Rating: <span style={{ color: "#EF4444" }}>2/7</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+          <span style={{ marginTop: 16, fontSize: 18, color: "#6B7280", fontStyle: "italic" }}>
+            The exact same image receives completely different beauty scores from different people.
+          </span>
         </motion.div>
 
-        {/* Content — right column */}
+        {/* Right Column: Explanations */}
         <motion.div
           {...fadeInRight(0.42)}
           style={{
             flex: 1,
             display: "flex",
             flexDirection: "column",
-            gap: 12,
-            minHeight: 0,
+            gap: 24,
           }}
         >
-          <SectionTitle
-            icon={
-              <IconTile
-                size={30}
-                radius={8}
-                rgb="124,58,237"
-                bgOpacity={0.1}
-                borderOpacity={0.2}
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="#7C3AED"
-                    strokeWidth="2"
-                  />
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="6"
-                    stroke="#7C3AED"
-                    strokeWidth="2"
-                  />
-                  <circle cx="12" cy="12" r="2" fill="#7C3AED" />
-                </svg>
-              </IconTile>
-            }
-          >
-            <ThaiText en="The reality he runs into">
-              ความเป็นจริงที่ต้องเจอ
-            </ThaiText>
-          </SectionTitle>
-
-          <Callout
-            eyebrow={<ThaiText en="The request">ความต้องการ</ThaiText>}
-            color="#7C3AED"
-            rgb="124,58,237"
-          >
-            <p
-              style={{
-                fontSize: "var(--slide-body)",
-                color: "#374151",
-                margin: 0,
-                lineHeight: 1.6,
-              }}
-            >
-              <ThaiText en="Find the technical specifications for the project launched last quarter.">
-                หา Technical Specifications
-                ของโครงการที่เปิดตัวไปเมื่อไตรมาสที่แล้ว
-              </ThaiText>
+          <motion.div {...cardRise(0.5)} style={{
+            background: "#FAFAFA",
+            border: "1px solid #F3F4F6",
+            borderRadius: 20,
+            padding: "28px 32px",
+          }}>
+            <h2 style={{ fontSize: 28, fontWeight: 800, color: "#111827", marginBottom: 12 }}>
+              Subjectivity of Beauty
+            </h2>
+            <p style={{ fontSize: "var(--slide-body)", color: "#4B5563", lineHeight: 1.6, margin: 0 }}>
+              Beauty is in the eye of the beholder. If we show the same picture to different observers, their responses exhibit high variance. Predicting a single average rating fails to capture individual preference.
             </p>
-          </Callout>
+          </motion.div>
 
-          <IconCard
-            icon={<SearchFailIcon />}
-            title={
-              <ThaiText en="Ineffective search">
-                การค้นหาไร้ประสิทธิภาพ
-              </ThaiText>
-            }
-            titleColor="#EF4444"
-          >
-            <ThaiText en="Traditional keyword search returns hundreds of files that have nothing to do with what he actually needs.">
-              Keyword-Search แบบเดิมให้ผลลัพธ์เป็นรายการไฟล์นับร้อย
-              โดยไม่เกี่ยวกับความต้องการจริง
-            </ThaiText>
-          </IconCard>
+          <motion.div {...cardRise(0.65)} style={{
+            background: "#FAFAFA",
+            border: "1px solid #F3F4F6",
+            borderRadius: 20,
+            padding: "28px 32px",
+          }}>
+            <h2 style={{ fontSize: 28, fontWeight: 800, color: "#7C3AED", marginBottom: 12 }}>
+              What is PIAA?
+            </h2>
+            <p style={{ fontSize: "var(--slide-body)", color: "#4B5563", lineHeight: 1.6, margin: 0 }}>
+              <strong>Personalized Image Aesthetic Assessment (PIAA)</strong> is a specialized field in AI. Instead of predicting a generic general aesthetic score, the goal is to train an AI model capable of predicting the specific aesthetic score that a <strong>particular individual</strong> would assign to an image.
+            </p>
+          </motion.div>
 
-          <IconCard
-            icon={<ScatterIcon />}
-            title={
-              <ThaiText en="Scattered information">ข้อมูลกระจัดกระจาย</ThaiText>
-            }
-            titleColor="#EF4444"
-          >
-            <ThaiText en="Critical project information is fragmented and hidden across different systems — SharePoint, drives, emails — none of which give the full picture.">
-              ข้อมูลสำคัญของโครงการถูกแยกส่วนและซ่อนอยู่ตามระบบต่าง ๆ เช่น
-              SharePoint, ไดรฟ์, และอีเมล ซึ่งไม่สามารถให้ภาพรวมที่สมบูรณ์ได้
-            </ThaiText>
-          </IconCard>
-
-          <HorizontalDivider />
-
-          <SectionTitle
-            icon={
-              <IconTile
-                size={30}
-                radius={8}
-                rgb="239,68,68"
-                bgOpacity={0.1}
-                borderOpacity={0.2}
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
-                    stroke="#EF4444"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                  />
-                  <line
-                    x1="12"
-                    y1="9"
-                    x2="12"
-                    y2="13"
-                    stroke="#EF4444"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <line
-                    x1="12"
-                    y1="17"
-                    x2="12.01"
-                    y2="17"
-                    stroke="#EF4444"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </IconTile>
-            }
-          >
-            <ThaiText en="Business impact">ผลกระทบทางธุรกิจ</ThaiText>
-          </SectionTitle>
-
-          <IconCard
-            icon={<ClockIcon />}
-            title={<ThaiText en="Wasted time">เวลาสูญเปล่า</ThaiText>}
-            titleColor="#F59E0B"
-          >
-            <ThaiText en="Hours lost just searching for the right information.">
-              เสียเวลาหลายชั่วโมงในการค้นหาข้อมูล
-            </ThaiText>
-          </IconCard>
-
-          <IconCard
-            icon={<AlertCircleIcon />}
-            title={<ThaiText en="Delays">ความล่าช้า</ThaiText>}
-            titleColor="#EF4444"
-          >
-            <ThaiText en="Projects fall behind, and the same mistakes risk being repeated.">
-              เกิดความล่าช้าของโครงการ เสี่ยงที่จะเกิดข้อผิดพลาดซ้ำ
-            </ThaiText>
-          </IconCard>
-
-          <IconCard
-            icon={<CostIcon />}
-            title={
-              <ThaiText en="The hidden cost to the organization">
-                ต้นทุนที่ซ่อนอยู่ขององค์กร
-              </ThaiText>
-            }
-            titleColor="#F59E0B"
-            align="center"
-          />
+          <motion.div {...cardRise(0.8)} style={{
+            background: "linear-gradient(135deg, rgba(124, 58, 237,0.05), rgba(236, 72, 153,0.05))",
+            border: "1px solid rgba(124, 58, 237,0.15)",
+            borderRadius: 20,
+            padding: "24px 32px",
+          }}>
+            <div style={{ fontSize: 20, fontWeight: 700, color: "#7C3AED" }}>
+              Our Ultimate Goal:
+            </div>
+            <div style={{ fontSize: 28, fontWeight: 800, color: "#111827", marginTop: 4 }}>
+              Predict the score for <GradientText>one specific person</GradientText>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </SlideShell>

@@ -21,7 +21,7 @@ interface BenefitItemProps {
 export function BenefitItem({
   children,
   color = "#7C3AED",
-  rgb = "124,58,237",
+  rgb = "124, 58, 237",
   delay = 0,
   animated = true,
 }: BenefitItemProps) {

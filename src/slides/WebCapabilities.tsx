@@ -16,12 +16,12 @@ import sourceExplorerVid from "../assets/vid/feature/source-explorer.mp4";
 import filterVid from "../assets/vid/feature/filter.mp4";
 
 const GLOWS = [
-  { top: -200, right: -100, size: 800, color: "139,92,246", opacity: 0.08 },
+  { top: -200, right: -100, size: 800, color: "124, 58, 237", opacity: 0.08 },
   { bottom: -150, left: -80, size: 600, color: "16,185,129", opacity: 0.05 },
 ];
 
 const STEPS = [
-  { id: 1, color: "#8B5CF6", rgb: "139,92,246" },
+  { id: 1, color: "#7C3AED", rgb: "124, 58, 237" },
   { id: 2, color: "#10B981", rgb: "16,185,129" },
 ];
 
@@ -85,15 +85,15 @@ export function WebCapabilities() {
             borderRadius: 32,
             border:
               activeStep === 1
-                ? "2px solid rgba(139,92,246,0.5)"
-                : "1px solid rgba(139,92,246,0.15)",
+                ? "2px solid rgba(124, 58, 237,0.5)"
+                : "1px solid rgba(124, 58, 237,0.15)",
             padding: "28px 32px",
             display: "flex",
             flexDirection: "column",
             gap: 16,
             boxShadow:
               activeStep === 1
-                ? "0 10px 30px rgba(139,92,246,0.2), 0 0 0 4px rgba(139,92,246,0.08)"
+                ? "0 10px 30px rgba(124, 58, 237,0.2), 0 0 0 4px rgba(124, 58, 237,0.08)"
                 : "0 10px 30px rgba(0,0,0,0.02)",
             position: "relative",
             overflow: "hidden",
@@ -104,7 +104,7 @@ export function WebCapabilities() {
             style={{
               position: "absolute",
               inset: 0,
-              backgroundImage: `radial-gradient(rgba(139,92,246,0.03) 1px, transparent 1px)`,
+              backgroundImage: `radial-gradient(rgba(124, 58, 237,0.03) 1px, transparent 1px)`,
               backgroundSize: "20px 20px",
               pointerEvents: "none",
             }}
@@ -124,8 +124,8 @@ export function WebCapabilities() {
             <IconBadge
               size={52}
               radius={16}
-              gradient={["#8B5CF6", "#C084FC"]}
-              shadow="rgba(139,92,246,0.3)"
+              gradient={["#7C3AED", "#C084FC"]}
+              shadow="rgba(124, 58, 237,0.3)"
             >
               <div style={{ color: "white" }}>
                 <StorageIcon />
@@ -142,7 +142,7 @@ export function WebCapabilities() {
               >
                 Source Explorer
               </div>
-              <div style={{ fontSize: 13, color: "#8B5CF6", fontWeight: 600 }}>
+              <div style={{ fontSize: 13, color: "#7C3AED", fontWeight: 600 }}>
                 Direct File Management
               </div>
             </div>
@@ -197,7 +197,7 @@ export function WebCapabilities() {
               zIndex: 1,
             }}
           >
-            <Pill color="#8B5CF6" rgb="139,92,246">
+            <Pill color="#7C3AED" rgb="124, 58, 237">
               Granularity
             </Pill>
             <span style={{ fontSize: 13, fontWeight: 600, color: "#6B7280" }}>
@@ -213,9 +213,9 @@ export function WebCapabilities() {
               height: 475,
               borderRadius: 16,
               overflow: "hidden",
-              border: "1px solid rgba(139,92,246,0.18)",
+              border: "1px solid rgba(124, 58, 237,0.18)",
               boxShadow:
-                "0 8px 24px rgba(139,92,246,0.12), 0 24px 64px rgba(0,0,0,0.18)",
+                "0 8px 24px rgba(124, 58, 237,0.12), 0 24px 64px rgba(0,0,0,0.18)",
               position: "relative",
               zIndex: 1,
             }}

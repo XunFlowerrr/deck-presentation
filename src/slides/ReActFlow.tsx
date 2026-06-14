@@ -21,8 +21,8 @@ import { DURATION, fadeIn, fadeInUp } from "../lib/motion.ts";
 import { reactFlowHeader } from "../content/slides/system-slides";
 
 const GLOWS = [
-  { top: -180, right: -100, size: 700, color: "236,72,153", opacity: 0.1 },
-  { bottom: -140, left: -60, size: 580, color: "124,58,237", opacity: 0.09 },
+  { top: -180, right: -100, size: 700, color: "236, 72, 153", opacity: 0.1 },
+  { bottom: -140, left: -60, size: 580, color: "124, 58, 237", opacity: 0.09 },
   { top: "30%", left: "35%", size: 420, color: "59,130,246", opacity: 0.06 },
 ];
 
@@ -41,7 +41,7 @@ const STEP_CONFIG = [
     from: "query" as NodeId,
     to: "react" as NodeId,
     color: "#EC4899",
-    rgb: "236,72,153",
+    rgb: "236, 72, 153",
     label: "Parse",
     gradStart: "#06B6D4",
     gradStop: "#EC4899",
@@ -56,7 +56,7 @@ const STEP_CONFIG = [
     from: "react" as NodeId,
     to: "hyde" as NodeId,
     color: "#7C3AED",
-    rgb: "124,58,237",
+    rgb: "124, 58, 237",
     label: "Rewrite",
     gradStart: "#EC4899",
     gradStop: "#7C3AED",
@@ -101,7 +101,7 @@ const STEP_CONFIG = [
     from: "retrieval" as NodeId,
     to: "react" as NodeId,
     color: "#EC4899",
-    rgb: "236,72,153",
+    rgb: "236, 72, 153",
     label: "Context",
     gradStart: "#3B82F6",
     gradStop: "#EC4899",
@@ -133,7 +133,7 @@ const FLOW_STEPS = [
     step: 1,
     label: "Parse",
     color: "#EC4899",
-    rgb: "236,72,153",
+    rgb: "236, 72, 153",
     left: "56%",
     top: "18%",
     delay: 0.76,
@@ -142,7 +142,7 @@ const FLOW_STEPS = [
     step: 2,
     label: "Rewrite",
     color: "#7C3AED",
-    rgb: "124,58,237",
+    rgb: "124, 58, 237",
     left: "56%",
     top: "40%",
     delay: 0.84,
@@ -169,7 +169,7 @@ const FLOW_STEPS = [
     step: 5,
     label: "Context",
     color: "#EC4899",
-    rgb: "236,72,153",
+    rgb: "236, 72, 153",
     left: "22%",
     top: "50%",
     delay: 1.08,
@@ -283,7 +283,7 @@ const NS = {
   },
   hyde: {
     color: "#7C3AED",
-    rgb: "124,58,237",
+    rgb: "124, 58, 237",
     grad: ["#7C3AED", "#A855F7"] as [string, string],
     label: "HyDE Expansion",
     sub: "LLM rewrite",
@@ -297,7 +297,7 @@ const NS = {
   },
   react: {
     color: "#EC4899",
-    rgb: "236,72,153",
+    rgb: "236, 72, 153",
     grad: ["#EC4899", "#7C3AED"] as [string, string],
     label: "ReAct Agent",
     sub: "CrewAI · Reason→Act",
@@ -632,7 +632,7 @@ export function ReActFlow() {
               background: "rgba(255,255,255,0.9)",
               padding: "3px 8px",
               borderRadius: 20,
-              border: "1px solid rgba(236,72,153,0.18)",
+              border: "1px solid rgba(236, 72, 153,0.18)",
               pointerEvents: "none",
               backdropFilter: "blur(4px)",
               zIndex: 2,
@@ -668,9 +668,9 @@ export function ReActFlow() {
             style={{
               flex: 1,
               borderRadius: 18,
-              border: "1px solid rgba(236,72,153,0.18)",
+              border: "1px solid rgba(236, 72, 153,0.18)",
               background:
-                "linear-gradient(135deg, rgba(236,72,153,0.06) 0%, rgba(124,58,237,0.04) 100%)",
+                "linear-gradient(135deg, rgba(236, 72, 153,0.06) 0%, rgba(124, 58, 237,0.04) 100%)",
               padding: "14px 16px",
               position: "relative",
               overflow: "hidden",
@@ -700,7 +700,7 @@ export function ReActFlow() {
             >
               <IconBadge
                 gradient={["#EC4899", "#7C3AED"]}
-                shadow="rgba(236,72,153,0.35)"
+                shadow="rgba(236, 72, 153,0.35)"
                 size={32}
                 radius={9}
               >
@@ -723,7 +723,7 @@ export function ReActFlow() {
               </div>
               <Pill
                 color="#EC4899"
-                rgb="236,72,153"
+                rgb="236, 72, 153"
                 fontSize={8}
                 padding="2px 8px"
                 style={{ marginLeft: "auto" }}

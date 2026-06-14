@@ -10,7 +10,7 @@ import { DISTANCE, DURATION, fadeInUp, EASE } from "../lib/motion.ts";
 import { solutionOverviewHeader } from "../content/slides/system-slides";
 
 const GLOWS = [
-  { top: -200, right: -100, size: 640, color: "124,58,237", opacity: 0.08 },
+  { top: -200, right: -100, size: 640, color: "124, 58, 237", opacity: 0.08 },
   { bottom: -150, left: -80, size: 500, color: "16,185,129", opacity: 0.07 },
 ];
 
@@ -693,7 +693,7 @@ function GridBeam({
   toRef,
   delay,
   gradientStartColor = "#3B82F6",
-  gradientStopColor = "#8B5CF6",
+  gradientStopColor = "#7C3AED",
   startXOffset = 0,
   startYOffset = 0,
   endXOffset = 0,

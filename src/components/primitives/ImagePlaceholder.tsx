@@ -69,7 +69,7 @@ export function ImagePlaceholder({
             position: "absolute",
             inset: 0,
             backgroundImage:
-              "radial-gradient(circle, rgba(124,58,237,0.07) 1px, transparent 1px)",
+              "radial-gradient(circle, rgba(124, 58, 237,0.07) 1px, transparent 1px)",
             backgroundSize: "20px 20px",
           }}
         />
@@ -79,7 +79,7 @@ export function ImagePlaceholder({
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(160deg, rgba(124,58,237,0.08) 0%, transparent 60%)",
+              "linear-gradient(160deg, rgba(124, 58, 237,0.08) 0%, transparent 60%)",
           }}
         />
         {/* Centered icon */}
@@ -99,8 +99,8 @@ export function ImagePlaceholder({
               width: 52,
               height: 52,
               borderRadius: 14,
-              background: "rgba(124,58,237,0.1)",
-              border: "1px solid rgba(124,58,237,0.2)",
+              background: "rgba(124, 58, 237,0.1)",
+              border: "1px solid rgba(124, 58, 237,0.2)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

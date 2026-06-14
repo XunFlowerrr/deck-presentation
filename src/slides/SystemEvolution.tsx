@@ -17,7 +17,7 @@ import {
 } from "../content/slides/system-evolution";
 
 const GLOWS = [
-  { top: -280, right: -140, size: 760, color: "124,58,237", opacity: 0.11 },
+  { top: -280, right: -140, size: 760, color: "124, 58, 237", opacity: 0.11 },
   { bottom: -180, left: -60, size: 560, color: "16,185,129", opacity: 0.07 },
 ];
 

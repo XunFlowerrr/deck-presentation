@@ -38,6 +38,6 @@ export const myItems: MyItem[] = [
       en: 'English description',
     },
     color: '#7C3AED',
-    rgb: '124,58,237',
+    rgb: '124, 58, 237',
   },
 ];

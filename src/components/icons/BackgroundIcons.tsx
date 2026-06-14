@@ -28,7 +28,7 @@ export function ParadoxIcon() {
     <IconTile
       size={52}
       radius={14}
-      rgb="168,85,247"
+      rgb="168, 85, 247"
       bgOpacity={0.1}
       borderOpacity={0.2}
     >

@@ -23,7 +23,7 @@ export function SlideLabel({ label, style }: SlideLabelProps) {
           height: 8,
           borderRadius: "50%",
           background: "linear-gradient(135deg, #7C3AED, #A855F7)",
-          boxShadow: "0 0 8px rgba(124,58,237,0.6)",
+          boxShadow: "0 0 8px rgba(124, 58, 237,0.6)",
           flexShrink: 0,
         }}
       />

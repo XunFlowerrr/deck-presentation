@@ -37,7 +37,7 @@ export const approachCards: ApproachCard[] = [
     },
     grad: ['#7C3AED', '#A855F7'],
     ringColor: 'rgba(196,181,253,0.5)',
-    hoverShadow: '0 16px 48px rgba(124,58,237,0.28)',
+    hoverShadow: '0 16px 48px rgba(124, 58, 237,0.28)',
     cardDelay: 0.28,
     iconScale: 1.08,
     iconKey: 'Layers',

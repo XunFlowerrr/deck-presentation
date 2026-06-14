@@ -55,7 +55,7 @@ function TimelineDot({
             height: 16,
             borderRadius: "50%",
             background: "white",
-            border: "3px solid #8B5CF6",
+            border: "3px solid #7C3AED",
             boxShadow: "0 3px 6px rgba(0,0,0,0.1)",
           }}
         />
@@ -121,7 +121,7 @@ function TimelineTrack({
             background: "linear-gradient(135deg, #7C3AED, #3B82F6)",
             padding: "6px 16px",
             borderRadius: 8,
-            boxShadow: "0 4px 14px rgba(124,58,237,0.25)",
+            boxShadow: "0 4px 14px rgba(124, 58, 237,0.25)",
             letterSpacing: "0.02em",
           }}
         >
@@ -131,7 +131,7 @@ function TimelineTrack({
           style={{
             fontSize: 13,
             fontWeight: 700,
-            color: "#8B5CF6",
+            color: "#7C3AED",
             letterSpacing: "0.08em",
             textTransform: "uppercase",
           }}
@@ -175,7 +175,7 @@ function TimelineTrack({
           top: 56,
           left: COLUMNS[0],
           height: 3,
-          background: "#8B5CF6",
+          background: "#7C3AED",
         }}
       />
       {/* Bottom line (L to R) */}
@@ -188,7 +188,7 @@ function TimelineTrack({
           top: 168,
           left: COLUMNS[0],
           height: 3,
-          background: "linear-gradient(90deg, #8B5CF6, #EC4899)",
+          background: "linear-gradient(90deg, #7C3AED, #EC4899)",
         }}
       />
 

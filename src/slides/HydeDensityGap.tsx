@@ -12,7 +12,7 @@ import { hydeDensityGapHeader } from "../content/slides/system-slides";
 const wait = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
 const GLOWS = [
-  { top: -200, right: -120, size: 680, color: "124,58,237", opacity: 0.1 },
+  { top: -200, right: -120, size: 680, color: "124, 58, 237", opacity: 0.1 },
   { bottom: -160, left: -80, size: 540, color: "16,185,129", opacity: 0.08 },
 ];
 
@@ -358,7 +358,7 @@ function HydeDiagram() {
         y="10"
         textAnchor="middle"
         fontSize="6.5"
-        fill="rgba(124,58,237,0.6)"
+        fill="rgba(124, 58, 237,0.6)"
       >
         LLM generates
       </text>
@@ -416,7 +416,7 @@ function HydeDiagram() {
           cy={h.y}
           r="6"
           fill="none"
-          stroke="rgba(124,58,237,0.45)"
+          stroke="rgba(124, 58, 237,0.45)"
           strokeWidth="5"
         />
         <text
@@ -453,14 +453,14 @@ const CONCEPTS = [
   {
     pill: "AiQ HyDE",
     pillColor: "#7C3AED",
-    pillRgb: "124,58,237",
+    pillRgb: "124, 58, 237",
     heading: "The Solution",
     headingColor: "#7C3AED",
     body: "แทนที่จะใช้คำถามสั้น ๆ ไปค้นหาตรง ๆ ระบบจะให้ AI สร้าง 'คำตอบสมมติที่สมบูรณ์แบบ' ขึ้นมาก่อน แล้วจึงนำคำตอบนั้นไปสืบค้นข้อมูล ซึ่งจะตรงกับกลุ่มเอกสารที่เกี่ยวข้องมากกว่า ทำให้ดึงข้อมูลได้แม่นยำขึ้น",
     enBody:
       "Instead of searching with the short query directly, the system first asks AI to generate a fully formed hypothetical answer, then uses that answer for retrieval. That aligns better with relevant document clusters and improves accuracy.",
     grad: ["#7C3AED", "#10B981"] as [string, string],
-    rgb: "124,58,237",
+    rgb: "124, 58, 237",
     Diagram: HydeDiagram,
   },
 ];

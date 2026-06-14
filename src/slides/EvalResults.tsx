@@ -329,7 +329,7 @@ export function EvalResults() {
           top: -200,
           right: -100,
           size: 800,
-          color: "124,58,237",
+          color: "124, 58, 237",
           opacity: 0.05,
         },
         {

@@ -27,7 +27,7 @@ export const metrics: MetricItem[] = [
       en: 'Measures factual alignment between the answer and the retrieved context on a 0%-100% scale; higher is better.',
     },
     color: '#7C3AED',
-    rgb: '124,58,237',
+    rgb: '124, 58, 237',
     grad: ['#7C3AED', '#A855F7'],
   },
   {
@@ -39,7 +39,7 @@ export const metrics: MetricItem[] = [
       en: 'Measures factual correctness against reference data by extracting claims with an LLM and using NLI to evaluate consistency.',
     },
     color: '#EC4899',
-    rgb: '236,72,153',
+    rgb: '236, 72, 153',
     grad: ['#EC4899', '#F43F5E'],
   },
   {

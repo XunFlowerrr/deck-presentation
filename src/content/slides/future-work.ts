@@ -35,7 +35,7 @@ export const achievements: AchievementItem[] = [
       en: '77% faithfulness, 97% task completion, and 99% tool correctness — outperforming baseline RAG.',
     },
     color: '#7C3AED',
-    rgb: '124,58,237',
+    rgb: '124, 58, 237',
   },
   {
     iconKey: 'Gear',
@@ -63,8 +63,8 @@ export const futureWork: FutureItem[] = [
       th: 'เพิ่มการสืบค้นโครงข่ายความสัมพันธ์เพื่อใช้งานร่วมกับความคล้ายคลึงของความหมาย ยกระดับการค้นพบองค์ความรู้ภายในองค์กร',
       en: 'Add relationship-aware retrieval that combines graph traversal with semantic similarity to improve enterprise knowledge discovery.',
     },
-    color: '#8B5CF6',
-    rgb: '139,92,246',
+    color: '#7C3AED',
+    rgb: '124, 58, 237',
   },
   {
     title: 'Full Azure AD SSO Integration',

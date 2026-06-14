@@ -5,7 +5,7 @@ export function ObjectiveColumnIcon() {
   return (
     <IconBadge
       gradient={["#7C3AED", "#A855F7"]}
-      shadow="rgba(124,58,237,0.35)"
+      shadow="rgba(124, 58, 237,0.35)"
       size={32}
       radius={9}
     >
@@ -52,7 +52,7 @@ export function ScopeColumnIcon() {
 export function ResearchDesignIcon() {
   return (
     <IconBadge
-      gradient={["#6366F1", "#8B5CF6"]}
+      gradient={["#6366F1", "#7C3AED"]}
       shadow="rgba(99,102,241,0.3)"
       size={44}
       radius={12}
@@ -88,7 +88,7 @@ export function EvaluationIcon() {
   return (
     <IconBadge
       gradient={["#EC4899", "#F43F5E"]}
-      shadow="rgba(236,72,153,0.3)"
+      shadow="rgba(236, 72, 153,0.3)"
       size={44}
       radius={12}
     >
@@ -203,8 +203,8 @@ export function ChatUIIcon() {
 export function AISystemIcon() {
   return (
     <IconBadge
-      gradient={["#8B5CF6", "#6366F1"]}
-      shadow="rgba(139,92,246,0.3)"
+      gradient={["#7C3AED", "#6366F1"]}
+      shadow="rgba(124, 58, 237,0.3)"
       size={44}
       radius={12}
     >

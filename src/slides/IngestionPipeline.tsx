@@ -19,7 +19,7 @@ import {
 
 const GLOWS = [
   { top: -200, right: -120, size: 680, color: "245,158,11", opacity: 0.1 },
-  { bottom: -160, left: -80, size: 540, color: "124,58,237", opacity: 0.08 },
+  { bottom: -160, left: -80, size: 540, color: "124, 58, 237", opacity: 0.08 },
 ];
 
 import {
@@ -31,7 +31,7 @@ import {
 const STAGE_CFG = [
   { rgb: "245,158,11", color: "#F59E0B" },
   { rgb: "245,158,11", color: "#F59E0B" },
-  { rgb: "124,58,237", color: "#7C3AED" },
+  { rgb: "124, 58, 237", color: "#7C3AED" },
   { rgb: "16,185,129", color: "#10B981" },
   { rgb: "59,130,246", color: "#3B82F6" },
 ] as const;
@@ -83,8 +83,8 @@ const crumbStyle: CSSProperties = {
   display: "inline-block",
   padding: "2px 8px",
   borderRadius: 20,
-  border: "1px solid rgba(124,58,237,0.3)",
-  background: "rgba(124,58,237,0.08)",
+  border: "1px solid rgba(124, 58, 237,0.3)",
+  background: "rgba(124, 58, 237,0.08)",
   fontSize: 9,
   color: "#7C3AED",
   whiteSpace: "nowrap",
@@ -832,7 +832,7 @@ export function IngestionPipeline() {
 
           <FlowArrow
             label="Step 02 — Serialize breadcrumbs"
-            color="rgba(124,58,237,0.7)"
+            color="rgba(124, 58, 237,0.7)"
             traveling={arrowActive(1)}
           />
 
@@ -842,8 +842,8 @@ export function IngestionPipeline() {
             transition={{ duration: 0.35 }}
             style={{
               borderRadius: 12,
-              border: "1px solid rgba(124,58,237,0.2)",
-              background: "rgba(124,58,237,0.03)",
+              border: "1px solid rgba(124, 58, 237,0.2)",
+              background: "rgba(124, 58, 237,0.03)",
               padding: "10px 14px",
               flexShrink: 0,
               overflow: "hidden",

@@ -11,7 +11,7 @@ import { DISTANCE, DURATION, fadeInLeft, stagger } from "../lib/motion.ts";
 import { servicesBreakdownHeader } from "../content/slides/system-slides";
 
 const GLOWS = [
-  { top: -200, right: -120, size: 680, color: "124,58,237", opacity: 0.1 },
+  { top: -200, right: -120, size: 680, color: "124, 58, 237", opacity: 0.1 },
   { bottom: -160, left: -80, size: 540, color: "6,182,212", opacity: 0.08 },
 ];
 

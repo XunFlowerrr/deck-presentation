@@ -19,7 +19,7 @@ import { sharePointSyncHeader } from "../content/slides/system-slides";
 const GLOWS = [
   { top: -160, left: -80, size: 680, color: "14,165,233", opacity: 0.1 },
   { bottom: -140, right: -80, size: 580, color: "99,102,241", opacity: 0.09 },
-  { top: "40%", right: "28%", size: 400, color: "168,85,247", opacity: 0.06 },
+  { top: "40%", right: "28%", size: 400, color: "168, 85, 247", opacity: 0.06 },
 ];
 
 const BEAM_W = 1.8;
@@ -60,7 +60,7 @@ const STEP_CONFIG = [
     to: "fss" as NodeId,
     label: "Delegate Upload",
     color: "#A855F7",
-    rgb: "168,85,247",
+    rgb: "168, 85, 247",
     gradStart: "#6366F1",
     gradStop: "#A855F7",
     startYOffset: 14,
@@ -120,7 +120,7 @@ const BEAM_TAGS = [
     left: "44%",
     top: "39%",
     color: "#A855F7",
-    rgb: "168,85,247",
+    rgb: "168, 85, 247",
     delay: 0.81,
   },
   {
@@ -172,7 +172,7 @@ const STEP_DETAILS = [
     en: "The Webhook Service sends the source URL and bearer token to FSS so it can download the file asynchronously in the background. This allows the system to return 202 to Microsoft immediately without blocking, with up to 3 retries using exponential backoff.",
     tags: ["POST /upload-from-url", "Bearer Token", "202 Accepted"],
     color: "#A855F7",
-    rgb: "168,85,247",
+    rgb: "168, 85, 247",
   },
   {
     id: 4,
@@ -293,7 +293,7 @@ const NS: Record<
   },
   fss: {
     color: "#A855F7",
-    rgb: "168,85,247",
+    rgb: "168, 85, 247",
     grad: ["#C084FC", "#A855F7"],
     label: "File Storage Svc",
     sub: "Stream · MinIO",
