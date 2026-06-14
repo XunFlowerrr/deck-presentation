@@ -144,36 +144,65 @@ export function OurPipeline() {
           ))}
         </div>
 
-        {/* Dynamic Formula Explanation Panel */}
+        {/* Operational Flow Table */}
         <motion.div
           {...fadeIn(0.7)}
           style={{
-            background: "linear-gradient(135deg, rgba(124, 58, 237,0.02), rgba(236, 72, 153,0.02))",
-            border: "1px solid rgba(124, 58, 237,0.12)",
+            background: "#FFFFFF",
+            border: "1px solid #E5E7EB",
             borderRadius: "24px",
-            padding: "28px 36px",
-            display: "flex",
-            alignItems: "center",
-            gap: 24,
+            boxShadow: "0 10px 30px rgba(0,0,0,0.02)",
+            padding: "24px 32px",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: "50%", background: "rgba(124, 58, 237,0.08)", flexShrink: 0 }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1 .4 2.5 1.5 3.5.7.8 1.3 1.5 1.5 2.5"/>
-              <path d="M9 18h6"/>
-              <path d="M10 22h4"/>
-            </svg>
-          </div>
-          <div>
-            <div style={{ fontSize: 22, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>
-              The Personal Formula
-            </div>
-            <p style={{ fontSize: "var(--slide-body)", color: "#374151", lineHeight: 1.6, margin: 0 }}>
-              The formula simply evaluates: <strong>How much does this specific person care about each of the 9 emotions when deciding if an image is beautiful?</strong>
-              <br />
-              Because these weights are explicit, we avoid the black-box issue. We can look at the 9 numbers and read exactly what aesthetic priorities characterize each individual user.
-            </p>
-          </div>
+          <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
+            <thead>
+              <tr style={{ borderBottom: "2px solid #E5E7EB" }}>
+                <th style={{ padding: "12px 16px", fontSize: 16, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.05em", width: "33%" }}>Phase</th>
+                <th style={{ padding: "12px 16px", fontSize: 16, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.05em", width: "33%" }}>Required Inputs</th>
+                <th style={{ padding: "12px 16px", fontSize: 16, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.05em", width: "34%" }}>Source / Origin</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* Row 1 */}
+              <tr style={{ borderBottom: "1px solid #F3F4F6", background: "rgba(124, 58, 237, 0.02)" }}>
+                <td style={{ padding: "16px" }}>
+                  <div style={{ fontSize: 20, fontWeight: 800, color: "#7C3AED" }}>Training AI 1</div>
+                  <div style={{ fontSize: 14, color: "#6B7280", marginTop: 4 }}>(One-time, done by researchers)</div>
+                </td>
+                <td style={{ padding: "16px", fontSize: 18, color: "#4B5563", lineHeight: 1.4 }}>
+                  Images + 9 emotion ratings from many observers
+                </td>
+                <td style={{ padding: "16px", fontSize: 18, color: "#4B5563", lineHeight: 1.4 }}>
+                  <strong>XPASS-Vis Dataset</strong> (87,836 ratings already available; no custom collection needed)
+                </td>
+              </tr>
+              {/* Row 2 */}
+              <tr style={{ borderBottom: "1px solid #F3F4F6", background: "rgba(236, 72, 153, 0.02)" }}>
+                <td style={{ padding: "16px" }}>
+                  <div style={{ fontSize: 20, fontWeight: 800, color: "#EC4899" }}>New User Registration</div>
+                </td>
+                <td style={{ padding: "16px", fontSize: 18, color: "#4B5563", lineHeight: 1.4 }}>
+                  Aesthetic ratings for 50–100 images from that user
+                </td>
+                <td style={{ padding: "16px", fontSize: 18, color: "#4B5563", lineHeight: 1.4 }}>
+                  <strong>Direct User Annotation</strong> (Provided by the user themselves)
+                </td>
+              </tr>
+              {/* Row 3 */}
+              <tr>
+                <td style={{ padding: "16px" }}>
+                  <div style={{ fontSize: 20, fontWeight: 800, color: "#111827" }}>Predicting New Images</div>
+                </td>
+                <td style={{ padding: "16px", fontSize: 18, color: "#4B5563", lineHeight: 1.4 }}>
+                  Query image only
+                </td>
+                <td style={{ padding: "16px", fontSize: 18, color: "#9CA3AF" }}>
+                  —
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </motion.div>
         
       </div>
