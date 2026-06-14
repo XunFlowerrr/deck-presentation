@@ -25,8 +25,8 @@ export function GradientText({
         WebkitTextFillColor: "transparent",
         backgroundClip: "text",
         display: "inline-block",
-        fontFamily: "'Fascinate', serif",
-        fontWeight: 50,
+        fontFamily: "serif",
+        fontWeight: "bold",
         ...style,
       }}
     >
