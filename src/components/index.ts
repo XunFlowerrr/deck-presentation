@@ -16,6 +16,7 @@ export { BeforeAfterRow } from "./composite/BeforeAfterRow.tsx";
 export { BenefitItem } from "./composite/BenefitItem.tsx";
 export { default as Lanyard } from "./composite/Lanyard.tsx";
 export { WalkingCat } from "./composite/WalkingCat.tsx";
+export { DynamicImageManager } from "./composite/DynamicImageManager.tsx";
 
 // ─── Primitives ────────────────────────────────────────────────────────────
 export { Pill } from "./primitives/Pill.tsx";

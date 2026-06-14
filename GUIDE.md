@@ -221,3 +221,27 @@ This project includes several interactive modules built directly into the core s
   import { systemOverviewImg } from "../content/assets.ts";
   ```
 
+---
+
+## 7. Dynamic Image Uploader & Editor (New Feature)
+
+The project supports adding images to slides dynamically from the web interface during local presentations and saving them directly into the codebase. 
+
+### How It Works:
+1. **The Toggle Control**: Hover near the **bottom-left corner** of the screen to reveal the hidden **"Edit Slide Images"** button, and click it to open the editor. (It stays visible while editing or saving is active).
+2. **Uploading**: 
+   - A drop-zone is revealed on the current slide. Simply **drag & drop** any image file onto the slide canvas.
+   - Alternatively, click the **"Upload Image"** button in the top-left corner to open the file selection dialog.
+3. **Persisting (The Codebase Bridge)**:
+   - In development mode, the file is posted to `/api/upload-image`. The custom Vite server middleware intercepts this and writes the original file to `public/uploaded-images/`.
+   - The layout coordinates (X, Y, size, rotation, crop) are posted to `/api/save-layout` and saved directly to `src/content/dynamic-images.json`.
+   - In production or static builds, the uploader falls back to saving configurations in `localStorage`.
+4. **Interactive Editing**:
+   - **Translate (Move)**: Click and drag the image body to position it anywhere on the slide.
+   - **Scale**: Drag any of the **four corner circular handles** (shown when selected) to scale the image dynamically. The scale slider in the settings panel will update in real-time.
+   - **Rotate**: Drag the **top purple handle** (connected by a vertical line) to rotate the image directly relative to its center point.
+   - **Crop (Native Insets)**: Use the four sliders (Top, Bottom, Left, Right) to adjust insets from `0%` to `90%`. This utilizes CSS `clip-path: inset(...)`.
+   - **Z-Index (Layer Order)**: Click **"Bring Front"** or **"Send Back"** to manage overlapping layer orders.
+   - **Keyboard Micro-tuning**: Select an image in edit mode and use the **arrow keys** to nudge it by 1px (or 10px with `Shift`). Press **`Delete`** or **`Backspace`** to remove the selected image.
+
+
