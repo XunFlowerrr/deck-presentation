@@ -109,82 +109,27 @@ export function Challenges() {
     },
   ];
 
-  const steps = [
-    {
-      num: "01",
-      title: "Complete 5-Fold Cross-Validation",
-      desc: "Run comprehensive experiments across all remaining folds to secure robust, stable benchmark metrics against ICI.",
-    },
-    {
-      num: "02",
-      title: "Correlate with Personality (Big Five)",
-      desc: "Cross-reference each person's emotion weightings with their Big Five personality profiles in XPASS-Vis.",
-    },
-    {
-      num: "03",
-      title: "Test Domain Consistency",
-      desc: "Analyze whether an individual's personal formula stays consistent across different image domains.",
-    },
-    {
-      num: "04",
-      title: "Paper Write-up & Submission",
-      desc: "Synthesize findings, document the explainability advantages of emotion mediation, and draft the paper.",
-    },
-  ];
-
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Discussion"
-        title="Challenges &"
-        highlight="Next Steps."
+        title="Research"
+        highlight="Challenges."
       />
 
-      <div style={{ flex: 1, display: "flex", gap: 40, minHeight: 0 }}>
-        {/* Left: Research Challenges */}
-        <div
-          style={{ flex: 1, display: "flex", flexDirection: "column", gap: 14 }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              marginBottom: 10,
-            }}
-          >
-            <span
-              style={{
-                width: 4,
-                height: 28,
-                borderRadius: 4,
-                background: "linear-gradient(180deg, #EF4444, #F9A8C9)",
-                flexShrink: 0,
-              }}
-            />
-            <span
-              style={{
-                fontSize: 22,
-                fontWeight: 800,
-                color: "#111827",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Research Challenges
-            </span>
-          </div>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: 36 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 36 }}>
           {challenges.map((c, i) => (
             <motion.div
               key={c.title}
-              {...cardRise(i * 0.08)}
+              {...cardRise(i * 0.1)}
               style={{
                 background: c.color,
                 border: c.border,
-                borderRadius: "16px",
-                padding: "18px 22px",
+                borderRadius: "24px",
+                padding: "40px 48px",
                 display: "flex",
-                flex: 1,
-                gap: 16,
+                gap: 32,
                 alignItems: "flex-start",
               }}
             >
@@ -193,8 +138,11 @@ export function Challenges() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  width: 56,
+                  height: 56,
+                  borderRadius: "50%",
+                  background: c.color.replace("0.05", "0.15").replace("0.04", "0.12"),
                   flexShrink: 0,
-                  marginTop: 3,
                 }}
               >
                 {c.icon}
@@ -202,123 +150,23 @@ export function Challenges() {
               <div>
                 <h4
                   style={{
-                    fontSize: 18,
+                    fontSize: 28,
                     fontWeight: 800,
                     color: "#111827",
-                    marginBottom: 4,
+                    marginBottom: 8,
                   }}
                 >
                   {c.title}
                 </h4>
                 <p
                   style={{
-                    fontSize: 16,
+                    fontSize: 22,
                     color: "#4B5563",
                     lineHeight: 1.5,
                     margin: 0,
                   }}
                 >
                   {c.desc}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Divider */}
-        <div
-          style={{
-            width: 1,
-            background: "#E5E7EB",
-            alignSelf: "stretch",
-            flexShrink: 0,
-          }}
-        />
-
-        {/* Right: Next Research Steps */}
-        <div
-          style={{ flex: 1, display: "flex", flexDirection: "column", gap: 14 }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              marginBottom: 10,
-            }}
-          >
-            <span
-              style={{
-                width: 4,
-                height: 28,
-                borderRadius: 4,
-                background: "linear-gradient(180deg, #9B72CF, #C4A3E8)",
-                flexShrink: 0,
-              }}
-            />
-            <span
-              style={{
-                fontSize: 22,
-                fontWeight: 800,
-                color: "#111827",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Next Research Steps
-            </span>
-          </div>
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.num}
-              {...cardRise(i * 0.08 + 0.1)}
-              style={{
-                background: "#FAFAFA",
-                border: "1px solid #E5E7EB",
-                borderRadius: "16px",
-                padding: "18px 22px",
-                display: "flex",
-                flex: 1,
-                gap: 16,
-                alignItems: "flex-start",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: 16,
-                  fontWeight: 900,
-                  color: "#9B72CF",
-                  background: "rgba(155,114,207,0.1)",
-                  width: 38,
-                  height: 38,
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                {step.num}
-              </span>
-              <div>
-                <h4
-                  style={{
-                    fontSize: 18,
-                    fontWeight: 800,
-                    color: "#111827",
-                    marginBottom: 4,
-                  }}
-                >
-                  {step.title}
-                </h4>
-                <p
-                  style={{
-                    fontSize: 16,
-                    color: "#4B5563",
-                    lineHeight: 1.5,
-                    margin: 0,
-                  }}
-                >
-                  {step.desc}
                 </p>
               </div>
             </motion.div>

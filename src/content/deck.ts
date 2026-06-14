@@ -11,12 +11,14 @@ import { TheProblem } from '../slides/TheProblem';
 import { OurIdea } from '../slides/OurIdea';
 import { ResearchQuestions } from '../slides/ResearchQuestions';
 import { Dataset } from '../slides/Dataset';
+import { DatasetVisuals } from '../slides/DatasetVisuals';
 import { OurPipeline } from '../slides/OurPipeline';
 import { Experiment1 } from '../slides/Experiment1';
 import { Experiment2 } from '../slides/Experiment2';
 import { Experiment3 } from '../slides/Experiment3';
 import { RelatedWork } from '../slides/RelatedWork';
 import { Challenges } from '../slides/Challenges';
+import { NextSteps } from '../slides/NextSteps';
 import { ThankYou } from '../slides/ThankYou';
 
 // Helper to assign static slideId properties to components to prevent HMR/minification mismatch
@@ -32,12 +34,14 @@ const TheProblemComponent = defineSlide(TheProblem, 'TheProblem');
 const OurIdeaComponent = defineSlide(OurIdea, 'OurIdea');
 const ResearchQuestionsComponent = defineSlide(ResearchQuestions, 'ResearchQuestions');
 const DatasetComponent = defineSlide(Dataset, 'Dataset');
+const DatasetVisualsComponent = defineSlide(DatasetVisuals, 'DatasetVisuals');
 const OurPipelineComponent = defineSlide(OurPipeline, 'OurPipeline');
 const Experiment1Component = defineSlide(Experiment1, 'Experiment1');
 const Experiment2Component = defineSlide(Experiment2, 'Experiment2');
 const Experiment3Component = defineSlide(Experiment3, 'Experiment3');
 const RelatedWorkComponent = defineSlide(RelatedWork, 'RelatedWork');
 const ChallengesComponent = defineSlide(Challenges, 'Challenges');
+const NextStepsComponent = defineSlide(NextSteps, 'NextSteps');
 const ThankYouComponent = defineSlide(ThankYou, 'ThankYou');
 
 // ── Deck ───────────────────────────────────────────────────────────────────
@@ -52,7 +56,7 @@ const deck: DeckSection[] = [
   },
   {
     label: 'Method',
-    slides: [DatasetComponent, OurPipelineComponent],
+    slides: [DatasetComponent, DatasetVisualsComponent, OurPipelineComponent],
   },
   {
     label: 'Experiments',
@@ -60,7 +64,7 @@ const deck: DeckSection[] = [
   },
   {
     label: 'Discussion',
-    slides: [RelatedWorkComponent, ChallengesComponent],
+    slides: [RelatedWorkComponent, ChallengesComponent, NextStepsComponent],
   },
   {
     label: 'Outro',
