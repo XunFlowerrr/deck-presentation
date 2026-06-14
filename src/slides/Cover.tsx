@@ -117,7 +117,8 @@ export function Cover() {
             lineHeight: 1.5,
           }}
         >
-          Predicting individual aesthetic preferences through emotional responses
+          Predicting individual aesthetic preferences through emotional
+          responses
         </motion.p>
       </div>
 
@@ -156,7 +157,9 @@ export function Cover() {
             letterSpacing: "0.02em",
           }}
         >
-          Presenter: <span style={{ color: "#7C3AED" }}>Your Name</span> &nbsp;|&nbsp; Date: <span style={{ color: "#7C3AED" }}>June 14, 2026</span>
+          Presenter: <span style={{ color: "#7C3AED" }}>Pinwa</span>{" "}
+          &nbsp;|&nbsp; Date:{" "}
+          <span style={{ color: "#7C3AED" }}>June 14, 2026</span>
         </span>
       </motion.div>
     </SlideShell>

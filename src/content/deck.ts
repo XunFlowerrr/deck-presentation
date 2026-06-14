@@ -15,7 +15,6 @@ import { Experiment2 } from '../slides/Experiment2';
 import { Results } from '../slides/Results';
 import { RelatedWork } from '../slides/RelatedWork';
 import { Challenges } from '../slides/Challenges';
-import { NextSteps } from '../slides/NextSteps';
 import { ThankYou } from '../slides/ThankYou';
 
 // ── Deck ───────────────────────────────────────────────────────────────────
@@ -38,7 +37,7 @@ const deck: DeckSection[] = [
   },
   {
     label: 'Discussion',
-    slides: [RelatedWork, Challenges, NextSteps],
+    slides: [RelatedWork, Challenges],
   },
   {
     label: 'Outro',

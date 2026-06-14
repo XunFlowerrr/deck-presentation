@@ -26,6 +26,12 @@ interface DynamicImageManagerProps {
 
 export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
   const [images, setImages] = useState<DynamicImage[]>(defaultImages as DynamicImage[]);
+  const imagesRef = useRef<DynamicImage[]>(images);
+
+  useEffect(() => {
+    imagesRef.current = images;
+  }, [images]);
+
   const [isEditing, setIsEditing] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [draggedId, setDraggedId] = useState<string | null>(null);
@@ -35,6 +41,9 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
   const [isDraggingOver, setIsDraggingOver] = useState(false);
   const [isBtnHovered, setIsBtnHovered] = useState(false);
   const [isApiAvailable, setIsApiAvailable] = useState(false);
+  const [panelPos, setPanelPos] = useState({ x: 1920 - 300 - 24, y: 24 });
+  const [isDraggingPanel, setIsDraggingPanel] = useState(false);
+  const panelDragStartRef = useRef({ x: 0, y: 0, panelX: 0, panelY: 0 });
 
   const containerRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -193,17 +202,17 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
             cropRight: 0,
             cropTop: 0,
             cropBottom: 0,
-            zIndex: images.length > 0 ? Math.max(...images.map((i) => i.zIndex)) + 1 : 1,
+            zIndex: imagesRef.current.length > 0 ? Math.max(...imagesRef.current.map((i) => i.zIndex)) + 1 : 1,
           };
 
           // Update state with base64 for instant rendering
-          const updatedState = [...images, newImage];
+          const updatedState = [...imagesRef.current, newImage];
           setImages(updatedState);
           setSelectedId(newImage.id);
 
           // Save to server config with the actual static disk URL (so it loads from disk next time)
           const imageToSave = { ...newImage, src: imageUrl };
-          const updatedSave = [...images.filter(i => i.id !== newImage.id), imageToSave];
+          const updatedSave = [...imagesRef.current.filter(i => i.id !== newImage.id), imageToSave];
           saveLayout(updatedSave);
         };
 
@@ -369,6 +378,53 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
       window.removeEventListener("mouseup", handleGlobalMouseUp);
     };
   }, [draggedId, images, dragMode]);
+
+  // Handle dragging the edit panel
+  const handlePanelMouseDown = (e: React.MouseEvent) => {
+    if (e.button !== 0) return; // Only left click
+    e.stopPropagation();
+    setIsDraggingPanel(true);
+    panelDragStartRef.current = {
+      x: e.clientX,
+      y: e.clientY,
+      panelX: panelPos.x,
+      panelY: panelPos.y,
+    };
+  };
+
+  useEffect(() => {
+    const handlePanelMouseMove = (e: MouseEvent) => {
+      if (!isDraggingPanel || !containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const scaleX = rect.width / 1920;
+      const scaleY = rect.height / 1080;
+
+      const dx = (e.clientX - panelDragStartRef.current.x) / scaleX;
+      const dy = (e.clientY - panelDragStartRef.current.y) / scaleY;
+
+      let newX = Math.round(panelDragStartRef.current.panelX + dx);
+      let newY = Math.round(panelDragStartRef.current.panelY + dy);
+
+      // Constrain panel to keep it on the 1920x1080 canvas
+      newX = Math.max(10, Math.min(1920 - 300 - 10, newX));
+      newY = Math.max(10, Math.min(1080 - 620, newY));
+
+      setPanelPos({ x: newX, y: newY });
+    };
+
+    const handlePanelMouseUp = () => {
+      setIsDraggingPanel(false);
+    };
+
+    if (isDraggingPanel) {
+      window.addEventListener("mousemove", handlePanelMouseMove);
+      window.addEventListener("mouseup", handlePanelMouseUp);
+    }
+    return () => {
+      window.removeEventListener("mousemove", handlePanelMouseMove);
+      window.removeEventListener("mouseup", handlePanelMouseUp);
+    };
+  }, [isDraggingPanel, panelPos]);
 
   // Image deletion
   const deleteImage = (id: string) => {
@@ -691,14 +747,14 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
         </div>
       )}
 
-      {/* Editor Control Panel Sidebar (Right side, anchored top) */}
+      {/* Editor Control Panel Sidebar (Movable settings panel) */}
       {isEditing && selectedImage && (
         <div
           onClick={(e) => e.stopPropagation()}
           style={{
             position: "absolute",
-            top: 24,
-            right: 24,
+            left: panelPos.x,
+            top: panelPos.y,
             width: 300,
             background: "rgba(255, 255, 255, 0.95)",
             backdropFilter: "blur(16px)",
@@ -712,20 +768,36 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
             flexDirection: "column",
             gap: 16,
             fontFamily: "system-ui, sans-serif",
+            userSelect: "none",
           }}
         >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          {/* Header (Draggable title area) */}
+          <div
+            onMouseDown={handlePanelMouseDown}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              cursor: isDraggingPanel ? "grabbing" : "grab",
+              padding: "2px 0 8px 0",
+            }}
+          >
             <span style={{ fontSize: 13, fontWeight: 800, color: "#111827" }}>
               <ThaiText en="Image Settings">การตั้งค่ารูปภาพ</ThaiText>
             </span>
             <button
-              onClick={() => setSelectedId(null)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedId(null);
+              }}
+              onMouseDown={(e) => e.stopPropagation()}
               style={{
                 background: "transparent",
                 border: "none",
                 fontSize: 14,
                 cursor: "pointer",
                 color: "#9CA3AF",
+                padding: "2px 6px",
               }}
             >
               ✕
@@ -912,6 +984,31 @@ export function DynamicImageManager({ slideNum }: DynamicImageManagerProps) {
           >
             Delete Image
           </button>
+
+          {/* Bottom Drag Handle Pill */}
+          <div
+            onMouseDown={handlePanelMouseDown}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: isDraggingPanel ? "grabbing" : "grab",
+              padding: "12px 0 2px",
+              marginTop: 4,
+              borderTop: "1px solid rgba(0,0,0,0.03)",
+              userSelect: "none",
+            }}
+            title="Drag to move panel"
+          >
+            <div style={{
+              width: 36,
+              height: 5,
+              borderRadius: 2.5,
+              backgroundColor: isDraggingPanel ? "#7C3AED" : "#E5E7EB",
+              boxShadow: "inset 0 1px 1px rgba(0,0,0,0.05)",
+              transition: "background-color 0.2s, width 0.2s",
+            }} />
+          </div>
         </div>
       )}
 

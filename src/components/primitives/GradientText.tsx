@@ -2,8 +2,8 @@ import type { CSSProperties, ReactNode } from "react";
 
 export function GradientText({
   children,
-  from = "#7C3AED",
-  to = "#EC4899",
+  from = "#9B72CF",
+  to = "#F9A8C9",
   via,
   style,
 }: {
@@ -25,6 +25,8 @@ export function GradientText({
         WebkitTextFillColor: "transparent",
         backgroundClip: "text",
         display: "inline-block",
+        fontFamily: "'Fascinate', serif",
+        fontWeight: 50,
         ...style,
       }}
     >

@@ -27,24 +27,12 @@ export function SlideShell({
       style={{
         width: "100%",
         height: "100%",
-        background: "#ffffff",
+        background: "#FFFBF5",
         position: "relative",
         overflow: "hidden",
         fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif',
       }}
     >
-      {/* Dot grid */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            "radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-          pointerEvents: "none",
-        }}
-      />
-
       {/* Glow blobs */}
       {glows.map((g, i) => (
         <div
@@ -59,7 +47,7 @@ export function SlideShell({
             height: g.size ?? 900,
             transform: g.transform,
             borderRadius: "50%",
-            background: `radial-gradient(circle, rgba(${g.color ?? "124, 58, 237"},${g.opacity ?? 0.15}) 0%, transparent 65%)`,
+            background: `radial-gradient(circle, rgba(${g.color ?? "155, 114, 207"},${g.opacity ?? 0.15}) 0%, transparent 65%)`,
             pointerEvents: "none",
           }}
         />

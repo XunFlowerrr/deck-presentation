@@ -24,6 +24,12 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     {
       name: 'image-persist-api',
+      handleHotUpdate({ file }) {
+        if (file.endsWith('dynamic-images.json')) {
+          console.log('[API] Intercepted HMR for dynamic-images.json (preventing HMR reload)');
+          return [];
+        }
+      },
       configureServer(server) {
         // Helper to parse request body safely without stream hangs
         const readBody = (req: any): Promise<string> => {
