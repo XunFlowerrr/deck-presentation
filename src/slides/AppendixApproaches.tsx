@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { SlideHeader, SlideShell } from "../components/index.ts";
 import { fadeIn } from "../lib/motion.ts";
-import { fourApproachesImg } from "../content/assets.ts";
 
 const GLOWS = [
   { top: -200, left: -100, size: 700, color: "124, 58, 237", opacity: 0.12 },
@@ -33,20 +32,9 @@ export function AppendixApproaches() {
             justifyContent: "center",
             alignItems: "center",
             height: "100%",
-            overflow: "hidden",
           }}
         >
-          <img
-            src={fourApproachesImg}
-            alt="Experiment 3 4 Approaches Block Diagram"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "contain",
-              display: "block",
-              transform: "scale(1.5)",
-            }}
-          />
+          {/* Blank white placeholder */}
         </motion.div>
 
         {/* Right Column: Brief details */}

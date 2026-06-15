@@ -30,7 +30,7 @@ export function Experiment1() {
     },
     {
       name: "Best previous method (ICI)",
-      desc: "Shi et al., 2024 (without emotions)",
+      desc: "without emotions",
       art: "0.493",
       fashion: "0.319",
       landscape: "0.458",

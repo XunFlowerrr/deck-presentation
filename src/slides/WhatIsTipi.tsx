@@ -69,7 +69,7 @@ export function WhatIsTipi() {
             lineHeight: 1.5,
           }}
         >
-          <strong>TIPI (Ten-Item Personality Inventory)</strong> is a brief, scientifically validated questionnaire developed by <strong>Gosling et al. (2003)</strong>. It is widely used in psychology to measure the <strong>Big Five personality traits</strong>. XPASS-Vis collected these traits for all 129 participants, allowing us to evaluate if individual aesthetic formulas correlate with real-world personality (RQ3).
+          <strong>TIPI (Ten-Item Personality Inventory)</strong> is a short 10 question, scientifically developed by Gosling et al. (2003). It is widely used in psychology to <strong>measure the Big Five score of personality.</strong>. XPASS-Vis collected these traits for all 129 participants, allowing us to evaluate if individual aesthetic formulas correlate with real-world personality (RQ3).
         </motion.div>
 
         {/* 5 Traits Cards - 2 on top, 3 on bottom */}

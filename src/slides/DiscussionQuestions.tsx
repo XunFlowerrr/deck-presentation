@@ -35,9 +35,9 @@ export function DiscussionQuestions() {
         highlight="Discussion."
       />
 
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 36, justifyContent: "center" }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 28, justifyContent: "center", alignItems: "center" }}>
         
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 36 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 28, width: "100%", maxWidth: "800px" }}>
           {questions.map((q, i) => (
             <motion.div
               key={q.num}
@@ -46,21 +46,21 @@ export function DiscussionQuestions() {
                 background: q.bg,
                 border: q.border,
                 borderRadius: "24px",
-                padding: "40px 48px",
+                padding: "32px 40px",
                 display: "flex",
-                gap: 32,
+                gap: 28,
                 alignItems: "flex-start",
                 boxShadow: "0 10px 30px rgba(0, 0, 0, 0.01)",
               }}
             >
               <span
                 style={{
-                  fontSize: 30,
+                  fontSize: 26,
                   fontWeight: 900,
                   color: q.color,
                   background: q.bg.replace("0.03", "0.12"),
-                  width: 56,
-                  height: 56,
+                  width: 48,
+                  height: 48,
                   borderRadius: "50%",
                   display: "flex",
                   alignItems: "center",
@@ -71,10 +71,10 @@ export function DiscussionQuestions() {
                 {q.num}
               </span>
               <div>
-                <h4 style={{ fontSize: 28, fontWeight: 800, color: "#111827", marginBottom: 8 }}>
+                <h4 style={{ fontSize: 24, fontWeight: 800, color: "#111827", marginBottom: 6 }}>
                   {q.title}
                 </h4>
-                <p style={{ fontSize: 22, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
+                <p style={{ fontSize: 20, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
                   {q.desc}
                 </p>
               </div>

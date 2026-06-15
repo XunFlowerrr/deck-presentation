@@ -23,7 +23,7 @@ export function OurPipeline() {
     {
       title: "Step 1: Shared AI",
       badge: "Trained on all users",
-      desc: "A generic model that predicts the 9 emotional response levels for the image (e.g. nostalgia = 4/5).",
+      desc: "A generic model that predicts the 9 emotion scores from picture (e.g. nostalgia = 4/5).",
       icon: (
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 8V4H8"/>

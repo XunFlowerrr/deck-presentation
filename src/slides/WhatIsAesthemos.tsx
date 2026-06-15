@@ -45,7 +45,7 @@ export function WhatIsAesthemos() {
               Aesthetic Emotion Scale
             </h3>
             <p style={{ fontSize: 22, color: "#4B5563", lineHeight: 1.6, margin: "0 0 24px 0" }}>
-              <strong>AESTHEMOS</strong> (Schindler et al., 2017) is a validated psychology questionnaire designed to measure the specific emotional responses people feel when experiencing beauty and art.
+              <strong>AESTHEMOS</strong> (Schindler et al., 2017) is a real psychology research in 2017 about how humans emotionally respond to beauty
             </p>
             <p style={{ fontSize: 22, color: "#4B5563", lineHeight: 1.6, margin: 0 }}>
               Rather than random descriptive tags, XPASS-Vis selected <strong>9 core dimensions</strong> that represent three primary aesthetic emotion families. This provides solid scientific grounding for our explainable pipeline.

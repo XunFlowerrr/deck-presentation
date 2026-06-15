@@ -11,14 +11,6 @@ export function NextSteps() {
   const steps = [
     {
       num: "01",
-      title: "5-Fold Results Complete ✓",
-      desc: "We've completed the full 5-fold evaluation across all 129 users — results shown today are final, not preliminary.",
-      color: "#10B981",
-      bg: "rgba(16, 185, 129, 0.03)",
-      border: "1px solid rgba(16, 185, 129, 0.15)",
-    },
-    {
-      num: "02",
       title: "Correlate with Personality (Big Five)",
       desc: "Cross-reference each person's emotion weightings (personal formula) with their Big Five personality profiles already present in XPASS-Vis.",
       color: "#EC4899",
@@ -26,7 +18,7 @@ export function NextSteps() {
       border: "1px solid rgba(236, 72, 153, 0.15)",
     },
     {
-      num: "03",
+      num: "02",
       title: "Test Domain Consistency",
       desc: "Analyze whether an individual's personal formula stays consistent when evaluating different domains (e.g. switching from landscape to fashion).",
       color: "#06B6D4",
@@ -34,7 +26,7 @@ export function NextSteps() {
       border: "1px solid rgba(6, 182, 212, 0.15)",
     },
     {
-      num: "04",
+      num: "03",
       title: "Paper Write-up & Submission",
       desc: "Synthesize findings, document the explainability advantages of emotion mediation, and start drafting the paper.",
       color: "#10B981",

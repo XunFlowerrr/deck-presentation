@@ -17,7 +17,7 @@ export function Challenges() {
   const challenges = [
     {
       title: "Predicting Personal Emotions",
-      desc: "An image can make different people feel very different things. A general AI model typically only learns the average human reaction, not individual emotional subjectivity.",
+      desc: "An image can make different people feel very different things. As shown in experiment 2, the hardest part is predicting how a specific person feels.",
       icon: (
         <svg
           width="24"
@@ -40,7 +40,7 @@ export function Challenges() {
     },
     {
       title: "Rare Emotion Sparsity",
-      desc: "Certain emotions occur very rarely in particular domains, causing data imbalance that is hard to train.",
+      desc: "some emotions don't appear very often in the data — for example, very few people feel sad when looking at fashion photos — which makes them harder to learn.",
       icon: (
         <svg
           width="24"
@@ -61,7 +61,7 @@ export function Challenges() {
     },
     {
       title: "Limited Personalized Data",
-      desc: "Each participant rated ~100 images. Fitting the 9-dimensional personal formula on such limited samples poses a significant risk of overfitting.",
+      desc: "in training a 9-number personal formula while each person only rated about 100 images carries a risk of overfitting.",
       icon: (
         <svg
           width="24"
@@ -72,6 +72,7 @@ export function Challenges() {
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
+          align="center"
         >
           <line x1="18" y1="20" x2="18" y2="10" />
           <line x1="12" y1="20" x2="12" y2="4" />
@@ -80,32 +81,6 @@ export function Challenges() {
       ),
       color: "rgba(245,158,11,0.04)",
       border: "1px solid rgba(245,158,11,0.12)",
-    },
-    {
-      title: "Evaluation Alignment",
-      desc: "To compare fairly against existing baselines, we need identical cross-validation data splits across all models.",
-      icon: (
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#10B981"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M12 3v17" />
-          <path d="M12 6H3" />
-          <path d="M12 6h9" />
-          <path d="M3 6l3 6h-6l3-6" />
-          <path d="M21 6l3 6h-6l3-6" />
-          <path d="M12 20H8" />
-          <path d="M12 20h4" />
-        </svg>
-      ),
-      color: "rgba(16,185,129,0.04)",
-      border: "1px solid rgba(16,185,129,0.12)",
     },
   ];
 
