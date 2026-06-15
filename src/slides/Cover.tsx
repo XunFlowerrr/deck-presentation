@@ -158,8 +158,6 @@ export function Cover() {
           }}
         >
           Presenter: <span style={{ color: "#7C3AED" }}>Pinwa</span>{" "}
-          &nbsp;|&nbsp; Date:{" "}
-          <span style={{ color: "#7C3AED" }}>June 14, 2026</span>
         </span>
       </motion.div>
     </SlideShell>
