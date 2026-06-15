@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { SlideHeader, SlideShell } from "../components/index.ts";
 import { fadeIn, cardRise } from "../lib/motion.ts";
-import { signaturePaintingImg } from "../content/assets.ts";
+import { piaaSampleImg } from "../content/assets.ts";
 
 const GLOWS = [
   { top: -200, left: -100, size: 700, color: "124, 58, 237", opacity: 0.12 },
@@ -17,29 +17,43 @@ export function OurIdea() {
         highlight="Core Idea."
       />
 
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 24, justifyContent: "center" }}>
-        
-        {/* 3-Column Top Layout */}
-        <div style={{ display: "flex", gap: 32, alignItems: "stretch" }}>
-          
-          {/* Previous Methods */}
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          gap: 32,
+          alignItems: "center",
+          minHeight: 0,
+        }}
+      >
+        {/* Left Column: Flow & Details */}
+        <div
+          style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20 }}
+        >
+          {/* Traditional Methods Card */}
           <motion.div
             {...cardRise(0.2)}
             style={{
-              flex: 1,
               background: "#FAFAFA",
               border: "1px solid #E5E7EB",
-              borderRadius: "20px",
-              padding: "24px",
+              borderRadius: "24px",
+              padding: "24px 32px",
               display: "flex",
               flexDirection: "column",
-              justifyContent: "space-between",
+              gap: 12,
             }}
           >
-            <div>
+            {/* Header row */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
               <span
                 style={{
-                  fontSize: 14,
+                  fontSize: 13,
                   fontWeight: 700,
                   color: "#EF4444",
                   textTransform: "uppercase",
@@ -48,158 +62,341 @@ export function OurIdea() {
               >
                 Traditional Methods
               </span>
-              <h3 style={{ fontSize: 24, fontWeight: 900, color: "#111827", marginTop: 6, marginBottom: 16 }}>
-                Direct Prediction
-              </h3>
-              
+              <span
+                style={{
+                  fontSize: 11,
+                  fontWeight: 700,
+                  color: "#EF4444",
+                  border: "1px solid rgba(239, 68, 68, 0.3)",
+                  background: "rgba(239, 68, 68, 0.03)",
+                  padding: "3px 8px",
+                  borderRadius: "12px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                Black Box
+              </span>
+            </div>
+
+            {/* Title & Description & Flow Row */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: 24,
+              }}
+            >
+              <div style={{ flex: 1 }}>
+                <h3
+                  style={{
+                    fontSize: 22,
+                    fontWeight: 800,
+                    color: "#111827",
+                    margin: "0 0 8px 0",
+                  }}
+                >
+                  Direct Prediction (Black Box)
+                </h3>
+                <p
+                  style={{
+                    fontSize: 16,
+                    color: "#4B5563",
+                    lineHeight: 1.5,
+                    margin: 0,
+                  }}
+                >
+                  Most previous methods map the image directly to a personal
+                  aesthetic score, operating as an uninterpretable black box.
+                </p>
+              </div>
+
+              {/* Flow diagram */}
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "space-between",
+                  gap: 12,
                   background: "#FFFFFF",
                   border: "1px solid #E5E7EB",
                   borderRadius: "12px",
-                  padding: "14px 16px",
-                  marginBottom: 16,
-                  fontSize: 16,
+                  padding: "10px 16px",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.01)",
+                  flexShrink: 0,
                 }}
               >
-                <div style={{ fontWeight: 700, color: "#4B5563" }}>Image</div>
-                <div style={{ color: "#9CA3AF" }}>➔</div>
-                <div style={{ fontWeight: 800, color: "#EF4444", background: "rgba(239,68,68,0.1)", padding: "4px 10px", borderRadius: "8px" }}>
-                  Deep AI
+                <div
+                  style={{ fontSize: 14, fontWeight: 700, color: "#4B5563" }}
+                >
+                  Image
                 </div>
-                <div style={{ color: "#9CA3AF" }}>➔</div>
-                <div style={{ fontWeight: 700, color: "#4B5563" }}>Beauty Score</div>
+                <span style={{ color: "#9CA3AF", fontWeight: 700 }}>➔</span>
+                <div
+                  style={{
+                    background: "rgba(239, 68, 68, 0.08)",
+                    borderRadius: "6px",
+                    padding: "4px 8px",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    color: "#EF4444",
+                  }}
+                >
+                  AI
+                </div>
+                <span style={{ color: "#9CA3AF", fontWeight: 700 }}>➔</span>
+                <div
+                  style={{ fontSize: 14, fontWeight: 700, color: "#4B5563" }}
+                >
+                  Score
+                </div>
               </div>
-
-              <p style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
-                Most previous methods map the image directly to a personal aesthetic score, operating as a black box with zero transparency.
-              </p>
             </div>
           </motion.div>
 
-          {/* Our Idea */}
+          {/* Our Approach Card */}
           <motion.div
             {...cardRise(0.4)}
             style={{
-              flex: 1,
-              background: "linear-gradient(135deg, #FFFFFF, rgba(124, 58, 237,0.02))",
-              border: "2px solid #7C3AED",
-              boxShadow: "0 10px 30px rgba(124, 58, 237,0.05)",
-              borderRadius: "20px",
-              padding: "24px",
+              background:
+                "linear-gradient(135deg, #FFFFFF, rgba(124, 58, 237, 0.02))",
+              border: "1.5px solid #7C3AED",
+              boxShadow: "0 10px 30px rgba(124, 58, 237, 0.04)",
+              borderRadius: "24px",
+              padding: "24px 32px",
               display: "flex",
               flexDirection: "column",
-              justifyContent: "space-between",
+              gap: 12,
             }}
           >
-            <div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span
+            {/* Header row */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 13,
+                  fontWeight: 700,
+                  color: "#7C3AED",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                }}
+              >
+                Our Approach
+              </span>
+              <span
+                style={{
+                  fontSize: 11,
+                  fontWeight: 700,
+                  color: "#FFFFFF",
+                  background: "#7C3AED",
+                  padding: "3px 8px",
+                  borderRadius: "12px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                Explainable
+              </span>
+            </div>
+
+            {/* Title & Description & Flow Row */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: 24,
+              }}
+            >
+              <div style={{ flex: 1 }}>
+                <h3
                   style={{
-                    fontSize: 14,
-                    fontWeight: 700,
-                    color: "#7C3AED",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
+                    fontSize: 22,
+                    fontWeight: 800,
+                    color: "#111827",
+                    margin: "0 0 8px 0",
                   }}
                 >
-                  Our Approach
-                </span>
-                <span
+                  Emotion-Mediated Prediction
+                </h3>
+                <p
                   style={{
-                    fontSize: 12,
-                    fontWeight: 700,
-                    color: "#FFFFFF",
-                    background: "#7C3AED",
-                    padding: "3px 8px",
-                    borderRadius: "12px",
-                    textTransform: "uppercase",
+                    fontSize: 16,
+                    color: "#4B5563",
+                    lineHeight: 1.5,
+                    margin: 0,
                   }}
                 >
-                  Explainable
-                </span>
+                  We predict emotions as intermediate steps. Each user is
+                  modeled by a <strong>personal formula</strong> (emotion
+                  weights).
+                </p>
               </div>
-              <h3 style={{ fontSize: 24, fontWeight: 900, color: "#111827", marginTop: 6, marginBottom: 16 }}>
-                Emotion-Mediated Prediction
-              </h3>
-              
+
+              {/* Flow diagram */}
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "space-between",
+                  gap: 10,
                   background: "#FFFFFF",
                   border: "1px solid #E5E7EB",
                   borderRadius: "12px",
-                  padding: "14px 10px",
-                  marginBottom: 16,
-                  fontSize: 15,
+                  padding: "10px 16px",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.01)",
+                  flexShrink: 0,
                 }}
               >
-                <div style={{ fontWeight: 700, color: "#4B5563" }}>Image</div>
-                <div style={{ color: "#9CA3AF" }}>➔</div>
-                <div style={{ fontWeight: 700, color: "#7C3AED", background: "rgba(124, 58, 237,0.08)", padding: "3px 6px", borderRadius: "6px" }}>Emo</div>
-                <div style={{ color: "#9CA3AF" }}>➔</div>
-                <div style={{ fontWeight: 700, color: "#EC4899", background: "rgba(236, 72, 153,0.08)", padding: "3px 6px", borderRadius: "6px" }}>formula</div>
-                <div style={{ color: "#9CA3AF" }}>➔</div>
-                <div style={{ fontWeight: 700, color: "#111827" }}>Score</div>
+                <div
+                  style={{ fontSize: 14, fontWeight: 700, color: "#4B5563" }}
+                >
+                  Image
+                </div>
+                <span style={{ color: "#9CA3AF", fontWeight: 700 }}>➔</span>
+                <div
+                  style={{
+                    background: "rgba(124, 58, 237, 0.08)",
+                    borderRadius: "6px",
+                    padding: "4px 8px",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    color: "#7C3AED",
+                  }}
+                >
+                  Emo
+                </div>
+                <span style={{ color: "#9CA3AF", fontWeight: 700 }}>➔</span>
+                <div
+                  style={{
+                    background: "rgba(236, 72, 153, 0.08)",
+                    borderRadius: "6px",
+                    padding: "4px 8px",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    color: "#EC4899",
+                  }}
+                >
+                  formula
+                </div>
+                <span style={{ color: "#9CA3AF", fontWeight: 700 }}>➔</span>
+                <div
+                  style={{ fontSize: 14, fontWeight: 700, color: "#111827" }}
+                >
+                  Score
+                </div>
               </div>
-
-              <p style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
-                We predict emotions as intermediate steps. Each user is modeled by a <strong>personal formula</strong> (emotion weights).
-              </p>
             </div>
           </motion.div>
 
-          {/* Signature Image */}
+          {/* Psychological Research Callout */}
+          <motion.div
+            {...fadeIn(0.6)}
+            style={{
+              background: "rgba(124, 58, 237, 0.03)",
+              borderRadius: "20px",
+              padding: "16px 24px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 6,
+            }}
+          >
+            <div
+              style={{
+                fontSize: 16,
+                fontWeight: 800,
+                color: "#7C3AED",
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+              }}
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ flexShrink: 0 }}
+              >
+                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-4.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z" />
+                <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-4.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z" />
+              </svg>
+              Grounded in Psychology Research
+            </div>
+            <p
+              style={{
+                fontSize: 15,
+                color: "#4B5563",
+                lineHeight: 1.5,
+                margin: 0,
+              }}
+            >
+              Based on human pathways: people judge beauty through emotional
+              responses (e.g. nostalgic, amused, impressed), not directly from
+              pixels.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Right Column: Image without rating overlays */}
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "relative",
+            paddingRight: 20,
+          }}
+        >
+          {/* Soft Backlight Glow */}
+          <div
+            style={{
+              position: "absolute",
+              width: "500px",
+              height: "500px",
+              borderRadius: "50%",
+              background:
+                "radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(124, 58, 237, 0.08) 50%, transparent 70%)",
+              filter: "blur(40px)",
+              zIndex: 0,
+              pointerEvents: "none",
+            }}
+          />
+
           <motion.div
             {...cardRise(0.5)}
             style={{
-              width: "280px",
-              borderRadius: "20px",
+              position: "relative",
+              width: "100%",
+              maxWidth: "520px",
+              borderRadius: "24px",
               overflow: "hidden",
+              boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
               border: "1px solid #E5E7EB",
-              boxShadow: "0 10px 25px rgba(0,0,0,0.06)",
-              display: "flex",
-              flexShrink: 0,
+              zIndex: 1,
             }}
           >
             <img
-              src={signaturePaintingImg}
-              alt="PIAA Signature Painting"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              src={piaaSampleImg}
+              alt="Sample Sunset Landscape"
+              style={{
+                width: "100%",
+                display: "block",
+                aspectRatio: "1/1",
+                objectFit: "cover",
+              }}
             />
           </motion.div>
-
         </div>
-
-        {/* Psychological basis callout */}
-        <motion.div
-          {...fadeIn(0.7)}
-          style={{
-            background: "rgba(124, 58, 237, 0.04)",
-            border: "1px solid rgba(124, 58, 237, 0.1)",
-            borderRadius: "20px",
-            padding: "20px 28px",
-            display: "flex",
-            flexDirection: "column",
-            gap: 6,
-          }}
-        >
-          <div style={{ fontSize: 20, fontWeight: 800, color: "#7C3AED", display: "flex", alignItems: "center", gap: 10 }}>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-              <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-4.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z" />
-              <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-4.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z" />
-            </svg> Grounded in Psychology Research
-          </div>
-          <p style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
-            Our method is based on human psychological pathways: people do not judge beauty directly from raw image pixels. First, the image triggers an emotional response (e.g. nostalgic, amused, or impressed), and that feeling serves as the foundation for the aesthetic judgment.
-          </p>
-        </motion.div>
-        
       </div>
     </SlideShell>
   );
