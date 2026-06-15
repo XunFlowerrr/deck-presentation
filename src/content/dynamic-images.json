@@ -684,5 +684,23 @@
     "cropTop": 0,
     "cropBottom": 0,
     "zIndex": 43
+  },
+  {
+    "id": "1781536441820",
+    "slideNum": 21,
+    "slideId": "AppendixApproaches",
+    "src": "/uploaded-images/1781536441814_exp1_architecture_blocks.png",
+    "originalName": "exp1_architecture_blocks.png",
+    "x": 396,
+    "y": 399,
+    "width": 500,
+    "height": 462.13235294117646,
+    "rotation": 0,
+    "scale": 1.54,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 44
   }
 ]
