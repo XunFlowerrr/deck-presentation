@@ -10,7 +10,7 @@ const CHROME_PATH =
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const DEV_URL = "http://localhost:5173";
 const ANIMATION_DELAY = 1500; // ms — wait for framer-motion transitions
-const OUTPUT = "presentation.pdf";
+const OUTPUT = "PIAA-Presentation.pdf";
 
 async function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
