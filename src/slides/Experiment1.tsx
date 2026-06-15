@@ -126,44 +126,29 @@ export function Experiment1() {
           </div>
         </motion.div>
 
-        {/* Analytical takeaways */}
-        <div style={{ display: "flex", gap: 32 }}>
-          <motion.div
-            {...fadeIn(0.5)}
-            style={{
-              flex: 1,
-              background: "rgba(124, 58, 237,0.03)",
-              border: "1px solid rgba(124, 58, 237,0.08)",
-              borderRadius: "20px",
-              padding: "24px 28px",
-            }}
-          >
-            <h4 style={{ fontSize: 22, fontWeight: 800, color: "#7C3AED", marginBottom: 8 }}>
-              Evaluating with Circular Proxies
-            </h4>
-            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.6, margin: 0 }}>
-              Using all 9 emotions yields a prediction score of <strong>0.833</strong>. However, emotions like "liked it" and "found it beautiful" are circular references for aesthetic preference.
-            </p>
-          </motion.div>
-
-          <motion.div
-            {...fadeIn(0.65)}
-            style={{
-              flex: 1,
-              background: "rgba(236, 72, 153,0.03)",
-              border: "1px solid rgba(236, 72, 153,0.08)",
-              borderRadius: "20px",
-              padding: "24px 28px",
-            }}
-          >
-            <h4 style={{ fontSize: 22, fontWeight: 800, color: "#EC4899", marginBottom: 8 }}>
-              The Real Emotional Mediation
-            </h4>
-            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.6, margin: 0 }}>
-              Removing circular proxies leaves 7 "pure" emotions. This still achieves a high score of <strong>0.720</strong>, nearly doubling the previous best method (<strong>0.423</strong>). This proves the feasibility of the concept.
-            </p>
-          </motion.div>
-        </div>
+        {/* Analytical takeaway summary card */}
+        <motion.div
+          {...fadeIn(0.5)}
+          style={{
+            background: "linear-gradient(135deg, rgba(124, 58, 237, 0.04), rgba(59, 130, 246, 0.04))",
+            border: "1px solid rgba(124, 58, 237, 0.15)",
+            borderRadius: "24px",
+            padding: "28px 36px",
+            display: "flex",
+            flexDirection: "column",
+            gap: 12,
+          }}
+        >
+          <div style={{ fontSize: 24, fontWeight: 900, color: "#7C3AED", display: "flex", alignItems: "center", gap: 12 }}>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg> Key Experimental Insight
+          </div>
+          <p style={{ fontSize: 20, color: "#374151", margin: 0, lineHeight: 1.6 }}>
+            Even after removing circular proxies (reducing from 9 emotions to 7 "pure" aesthetic emotions), our pipeline still achieves a high prediction accuracy of <strong>0.720 CCC</strong>. This is extremely close to the theoretical ceiling of <strong>0.720</strong> and nearly doubles the performance of the best previous method, ICI (<strong>0.423</strong>), proving the feasibility of emotion-mediated personalized assessment.
+          </p>
+        </motion.div>
 
       </div>
     </SlideShell>

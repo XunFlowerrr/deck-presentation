@@ -12,19 +12,37 @@ export function RelatedWork() {
       paper: "ICI (Shi et al., 2024)",
       contribution: "Predicts personal aesthetic score directly using image features and user metadata.",
       difference: "Ours uses emotions as an explainable intermediate step rather than a black-box end-to-end mapping.",
-      isProposed: false,
+      isTheory: false,
     },
     {
       paper: "HNEF (Lan et al., 2024)",
       contribution: "Leverages emotional attributes as supplementary features to improve general (non-personal) aesthetic predictions.",
       difference: "Ours focuses on personalization, using emotional reactions as the primary signal to capture individual preference.",
-      isProposed: false,
+      isTheory: false,
     },
     {
       paper: "Iigaya et al. (2021, Nature Human Behaviour)",
       contribution: "Demonstrated that human aesthetic preferences can be modeled as a weighted linear combination of visual features.",
       difference: "Serves as the theoretical backing for our 'personal formula' concept (modeling beauty as a weighted sum of emotions).",
       isTheory: true,
+    },
+    {
+      paper: "Schindler et al. (2017)",
+      contribution: "Developed AESTHEMOS, the aesthetic emotion scale our 9 emotions are based on.",
+      difference: "Provides the psychological grounding for which emotions we use in our design.",
+      isTheory: true,
+    },
+    {
+      paper: "Liu & Wagemans (2026, arXiv:2603.18108)",
+      contribution: "Interpretable IAA via concept activation vectors + residual predictor.",
+      difference: "Our 'Hybrid' residual-correction idea follows a similar interpretable-core + residual structure.",
+      isTheory: false,
+    },
+    {
+      paper: "Ryu & Yanaka (2026, arXiv:2604.11374)",
+      contribution: "Shows VLM hidden representations work well for PIAA via simple linear probes.",
+      difference: "A candidate stronger image feature for our emotion predictor (Phase 1B direction).",
+      isTheory: false,
     },
   ];
 
@@ -83,32 +101,6 @@ export function RelatedWork() {
             </tbody>
           </table>
         </motion.div>
-
-        {/* Theoretical grounding panel */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          style={{
-            background: "rgba(124, 58, 237,0.03)",
-            border: "1px solid rgba(124, 58, 237,0.1)",
-            borderRadius: "20px",
-            padding: "20px 28px",
-            fontSize: 18,
-            color: "#4B5563",
-            lineHeight: 1.6,
-          }}
-        >
-          <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: 2, flexShrink: 0 }}>
-              <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
-            </svg>
-            <span>
-              <strong>Key Takeaway:</strong> Our approach is not just an arbitrary engineering heuristic. By grounding the "personal formula" in the weighted-feature preference model established by <strong>Iigaya et al. (2021)</strong>, we align our AI architecture directly with how psychologists believe human aesthetic evaluation operates.
-            </span>
-          </div>
-        </motion.div>
-
       </div>
     </SlideShell>
   );

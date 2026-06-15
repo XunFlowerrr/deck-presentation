@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SlideHeader, SlideShell } from "../components/index.ts";
-import { fadeIn, cardRise } from "../lib/motion.ts";
+import { cardRise } from "../lib/motion.ts";
 
 const GLOWS = [
   { top: -200, right: -100, size: 700, color: "124, 58, 237", opacity: 0.12 },
@@ -16,18 +16,6 @@ export function Dataset() {
       value: "1 + 9",
       sub: "1 Beauty (1-7) + 9 Emotions (1-5)",
     },
-  ];
-
-  const emotions = [
-    { name: "Liked it", type: "positive" },
-    { name: "Found it beautiful", type: "positive" },
-    { name: "Impressed", type: "positive" },
-    { name: "Motivated", type: "positive" },
-    { name: "Amused", type: "positive" },
-    { name: "Nostalgic", type: "cognitive" },
-    { name: "Intellectually challenged", type: "cognitive" },
-    { name: "Sad", type: "negative" },
-    { name: "Distasteful", type: "negative" },
   ];
 
   return (
@@ -53,7 +41,7 @@ export function Dataset() {
             flex: 1.1,
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: 24,
+            gap: 28,
           }}
         >
           {stats.map((stat, i) => (
@@ -63,14 +51,14 @@ export function Dataset() {
               style={{
                 background: "#FAFAFA",
                 border: "1px solid #E5E7EB",
-                borderRadius: "20px",
-                padding: "24px 28px",
+                borderRadius: "24px",
+                padding: "36px 40px",
               }}
             >
               <div
                 style={{
-                  fontSize: 18,
-                  fontWeight: 700,
+                  fontSize: 20,
+                  fontWeight: 800,
                   color: "#6B7280",
                   textTransform: "uppercase",
                   letterSpacing: "0.05em",
@@ -80,39 +68,20 @@ export function Dataset() {
               </div>
               <div
                 style={{
-                  fontSize: 64,
-                  fontWeight: 900,
+                  fontSize: 72,
+                  fontWeight: 950,
                   color: "#7C3AED",
-                  margin: "8px 0",
+                  margin: "12px 0",
                 }}
               >
                 {stat.value}
               </div>
-              <div style={{ fontSize: 18, color: "#4B5563" }}>{stat.sub}</div>
+              <div style={{ fontSize: 20, color: "#4B5563" }}>{stat.sub}</div>
             </motion.div>
           ))}
-
-          <motion.div
-            {...fadeIn(0.5)}
-            style={{
-              gridColumn: "span 2",
-              background: "rgba(124, 58, 237,0.03)",
-              border: "1px solid rgba(124, 58, 237,0.1)",
-              borderRadius: "20px",
-              padding: "20px 24px",
-              fontSize: 18,
-              color: "#4B5563",
-              lineHeight: 1.5,
-            }}
-          >
-            <strong>Note:</strong> Created by Hayashi-san's lab. The inclusion
-            of granular, multi-dimensional emotional ratings per person is what
-            makes our personalized approach uniquely possible. Most traditional
-            datasets only contain general aesthetic averages.
-          </motion.div>
         </div>
 
-        {/* Right Side: 9 Emotions List */}
+        {/* Right Side: Simplified Observer Metadata */}
         <motion.div
           {...cardRise(0.3)}
           style={{
@@ -120,106 +89,53 @@ export function Dataset() {
             background: "#FFFFFF",
             border: "1px solid #E5E7EB",
             boxShadow: "0 10px 30px rgba(0,0,0,0.03)",
-            borderRadius: "24px",
-            padding: "28px 32px",
+            borderRadius: "28px",
+            padding: "40px 48px",
             height: "auto",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "flex-start",
+            gap: 28,
+            justifyContent: "center",
           }}
         >
           <h3
             style={{
-              fontSize: 26,
-              fontWeight: 800,
+              fontSize: 30,
+              fontWeight: 900,
               color: "#111827",
-              marginBottom: 16,
+              margin: 0,
             }}
           >
-            List of 9 Rated Emotions
+            Observer Metadata Collected
           </h3>
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-            {(["positive", "cognitive", "negative"] as const).map((type) => {
-              const groupEmotions = emotions.filter((e) => e.type === type);
-              const config = {
-                positive: {
-                  label: "Positive",
-                  dot: "#10B981",
-                  bg: "rgba(16,185,129,0.06)",
-                  color: "#059669",
-                  border: "1px solid rgba(16,185,129,0.2)",
-                },
-                cognitive: {
-                  label: "Cognitive",
-                  dot: "#9B72CF",
-                  bg: "rgba(155,114,207,0.08)",
-                  color: "#9B72CF",
-                  border: "1px solid rgba(155,114,207,0.2)",
-                },
-                negative: {
-                  label: "Negative",
-                  dot: "#EF4444",
-                  bg: "rgba(239,68,68,0.06)",
-                  color: "#DC2626",
-                  border: "1px solid rgba(239,68,68,0.2)",
-                },
-              }[type];
 
-              return (
-                <div key={type}>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 8,
-                      marginBottom: 10,
-                    }}
-                  >
-                    <span
-                      style={{
-                        width: 10,
-                        height: 10,
-                        borderRadius: "50%",
-                        background: config.dot,
-                        flexShrink: 0,
-                      }}
-                    />
-                    <span
-                      style={{
-                        fontSize: 15,
-                        fontWeight: 700,
-                        color: "#6B7280",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.12em",
-                      }}
-                    >
-                      {config.label}
-                    </span>
-                  </div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-                    {groupEmotions.map((emo, idx) => (
-                      <motion.div
-                        key={emo.name}
-                        initial={{ opacity: 0, scale: 0.85 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.4 + idx * 0.06, duration: 0.3 }}
-                        style={{
-                          padding: "10px 18px",
-                          borderRadius: "12px",
-                          background: config.bg,
-                          color: config.color,
-                          border: config.border,
-                          fontSize: 18,
-                          fontWeight: 600,
-                        }}
-                      >
-                        {emo.name}
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
+          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+            {/* Demographics */}
+            <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+              <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#7C3AED", marginTop: 8, flexShrink: 0 }} />
+              <div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: "#111827" }}>Demographics</div>
+                <div style={{ fontSize: 18, color: "#4B5563", marginTop: 4 }}>Nationality, Educational background</div>
+              </div>
+            </div>
+
+            {/* Personality Traits */}
+            <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+              <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#EC4899", marginTop: 8, flexShrink: 0 }} />
+              <div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: "#111827" }}>Personality Traits (TIPI)</div>
+                <div style={{ fontSize: 18, color: "#4B5563", marginTop: 4 }}>Big Five: Openness, Conscientiousness, Extraversion, Agreeableness, Emotional Stability</div>
+              </div>
+            </div>
+
+            {/* AESTHEMOS */}
+            <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+              <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#10B981", marginTop: 8, flexShrink: 0 }} />
+              <div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: "#111827" }}>AESTHEMOS Emotions</div>
+                <div style={{ fontSize: 18, color: "#4B5563", marginTop: 4 }}>9 Aesthetic emotional responses (categorized into Positive, Cognitive, and Negative groups)</div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

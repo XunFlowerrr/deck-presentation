@@ -12,42 +12,38 @@ export function ResearchQuestions() {
     {
       num: "Q1",
       title: "Accuracy vs. Direct Prediction",
-      question:
-        "Can emotion-mediated modeling perform as accurately as direct aesthetic prediction?",
+      question: "Can emotion-mediated modeling perform as accurately as direct aesthetic prediction?",
       desc: "Comparing our explainable two-stage pipeline against traditional black-box deep models to see if we sacrifice performance for transparency.",
       color: "#7C3AED",
       bg: "rgba(124, 58, 237, 0.03)",
-      border: "1px solid rgba(124, 58, 237, 0.12)",
+      border: "1px solid rgba(124, 58, 237, 0.15)",
     },
     {
       num: "Q2",
-      title: "Cross-Category Consistency",
-      question:
-        'Is a person\'s "personal emotion formula" consistent across different image categories?',
-      desc: "If a user appreciates fine art due to nostalgia, do they use the same criteria for fashion or landscape photos, or does their formula shift?",
+      title: "Mediation Redundancy",
+      question: "Should 'Liked' or 'Found it beautiful' be excluded as mediating emotions?",
+      desc: "Two emotions ('Liked it', 'Found it beautiful') are very close to the final score itself. Should we keep them, or remove them?",
       color: "#3B82F6",
       bg: "rgba(59, 130, 246, 0.03)",
-      border: "1px solid rgba(59, 130, 246, 0.12)",
+      border: "1px solid rgba(59, 130, 246, 0.15)",
     },
     {
       num: "Q3",
       title: "Psychological Grounding",
-      question:
-        "Does the personal formula correlate with real-world personality traits?",
-      desc: "Testing if users high in Openness to Experience show stronger weights for 'Intellectually Challenged' in their formula, confirming psychological grounding rather than random data fitting.",
+      question: "Does the personal formula correlate with real-world personality traits?",
+      desc: "Testing if users' personal formulas reflect real personality traits (e.g. Openness to Experience correlating with 'Intellectually Challenged' weight).",
       color: "#D946EF",
       bg: "rgba(217, 70, 239, 0.03)",
-      border: "1px solid rgba(217, 70, 239, 0.12)",
+      border: "1px solid rgba(217, 70, 239, 0.15)",
     },
     {
       num: "Q4",
-      title: "Mediation Redundancy",
-      question:
-        "Should 'Liked' or 'Beautiful' be excluded as mediating emotions?",
-      desc: "Since these dimensions are close to the final aesthetic rating, does including them make prediction trivial? We report on both 9-emotion and 7-emotion models to ensure robustness.",
+      title: "Cross-Category Consistency",
+      question: "Is a person's 'personal emotion formula' consistent across different image categories?",
+      desc: "If a user appreciates fine art due to nostalgia, do they use the same criteria for fashion or landscape photos, or does their formula shift?",
       color: "#F59E0B",
       bg: "rgba(245, 158, 11, 0.03)",
-      border: "1px solid rgba(245, 158, 11, 0.12)",
+      border: "1px solid rgba(245, 158, 11, 0.15)",
     },
   ];
 
@@ -64,10 +60,10 @@ export function ResearchQuestions() {
           flex: 1,
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
-          gap: 28,
+          gap: 36,
           alignItems: "stretch",
           justifyContent: "center",
-          margin: "12px 0",
+          margin: "16px 0",
         }}
       >
         {questions.map((q, idx) => (
@@ -77,23 +73,23 @@ export function ResearchQuestions() {
             style={{
               background: q.bg,
               border: q.border,
-              borderRadius: "24px",
-              padding: "26px 30px",
+              borderRadius: "28px",
+              padding: "32px 36px",
               display: "flex",
               flexDirection: "column",
-              gap: 12,
+              gap: 16,
               justifyContent: "space-between",
             }}
           >
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 <span
                   style={{
-                    fontSize: 13,
+                    fontSize: 15,
                     fontWeight: 900,
                     color: "white",
                     backgroundColor: q.color,
-                    padding: "4px 10px",
+                    padding: "5px 12px",
                     borderRadius: "10px",
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
@@ -103,8 +99,8 @@ export function ResearchQuestions() {
                 </span>
                 <h3
                   style={{
-                    fontSize: 24,
-                    fontWeight: 900,
+                    fontSize: 26,
+                    fontWeight: 950,
                     color: "#111827",
                     margin: 0,
                   }}
@@ -115,8 +111,8 @@ export function ResearchQuestions() {
 
               <p
                 style={{
-                  fontSize: 20,
-                  fontWeight: 700,
+                  fontSize: 24,
+                  fontWeight: 800,
                   color: "#374151",
                   margin: 0,
                   lineHeight: 1.4,
@@ -128,7 +124,7 @@ export function ResearchQuestions() {
 
             <p
               style={{
-                fontSize: 18,
+                fontSize: 20,
                 color: "#4B5563",
                 margin: "12px 0 0 0",
                 lineHeight: 1.5,

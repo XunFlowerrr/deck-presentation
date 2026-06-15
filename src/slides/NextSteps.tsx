@@ -11,11 +11,11 @@ export function NextSteps() {
   const steps = [
     {
       num: "01",
-      title: "Complete 5-Fold Cross-Validation",
-      desc: "Run comprehensive experiments across all remaining folds to secure robust, stable benchmark metrics against ICI.",
-      color: "#7C3AED",
-      bg: "rgba(124, 58, 237, 0.03)",
-      border: "1px solid rgba(124, 58, 237, 0.15)",
+      title: "5-Fold Results Complete ✓",
+      desc: "We've completed the full 5-fold evaluation across all 129 users — results shown today are final, not preliminary.",
+      color: "#10B981",
+      bg: "rgba(16, 185, 129, 0.03)",
+      border: "1px solid rgba(16, 185, 129, 0.15)",
     },
     {
       num: "02",

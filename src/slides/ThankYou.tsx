@@ -41,9 +41,6 @@ export function ThankYou() {
             Aesthetic Assessment
           </span>
         </div>
-        <span style={{ fontSize: 20, color: "#9CA3AF", letterSpacing: "0.06em" }}>
-          June 2026
-        </span>
       </motion.div>
 
       {/* Main Content */}

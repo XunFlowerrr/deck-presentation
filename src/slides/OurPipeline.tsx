@@ -144,65 +144,27 @@ export function OurPipeline() {
           ))}
         </div>
 
-        {/* Operational Flow Table */}
+        {/* Step 2 Ridge Regression explanation card */}
         <motion.div
-          {...fadeIn(0.7)}
+          {...fadeIn(0.6)}
           style={{
-            background: "#FFFFFF",
-            border: "1px solid #E5E7EB",
-            borderRadius: "24px",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.02)",
+            background: "rgba(59, 130, 246, 0.03)",
+            border: "1px dashed rgba(59, 130, 246, 0.3)",
+            borderRadius: "20px",
             padding: "24px 32px",
+            display: "flex",
+            alignItems: "center",
+            gap: 16,
           }}
         >
-          <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
-            <thead>
-              <tr style={{ borderBottom: "2px solid #E5E7EB" }}>
-                <th style={{ padding: "12px 16px", fontSize: 16, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.05em", width: "33%" }}>Phase</th>
-                <th style={{ padding: "12px 16px", fontSize: 16, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.05em", width: "33%" }}>Required Inputs</th>
-                <th style={{ padding: "12px 16px", fontSize: 16, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.05em", width: "34%" }}>Source / Origin</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Row 1 */}
-              <tr style={{ borderBottom: "1px solid #F3F4F6", background: "rgba(124, 58, 237, 0.02)" }}>
-                <td style={{ padding: "16px" }}>
-                  <div style={{ fontSize: 20, fontWeight: 800, color: "#7C3AED" }}>Training AI 1</div>
-                  <div style={{ fontSize: 14, color: "#6B7280", marginTop: 4 }}>(One-time, done by researchers)</div>
-                </td>
-                <td style={{ padding: "16px", fontSize: 18, color: "#4B5563", lineHeight: 1.4 }}>
-                  Images + 9 emotion ratings from many observers
-                </td>
-                <td style={{ padding: "16px", fontSize: 18, color: "#4B5563", lineHeight: 1.4 }}>
-                  <strong>XPASS-Vis Dataset</strong> (87,836 ratings already available; no custom collection needed)
-                </td>
-              </tr>
-              {/* Row 2 */}
-              <tr style={{ borderBottom: "1px solid #F3F4F6", background: "rgba(236, 72, 153, 0.02)" }}>
-                <td style={{ padding: "16px" }}>
-                  <div style={{ fontSize: 20, fontWeight: 800, color: "#EC4899" }}>New User Registration</div>
-                </td>
-                <td style={{ padding: "16px", fontSize: 18, color: "#4B5563", lineHeight: 1.4 }}>
-                  Aesthetic ratings for 50–100 images from that user
-                </td>
-                <td style={{ padding: "16px", fontSize: 18, color: "#4B5563", lineHeight: 1.4 }}>
-                  <strong>Direct User Annotation</strong> (Provided by the user themselves)
-                </td>
-              </tr>
-              {/* Row 3 */}
-              <tr>
-                <td style={{ padding: "16px" }}>
-                  <div style={{ fontSize: 20, fontWeight: 800, color: "#111827" }}>Predicting New Images</div>
-                </td>
-                <td style={{ padding: "16px", fontSize: 18, color: "#4B5563", lineHeight: 1.4 }}>
-                  Query image only
-                </td>
-                <td style={{ padding: "16px", fontSize: 18, color: "#9CA3AF" }}>
-                  —
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="16" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
+          </svg>
+          <p style={{ fontSize: 20, color: "#4B5563", margin: 0, lineHeight: 1.5 }}>
+            <strong>Technical Note:</strong> Step 2 is not a trained deep model — it is a simple <strong>Ridge Regression formula</strong> (9 weights per user) computed almost instantly to map emotions to the personal beauty score.
+          </p>
         </motion.div>
         
       </div>

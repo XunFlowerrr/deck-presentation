@@ -30,7 +30,7 @@ export function DatasetVisuals() {
         highlight="Visualizations."
       />
 
-      <div style={{ flex: 1, display: "flex", gap: 40, alignItems: "center", minHeight: 0 }}>
+      <div style={{ flex: 1, display: "flex", gap: 56, alignItems: "stretch", minHeight: 0, paddingBottom: 24 }}>
         {visualizations.map((vis, i) => (
           <motion.div
             key={vis.title}
@@ -40,18 +40,16 @@ export function DatasetVisuals() {
               background: "#FFFFFF",
               border: "1px solid #E5E7EB",
               boxShadow: "0 15px 35px rgba(0, 0, 0, 0.04)",
-              borderRadius: "24px",
-              padding: "28px 32px",
-              height: "100%",
-              maxHeight: "680px",
+              borderRadius: "28px",
+              padding: "36px 40px",
               display: "flex",
               flexDirection: "column",
-              gap: 20,
+              gap: 24,
               justifyContent: "space-between",
             }}
           >
             {/* Chart Title */}
-            <h3 style={{ fontSize: 24, fontWeight: 800, color: "#111827", margin: 0 }}>
+            <h3 style={{ fontSize: 26, fontWeight: 900, color: "#111827", margin: 0 }}>
               {vis.title}
             </h3>
 
@@ -62,11 +60,12 @@ export function DatasetVisuals() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                borderRadius: "16px",
+                borderRadius: "20px",
                 overflow: "hidden",
                 border: "1px solid #F3F4F6",
                 background: "#FAFAFA",
                 minHeight: 0,
+                padding: "12px",
               }}
             >
               <img
@@ -82,7 +81,7 @@ export function DatasetVisuals() {
             </div>
 
             {/* Description/Takeaway */}
-            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
+            <p style={{ fontSize: 20, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
               {vis.desc}
             </p>
           </motion.div>
