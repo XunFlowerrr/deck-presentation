@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { ThaiText } from "../primitives/ThaiText.tsx";
 import defaultImages from "../../content/dynamic-images.json";
 
@@ -30,6 +31,8 @@ interface DynamicImageManagerProps {
 
 export function DynamicImageManager({ slideNum, slideId }: DynamicImageManagerProps) {
   const [images, setImages] = useState<DynamicImage[]>(defaultImages as DynamicImage[]);
+  const [history, setHistory] = useState<DynamicImage[][]>([defaultImages as DynamicImage[]]);
+  const [historyIndex, setHistoryIndex] = useState<number>(0);
   const imagesRef = useRef<DynamicImage[]>(images);
 
   useEffect(() => {
@@ -73,6 +76,8 @@ export function DynamicImageManager({ slideNum, slideId }: DynamicImageManagerPr
           const data = await response.json();
           if (data.success && Array.isArray(data.images)) {
             setImages(data.images);
+            setHistory([data.images]);
+            setHistoryIndex(0);
             setIsApiAvailable(true);
             return;
           }
@@ -86,7 +91,10 @@ export function DynamicImageManager({ slideNum, slideId }: DynamicImageManagerPr
       const stored = localStorage.getItem("aiq-dynamic-images");
       if (stored) {
         try {
-          setImages(JSON.parse(stored));
+          const parsed = JSON.parse(stored);
+          setImages(parsed);
+          setHistory([parsed]);
+          setHistoryIndex(0);
         } catch (err) {
           console.error("Failed to parse stored images", err);
         }
@@ -129,6 +137,82 @@ export function DynamicImageManager({ slideNum, slideId }: DynamicImageManagerPr
     setIsSaving(false);
     setTimeout(() => setSaveStatus(null), 3000);
   };
+
+  const commitState = (newImages: DynamicImage[], shouldSave: boolean = true) => {
+    const newHistory = history.slice(0, historyIndex + 1);
+    newHistory.push(newImages);
+    setHistory(newHistory);
+    setHistoryIndex(newHistory.length - 1);
+    setImages(newImages);
+    if (shouldSave) {
+      saveLayout(newImages);
+    }
+  };
+
+  const undo = () => {
+    if (historyIndex > 0) {
+      const newIndex = historyIndex - 1;
+      setHistoryIndex(newIndex);
+      const prevImages = history[newIndex];
+      setImages(prevImages);
+      saveLayout(prevImages);
+    }
+  };
+
+  const redo = () => {
+    if (historyIndex < history.length - 1) {
+      const newIndex = historyIndex + 1;
+      setHistoryIndex(newIndex);
+      const nextImages = history[newIndex];
+      setImages(nextImages);
+      saveLayout(nextImages);
+    }
+  };
+
+  // Commit state on keyup (end of continuous keyboard movement)
+  useEffect(() => {
+    function handleKeyUp(e: KeyboardEvent) {
+      if (!isEditing || !selectedId) return;
+
+      if (
+        e.key === "ArrowLeft" ||
+        e.key === "ArrowRight" ||
+        e.key === "ArrowUp" ||
+        e.key === "ArrowDown"
+      ) {
+        e.preventDefault();
+        commitState(imagesRef.current, true);
+      }
+    }
+
+    window.addEventListener("keyup", handleKeyUp);
+    return () => window.removeEventListener("keyup", handleKeyUp);
+  }, [isEditing, selectedId]);
+
+  // Undo/Redo keyboard shortcuts
+  useEffect(() => {
+    function handleUndoRedoShortcuts(e: KeyboardEvent) {
+      if (!isEditing) return;
+
+      const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+      const modifier = isMac ? e.metaKey : e.ctrlKey;
+
+      if (modifier && e.key.toLowerCase() === 'z') {
+        e.preventDefault();
+        if (e.shiftKey) {
+          redo();
+        } else {
+          undo();
+        }
+      } else if (modifier && e.key.toLowerCase() === 'y') {
+        e.preventDefault();
+        redo();
+      }
+    }
+
+    window.addEventListener("keydown", handleUndoRedoShortcuts);
+    return () => window.removeEventListener("keydown", handleUndoRedoShortcuts);
+  }, [isEditing, historyIndex, history]);
 
   // Keyboard navigation / edits
   useEffect(() => {
@@ -233,7 +317,7 @@ export function DynamicImageManager({ slideNum, slideId }: DynamicImageManagerPr
           // Save to server config with the actual static disk URL (so it loads from disk next time)
           const imageToSave = { ...newImage, src: imageUrl };
           const updatedSave = [...imagesRef.current.filter(i => i.id !== newImage.id), imageToSave];
-          saveLayout(updatedSave);
+          commitState(updatedSave, true);
 
           // Swap base64 for the clean disk path after 1.5 seconds to prevent browser storage quota issues
           setTimeout(() => {
@@ -391,7 +475,7 @@ export function DynamicImageManager({ slideNum, slideId }: DynamicImageManagerPr
     if (draggedId) {
       setDraggedId(null);
       setDragMode(null);
-      saveLayout(imagesRef.current);
+      commitState(imagesRef.current, true);
     }
   };
 
@@ -456,24 +540,21 @@ export function DynamicImageManager({ slideNum, slideId }: DynamicImageManagerPr
   // Image deletion
   const deleteImage = (id: string) => {
     const updated = images.filter((i) => i.id !== id);
-    setImages(updated);
+    commitState(updated, true);
     if (selectedId === id) setSelectedId(null);
-    saveLayout(updated);
   };
 
   // Depth / Z-Index management
   const bringToFront = (id: string) => {
     const maxZ = images.length > 0 ? Math.max(...images.map((i) => i.zIndex)) : 0;
     const updated = images.map((i) => (i.id === id ? { ...i, zIndex: maxZ + 1 } : i));
-    setImages(updated);
-    saveLayout(updated);
+    commitState(updated, true);
   };
 
   const sendToBack = (id: string) => {
     const minZ = images.length > 0 ? Math.min(...images.map((i) => i.zIndex)) : 0;
     const updated = images.map((i) => (i.id === id ? { ...i, zIndex: minZ - 1 } : i));
-    setImages(updated);
-    saveLayout(updated);
+    commitState(updated, true);
   };
 
   // Selection state & updates
@@ -484,7 +565,7 @@ export function DynamicImageManager({ slideNum, slideId }: DynamicImageManagerPr
   };
 
   const handleSelectedPropChangeComplete = () => {
-    saveLayout(imagesRef.current);
+    commitState(imagesRef.current, true);
   };
 
   const selectedImage = images.find((i) => i.id === selectedId);
@@ -536,7 +617,7 @@ export function DynamicImageManager({ slideNum, slideId }: DynamicImageManagerPr
         const clipPath = `inset(${img.cropTop}% ${img.cropRight}% ${img.cropBottom}% ${img.cropLeft}%)`;
 
         return (
-          <div
+          <motion.div
             key={img.id}
             onMouseDown={(e) => handleImageMouseDown(e, img)}
             style={{
@@ -545,13 +626,31 @@ export function DynamicImageManager({ slideNum, slideId }: DynamicImageManagerPr
               top: img.y,
               width: img.width,
               height: img.height,
-              transform: `rotate(${img.rotation}deg) scale(${img.scale}) scaleX(${img.flipH ? -1 : 1}) scaleY(${img.flipV ? -1 : 1})`,
               transformOrigin: "center center",
               zIndex: img.zIndex,
               cursor: isEditing ? "move" : "default",
               pointerEvents: "all",
-              transition: draggedId === img.id ? "none" : "transform 0.1s ease",
             }}
+             initial={isEditing ? false : { opacity: 0, y: 32, scale: img.scale, rotate: img.rotation, scaleX: img.flipH ? -1 : 1, scaleY: img.flipV ? -1 : 1 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: img.scale,
+              rotate: img.rotation,
+              scaleX: img.flipH ? -1 : 1,
+              scaleY: img.flipV ? -1 : 1,
+            }}
+            transition={
+              draggedId === img.id
+                ? { duration: 0 }
+                : isEditing
+                ? { duration: 0.2, ease: "easeOut" }
+                : {
+                    duration: 0.8,
+                    delay: 0.5,
+                    ease: [0.22, 1, 0.36, 1], // EASE
+                  }
+            }
           >
             {/* Image Box */}
             <div
@@ -703,7 +802,7 @@ export function DynamicImageManager({ slideNum, slideId }: DynamicImageManagerPr
                 </>
               )}
             </div>
-          </div>
+          </motion.div>
         );
       })}
 
@@ -1167,6 +1266,75 @@ export function DynamicImageManager({ slideNum, slideId }: DynamicImageManagerPr
             )}
           </span>
         </button>
+
+        {isEditing && (
+          <>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                undo();
+              }}
+              disabled={historyIndex <= 0}
+              style={{
+                padding: "8px 16px",
+                borderRadius: "999px",
+                background: historyIndex > 0 ? "rgba(17, 24, 39, 0.78)" : "rgba(17, 24, 39, 0.35)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                color: historyIndex > 0 ? "white" : "rgba(255, 255, 255, 0.4)",
+                fontSize: 11,
+                fontWeight: 700,
+                cursor: historyIndex > 0 ? "pointer" : "not-allowed",
+                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.25)",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                transition: "background 0.2s, color 0.2s, transform 0.15s",
+                opacity: isEditing || isBtnHovered ? 1 : 0,
+                pointerEvents: isEditing || isBtnHovered ? "all" : "none",
+              }}
+              title="Undo (Cmd+Z / Ctrl+Z)"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M3 7v6h6" />
+                <path d="M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13" />
+              </svg>
+              <span>Undo</span>
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                redo();
+              }}
+              disabled={historyIndex >= history.length - 1}
+              style={{
+                padding: "8px 16px",
+                borderRadius: "999px",
+                background: historyIndex < history.length - 1 ? "rgba(17, 24, 39, 0.78)" : "rgba(17, 24, 39, 0.35)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                color: historyIndex < history.length - 1 ? "white" : "rgba(255, 255, 255, 0.4)",
+                fontSize: 11,
+                fontWeight: 700,
+                cursor: historyIndex < history.length - 1 ? "pointer" : "not-allowed",
+                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.25)",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                transition: "background 0.2s, color 0.2s, transform 0.15s",
+                opacity: isEditing || isBtnHovered ? 1 : 0,
+                pointerEvents: isEditing || isBtnHovered ? "all" : "none",
+              }}
+              title="Redo (Cmd+Shift+Z / Ctrl+Y)"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M21 7v6h-6" />
+                <path d="M3 17a9 9 0 019-9 9 9 0 016 2.3l3 2.7" />
+              </svg>
+              <span>Redo</span>
+            </button>
+          </>
+        )}
 
         {/* Status notification */}
         {saveStatus && (
