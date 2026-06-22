@@ -19,7 +19,6 @@ async function sleep(ms) {
 async function main() {
   console.log("🚀  Launching Chrome…");
   const browser = await puppeteer.launch({
-    executablePath: CHROME_PATH,
     headless: true,
     args: [
       "--no-sandbox",
