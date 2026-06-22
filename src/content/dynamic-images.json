@@ -702,5 +702,23 @@
     "cropTop": 0,
     "cropBottom": 0,
     "zIndex": 44
+  },
+  {
+    "id": "1782128095030",
+    "slideNum": 1,
+    "slideId": "CoverWeek3",
+    "src": "/uploaded-images/1782128095024_messageImage_1782100392904.jpg",
+    "originalName": "messageImage_1782100392904.jpg",
+    "x": 1270,
+    "y": 241,
+    "width": 500,
+    "height": 575.4039497307002,
+    "rotation": 0,
+    "scale": 1.26,
+    "cropLeft": 0,
+    "cropRight": 0,
+    "cropTop": 0,
+    "cropBottom": 0,
+    "zIndex": 45
   }
 ]

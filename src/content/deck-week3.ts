@@ -12,9 +12,11 @@ import { RQ3Setup } from '../slides/RQ3Setup';
 import { RQ3Results } from '../slides/RQ3Results';
 import { RQ4Setup } from '../slides/RQ4Setup';
 import { RQ4Results } from '../slides/RQ4Results';
+import { NostalgiaByDomain } from '../slides/NostalgiaByDomain';
 import { DiscussionWeek3 } from '../slides/DiscussionWeek3';
 import { ProblemsNextSteps } from '../slides/ProblemsNextSteps';
 import { ThankYou } from '../slides/ThankYou';
+import { AppendixPermutationConvergence } from '../slides/AppendixPermutationConvergence';
 import { QuestionsWeek3 } from '../slides/QuestionsWeek3';
 
 // Helper to assign static slideId properties to components to prevent HMR/minification mismatch
@@ -31,9 +33,11 @@ const RQ3SetupComponent = defineSlide(RQ3Setup, 'RQ3Setup');
 const RQ3ResultsComponent = defineSlide(RQ3Results, 'RQ3Results');
 const RQ4SetupComponent = defineSlide(RQ4Setup, 'RQ4Setup');
 const RQ4ResultsComponent = defineSlide(RQ4Results, 'RQ4Results');
+const NostalgiaByDomainComponent = defineSlide(NostalgiaByDomain, 'NostalgiaByDomain');
 const DiscussionWeek3Component = defineSlide(DiscussionWeek3, 'DiscussionWeek3');
 const ProblemsNextStepsComponent = defineSlide(ProblemsNextSteps, 'ProblemsNextSteps');
 const ThankYouComponent = defineSlide(ThankYou, 'ThankYou');
+const AppendixPermutationConvergenceComponent = defineSlide(AppendixPermutationConvergence, 'AppendixPermutationConvergence');
 const QuestionsWeek3Component = defineSlide(QuestionsWeek3, 'QuestionsWeek3');
 
 // ── Deck ───────────────────────────────────────────────────────────────────
@@ -62,6 +66,7 @@ const deck: DeckSection[] = [
     slides: [
       RQ4SetupComponent,
       RQ4ResultsComponent,
+      NostalgiaByDomainComponent,
     ],
   },
   {
@@ -80,6 +85,7 @@ const deck: DeckSection[] = [
     label: 'Outro',
     slides: [
       ThankYouComponent,
+      AppendixPermutationConvergenceComponent,
       QuestionsWeek3Component,
     ],
   },

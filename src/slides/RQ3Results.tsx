@@ -11,22 +11,22 @@ export function RQ3Results() {
   const significantPairs = [
     {
       pair: "Impressed Weight × Conscientiousness",
-      r: "0.19",
-      pValue: "0.032",
+      r: "-0.180",
+      pValue: "0.041",
       bonferroni: "No (p > 0.0014)",
       color: "rgba(124, 58, 237, 0.03)",
     },
     {
       pair: "Motivated Weight × Openness",
-      r: "0.18",
-      pValue: "0.041",
+      r: "+0.184",
+      pValue: "0.037",
       bonferroni: "No (p > 0.0014)",
       color: "rgba(59, 130, 246, 0.03)",
     },
     {
       pair: "Sad Weight × Agreeableness",
-      r: "0.20",
-      pValue: "0.027",
+      r: "+0.199",
+      pValue: "0.024",
       bonferroni: "No (p > 0.0014)",
       color: "rgba(16, 185, 129, 0.03)",
     },

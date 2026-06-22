@@ -18,6 +18,10 @@ export { default as emotionRatingImg } from '../assets/images/general/emotion-ra
 export { default as iciArchitectureImg } from '../assets/images/general/ici_architecture.png';
 export { default as cccSccMetricsImg } from '../assets/images/general/ccc_scc_metrics.png';
 export { default as fourApproachesImg } from '../assets/images/general/four_approaches.png';
+export { default as rq3DataFlowImg }   from '../assets/images/general/rq3_data_flow.png';
+export { default as rq4DataFlowImg }   from '../assets/images/general/rq4_data_flow.png';
+export { default as permutationConvergenceImg } from '../assets/images/general/permutation_convergence.png';
+export { default as nostalgiaByDomainImg } from '../assets/images/general/nostalgia_by_domain.png';
 
 // ── Problems ───────────────────────────────────────────────────────────────
 export { default as messyBox }         from '../assets/images/problems/messy-box.png';

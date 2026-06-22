@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { SlideHeader, SlideShell } from "../components/index.ts";
 import { fadeIn, cardRise } from "../lib/motion.ts";
-import { exp1ArchitectureBlocksImg } from "../content/assets.ts";
+import { rq4DataFlowImg } from "../content/assets.ts";
 
 const GLOWS = [
   { bottom: -200, left: -100, size: 700, color: "236, 72, 153", opacity: 0.1 },
@@ -37,7 +37,7 @@ export function RQ4Setup() {
           }}
         >
           <div style={{ fontSize: 16, fontWeight: 700, color: "#EC4899", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>
-            Pipeline Setup (Full Diagram)
+            Pipeline Setup
           </div>
           <div
             style={{
@@ -54,7 +54,7 @@ export function RQ4Setup() {
             }}
           >
             <img
-              src={exp1ArchitectureBlocksImg}
+              src={rq4DataFlowImg}
               alt="RQ4 Full Pipeline Diagram"
               style={{
                 maxWidth: "100%",
