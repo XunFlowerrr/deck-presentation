@@ -9,50 +9,41 @@ const GLOWS = [
 
 const findings = [
   {
-    icon: "1",
+    icon: "01",
     title: "The comparison is now fair",
     desc: "Same data split, and duplicate ratings averaged. We now compare with ICI and MIR on exactly the same images.",
-    color: "#10B981",
-    rgb: "16, 185, 129",
   },
   {
-    icon: "2",
+    icon: "02",
     title: "The emotion step really helps",
     desc: "The Wilcoxon test shows a significant improvement for both backbones (p < 0.001), so it isn't down to chance.",
-    color: "#7C3AED",
-    rgb: "124, 58, 237",
   },
   {
-    icon: "3",
+    icon: "03",
     title: "It helps once you have 25+ images",
     desc: "With fewer than 25 images per person, the emotion step barely helps. Above that, it clearly does.",
-    color: "#3B82F6",
-    rgb: "59, 130, 246",
   },
   {
-    icon: "4",
+    icon: "04",
     title: "Scaling matters for big features",
     desc: "The 4096-number VLM features collapse without StandardScaler. The 512-number CLIP features are barely affected.",
-    color: "#06B6D4",
-    rgb: "6, 182, 212",
   },
   {
-    icon: "5",
+    icon: "05",
     title: "A small tuned model can win",
     desc: "Fine-tuned CLIP (0.400) does better than the frozen Qwen3-VL-8B (0.382). We don't need a huge model.",
-    color: "#EC4899",
-    rgb: "236, 72, 153",
   },
   {
-    icon: "6",
+    icon: "06",
     title: "Better backbone, less to add",
     desc: "The stronger the backbone, the less the emotion step adds, because a good backbone already carries emotion.",
-    color: "#F59E0B",
-    rgb: "245, 158, 11",
   },
 ];
 
 export function SummaryWeek4() {
+  const themeColor = "#7C3AED";
+  const themeRgb = "124, 58, 237";
+
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
@@ -78,36 +69,37 @@ export function SummaryWeek4() {
             key={f.title}
             {...cardRise(0.1 + i * 0.08)}
             style={{
-              background: `rgba(${f.rgb}, 0.03)`,
-              border: `1px solid rgba(${f.rgb}, 0.15)`,
+              background: `rgba(${themeRgb}, 0.045)`,
+              border: `2px solid rgba(${themeRgb}, 0.22)`,
               borderRadius: 20,
-              padding: "28px 28px",
-              minHeight: 200,
+              padding: "26px 30px",
+              minHeight: 210,
               display: "flex",
               flexDirection: "column",
               gap: 14,
               justifyContent: "flex-start",
+              boxShadow: "0 6px 24px rgba(124, 58, 237, 0.02)",
             }}
           >
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 10,
+                gap: 14,
               }}
             >
               <span
                 style={{
-                  fontSize: 22,
-                  width: 40,
-                  height: 40,
+                  fontSize: 18,
+                  width: 42,
+                  height: 42,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  borderRadius: 12,
-                  background: `rgba(${f.rgb}, 0.1)`,
-                  color: f.color,
-                  fontWeight: 800,
+                  borderRadius: 11,
+                  background: `rgba(${themeRgb}, 0.12)`,
+                  color: themeColor,
+                  fontWeight: 900,
                   flexShrink: 0,
                 }}
               >
@@ -115,11 +107,11 @@ export function SummaryWeek4() {
               </span>
               <h4
                 style={{
-                  fontSize: 21,
+                  fontSize: 23,
                   fontWeight: 850,
-                  color: f.color,
+                  color: "#111827",
                   margin: 0,
-                  lineHeight: 1.2,
+                  lineHeight: 1.25,
                 }}
               >
                 {f.title}
@@ -127,8 +119,8 @@ export function SummaryWeek4() {
             </div>
             <p
               style={{
-                fontSize: 18,
-                color: "#4B5563",
+                fontSize: 19,
+                color: "#374151",
                 lineHeight: 1.6,
                 margin: 0,
               }}

@@ -57,7 +57,7 @@ export function CoverWeek4() {
           <span
             style={{ fontSize: 16, color: "#9CA3AF", letterSpacing: "0.06em" }}
           >
-            July 6, 2026
+            July 7, 2026
           </span>
         </div>
       </motion.div>

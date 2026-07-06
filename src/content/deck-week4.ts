@@ -11,6 +11,7 @@ import { RecapWeek4 } from '../slides/PIAA week4/RecapWeek4';
 import { AgendaWeek4 } from '../slides/PIAA week4/AgendaWeek4';
 import { FairComparisonWeek4 } from '../slides/PIAA week4/FairComparisonWeek4';
 import { WilcoxonWeek4 } from '../slides/PIAA week4/WilcoxonWeek4';
+import { WilcoxonGraphWeek4 } from '../slides/PIAA week4/WilcoxonGraphWeek4';
 import { VlmBackboneWeek4 } from '../slides/PIAA week4/VlmBackboneWeek4';
 import { StandardScalerWeek4 } from '../slides/PIAA week4/StandardScalerWeek4';
 import { LayerSweepWeek4 } from '../slides/PIAA week4/LayerSweepWeek4';
@@ -33,6 +34,7 @@ const RecapWeek4Component = defineSlide(RecapWeek4, 'RecapWeek4');
 const AgendaWeek4Component = defineSlide(AgendaWeek4, 'AgendaWeek4');
 const FairComparisonWeek4Component = defineSlide(FairComparisonWeek4, 'FairComparisonWeek4');
 const WilcoxonWeek4Component = defineSlide(WilcoxonWeek4, 'WilcoxonWeek4');
+const WilcoxonGraphWeek4Component = defineSlide(WilcoxonGraphWeek4, 'WilcoxonGraphWeek4');
 const VlmBackboneWeek4Component = defineSlide(VlmBackboneWeek4, 'VlmBackboneWeek4');
 const StandardScalerWeek4Component = defineSlide(StandardScalerWeek4, 'StandardScalerWeek4');
 const LayerSweepWeek4Component = defineSlide(LayerSweepWeek4, 'LayerSweepWeek4');
@@ -65,6 +67,7 @@ const deck: DeckSection[] = [
     slides: [
       FairComparisonWeek4Component,
       WilcoxonWeek4Component,
+      WilcoxonGraphWeek4Component,
     ],
   },
   {

@@ -186,64 +186,72 @@ export function StandardScalerWeek4() {
           </table>
         </motion.div>
 
-        {/* ── Callout 1: Primary insight ── */}
-        <motion.div
-          {...fadeInUp(0.7)}
-          style={{
-            background: "rgba(59, 130, 246, 0.04)",
-            border: "1px solid rgba(59, 130, 246, 0.15)",
-            borderRadius: 14,
-            padding: "20px 28px",
-            display: "flex",
-            gap: 16,
-            alignItems: "flex-start",
-          }}
-        >
-          <div>
-            <div
-              style={{
-                fontSize: 19,
-                color: "#1E3A5F",
-                lineHeight: 1.6,
-                fontWeight: 500,
-              }}
-            >
-              Notice that CLIP, with only 512 numbers per image, barely changes.
-              Only the VLM with 4096 numbers collapses. So the problem comes from
-              having so many dimensions, and StandardScaler is what fixes it.
+        {/* ── Callouts ── */}
+        <div style={{ display: "flex", gap: 20 }}>
+          {/* Callout 1: Explaining how it helps */}
+          <motion.div
+            {...fadeInUp(0.7)}
+            style={{
+              flex: 1.1,
+              background: "rgba(59, 130, 246, 0.04)",
+              border: "1px solid rgba(59, 130, 246, 0.15)",
+              borderRadius: 16,
+              padding: "18px 24px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 8,
+            }}
+          >
+            <span style={{ fontSize: 16, fontWeight: 800, color: "#2563EB", textTransform: "uppercase" }}>
+              How StandardScaler Saves High-Dim Features
+            </span>
+            <div style={{ fontSize: 17, color: "#374151", lineHeight: 1.55, fontWeight: 500 }}>
+              <ul style={{ margin: 0, paddingLeft: 20, display: "flex", flexDirection: "column", gap: 6 }}>
+                <li>
+                  <strong>L2-norm shrinks values:</strong> L2-normalizing 4096 dimensions makes individual values extremely tiny (near 0).
+                </li>
+                <li>
+                  <strong>Ridge weight penalty:</strong> Under tiny values, the Ridge weight decay (regularization) penalizes weights heavily, forcing predictions to collapse to the average. This destroys CCC (variance score) while SROCC (ranking) survives.
+                </li>
+                <li>
+                  <strong>StandardScaler preserves variance:</strong> Scaling each dimension individually to unit variance (\(\mu=0, \sigma=1\)) allows Ridge to assign appropriate weights.
+                </li>
+              </ul>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* ── Callout 2: Secondary insight ── */}
-        <motion.div
-          {...fadeInUp(0.85)}
-          style={{
-            background: "rgba(16, 185, 129, 0.04)",
-            border: "1px solid rgba(16, 185, 129, 0.15)",
-            borderRadius: 14,
-            padding: "20px 28px",
-            display: "flex",
-            gap: 16,
-            alignItems: "flex-start",
-          }}
-        >
-          <div>
-            <div
-              style={{
-                fontSize: 19,
-                color: "#1E3A5F",
-                lineHeight: 1.6,
-                fontWeight: 500,
-              }}
-            >
-              Once the scaling was fixed, the VLM did beat CLIP, by about 0.08 in
-              CCC. And from the middle layers onward the text tokens worked better
-              than the image tokens — the best was a mid-to-late text-token layer,
-              matching the paper's choice of text tokens.
+          {/* Callout 2: Results & Paper match */}
+          <motion.div
+            {...fadeInUp(0.8)}
+            style={{
+              flex: 0.9,
+              background: "rgba(16, 185, 129, 0.04)",
+              border: "1px solid rgba(16, 185, 129, 0.15)",
+              borderRadius: 16,
+              padding: "18px 24px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 8,
+            }}
+          >
+            <span style={{ fontSize: 16, fontWeight: 800, color: "#059669", textTransform: "uppercase" }}>
+              Key Findings & Alignment
+            </span>
+            <div style={{ fontSize: 17, color: "#374151", lineHeight: 1.55, fontWeight: 500 }}>
+              <ul style={{ margin: 0, paddingLeft: 20, display: "flex", flexDirection: "column", gap: 6 }}>
+                <li>
+                  <strong>CLIP vs VLM:</strong> CLIP (512d) is barely affected. The issue is strictly a high-dimensionality side effect.
+                </li>
+                <li>
+                  <strong>VLM Outperforms CLIP:</strong> With StandardScaler, the VLM beats CLIP by <strong>+0.08 CCC</strong>.
+                </li>
+                <li>
+                  <strong>Text > Image Tokens:</strong> Text tokens consistently beat image tokens in middle-to-late layers, matching the Ryu &amp; Yanaka findings.
+                </li>
+              </ul>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </SlideShell>
   );

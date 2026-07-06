@@ -70,9 +70,9 @@ export function FineTuneHowWeek4() {
               </marker>
             </defs>
 
-            {/* STAGE A */}
+            {/* STAGE 1 */}
             <text x={20} y={24} fontSize={17} fontWeight={800} fill="#111827">
-              Stage A — fine-tune (population, per fold)
+              Stage 1 — Fine-tune (population, per fold)
             </text>
             <Box x={20} y={40} w={200} h={62} title="Images + emotion" sub="target: general users only" />
             <Arrow x1={220} y1={71} x2={272} y2={71} />
@@ -96,9 +96,9 @@ export function FineTuneHowWeek4() {
               ↓ training done → FREEZE the fine-tuned CLIP (weights never change again)
             </text>
 
-            {/* STAGE B */}
+            {/* STAGE 2 */}
             <text x={20} y={208} fontSize={17} fontWeight={800} fill="#111827">
-              Stage B — freeze + personalize (per user, no backprop into CLIP)
+              Stage 2 — Freeze & Personalize (per user, no backprop into CLIP)
             </text>
             <Box x={20} y={224} w={175} h={62} title="all 6,526 images" sub="train + test" />
             <Arrow x1={195} y1={255} x2={247} y2={255} />
@@ -106,9 +106,9 @@ export function FineTuneHowWeek4() {
             <Arrow x1={439} y1={255} x2={491} y2={255} />
             <Box x={493} y={224} w={130} h={62} title="768-d features" />
             <Arrow x1={623} y1={255} x2={675} y2={255} />
-            <Box x={677} y={224} w={175} h={62} title="per-user Ridge" sub="~100 of their ratings" />
-            <Arrow x1={852} y1={255} x2={904} y2={255} />
-            <Box x={906} y={224} w={130} h={62} title="personal score" />
+            <Box x={677} y={224} w={205} h={62} title="per-user Ridge" sub="(= Personal Formula, ~100 ratings)" />
+            <Arrow x1={882} y1={255} x2={932} y2={255} />
+            <Box x={934} y={224} w={130} h={62} title="personal score" />
 
             <text x={20} y={322} fontSize={13} fill="#6B7280">
               Same idea as the baselines: pretrain the backbone on the population, then personalize on top — not one joint model.

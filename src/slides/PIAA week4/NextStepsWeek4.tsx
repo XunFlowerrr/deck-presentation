@@ -53,19 +53,20 @@ export function NextStepsWeek4() {
           {...cardRise(0.1)}
           style={{
             flex: 1,
-            background: "rgba(16, 185, 129, 0.02)",
-            border: "1px solid rgba(16, 185, 129, 0.15)",
+            background: "rgba(16, 185, 129, 0.05)",
+            border: "2px solid rgba(16, 185, 129, 0.28)",
             borderRadius: 24,
             padding: "36px 40px",
             display: "flex",
             flexDirection: "column",
             gap: 20,
             justifyContent: "flex-start",
+            boxShadow: "0 4px 20px rgba(16, 185, 129, 0.01)",
           }}
         >
           <h3
             style={{
-              fontSize: 23,
+              fontSize: 25,
               fontWeight: 900,
               color: "#10B981",
               margin: 0,
@@ -74,7 +75,7 @@ export function NextStepsWeek4() {
               gap: 10,
             }}
           >
-What I plan to try next
+            What I plan to try next
           </h3>
 
           <ol
@@ -90,7 +91,7 @@ What I plan to try next
               <li
                 key={exp.title}
                 style={{
-                  fontSize: 18,
+                  fontSize: 20,
                   color: "#374151",
                   lineHeight: 1.6,
                 }}
@@ -108,19 +109,20 @@ What I plan to try next
           {...cardRise(0.22)}
           style={{
             flex: 1,
-            background: "rgba(124, 58, 237, 0.02)",
-            border: "1px solid rgba(124, 58, 237, 0.15)",
+            background: "rgba(124, 58, 237, 0.05)",
+            border: "2px solid rgba(124, 58, 237, 0.28)",
             borderRadius: 24,
             padding: "36px 40px",
             display: "flex",
             flexDirection: "column",
             gap: 20,
             justifyContent: "flex-start",
+            boxShadow: "0 4px 20px rgba(124, 58, 237, 0.01)",
           }}
         >
           <h3
             style={{
-              fontSize: 23,
+              fontSize: 25,
               fontWeight: 900,
               color: "#7C3AED",
               margin: 0,
@@ -129,7 +131,7 @@ What I plan to try next
               gap: 10,
             }}
           >
-Questions I'd like to discuss
+            Questions I'd like to discuss
           </h3>
 
           <ol
@@ -145,8 +147,8 @@ Questions I'd like to discuss
               <li
                 key={i}
                 style={{
-                  fontSize: 18,
-                  color: "#4B5563",
+                  fontSize: 20,
+                  color: "#374151",
                   lineHeight: 1.6,
                 }}
               >
@@ -163,9 +165,10 @@ Questions I'd like to discuss
         style={{
           textAlign: "center",
           padding: "16px 0 8px",
-          fontSize: 17,
-          color: "#9CA3AF",
+          fontSize: 19,
+          color: "#6B7280",
           fontStyle: "italic",
+          fontWeight: 500,
         }}
       >
         Not in a hurry — can continue from Thailand after the internship if needed.

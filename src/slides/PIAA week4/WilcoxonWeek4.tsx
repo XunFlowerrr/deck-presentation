@@ -21,35 +21,32 @@ const QWEN_ROWS = [
   { n: "100", median: "+0.049", win: "80.1%", effect: "0.62" },
 ];
 
-const HEADERS = ["n", "median Δ", "Hybrid win %", "effect r"];
+const HEADERS = ["n", "Median Δ", "Win %", "Effect r"];
 
 function ResultTable({
   title,
   accent,
   rows,
-  delay,
 }: {
   title: string;
   accent: string;
   rows: typeof CLIP_ROWS;
-  delay: number;
 }) {
   return (
-    <motion.div
-      {...cardRise(delay)}
+    <div
       style={{
         flex: 1,
         background: "#FFFFFF",
         border: "1px solid #E5E7EB",
         borderRadius: 16,
         overflow: "hidden",
-        boxShadow: "0 10px 30px rgba(0,0,0,0.03)",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.02)",
       }}
     >
       {/* Table title bar */}
       <div
         style={{
-          padding: "14px 24px",
+          padding: "10px 18px",
           background: `linear-gradient(135deg, ${accent}, ${accent}CC)`,
           display: "flex",
           alignItems: "center",
@@ -58,15 +55,15 @@ function ResultTable({
       >
         <div
           style={{
-            width: 10,
-            height: 10,
+            width: 8,
+            height: 8,
             borderRadius: "50%",
-            background: "rgba(255,255,255,0.5)",
+            background: "rgba(255,255,255,0.6)",
           }}
         />
         <span
           style={{
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: 800,
             color: "#FFFFFF",
             letterSpacing: "0.03em",
@@ -89,8 +86,8 @@ function ResultTable({
               <th
                 key={h}
                 style={{
-                  padding: "14px 16px",
-                  fontSize: 15,
+                  padding: "10px 12px",
+                  fontSize: 13,
                   fontWeight: 700,
                   color: "#FFFFFF",
                   letterSpacing: "0.04em",
@@ -112,50 +109,54 @@ function ResultTable({
                   borderBottom:
                     idx === rows.length - 1 ? "none" : "1px solid #F3F4F6",
                   background: isHighlight
-                    ? `${accent}0A`
+                    ? `${accent}08`
                     : "transparent",
                 }}
               >
+                {/* n */}
                 <td
                   style={{
-                    padding: "16px",
-                    fontSize: 20,
+                    padding: "11px 12px",
+                    fontSize: 16,
                     fontWeight: 800,
                     color: "#111827",
-                    fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+                    fontFamily: "'JetBrains Mono', monospace",
                   }}
                 >
                   {row.n}
                 </td>
+                {/* Median Δ */}
                 <td
                   style={{
-                    padding: "16px",
-                    fontSize: 20,
-                    fontWeight: 600,
+                    padding: "11px 12px",
+                    fontSize: 16,
+                    fontWeight: 700,
                     color: "#10B981",
-                    fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+                    fontFamily: "'JetBrains Mono', monospace",
                   }}
                 >
                   {row.median}
                 </td>
+                {/* Win % */}
                 <td
                   style={{
-                    padding: "16px",
-                    fontSize: 20,
-                    fontWeight: 700,
+                    padding: "11px 12px",
+                    fontSize: 16,
+                    fontWeight: 800,
                     color: isHighlight ? accent : "#374151",
-                    fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+                    fontFamily: "'JetBrains Mono', monospace",
                   }}
                 >
                   {row.win}
                 </td>
+                {/* Effect r */}
                 <td
                   style={{
-                    padding: "16px",
-                    fontSize: 20,
+                    padding: "11px 12px",
+                    fontSize: 16,
                     fontWeight: 600,
                     color: "#4B5563",
-                    fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+                    fontFamily: "'JetBrains Mono', monospace",
                   }}
                 >
                   {row.effect}
@@ -165,7 +166,7 @@ function ResultTable({
           })}
         </tbody>
       </table>
-    </motion.div>
+    </div>
   );
 }
 
@@ -176,6 +177,7 @@ export function WilcoxonWeek4() {
         label="Task 1 — Result"
         title="Does emotion mediation"
         highlight="really help?"
+        tagline="Wilcoxon signed-rank test evaluates whether routing predictions through emotions significantly improves CCC."
       />
 
       <div
@@ -183,24 +185,38 @@ export function WilcoxonWeek4() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          gap: 28,
+          gap: 20,
           justifyContent: "center",
+          marginTop: 10,
         }}
       >
-        {/* Side-by-side tables */}
-        <div style={{ display: "flex", gap: 28 }}>
-          <ResultTable
-            title="CLIP"
-            accent="#7C3AED"
-            rows={CLIP_ROWS}
-            delay={0.15}
-          />
-          <ResultTable
-            title="Qwen2-vision"
-            accent="#3B82F6"
-            rows={QWEN_ROWS}
-            delay={0.25}
-          />
+        <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+          <h4
+            style={{
+              margin: 0,
+              fontSize: 16,
+              fontWeight: 700,
+              color: "#4B5563",
+              textTransform: "uppercase",
+              letterSpacing: 0.5,
+            }}
+          >
+            Table 4 — Wilcoxon Signed-Rank Test Results (Comparing Hybrid vs Direct)
+          </h4>
+          
+          {/* Tables side-by-side taking full width */}
+          <div style={{ display: "flex", gap: 32 }}>
+            <ResultTable
+              title="CLIP Backbone (Direct vs Hybrid)"
+              accent="#7C3AED"
+              rows={CLIP_ROWS}
+            />
+            <ResultTable
+              title="Qwen2-vision Backbone (Direct vs Hybrid)"
+              accent="#3B82F6"
+              rows={QWEN_ROWS}
+            />
+          </div>
         </div>
 
         {/* Key insight callout */}
@@ -211,36 +227,46 @@ export function WilcoxonWeek4() {
               "linear-gradient(135deg, rgba(124, 58, 237, 0.04), rgba(59, 130, 246, 0.04))",
             border: "1px solid rgba(124, 58, 237, 0.15)",
             borderRadius: 20,
-            padding: "24px 32px",
+            padding: "20px 28px",
             display: "flex",
             gap: 16,
             alignItems: "flex-start",
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8, width: "100%" }}>
             <span
               style={{
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: 800,
                 color: "#7C3AED",
+                textTransform: "uppercase",
+                letterSpacing: 0.5,
               }}
             >
-              What this tells us
+              Interpretation & Analysis
             </span>
-            <p
+            <ul
               style={{
                 fontSize: 17,
                 color: "#374151",
                 margin: 0,
-                lineHeight: 1.65,
+                lineHeight: 1.6,
+                paddingLeft: 20,
+                display: "flex",
+                flexDirection: "column",
+                gap: 6,
               }}
             >
-              With only 10 images per person, the emotion step barely helps. But
-              from 25 images up, it helps a lot, and stays strong. We see the
-              same shape for both backbones, so this isn't a quirk of one model.
-              Every result here is statistically significant (Wilcoxon
-              signed-rank test, p &lt; 0.001).
-            </p>
+              <li>
+                <strong>Win %</strong> indicates the percentage of users who see positive gains with emotion mediation.
+              </li>
+              <li>
+                <strong>Median Δ</strong> is the average improvement in CCC score (Hybrid − Direct) per user.
+              </li>
+              <li>
+                All results are statistically significant (Wilcoxon signed-rank test, p &lt; 0.001).
+              </li>
+            </ul>
           </div>
         </motion.div>
       </div>

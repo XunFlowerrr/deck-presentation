@@ -17,8 +17,8 @@ const REFERENCE_ITEMS = [
 
 const MY_ITEMS = [
   { icon: "•", text: "Used the largest 8B model, not the 4B they recommend" },
-  { icon: "•", text: "Saved every layer in a single GPU run" },
-  { icon: "•", text: "So I can pick the best layer later, without borrowing the GPU again" },
+  { icon: "•", text: "Saved every layer in a single GPU run to explore" },
+  { icon: "•", text: "Allows picking the best layer afterward without running extraction multiple times" },
 ];
 
 function ConfigCard({
@@ -28,6 +28,7 @@ function ConfigCard({
   accentRgb,
   items,
   delay,
+  isHighlight = true,
 }: {
   title: string;
   badge: string;
@@ -35,14 +36,15 @@ function ConfigCard({
   accentRgb: string;
   items: { icon: string; text: string }[];
   delay: number;
+  isHighlight?: boolean;
 }) {
   return (
     <motion.div
       {...cardRise(delay)}
       style={{
         flex: 1,
-        background: `rgba(${accentRgb}, 0.02)`,
-        border: `2px solid rgba(${accentRgb}, 0.15)`,
+        background: isHighlight ? `rgba(${accentRgb}, 0.02)` : "rgba(243, 244, 246, 0.4)",
+        border: isHighlight ? `2px solid rgba(${accentRgb}, 0.15)` : "1px dashed rgba(156, 163, 175, 0.3)",
         borderRadius: 24,
         padding: "32px 36px",
         display: "flex",
@@ -54,7 +56,7 @@ function ConfigCard({
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
         <div
           style={{
-            background: accent,
+            background: isHighlight ? accent : "#9CA3AF",
             color: "#FFFFFF",
             fontSize: 13,
             fontWeight: 700,
@@ -73,7 +75,7 @@ function ConfigCard({
         style={{
           fontSize: 26,
           fontWeight: 900,
-          color: "#111827",
+          color: isHighlight ? "#111827" : "#4B5563",
           margin: 0,
           lineHeight: 1.3,
         }}
@@ -87,7 +89,7 @@ function ConfigCard({
           width: 48,
           height: 4,
           borderRadius: 2,
-          background: `linear-gradient(90deg, ${accent}, ${accent}88)`,
+          background: isHighlight ? `linear-gradient(90deg, ${accent}, ${accent}88)` : "#D1D5DB",
         }}
       />
 
@@ -102,13 +104,13 @@ function ConfigCard({
               gap: 14,
             }}
           >
-            <span style={{ fontSize: 22, lineHeight: 1.3, flexShrink: 0, color: accent, fontWeight: 800 }}>
+            <span style={{ fontSize: 22, lineHeight: 1.3, flexShrink: 0, color: isHighlight ? accent : "#9CA3AF", fontWeight: 800 }}>
               {item.icon}
             </span>
             <span
               style={{
                 fontSize: 20,
-                color: "#374151",
+                color: isHighlight ? "#374151" : "#6B7280",
                 lineHeight: 1.5,
                 fontWeight: 500,
               }}
@@ -142,11 +144,12 @@ export function VlmBackboneWeek4() {
       >
         <ConfigCard
           title="Ryu & Yanaka Configuration"
-          badge="Reference"
-          accent="#7C3AED"
-          accentRgb="124, 58, 237"
+          badge="Reference Paper"
+          accent="#9CA3AF"
+          accentRgb="156, 163, 175"
           items={REFERENCE_ITEMS}
           delay={0.15}
+          isHighlight={false}
         />
         <ConfigCard
           title="My Implementation"
@@ -155,6 +158,7 @@ export function VlmBackboneWeek4() {
           accentRgb="59, 130, 246"
           items={MY_ITEMS}
           delay={0.25}
+          isHighlight={true}
         />
       </div>
     </SlideShell>

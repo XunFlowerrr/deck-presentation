@@ -80,14 +80,19 @@ export function LayerSweepWeek4() {
                 </text>
               </g>
             ))}
+            {/* Axis Titles */}
+            <text x={padL - 52} y={(padT + H - padB) / 2 - 10} fontSize={14} fill="#4B5563" fontWeight={700} textAnchor="middle" transform={`rotate(-90 ${padL - 52} ${(padT + H - padB) / 2 - 10})`}>
+              Direct CCC Score
+            </text>
+            
             {/* x ticks */}
             {xTicks.map((t) => (
               <text key={t} x={sx(t)} y={H - padB + 22} fontSize={13} fill="#6B7280" textAnchor="middle">
                 {t}
               </text>
             ))}
-            <text x={(padL + W - padR) / 2} y={H - 8} fontSize={13} fill="#374151" textAnchor="middle">
-              Qwen3-VL-8B layer index (1 = early … 36 = last)
+            <text x={(padL + W - padR) / 2} y={H - 8} fontSize={14} fill="#374151" fontWeight={700} textAnchor="middle">
+              Qwen3-VL-8B Layer Index (1 = early … 36 = last)
             </text>
 
             {/* CLIP baseline */}

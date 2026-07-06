@@ -52,14 +52,14 @@ const TABLE_DATA: TableRow[] = [
     kind: "ours",
   },
   {
-    backbone: "ICI (Hayashi-san)",
+    backbone: "ICI (baseline)",
     directCcc: "–",
     hybridCcc: "0.409",
     emotionAdds: "",
     kind: "ref",
   },
   {
-    backbone: "MIR (Hayashi-san)",
+    backbone: "MIR (baseline)",
     directCcc: "–",
     hybridCcc: "0.411",
     emotionAdds: "",

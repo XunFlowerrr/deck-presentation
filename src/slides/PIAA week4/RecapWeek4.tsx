@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SlideHeader, SlideShell } from "../../components/index.ts";
-import { cardRise } from "../../lib/motion.ts";
+import { cardRise, fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
   { top: -200, right: -120, size: 800, color: "124, 58, 237", opacity: 0.12 },
@@ -8,82 +8,92 @@ const GLOWS = [
 ];
 
 export function RecapWeek4() {
-  const findings = [
-    {
-      num: "Week 1",
-      title: "Emotion mediation is feasible",
-      desc: "P-oracle = 0.72 (upper bound). When we feed in the true emotions, we clearly beat predicting beauty directly.",
-      accent: "#7C3AED",
-      bg: "rgba(124, 58, 237, 0.03)",
-    },
-    {
-      num: "Week 2a",
-      title: "Emotion formula vs personality",
-      desc: "No strong link found. The beauty formula does not reduce to Big Five personality traits in any simple way.",
-      accent: "#3B82F6",
-      bg: "rgba(59, 130, 246, 0.03)",
-    },
-    {
-      num: "Week 2b",
-      title: "Formula stable across image types",
-      desc: "The personal emotion formula stays consistent across Art, Fashion, and Landscape domains. New finding.",
-      accent: "#10B981",
-      bg: "rgba(16, 185, 129, 0.03)",
-    },
-  ];
-
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Quick Recap"
-        title="Last two weeks'"
+        title="Last two meetings'"
         highlight="Key findings."
       />
 
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 24, alignItems: "stretch", justifyContent: "center", minHeight: 0, paddingBottom: 12, maxWidth: 1400, margin: "0 auto" }}>
-        {findings.map((f, i) => (
-          <motion.div
-            key={f.num}
-            {...cardRise(i * 0.1)}
-            style={{
-              background: f.bg,
-              border: `1px solid ${f.accent}24`,
-              borderRadius: "24px",
-              padding: "30px 30px 32px",
-              display: "flex",
-              flexDirection: "column",
-              gap: 20,
-              minHeight: 320,
-              justifyContent: "center",
-              alignItems: "center",
-              textAlign: "center",
-            }}
-          >
-            <span
-              style={{
-                fontSize: 15,
-                fontWeight: 900,
-                color: "white",
-                backgroundColor: f.accent,
-                padding: "5px 11px",
-                borderRadius: "9px",
-                textTransform: "uppercase",
-                flexShrink: 0,
-                alignSelf: "center",
-              }}
-            >
-              {f.num}
-            </span>
-            <div style={{ display: "flex", flexDirection: "column", gap: 14, alignItems: "center" }}>
-              <h4 style={{ fontSize: 25, fontWeight: 850, color: "#111827", margin: 0, lineHeight: 1.18 }}>
-                {f.title}
-              </h4>
-              <p style={{ fontSize: 20, color: "#4B5563", lineHeight: 1.55, margin: 0 }}>
-                {f.desc}
+      <div style={{ flex: 1, display: "flex", gap: 32, alignItems: "stretch", justifyContent: "center", minHeight: 0, paddingBottom: 12 }}>
+        
+        {/* Meeting 1 Group */}
+        <motion.div
+          {...cardRise(0.1)}
+          style={{
+            flex: 1,
+            background: "rgba(124, 58, 237, 0.02)",
+            border: "1.5px solid rgba(124, 58, 237, 0.15)",
+            borderRadius: "28px",
+            padding: "36px 36px",
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+            justifyContent: "flex-start",
+          }}
+        >
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+              <span style={{ fontSize: 14, fontWeight: 900, color: "white", backgroundColor: "#7C3AED", padding: "6px 14px", borderRadius: "10px" }}>MEETING 1</span>
+              <h3 style={{ fontSize: 24, fontWeight: 900, color: "#7C3AED", margin: 0 }}>Emotion Mediation is Feasible</h3>
+            </div>
+            <p style={{ fontSize: 20, color: "#374151", lineHeight: 1.6, margin: "0 0 16px 0" }}>
+              Tested whether using emotion as a middle step is possible. 
+              <strong> P-oracle = 0.72 (upper bound)</strong>. 
+              When we feed in the true emotions, we clearly beat predicting beauty directly.
+            </p>
+            
+            {/* Plain bullet point for Emotion Bottleneck */}
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginTop: 24 }}>
+              <span style={{ fontSize: 20, color: "#7C3AED", lineHeight: 1.3 }}>•</span>
+              <p style={{ fontSize: 19, color: "#1F2937", lineHeight: 1.5, margin: 0, fontWeight: 550 }}>
+                <strong>The Emotion Bottleneck:</strong> We learned that to predict beauty well through emotions, we must first predict emotions accurately.
               </p>
             </div>
-          </motion.div>
-        ))}
+          </div>
+        </motion.div>
+
+        {/* Meeting 2 Group */}
+        <motion.div
+          {...cardRise(0.2)}
+          style={{
+            flex: 1,
+            background: "rgba(59, 130, 246, 0.035)",
+            border: "1.5px dashed rgba(59, 130, 246, 0.35)",
+            borderRadius: "28px",
+            padding: "36px 36px",
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+            justifyContent: "flex-start",
+          }}
+        >
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+              <span style={{ fontSize: 14, fontWeight: 900, color: "white", backgroundColor: "#3B82F6", padding: "6px 14px", borderRadius: "10px" }}>MEETING 2</span>
+              <h3 style={{ fontSize: 24, fontWeight: 900, color: "#3B82F6", margin: 0 }}>Exploring the Emotion Formula</h3>
+            </div>
+            
+            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+              {/* Meeting 2a */}
+              <div style={{ background: "rgba(59, 130, 246, 0.055)", border: "1px solid rgba(59, 130, 246, 0.2)", borderRadius: "20px", padding: "20px 24px" }}>
+                <h4 style={{ fontSize: 20, fontWeight: 800, color: "#111827", margin: "0 0 8px 0" }}>No Strong Connection to Personality</h4>
+                <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
+                  A person's emotion formula does not match their Big Five personality traits in any strong way.
+                </p>
+              </div>
+
+              {/* Meeting 2b */}
+              <div style={{ background: "rgba(16, 185, 129, 0.055)", border: "1px solid rgba(16, 185, 129, 0.2)", borderRadius: "20px", padding: "20px 24px" }}>
+                <h4 style={{ fontSize: 20, fontWeight: 800, color: "#111827", margin: "0 0 8px 0" }}>Stable Across Image Types</h4>
+                <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
+                  The personal emotion weights stay highly consistent across Art, Fashion, and Landscape.
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </SlideShell>
   );
