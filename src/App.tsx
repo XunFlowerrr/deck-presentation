@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
 import confetti from "canvas-confetti";
 import { slides, sections, trackerSlideCount } from "./slides/index.ts";
-import { DemoVideo } from "./slides/DemoVideo.tsx";
+import { DemoVideo } from "./slides/rag-presentation/DemoVideo.tsx";
 import { usePresentation } from "./hooks/usePresentation.ts";
 import { PresentationFrame, ProgressTracker, DynamicImageManager } from "./components/index.ts";
 import { SlideContext } from "./context/SlideContext.tsx";

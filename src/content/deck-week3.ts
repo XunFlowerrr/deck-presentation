@@ -5,20 +5,20 @@
 import type { DeckSection, SlideComponent } from './types';
 
 // Import Week 3 Update slide components
-import { CoverWeek3 } from '../slides/CoverWeek3';
-import { RecapWeek3 } from '../slides/RecapWeek3';
-import { OverviewWeek3 } from '../slides/OverviewWeek3';
-import { RQ3Setup } from '../slides/RQ3Setup';
-import { RQ3Results } from '../slides/RQ3Results';
-import { RQ4Setup } from '../slides/RQ4Setup';
-import { RQ4Results } from '../slides/RQ4Results';
-import { NostalgiaByDomain } from '../slides/NostalgiaByDomain';
-import { DiscussionWeek3 } from '../slides/DiscussionWeek3';
-import { ProblemsNextSteps } from '../slides/ProblemsNextSteps';
-import { ThankYou } from '../slides/ThankYou';
-import { AppendixPermutationConvergence } from '../slides/AppendixPermutationConvergence';
-import { SpearmanCorrelationAppendix } from '../slides/SpearmanCorrelationAppendix';
-import { BonferroniCorrectionAppendix } from '../slides/BonferroniCorrectionAppendix';
+import { CoverWeek3 } from '../slides/week3/CoverWeek3';
+import { RecapWeek3 } from '../slides/week3/RecapWeek3';
+import { OverviewWeek3 } from '../slides/week3/OverviewWeek3';
+import { RQ3Setup } from '../slides/week3/RQ3Setup';
+import { RQ3Results } from '../slides/week3/RQ3Results';
+import { RQ4Setup } from '../slides/week3/RQ4Setup';
+import { RQ4Results } from '../slides/week3/RQ4Results';
+import { NostalgiaByDomain } from '../slides/week3/NostalgiaByDomain';
+import { DiscussionWeek3 } from '../slides/week3/DiscussionWeek3';
+import { ProblemsNextSteps } from '../slides/week3/ProblemsNextSteps';
+import { ThankYou } from '../slides/week3/ThankYou';
+import { AppendixPermutationConvergence } from '../slides/week3/AppendixPermutationConvergence';
+import { SpearmanCorrelationAppendix } from '../slides/week3/SpearmanCorrelationAppendix';
+import { BonferroniCorrectionAppendix } from '../slides/week3/BonferroniCorrectionAppendix';
 
 // Helper to assign static slideId properties to components to prevent HMR/minification mismatch
 function defineSlide(component: any, slideId: string): SlideComponent {

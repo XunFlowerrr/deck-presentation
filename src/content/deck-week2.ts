@@ -4,29 +4,29 @@
 
 import type { DeckSection, SlideComponent } from './types';
 
-import { Cover } from '../slides/Cover';
-import { TheProblem } from '../slides/TheProblem';
-import { OurIdea } from '../slides/OurIdea';
-import { OurPipeline } from '../slides/OurPipeline';
-import { HowItWorks } from '../slides/HowItWorks';
-import { Dataset } from '../slides/Dataset';
-import { WhatIsAesthemos } from '../slides/WhatIsAesthemos';
-import { WhatIsTipi } from '../slides/WhatIsTipi';
-import { DatasetVisuals } from '../slides/DatasetVisuals';
-import { ResearchQuestions } from '../slides/ResearchQuestions';
-import { Experiment1 } from '../slides/Experiment1';
-import { Experiment2 } from '../slides/Experiment2';
-import { Experiment3a } from '../slides/Experiment3a';
-import { Experiment3b } from '../slides/Experiment3b';
-import { RelatedWork } from '../slides/RelatedWork';
-import { IciArchitecture } from '../slides/IciArchitecture';
-import { Challenges } from '../slides/Challenges';
-import { NextSteps } from '../slides/NextSteps';
-import { DiscussionQuestions } from '../slides/DiscussionQuestions';
-import { ThankYou } from '../slides/ThankYou';
-import { AppendixMetrics } from '../slides/AppendixMetrics';
-import { AppendixApproaches } from '../slides/AppendixApproaches';
-import { ModelsHyperparameters } from '../slides/ModelsHyperparameters';
+import { Cover } from '../slides/week2/Cover';
+import { TheProblem } from '../slides/week2/TheProblem';
+import { OurIdea } from '../slides/week2/OurIdea';
+import { OurPipeline } from '../slides/week2/OurPipeline';
+import { HowItWorks } from '../slides/week2/HowItWorks';
+import { Dataset } from '../slides/week2/Dataset';
+import { WhatIsAesthemos } from '../slides/week2/WhatIsAesthemos';
+import { WhatIsTipi } from '../slides/week2/WhatIsTipi';
+import { DatasetVisuals } from '../slides/week2/DatasetVisuals';
+import { ResearchQuestions } from '../slides/week2/ResearchQuestions';
+import { Experiment1 } from '../slides/week2/Experiment1';
+import { Experiment2 } from '../slides/week2/Experiment2';
+import { Experiment3a } from '../slides/week2/Experiment3a';
+import { Experiment3b } from '../slides/week2/Experiment3b';
+import { RelatedWork } from '../slides/week2/RelatedWork';
+import { IciArchitecture } from '../slides/week2/IciArchitecture';
+import { Challenges } from '../slides/week2/Challenges';
+import { NextSteps } from '../slides/week2/NextSteps';
+import { DiscussionQuestions } from '../slides/week2/DiscussionQuestions';
+import { ThankYou } from '../slides/week2/ThankYou';
+import { AppendixMetrics } from '../slides/week2/AppendixMetrics';
+import { AppendixApproaches } from '../slides/week2/AppendixApproaches';
+import { ModelsHyperparameters } from '../slides/week2/ModelsHyperparameters';
 
 // Helper to assign static slideId properties to components to prevent HMR/minification mismatch
 function defineSlide(component: any, slideId: string): SlideComponent {
