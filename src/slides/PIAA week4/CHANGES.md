@@ -36,3 +36,25 @@
 - Qwen2-vision ยังอยู่ในสไลด์ Wilcoxon (ไม่เปลี่ยนเป็น Qwen3)
   เพราะสไลด์นั้นเล่าเรื่อง "emotion ช่วยจริง" ซึ่ง Qwen2+CLIP เป็นคู่เทียบที่ดี
   ส่วน Qwen3 (ที่ emotion แทบไม่ช่วย) ไปเด่นในสไลด์ Summary/FineTuning เรื่อง redundancy
+
+## 5. แก้ StandardScalerWeek4 — ประโยคผิด
+- เดิม: "text tokens beat image tokens at **every layer**" (ไม่จริง — ชั้น 1-9 image tokens ชนะ)
+- ใหม่: "from the middle layers onward... best was a mid-to-late text-token layer"
+
+## 6. สไลด์ใหม่ 5 อัน (session 2026-07-06/07)
+- **DedupProblemWeek4** (Task 1, หลัง FairComparison): ให้เห็นภาพปัญหา rating ซ้ำ
+  (100→106 rows) + before/after fix + impact +0.004 CCC
+- **VlmFaithfulnessWeek4** (Task 2, หลัง VlmBackbone): ตารางเทียบทุก aspect กับเปเปอร์
+  Ryu & Yanaka แบบ MATCH/CLOSE/EXTENDED + แนบรูป Figure 1 จริงจากเปเปอร์
+  (asset: `assets/images/general/ryu_yanaka_fig1.png`, export `ryuYanakaFig1Img`)
+- **StandardScalerConceptWeek4** (Task 2, ก่อนตาราง StandardScaler เดิม): อธิบาย
+  แนวคิดว่าทำไม L2-norm พังที่ 4096 มิติ ด้วย mini-bar visualization (ไม่ใช่แค่ตัวเลข)
+- **LayerSweepWeek4** (Task 2, หลัง StandardScaler): กราฟเส้น LT vs LV ทั้ง 36 ชั้น,
+  จุดตัดที่ layer~10, มาร์ค layer 15 (paper) vs layer 32 (best จริง)
+- **FineTuneHowWeek4** (Task 3, ก่อนตารางผล FineTuning): ไดอะแกรม 2-stage
+  (fine-tune บน population → freeze → per-user Ridge = Personal Formula)
+  พร้อมอธิบายว่าทำไมไม่ joint-train backprop ทั้งคู่
+
+⚠️ ไม่มี Node.js/npm ในเครื่องตอนแก้ — ตรวจ syntax/props ด้วยการอ่านโค้ดเทียบ
+กับ component จริง (SlideHeader/SlideShell props) แทน `tsc --noEmit`
+ควรรัน `pnpm install && pnpm dev` เช็คก่อนพรีเซนต์จริง

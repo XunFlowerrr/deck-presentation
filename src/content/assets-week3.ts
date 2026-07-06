@@ -22,6 +22,7 @@ export { default as rq3DataFlowImg }   from '../assets/images/general/rq3_data_f
 export { default as rq4DataFlowImg }   from '../assets/images/general/rq4_data_flow.png';
 export { default as permutationConvergenceImg } from '../assets/images/general/permutation_convergence.png';
 export { default as nostalgiaByDomainImg } from '../assets/images/general/nostalgia_by_domain.png';
+export { default as ryuYanakaFig1Img } from '../assets/images/general/ryu_yanaka_fig1.png';
 
 // ── Problems ───────────────────────────────────────────────────────────────
 export { default as messyBox }         from '../assets/images/problems/messy-box.png';

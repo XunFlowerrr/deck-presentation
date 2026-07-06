@@ -10,9 +10,12 @@ import { PipelineWeek4 } from '../slides/PIAA week4/PipelineWeek4';
 import { RecapWeek4 } from '../slides/PIAA week4/RecapWeek4';
 import { AgendaWeek4 } from '../slides/PIAA week4/AgendaWeek4';
 import { FairComparisonWeek4 } from '../slides/PIAA week4/FairComparisonWeek4';
+import { DedupProblemWeek4 } from '../slides/PIAA week4/DedupProblemWeek4';
 import { WilcoxonWeek4 } from '../slides/PIAA week4/WilcoxonWeek4';
 import { WilcoxonGraphWeek4 } from '../slides/PIAA week4/WilcoxonGraphWeek4';
 import { VlmBackboneWeek4 } from '../slides/PIAA week4/VlmBackboneWeek4';
+import { VlmFaithfulnessWeek4 } from '../slides/PIAA week4/VlmFaithfulnessWeek4';
+import { StandardScalerConceptWeek4 } from '../slides/PIAA week4/StandardScalerConceptWeek4';
 import { StandardScalerWeek4 } from '../slides/PIAA week4/StandardScalerWeek4';
 import { LayerSweepWeek4 } from '../slides/PIAA week4/LayerSweepWeek4';
 import { FineTuneHowWeek4 } from '../slides/PIAA week4/FineTuneHowWeek4';
@@ -33,9 +36,12 @@ const PipelineWeek4Component = defineSlide(PipelineWeek4, 'PipelineWeek4');
 const RecapWeek4Component = defineSlide(RecapWeek4, 'RecapWeek4');
 const AgendaWeek4Component = defineSlide(AgendaWeek4, 'AgendaWeek4');
 const FairComparisonWeek4Component = defineSlide(FairComparisonWeek4, 'FairComparisonWeek4');
+const DedupProblemWeek4Component = defineSlide(DedupProblemWeek4, 'DedupProblemWeek4');
 const WilcoxonWeek4Component = defineSlide(WilcoxonWeek4, 'WilcoxonWeek4');
 const WilcoxonGraphWeek4Component = defineSlide(WilcoxonGraphWeek4, 'WilcoxonGraphWeek4');
 const VlmBackboneWeek4Component = defineSlide(VlmBackboneWeek4, 'VlmBackboneWeek4');
+const VlmFaithfulnessWeek4Component = defineSlide(VlmFaithfulnessWeek4, 'VlmFaithfulnessWeek4');
+const StandardScalerConceptWeek4Component = defineSlide(StandardScalerConceptWeek4, 'StandardScalerConceptWeek4');
 const StandardScalerWeek4Component = defineSlide(StandardScalerWeek4, 'StandardScalerWeek4');
 const LayerSweepWeek4Component = defineSlide(LayerSweepWeek4, 'LayerSweepWeek4');
 const FineTuneHowWeek4Component = defineSlide(FineTuneHowWeek4, 'FineTuneHowWeek4');
@@ -66,6 +72,7 @@ const deck: DeckSection[] = [
     label: 'Task 1',
     slides: [
       FairComparisonWeek4Component,
+      DedupProblemWeek4Component,
       WilcoxonWeek4Component,
       WilcoxonGraphWeek4Component,
     ],
@@ -74,6 +81,8 @@ const deck: DeckSection[] = [
     label: 'Task 2',
     slides: [
       VlmBackboneWeek4Component,
+      VlmFaithfulnessWeek4Component,
+      StandardScalerConceptWeek4Component,
       StandardScalerWeek4Component,
       LayerSweepWeek4Component,
     ],
