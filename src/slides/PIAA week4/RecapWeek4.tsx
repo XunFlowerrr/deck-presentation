@@ -52,7 +52,7 @@ export function RecapWeek4() {
               <div style={{ background: "rgba(124, 58, 237, 0.055)", border: "1px solid rgba(124, 58, 237, 0.2)", borderRadius: "20px", padding: "20px 24px" }}>
                 <h4 style={{ fontSize: 20, fontWeight: 800, color: "#111827", margin: "0 0 8px 0" }}>The Emotion Bottleneck & Signature</h4>
                 <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
-                  We must predict emotions accurately to predict beauty well. Formulas correlate highly across domains (<strong>p &lt; 10⁻⁹</strong>) — showing a unique personal signature (except nostalgia in Art).
+                  We must predict emotions accurately to predict beauty well.
                 </p>
               </div>
             </div>
@@ -93,7 +93,7 @@ export function RecapWeek4() {
               <div style={{ background: "rgba(16, 185, 129, 0.055)", border: "1px solid rgba(16, 185, 129, 0.2)", borderRadius: "20px", padding: "20px 24px" }}>
                 <h4 style={{ fontSize: 20, fontWeight: 800, color: "#111827", margin: "0 0 8px 0" }}>Stable Across Image Types</h4>
                 <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
-                  The personal emotion weights stay highly consistent across Art, Fashion, and Landscape. Formulas correlate highly across domains (p less than 10⁻⁹) — showing a unique personal signature (except nostalgia in Art).
+                  The personal emotion weights stay highly consistent across Art, Fashion, and Landscape. Formulas correlate highly across domains (<strong>p &lt; 10⁻⁹</strong>) — showing a unique personal signature (except nostalgia in Art).
                 </p>
               </div>
             </div>
