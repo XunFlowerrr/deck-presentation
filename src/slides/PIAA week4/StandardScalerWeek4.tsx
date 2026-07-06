@@ -199,21 +199,6 @@ export function StandardScalerWeek4() {
             alignItems: "flex-start",
           }}
         >
-          <div
-            style={{
-              width: 36,
-              height: 36,
-              borderRadius: 10,
-              background: "rgba(59, 130, 246, 0.1)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-              fontSize: 18,
-            }}
-          >
-            🔍
-          </div>
           <div>
             <div
               style={{
@@ -223,12 +208,9 @@ export function StandardScalerWeek4() {
                 fontWeight: 500,
               }}
             >
-              <strong>CLIP (512 dims) barely changes</strong> — only the
-              4096-dim VLM collapses.{" "}
-              <span style={{ color: "#3B82F6", fontWeight: 700 }}>
-                It's a dimensionality problem.
-              </span>{" "}
-              StandardScaler is essential for high-dim features.
+              Notice that CLIP, with only 512 numbers per image, barely changes.
+              Only the VLM with 4096 numbers collapses. So the problem comes from
+              having so many dimensions, and StandardScaler is what fixes it.
             </div>
           </div>
         </motion.div>
@@ -246,21 +228,6 @@ export function StandardScalerWeek4() {
             alignItems: "flex-start",
           }}
         >
-          <div
-            style={{
-              width: 36,
-              height: 36,
-              borderRadius: 10,
-              background: "rgba(16, 185, 129, 0.1)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-              fontSize: 18,
-            }}
-          >
-            ✅
-          </div>
           <div>
             <div
               style={{
@@ -270,12 +237,10 @@ export function StandardScalerWeek4() {
                 fontWeight: 500,
               }}
             >
-              With StandardScaler fixed,{" "}
-              <strong style={{ color: "#059669" }}>
-                VLM beats CLIP by ~0.08 CCC
-              </strong>
-              , and text tokens beat image tokens at every layer — matching the
-              paper.
+              Once the scaling was fixed, the VLM did beat CLIP, by about 0.08 in
+              CCC. And from the middle layers onward the text tokens worked better
+              than the image tokens — the best was a mid-to-late text-token layer,
+              matching the paper's choice of text tokens.
             </div>
           </div>
         </motion.div>

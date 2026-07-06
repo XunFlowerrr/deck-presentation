@@ -13,6 +13,8 @@ import { FairComparisonWeek4 } from '../slides/PIAA week4/FairComparisonWeek4';
 import { WilcoxonWeek4 } from '../slides/PIAA week4/WilcoxonWeek4';
 import { VlmBackboneWeek4 } from '../slides/PIAA week4/VlmBackboneWeek4';
 import { StandardScalerWeek4 } from '../slides/PIAA week4/StandardScalerWeek4';
+import { LayerSweepWeek4 } from '../slides/PIAA week4/LayerSweepWeek4';
+import { FineTuneHowWeek4 } from '../slides/PIAA week4/FineTuneHowWeek4';
 import { FineTuningWeek4 } from '../slides/PIAA week4/FineTuningWeek4';
 import { SummaryWeek4 } from '../slides/PIAA week4/SummaryWeek4';
 import { NextStepsWeek4 } from '../slides/PIAA week4/NextStepsWeek4';
@@ -33,6 +35,8 @@ const FairComparisonWeek4Component = defineSlide(FairComparisonWeek4, 'FairCompa
 const WilcoxonWeek4Component = defineSlide(WilcoxonWeek4, 'WilcoxonWeek4');
 const VlmBackboneWeek4Component = defineSlide(VlmBackboneWeek4, 'VlmBackboneWeek4');
 const StandardScalerWeek4Component = defineSlide(StandardScalerWeek4, 'StandardScalerWeek4');
+const LayerSweepWeek4Component = defineSlide(LayerSweepWeek4, 'LayerSweepWeek4');
+const FineTuneHowWeek4Component = defineSlide(FineTuneHowWeek4, 'FineTuneHowWeek4');
 const FineTuningWeek4Component = defineSlide(FineTuningWeek4, 'FineTuningWeek4');
 const SummaryWeek4Component = defineSlide(SummaryWeek4, 'SummaryWeek4');
 const NextStepsWeek4Component = defineSlide(NextStepsWeek4, 'NextStepsWeek4');
@@ -68,11 +72,15 @@ const deck: DeckSection[] = [
     slides: [
       VlmBackboneWeek4Component,
       StandardScalerWeek4Component,
+      LayerSweepWeek4Component,
     ],
   },
   {
     label: 'Task 3',
-    slides: [FineTuningWeek4Component],
+    slides: [
+      FineTuneHowWeek4Component,
+      FineTuningWeek4Component,
+    ],
   },
   {
     label: 'Summary',

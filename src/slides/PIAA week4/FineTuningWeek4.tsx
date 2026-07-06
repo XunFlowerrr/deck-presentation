@@ -52,14 +52,14 @@ const TABLE_DATA: TableRow[] = [
     kind: "ours",
   },
   {
-    backbone: "ICI (Hiyoshi-san)",
+    backbone: "ICI (Hayashi-san)",
     directCcc: "–",
     hybridCcc: "0.409",
     emotionAdds: "",
     kind: "ref",
   },
   {
-    backbone: "MIR (Hiyoshi-san)",
+    backbone: "MIR (Hayashi-san)",
     directCcc: "–",
     hybridCcc: "0.411",
     emotionAdds: "",
@@ -183,26 +183,12 @@ export function FineTuningWeek4() {
                 <th
                   style={{
                     ...headerStyle,
-                    width: "18%",
-                    textAlign: "center",
-                  }}
-                >
-                  emotion adds
-                </th>
-                <th
-                  style={{
-                    ...headerStyle,
-                    width: "16%",
+                    width: "34%",
                     textAlign: "center",
                     borderTopRightRadius: 16,
-                    fontSize: 11,
-                    fontWeight: 600,
-                    color: "rgba(255,255,255,0.5)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
                   }}
                 >
-                  Signal
+                  How much the emotion step helps
                 </th>
               </tr>
             </thead>
@@ -275,7 +261,7 @@ export function FineTuningWeek4() {
                       {row.hybridCcc}
                     </td>
 
-                    {/* emotion adds */}
+                    {/* how much the emotion step helps */}
                     <td
                       style={{
                         ...numericCell,
@@ -284,29 +270,6 @@ export function FineTuningWeek4() {
                       }}
                     >
                       {row.emotionAdds || "—"}
-                    </td>
-
-                    {/* Signal bar */}
-                    <td style={{ ...cellStyle, textAlign: "center" }}>
-                      {row.emotionAdds && (
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          <div
-                            style={{
-                              height: 8,
-                              borderRadius: 4,
-                              background: `linear-gradient(90deg, ${getEmotionColor(row.emotionAdds)}44, ${getEmotionColor(row.emotionAdds)})`,
-                              width: `${Math.min(100, parseFloat(row.emotionAdds) * 1200)}%`,
-                              minWidth: 8,
-                            }}
-                          />
-                        </div>
-                      )}
                     </td>
                   </motion.tr>
                 );
@@ -331,21 +294,6 @@ export function FineTuningWeek4() {
               alignItems: "flex-start",
             }}
           >
-            <span
-              style={{
-                fontSize: 22,
-                flexShrink: 0,
-                width: 34,
-                height: 34,
-                borderRadius: 10,
-                background: "rgba(16, 185, 129, 0.1)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              ★
-            </span>
             <div
               style={{
                 fontSize: 18,
@@ -354,10 +302,11 @@ export function FineTuningWeek4() {
                 fontWeight: 500,
               }}
             >
-              Small fine-tuned{" "}
-              <strong style={{ color: "#059669" }}>CLIP (0.400)</strong> beats
-              giant frozen{" "}
-              <strong style={{ color: "#6B7280" }}>Qwen3 (0.382)</strong>
+              A small fine-tuned{" "}
+              <strong style={{ color: "#059669" }}>CLIP (0.400)</strong> does
+              better than the much larger frozen{" "}
+              <strong style={{ color: "#6B7280" }}>Qwen3 (0.382)</strong>. We
+              don't need a huge model to get good results.
             </div>
           </motion.div>
 
@@ -375,21 +324,6 @@ export function FineTuningWeek4() {
               alignItems: "flex-start",
             }}
           >
-            <span
-              style={{
-                fontSize: 18,
-                flexShrink: 0,
-                width: 34,
-                height: 34,
-                borderRadius: 10,
-                background: "rgba(124, 58, 237, 0.1)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              📉
-            </span>
             <div
               style={{
                 fontSize: 18,
@@ -398,8 +332,10 @@ export function FineTuningWeek4() {
                 fontWeight: 500,
               }}
             >
-              <strong style={{ color: "#7C3AED" }}>Redundancy pattern:</strong>{" "}
-              the better the backbone, the less the emotion step adds{" "}
+              <strong style={{ color: "#7C3AED" }}>
+                A pattern worth noting:
+              </strong>{" "}
+              the stronger the backbone, the less the emotion step adds{" "}
               <span
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
@@ -409,6 +345,7 @@ export function FineTuningWeek4() {
                 (<span style={{ color: "#059669" }}>+0.073</span> →{" "}
                 <span style={{ color: "#DC2626" }}>+0.006</span>)
               </span>
+              . A good backbone already captures emotion on its own.
             </div>
           </motion.div>
         </div>
@@ -426,7 +363,6 @@ export function FineTuningWeek4() {
             border: "1px solid rgba(107, 114, 128, 0.1)",
           }}
         >
-          <span style={{ fontSize: 14, opacity: 0.6 }}>🔒</span>
           <span
             style={{
               fontSize: 15,
@@ -435,7 +371,8 @@ export function FineTuningWeek4() {
               fontStyle: "italic",
             }}
           >
-            All numbers are leak-free: test users excluded from emotion targets.
+            These numbers are leak-free: the people we test on are never used to
+            build the training target.
           </span>
         </motion.div>
       </div>

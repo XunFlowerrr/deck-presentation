@@ -11,23 +11,23 @@ const CARDS = [
   {
     number: 1,
     accent: "#7C3AED",
-    title: "Fair Comparison",
+    title: "A fair comparison",
     description:
-      "Re-ran ICI/MIR baselines on the exact same data split for a truly fair comparison.",
+      "I re-ran Hayashi-san's ICI and MIR baselines on exactly the same data split as ours, so the comparison is fair.",
   },
   {
     number: 2,
     accent: "#3B82F6",
-    title: "VLM Backbone",
+    title: "A different backbone",
     description:
-      "Tried a Vision-Language Model (Qwen3-VL-8B) as the backbone instead of CLIP, following Ryu & Yanaka.",
+      "I tried a vision-language model, Qwen3-VL-8B, in place of CLIP, following the Ryu & Yanaka paper Hayashi-san recommended.",
   },
   {
     number: 3,
     accent: "#10B981",
-    title: "Fine-tuning",
+    title: "Fine-tuning the backbone",
     description:
-      "Tried fine-tuning the backbone on emotion prediction instead of keeping it frozen.",
+      "Instead of keeping the backbone frozen, I tried fine-tuning it to predict emotions.",
   },
 ];
 

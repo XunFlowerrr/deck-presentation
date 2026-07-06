@@ -15,10 +15,10 @@ const CLIP_ROWS = [
 ];
 
 const QWEN_ROWS = [
-  { n: "10", median: "+0.004", win: "65.6%", effect: "0.29" },
-  { n: "25", median: "+0.031", win: "80.6%", effect: "0.60" },
-  { n: "50", median: "+0.045", win: "85.5%", effect: "0.73" },
-  { n: "100", median: "+0.032", win: "82.9%", effect: "0.69" },
+  { n: "10", median: "+0.001", win: "68.0%", effect: "0.38" },
+  { n: "25", median: "+0.053", win: "78.3%", effect: "0.62" },
+  { n: "50", median: "+0.058", win: "79.3%", effect: "0.64" },
+  { n: "100", median: "+0.049", win: "80.1%", effect: "0.62" },
 ];
 
 const HEADERS = ["n", "median Δ", "Hybrid win %", "effect r"];
@@ -217,17 +217,7 @@ export function WilcoxonWeek4() {
             alignItems: "flex-start",
           }}
         >
-          <div
-            style={{
-              fontSize: 28,
-              lineHeight: 1,
-              flexShrink: 0,
-              marginTop: 2,
-            }}
-          >
-            💡
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             <span
               style={{
                 fontSize: 18,
@@ -235,7 +225,7 @@ export function WilcoxonWeek4() {
                 color: "#7C3AED",
               }}
             >
-              Key Insight
+              What this tells us
             </span>
             <p
               style={{
@@ -245,30 +235,11 @@ export function WilcoxonWeek4() {
                 lineHeight: 1.65,
               }}
             >
-              Both lines near zero at <strong>n=10</strong>, jump at{" "}
-              <strong>n=25</strong>, stay high. CLIP benefits more than Qwen2
-              because CLIP's direct version is weaker (
-              <span
-                style={{
-                  fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-                  fontWeight: 700,
-                  color: "#7C3AED",
-                }}
-              >
-                0.293
-              </span>{" "}
-              vs{" "}
-              <span
-                style={{
-                  fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-                  fontWeight: 700,
-                  color: "#3B82F6",
-                }}
-              >
-                0.321
-              </span>
-              ), so there is more room for the emotion pathway to add value. All{" "}
-              <strong>p &lt; 0.001</strong> (Wilcoxon signed-rank test).
+              With only 10 images per person, the emotion step barely helps. But
+              from 25 images up, it helps a lot, and stays strong. We see the
+              same shape for both backbones, so this isn't a quirk of one model.
+              Every result here is statistically significant (Wilcoxon
+              signed-rank test, p &lt; 0.001).
             </p>
           </div>
         </motion.div>

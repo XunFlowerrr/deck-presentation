@@ -8,18 +8,17 @@ const GLOWS = [
 ];
 
 const REFERENCE_ITEMS = [
-  { icon: "🧠", text: "Qwen3-VL model" },
-  { icon: "📐", text: "Layer 15, text tokens" },
-  { icon: "📊", text: "Average pooling" },
-  { icon: "📝", text: "Specific prompt template" },
-  { icon: "⚙️", text: "StandardScaler preprocessing" },
+  { icon: "•", text: "Qwen3-VL model" },
+  { icon: "•", text: "Layer 15, using the text tokens" },
+  { icon: "•", text: "Average pooling" },
+  { icon: "•", text: "A specific prompt" },
+  { icon: "•", text: "StandardScaler before Ridge" },
 ];
 
 const MY_ITEMS = [
-  { icon: "🚀", text: "Used the largest 8B model (not the 4B they recommend)" },
-  { icon: "💾", text: "Saved ALL layers in one GPU run" },
-  { icon: "🎯", text: "Can pick best layer afterward without re-running" },
-  { icon: "⚡", text: "Designed for efficient GPU borrowing" },
+  { icon: "•", text: "Used the largest 8B model, not the 4B they recommend" },
+  { icon: "•", text: "Saved every layer in a single GPU run" },
+  { icon: "•", text: "So I can pick the best layer later, without borrowing the GPU again" },
 ];
 
 function ConfigCard({
@@ -103,7 +102,7 @@ function ConfigCard({
               gap: 14,
             }}
           >
-            <span style={{ fontSize: 22, lineHeight: 1, flexShrink: 0, marginTop: 2 }}>
+            <span style={{ fontSize: 22, lineHeight: 1.3, flexShrink: 0, color: accent, fontWeight: 800 }}>
               {item.icon}
             </span>
             <span

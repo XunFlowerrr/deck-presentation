@@ -74,7 +74,7 @@ export function NextStepsWeek4() {
               gap: 10,
             }}
           >
-            🧪 Planned Experiments
+What I plan to try next
           </h3>
 
           <ol
@@ -129,7 +129,7 @@ export function NextStepsWeek4() {
               gap: 10,
             }}
           >
-            💬 Questions for Discussion
+Questions I'd like to discuss
           </h3>
 
           <ol
