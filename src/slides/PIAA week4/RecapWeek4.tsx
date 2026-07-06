@@ -34,22 +34,27 @@ export function RecapWeek4() {
           }}
         >
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
               <span style={{ fontSize: 14, fontWeight: 900, color: "white", backgroundColor: "#7C3AED", padding: "6px 14px", borderRadius: "10px" }}>MEETING 1</span>
               <h3 style={{ fontSize: 24, fontWeight: 900, color: "#7C3AED", margin: 0 }}>Emotion Mediation is Feasible</h3>
             </div>
-            <p style={{ fontSize: 20, color: "#374151", lineHeight: 1.6, margin: "0 0 16px 0" }}>
-              Tested whether using emotion as a middle step is possible. 
-              <strong> P-oracle = 0.72 (upper bound)</strong>. 
-              When we feed in the true emotions, we clearly beat predicting beauty directly.
-            </p>
             
-            {/* Plain bullet point for Emotion Bottleneck */}
-            <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginTop: 24 }}>
-              <span style={{ fontSize: 20, color: "#7C3AED", lineHeight: 1.3 }}>•</span>
-              <p style={{ fontSize: 19, color: "#1F2937", lineHeight: 1.5, margin: 0, fontWeight: 550 }}>
-                <strong>The Emotion Bottleneck:</strong> We learned that to predict beauty well through emotions, we must first predict emotions accurately.
-              </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+              {/* Meeting 1a */}
+              <div style={{ background: "rgba(124, 58, 237, 0.055)", border: "1px solid rgba(124, 58, 237, 0.2)", borderRadius: "20px", padding: "20px 24px" }}>
+                <h4 style={{ fontSize: 20, fontWeight: 800, color: "#111827", margin: "0 0 8px 0" }}>Feasibility & Upper Bound</h4>
+                <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
+                  We tested if using emotion as a middle step is possible. Yes: true emotions reach <strong>0.72 (upper bound)</strong>, beating direct beauty prediction.
+                </p>
+              </div>
+
+              {/* Meeting 1b */}
+              <div style={{ background: "rgba(124, 58, 237, 0.055)", border: "1px solid rgba(124, 58, 237, 0.2)", borderRadius: "20px", padding: "20px 24px" }}>
+                <h4 style={{ fontSize: 20, fontWeight: 800, color: "#111827", margin: "0 0 8px 0" }}>The Emotion Bottleneck & Signature</h4>
+                <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
+                  We must predict emotions accurately to predict beauty well. Formulas correlate highly across domains (<strong>p &lt; 10⁻⁹</strong>) — showing a unique personal signature (except nostalgia in Art).
+                </p>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -88,7 +93,7 @@ export function RecapWeek4() {
               <div style={{ background: "rgba(16, 185, 129, 0.055)", border: "1px solid rgba(16, 185, 129, 0.2)", borderRadius: "20px", padding: "20px 24px" }}>
                 <h4 style={{ fontSize: 20, fontWeight: 800, color: "#111827", margin: "0 0 8px 0" }}>Stable Across Image Types</h4>
                 <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
-                  The personal emotion weights stay highly consistent across Art, Fashion, and Landscape.
+                  The personal emotion weights stay highly consistent across Art, Fashion, and Landscape. Formulas correlate highly across domains (p less than 10⁻⁹) — showing a unique personal signature (except nostalgia in Art).
                 </p>
               </div>
             </div>

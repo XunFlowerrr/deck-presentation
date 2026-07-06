@@ -247,24 +247,30 @@ export function WilcoxonWeek4() {
             </span>
             <ul
               style={{
-                fontSize: 17,
+                fontSize: 16,
                 color: "#374151",
                 margin: 0,
-                lineHeight: 1.6,
+                lineHeight: 1.55,
                 paddingLeft: 20,
                 display: "flex",
                 flexDirection: "column",
-                gap: 6,
+                gap: 5,
               }}
             >
               <li>
-                <strong>Win %</strong> indicates the percentage of users who see positive gains with emotion mediation.
+                <strong>n</strong> is the number of personalization images per user (support size).
               </li>
               <li>
-                <strong>Median Δ</strong> is the average improvement in CCC score (Hybrid − Direct) per user.
+                <strong>Median Δ</strong> is the median of Hybrid minus Direct CCC score per user. Higher positive value means emotion mediation helps more (e.g. <strong>+0.071 CCC</strong> for CLIP at n=100).
               </li>
               <li>
-                All results are statistically significant (Wilcoxon signed-rank test, p &lt; 0.001).
+                <strong>Win %</strong> is the percentage of users who see positive gains (Hybrid CCC &gt; Direct CCC). At n=100, it is <strong>91.7%</strong>, showing almost everyone benefits.
+              </li>
+              <li>
+                <strong>Effect r</strong> is the Wilcoxon effect size showing how strong the difference is (0.3 = small, 0.5 = large). At n=100, we get <strong>0.82</strong>, which is extremely large.
+              </li>
+              <li>
+                All results are statistically significant (Wilcoxon signed-rank test, <strong>p &lt; 0.001</strong>).
               </li>
             </ul>
           </div>

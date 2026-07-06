@@ -26,7 +26,7 @@ const questions = [
   "Is it worth fine-tuning Qwen too, or is \"small fine-tuned CLIP beats giant frozen Qwen\" strong enough?",
   "Should I keep chasing accuracy, or start focusing on interpretability findings?",
   "Can I use my reproduced ICI/MIR numbers (0.409/0.411) as the official comparison, since they're on exactly the same split?",
-  "Given these findings, is IEEE Access still the right venue? Related work to check?",
+  "What tier of publication should we target, and is there additional related work to study for novelty?",
 ];
 
 export function NextStepsWeek4() {

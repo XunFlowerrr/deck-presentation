@@ -163,8 +163,8 @@ export function WilcoxonGraphWeek4() {
               Data Threshold: n ≥ 25
             </h4>
             <p style={{ margin: 0, fontSize: 18, color: "#4B5563", lineHeight: 1.6 }}>
-              At <strong>n=10</strong> ratings per user, the emotion step barely adds value (68% win rate). 
-              But from <strong>n=25</strong> ratings and above, it jumps and remains consistently high.
+              At <strong>n=10</strong> (very few images), the emotion step barely helps (win rate 68%, effect size 0.36). 
+              But from <strong>n=25</strong> and above, the numbers jump up and stay high (win rate &gt;84%, effect size &gt;0.6).
             </p>
           </div>
 
@@ -177,11 +177,10 @@ export function WilcoxonGraphWeek4() {
             }}
           >
             <h4 style={{ margin: "0 0 10px", fontSize: 18, fontWeight: 800, color: "#3B82F6" }}>
-              Why CLIP gains more
+              Robust Across Backbones
             </h4>
             <p style={{ margin: 0, fontSize: 18, color: "#4B5563", lineHeight: 1.6 }}>
-              CLIP's direct prediction is weaker, leaving a larger gap for the emotion bottleneck pathway to contribute. 
-              Qwen2-vision starts with a stronger direct representation, so the emotion step has less headroom to add.
+              Both CLIP and Qwen2-vision show the exact same pattern. This means the result is robust across different backbones and is not a fluke of a single model.
             </p>
           </div>
         </motion.div>

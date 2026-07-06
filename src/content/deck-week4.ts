@@ -72,7 +72,6 @@ const deck: DeckSection[] = [
     label: 'Task 1',
     slides: [
       FairComparisonWeek4Component,
-      DedupProblemWeek4Component,
       WilcoxonWeek4Component,
       WilcoxonGraphWeek4Component,
     ],
@@ -81,8 +80,6 @@ const deck: DeckSection[] = [
     label: 'Task 2',
     slides: [
       VlmBackboneWeek4Component,
-      VlmFaithfulnessWeek4Component,
-      StandardScalerConceptWeek4Component,
       StandardScalerWeek4Component,
       LayerSweepWeek4Component,
     ],
@@ -103,6 +100,14 @@ const deck: DeckSection[] = [
     slides: [
       NextStepsWeek4Component,
       ThankYouComponent,
+    ],
+  },
+  {
+    label: 'Appendix',
+    slides: [
+      DedupProblemWeek4Component,
+      StandardScalerConceptWeek4Component,
+      VlmFaithfulnessWeek4Component,
     ],
   },
 ];
