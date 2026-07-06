@@ -11,21 +11,21 @@ export function RQ3Results() {
   const significantPairs = [
     {
       pair: "Impressed Weight × Conscientiousness",
-      r: "-0.180",
+      r: "-0.18",
       pValue: "0.041",
       bonferroni: "No (p > 0.0014)",
       color: "rgba(124, 58, 237, 0.03)",
     },
     {
       pair: "Motivated Weight × Openness",
-      r: "+0.184",
+      r: "+0.18",
       pValue: "0.037",
       bonferroni: "No (p > 0.0014)",
       color: "rgba(59, 130, 246, 0.03)",
     },
     {
       pair: "Sad Weight × Agreeableness",
-      r: "+0.199",
+      r: "+0.20",
       pValue: "0.024",
       bonferroni: "No (p > 0.0014)",
       color: "rgba(16, 185, 129, 0.03)",
@@ -36,8 +36,8 @@ export function RQ3Results() {
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="RQ3: Psychological Grounding"
-        title="RQ3 Results: "
-        highlight="Weak Personality Link."
+        title="RQ3 — What we found"
+        highlight="Weak personality link."
       />
 
       <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 32, justifyContent: "center", paddingBottom: 16 }}>
@@ -55,7 +55,7 @@ export function RQ3Results() {
           }}
         >
           <h3 style={{ fontSize: 24, fontWeight: 900, color: "#111827", margin: "0 0 16px 0", textAlign: "center" }}>
-            Significant Correlation Pairs (p &lt; 0.05)
+            3 pairs appeared significant at p &lt; 0.05
           </h3>
           
           <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
@@ -81,7 +81,7 @@ export function RQ3Results() {
 
           <div style={{ borderTop: "1px solid #F3F4F6", paddingTop: 14, marginTop: 14, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <span style={{ fontSize: 16, color: "#9CA3AF", fontStyle: "italic" }}>
-              * Bonferroni correction sets significance threshold to alpha = 0.0014 (0.05 / 35 pairs).
+              * But we tested 35 pairs — Bonferroni correction requires alpha = 0.0014 (0.05 / 35).
             </span>
             <span style={{ fontSize: 16, fontWeight: 600, color: "#EF4444" }}>
               Hypothesis Test Count: 35
@@ -103,14 +103,14 @@ export function RQ3Results() {
             }}
           >
             <h4 style={{ fontSize: 18, fontWeight: 800, color: "#EF4444", marginBottom: 10, marginTop: 0 }}>
-              ❌ Hypotheses Not Supported
+              ❌ Pre-specified hypotheses not supported
             </h4>
             <ul style={{ margin: 0, paddingLeft: 20, fontSize: 15, color: "#4B5563", lineHeight: 1.5 }}>
               <li>
-                <strong>Openness × Intellect Weight:</strong> No significant correlation.
+                <strong>Openness × intellect weight:</strong> r = -0.10, p = 0.26.
               </li>
               <li>
-                <strong>Stability × Negative Emotion Weight:</strong> No significant correlation.
+                <strong>Emotional Stability × negative emotion weights:</strong> r = -0.01, p = 0.95.
               </li>
             </ul>
           </motion.div>
@@ -130,10 +130,10 @@ export function RQ3Results() {
             </h4>
             <ul style={{ margin: 0, paddingLeft: 20, fontSize: 15, color: "#4B5563", lineHeight: 1.5 }}>
               <li>
-                <strong>Small Effects:</strong> Correlations range around <em>r</em> = 0.18 to 0.20.
+                <strong>Small effects:</strong> Correlations range around <em>r</em> = 0.18 to 0.20.
               </li>
               <li>
-                <strong>False Positives:</strong> 1–2 false positives are expected by chance alone under 35 tests.
+                <strong>False positives:</strong> 1–2 false positives are expected by chance alone under 35 tests.
               </li>
             </ul>
           </motion.div>
@@ -152,7 +152,7 @@ export function RQ3Results() {
               💡 Honest Summary
             </h4>
             <p style={{ fontSize: 15, color: "#374151", margin: 0, lineHeight: 1.5 }}>
-              Aesthetic preferences are highly specific and do not strongly map to broad Big Five categories. Most personalization comes from how individuals perceive emotions within specific images.
+              No strong evidence that the personal formula reflects Big Five personality. Personal preferences are more specific than broad traits can capture, consistent with Experiment 2 finding that 88% of personalization comes from perceiving emotions differently, not weighting them differently.
             </p>
           </motion.div>
 

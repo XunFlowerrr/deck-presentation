@@ -12,7 +12,7 @@ export function RQ4Setup() {
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="RQ4: Cross-Domain Consistency"
-        title="RQ4 Setup: "
+        title="RQ4 — How we tested it"
         highlight="Pipeline & Design."
       />
 
@@ -89,10 +89,12 @@ export function RQ4Setup() {
           >
             <h4 style={{ fontSize: 21, fontWeight: 800, color: "#EC4899", marginBottom: 8, display: "flex", alignItems: "center", gap: 8 }}>
               <span style={{ fontSize: 15, background: "#EC4899", color: "white", padding: "2px 8px", borderRadius: "6px" }}>1</span>
-              Three Formula Vectors
+              Fit a personal formula per user per domain
             </h4>
-            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
-              Each user has three distinct formula vectors (each with 7 weights) fit independently from their ratings across three image domains: <strong>Art</strong>, <strong>Fashion</strong>, and <strong>Landscape</strong>.
+            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.55, margin: 0 }}>
+              Starting from the formula fitting earlier, each user has 3 formula vectors: one from Art, one from Fashion, and one from Landscape.
+              <br />
+              Each vector has 7 values.
             </p>
           </motion.div>
 
@@ -108,10 +110,14 @@ export function RQ4Setup() {
           >
             <h4 style={{ fontSize: 21, fontWeight: 800, color: "#3B82F6", marginBottom: 8, display: "flex", alignItems: "center", gap: 8 }}>
               <span style={{ fontSize: 15, background: "#3B82F6", color: "white", padding: "2px 8px", borderRadius: "6px" }}>2</span>
-              Same-User Correlation
+              Same-user correlation
             </h4>
-            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
-              For every user, calculate the Pearson correlation coefficient between their weight vectors for each pair of domains (e.g. Art & Fashion). A high correlation indicates a consistent personal aesthetic formula.
+            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.55, margin: 0 }}>
+              For every user, calculate the Pearson correlation coefficient between their weight vectors for each pair of domains.
+              <br />
+              A high correlation indicates a consistent personal aesthetic formula.
+              <br />
+              Repeat for all 3 domain pairs × 129 users = 387 r values total.
             </p>
           </motion.div>
 
@@ -127,10 +133,14 @@ export function RQ4Setup() {
           >
             <h4 style={{ fontSize: 21, fontWeight: 800, color: "#F59E0B", marginBottom: 8, display: "flex", alignItems: "center", gap: 8 }}>
               <span style={{ fontSize: 15, background: "#F59E0B", color: "white", padding: "2px 8px", borderRadius: "6px" }}>3</span>
-              Permutation Baseline Test
+              Permutation baseline test
             </h4>
-            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
-              To ensure similarity isn't accidental, construct a baseline by randomly pairing different users across domains <strong>2000 times</strong>, measuring their average correlation. Then compare: is same-user correlation significantly higher?
+            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.55, margin: 0 }}>
+              Randomly pick User A's Art formula and User B's Fashion formula (different people).
+              <br />
+              Compute r between them and repeat 2000 times to build the random-pair distribution.
+              <br />
+              Then compare whether same-user r is significantly higher than the baseline.
             </p>
           </motion.div>
 

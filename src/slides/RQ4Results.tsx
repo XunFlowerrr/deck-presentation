@@ -38,8 +38,8 @@ export function RQ4Results() {
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="RQ4: Cross-Domain Consistency"
-        title="RQ4 Results: "
-        highlight="Stable Personal Signatures."
+        title="RQ4 — What we found"
+        highlight="Stable personal signatures."
       />
 
       <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 32, justifyContent: "center", paddingBottom: 16 }}>
@@ -57,17 +57,17 @@ export function RQ4Results() {
           }}
         >
           <h3 style={{ fontSize: 24, fontWeight: 900, color: "#111827", margin: "0 0 16px 0", textAlign: "center" }}>
-            Cross-Domain Formula Consistency (Pearson Correlation)
+            Domain pair | Same-user r | Random-pair r | Difference | p-value
           </h3>
           
           <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
             <thead>
               <tr style={{ borderBottom: "2px solid #E5E7EB" }}>
-                <th style={{ padding: "16px 20px", fontSize: 18, fontWeight: 700, color: "#6B7280" }}>DOMAIN PAIR</th>
-                <th style={{ padding: "16px 20px", fontSize: 18, fontWeight: 700, color: "#7C3AED", textAlign: "center" }}>SAME-USER CORRELATION</th>
-                <th style={{ padding: "16px 20px", fontSize: 18, fontWeight: 700, color: "#6B7280", textAlign: "center" }}>RANDOM-PAIR BASELINE</th>
-                <th style={{ padding: "16px 20px", fontSize: 18, fontWeight: 700, color: "#10B981", textAlign: "center" }}>DIFFERENCE (GAIN)</th>
-                <th style={{ padding: "16px 20px", fontSize: 18, fontWeight: 700, color: "#6B7280", textAlign: "center" }}>P-VALUE</th>
+                <th style={{ padding: "16px 20px", fontSize: 18, fontWeight: 700, color: "#6B7280" }}>Domain pair</th>
+                <th style={{ padding: "16px 20px", fontSize: 18, fontWeight: 700, color: "#7C3AED", textAlign: "center" }}>Same-user r</th>
+                <th style={{ padding: "16px 20px", fontSize: 18, fontWeight: 700, color: "#6B7280", textAlign: "center" }}>Random-pair r</th>
+                <th style={{ padding: "16px 20px", fontSize: 18, fontWeight: 700, color: "#10B981", textAlign: "center" }}>Difference</th>
+                <th style={{ padding: "16px 20px", fontSize: 18, fontWeight: 700, color: "#6B7280", textAlign: "center" }}>p-value</th>
               </tr>
             </thead>
             <tbody>
@@ -85,7 +85,7 @@ export function RQ4Results() {
 
           <div style={{ borderTop: "1px solid #F3F4F6", paddingTop: 14, marginTop: 14, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <span style={{ fontSize: 16, color: "#9CA3AF", fontStyle: "italic" }}>
-              * Same-user correlation is significantly higher than the random-pair baseline (p &lt; 0.0001 for all pairs).
+              * The same-user formula is significantly more consistent than random pairs across all 3 domain combinations.
             </span>
             <span style={{ fontSize: 16, fontWeight: 600, color: "#7C3AED" }}>
               Permutations Run: 2000
@@ -112,11 +112,11 @@ export function RQ4Results() {
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               <div style={{ display: "flex", justifyContent: "space-between", fontSize: 15 }}>
                 <span style={{ fontWeight: 700, color: "#111827" }}>😄 Amused (Most Consistent)</span>
-                <span style={{ fontWeight: 800, color: "#10B981" }}>r ≈ 0.57</span>
+                <span style={{ fontWeight: 800, color: "#10B981" }}>r = 0.57</span>
               </div>
               <div style={{ display: "flex", justifyContent: "space-between", fontSize: 15 }}>
                 <span style={{ fontWeight: 700, color: "#111827" }}>⏳ Nostalgic (Least Consistent)</span>
-                <span style={{ fontWeight: 800, color: "#EF4444" }}>r ≈ 0.14</span>
+                <span style={{ fontWeight: 800, color: "#EF4444" }}>r = 0.14</span>
               </div>
             </div>
           </motion.div>
@@ -135,7 +135,7 @@ export function RQ4Results() {
               🔍 Shared Baseline Context
             </h4>
             <p style={{ fontSize: 14, color: "#4B5563", margin: 0, lineHeight: 1.5 }}>
-              The high baseline (~0.65) reflects shared human preferences (e.g., negative distasteful weights). The +0.12 same-user gain confirms an identifiable personal signature.
+              The high baseline (~0.65) reflects shared human preferences, such as almost everyone weighting distasteful negatively. The +0.12 gap on top confirms an identifiable personal signature.
             </p>
           </motion.div>
 
@@ -153,7 +153,7 @@ export function RQ4Results() {
               💡 Key Conclusion
             </h4>
             <p style={{ fontSize: 14, color: "#374151", margin: 0, lineHeight: 1.5 }}>
-              A user's beauty formula represents a stable personal signature that does not shift across image types. This supports the personalization approach in our pipeline.
+              A user's beauty formula represents a stable personal signature that does not shift across image types, supporting the personalization approach in our pipeline.
             </p>
           </motion.div>
 

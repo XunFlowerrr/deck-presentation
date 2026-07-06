@@ -11,109 +11,45 @@ export function ProblemsNextSteps() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Problems & Next Steps"
-        title="Challenges & "
-        highlight="Roadmap."
+        label="Future Directions"
+        title="What's next"
+        highlight="Two follow-ups."
       />
 
-      <div
-        style={{
-          flex: 1,
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 48,
-          alignItems: "stretch",
-          justifyContent: "center",
-          margin: "24px 0",
-        }}
-      >
-        {/* Left Column: Problems/Challenges */}
+      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", minHeight: 0 }}>
         <motion.div
           {...cardRise(0.1)}
           style={{
-            background: "rgba(239, 68, 68, 0.02)",
-            border: "1px solid rgba(239, 68, 68, 0.15)",
-            borderRadius: "28px",
-            padding: "48px",
-            display: "flex",
-            flexDirection: "column",
-            gap: 32,
-            boxShadow: "0 10px 30px rgba(0,0,0,0.02)",
-          }}
-        >
-          <h3 style={{ fontSize: 28, fontWeight: 950, color: "#EF4444", margin: 0, display: "flex", alignItems: "center", gap: 12 }}>
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-              <line x1="12" y1="9" x2="12" y2="13" />
-              <line x1="12" y1="17" x2="12.01" y2="17" />
-            </svg>
-            Honest Challenges
-          </h3>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-            <div>
-              <h4 style={{ fontSize: 22, fontWeight: 800, color: "#374151", marginBottom: 10 }}>
-                1. Statistical Power Constraint
-              </h4>
-              <p style={{ fontSize: 19, color: "#4B5563", lineHeight: 1.6, margin: 0 }}>
-                Our sample size is limited to <strong>129 users</strong>. While sufficient for feasibility, it restricts our statistical power to confidently detect very small, nuanced effects in RQ3.
-              </p>
-            </div>
-
-            <div>
-              <h4 style={{ fontSize: 22, fontWeight: 800, color: "#374151", marginBottom: 10 }}>
-                2. Pending Baseline Comparison
-              </h4>
-              <p style={{ fontSize: 19, color: "#4B5563", lineHeight: 1.6, margin: 0 }}>
-                We are still waiting to run the ICI comparison model on the exact same 5-fold data split. This is required for a completely fair evaluation.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Right Column: Next Steps */}
-        <motion.div
-          {...cardRise(0.25)}
-          style={{
+            width: "100%",
+            maxWidth: 1420,
             background: "rgba(16, 185, 129, 0.02)",
             border: "1px solid rgba(16, 185, 129, 0.15)",
-            borderRadius: "28px",
-            padding: "48px",
-            display: "flex",
-            flexDirection: "column",
-            gap: 32,
+            borderRadius: "34px",
+            padding: "56px 60px",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 36,
             boxShadow: "0 10px 30px rgba(0,0,0,0.02)",
           }}
         >
-          <h3 style={{ fontSize: 28, fontWeight: 950, color: "#10B981", margin: 0, display: "flex", alignItems: "center", gap: 12 }}>
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-              <polyline points="16 7 22 7 22 13" />
-            </svg>
-            Immediate Next Steps
-          </h3>
+          <div style={{ background: "rgba(6, 182, 212, 0.03)", border: "1px solid rgba(6, 182, 212, 0.15)", borderRadius: 26, padding: "34px 34px", minHeight: 320, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <h4 style={{ fontSize: 28, fontWeight: 900, color: "#06B6D4", margin: "0 0 14px 0", lineHeight: 1.2 }}>
+              1. Run ICI baseline on our split
+            </h4>
+            <p style={{ fontSize: 24, color: "#4B5563", lineHeight: 1.65, margin: 0 }}>
+              Read the code from Sia-san and run ICI on the same 5-fold split we used so the comparison with our hybrid model is completely fair.
+            </p>
+          </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-            <div>
-              <h4 style={{ fontSize: 22, fontWeight: 800, color: "#374151", marginBottom: 10 }}>
-                1. Standardize 5-Fold ICI Evaluation
-              </h4>
-              <p style={{ fontSize: 19, color: "#4B5563", lineHeight: 1.6, margin: 0 }}>
-                Train and evaluate the ICI baseline model on our custom 5-fold split to establish a fair and final benchmark comparison against our hybrid model.
-              </p>
-            </div>
-
-            <div>
-              <h4 style={{ fontSize: 22, fontWeight: 800, color: "#374151", marginBottom: 10 }}>
-                2. Transition to Vision-Language Models (VLM)
-              </h4>
-              <p style={{ fontSize: 19, color: "#4B5563", lineHeight: 1.6, margin: 0 }}>
-                Replace standard CLIP features with hidden representations from a VLM. Literature suggests this can improve the emotion prediction step (our main bottleneck at <em>r</em> ≈ 0.27).
-              </p>
-            </div>
+          <div style={{ background: "rgba(16, 185, 129, 0.03)", border: "1px solid rgba(16, 185, 129, 0.15)", borderRadius: 26, padding: "34px 34px", minHeight: 320, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <h4 style={{ fontSize: 28, fontWeight: 900, color: "#10B981", margin: "0 0 14px 0", lineHeight: 1.2 }}>
+              2. Try a stronger image feature
+            </h4>
+            <p style={{ fontSize: 24, color: "#4B5563", lineHeight: 1.65, margin: 0 }}>
+              Replace CLIP with hidden representations from a vision-language model. Our current emotion prediction accuracy is r = 0.27, which is the main bottleneck in the pipeline.
+            </p>
           </div>
         </motion.div>
-
       </div>
     </SlideShell>
   );

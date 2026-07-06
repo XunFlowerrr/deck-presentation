@@ -13,8 +13,8 @@ export function AppendixPermutationConvergence() {
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Appendix"
-        title="Permutation Test"
-        highlight="Convergence."
+        title="Permutation test convergence"
+        highlight="Appendix."
       />
 
       <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 18, minHeight: 0 }}>
@@ -55,7 +55,7 @@ export function AppendixPermutationConvergence() {
             padding: "0 24px",
           }}
         >
-          Running mean stabilizes by ~n=500 rounds. Difference between n=2,000 and n=5,000 is only 0.001 — confirming 2,000 rounds is sufficient.
+          Running mean stabilizes by ~n=500 rounds. Difference between n=2,000 and n=5,000 is only 0.001, confirming 2,000 rounds is sufficient.
         </motion.div>
       </div>
     </SlideShell>

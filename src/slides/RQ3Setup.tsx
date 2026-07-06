@@ -12,7 +12,7 @@ export function RQ3Setup() {
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="RQ3: Psychological Grounding"
-        title="RQ3 Setup: "
+        title="RQ3 — How we tested it"
         highlight="Pipeline & Design."
       />
 
@@ -89,10 +89,14 @@ export function RQ3Setup() {
           >
             <h4 style={{ fontSize: 21, fontWeight: 800, color: "#7C3AED", marginBottom: 8, display: "flex", alignItems: "center", gap: 8 }}>
               <span style={{ fontSize: 15, background: "#7C3AED", color: "white", padding: "2px 8px", borderRadius: "6px" }}>1</span>
-              Ridge Regression Fitting
+              Fit a personal formula per user per domain
             </h4>
-            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
-              Using ground-truth emotion scores from Experiment 1 (not predicted ones) to fit a Ridge Regression from 7 emotion scores to beauty scores per user per domain. Generates <strong>7 weight numbers</strong> (formula signature) per person.
+            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.55, margin: 0 }}>
+              Used real emotion scores, not predicted ones, plus beauty scores as input.
+              <br />
+              Ridge Regression produces <strong>7 weight numbers</strong> per person (e.g. nostalgic_w = 0.12).
+              <br />
+              Done for Art, Fashion, and Landscape, then averaged to 1 formula per user.
             </p>
           </motion.div>
 
@@ -108,10 +112,12 @@ export function RQ3Setup() {
           >
             <h4 style={{ fontSize: 21, fontWeight: 800, color: "#3B82F6", marginBottom: 8, display: "flex", alignItems: "center", gap: 8 }}>
               <span style={{ fontSize: 15, background: "#3B82F6", color: "white", padding: "2px 8px", borderRadius: "6px" }}>2</span>
-              Big Five Personality (TIPI)
+              Calculate Big Five personality scores
             </h4>
-            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
-              Calculate personality scores (Openness, Conscientiousness, Extraversion, Agreeableness, Emotional Stability) from 10-item TIPI survey using standard Gosling et al. formulas.
+            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.55, margin: 0 }}>
+              XPASS-Vis already has TIPI survey answers for all 129 users.
+              <br />
+              Applied the standard Gosling et al. 2003 formula to get 5 trait scores per person.
             </p>
           </motion.div>
 
@@ -127,10 +133,12 @@ export function RQ3Setup() {
           >
             <h4 style={{ fontSize: 21, fontWeight: 800, color: "#10B981", marginBottom: 8, display: "flex", alignItems: "center", gap: 8 }}>
               <span style={{ fontSize: 15, background: "#10B981", color: "white", padding: "2px 8px", borderRadius: "6px" }}>3</span>
-              Spearman Rank Correlation
+              Measure correlation between formula and personality
             </h4>
-            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.5, margin: 0 }}>
-              Measure Spearman rank correlation between every emotion weight (7 emotions) and every personality trait (5 traits) across all users, yielding <strong>35 pairs</strong> to test.
+            <p style={{ fontSize: 18, color: "#4B5563", lineHeight: 1.55, margin: 0 }}>
+              Use Spearman rank correlation for every emotion weight × every trait.
+              <br />
+              7 emotions × 5 traits = <strong>35 pairs tested</strong>.
             </p>
           </motion.div>
 

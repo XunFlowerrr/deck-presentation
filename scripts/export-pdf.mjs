@@ -5,10 +5,17 @@
  */
 
 import puppeteer from "puppeteer";
+import { access } from "node:fs/promises";
+import { constants as fsConstants } from "node:fs";
 
 const CHROME_PATH =
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-const DEV_URL = "http://localhost:5173";
+const DEFAULT_DEV_URLS = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  "http://localhost:5174",
+  "http://127.0.0.1:5174",
+];
 const ANIMATION_DELAY = 1500; // ms — wait for framer-motion transitions
 const OUTPUT = "PIAA-Presentation.pdf";
 
@@ -16,10 +23,54 @@ async function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+async function pathExists(path) {
+  try {
+    await access(path, fsConstants.F_OK);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function probeUrl(url) {
+  try {
+    const response = await fetch(url, { method: "GET" });
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
+
+async function resolveDevUrl() {
+  const cliUrl = process.argv[2];
+  if (cliUrl) {
+    return cliUrl;
+  }
+
+  if (process.env.DEV_URL) {
+    return process.env.DEV_URL;
+  }
+
+  for (const candidate of DEFAULT_DEV_URLS) {
+    if (await probeUrl(candidate)) {
+      return candidate;
+    }
+  }
+
+  return DEFAULT_DEV_URLS[0];
+}
+
 async function main() {
+  const devUrl = await resolveDevUrl();
+  const executablePath = (process.env.PUPPETEER_EXECUTABLE_PATH &&
+    (await pathExists(process.env.PUPPETEER_EXECUTABLE_PATH)))
+    ? process.env.PUPPETEER_EXECUTABLE_PATH
+    : (await pathExists(CHROME_PATH) ? CHROME_PATH : undefined);
+
   console.log("🚀  Launching Chrome…");
   const browser = await puppeteer.launch({
     headless: true,
+    executablePath,
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
@@ -30,8 +81,8 @@ async function main() {
   const page = await browser.newPage();
   await page.setViewport({ width: 1920, height: 1080, deviceScaleFactor: 1 });
 
-  console.log(`📄  Navigating to ${DEV_URL}…`);
-  await page.goto(DEV_URL, { waitUntil: "networkidle0", timeout: 30000 });
+  console.log(`📄  Navigating to ${devUrl}…`);
+  await page.goto(devUrl, { waitUntil: "networkidle0", timeout: 30000 });
   await sleep(ANIMATION_DELAY);
 
   // Retrieve total slides dynamically from the page context

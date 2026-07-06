@@ -17,7 +17,8 @@ import { DiscussionWeek3 } from '../slides/DiscussionWeek3';
 import { ProblemsNextSteps } from '../slides/ProblemsNextSteps';
 import { ThankYou } from '../slides/ThankYou';
 import { AppendixPermutationConvergence } from '../slides/AppendixPermutationConvergence';
-import { QuestionsWeek3 } from '../slides/QuestionsWeek3';
+import { SpearmanCorrelationAppendix } from '../slides/SpearmanCorrelationAppendix';
+import { BonferroniCorrectionAppendix } from '../slides/BonferroniCorrectionAppendix';
 
 // Helper to assign static slideId properties to components to prevent HMR/minification mismatch
 function defineSlide(component: any, slideId: string): SlideComponent {
@@ -38,7 +39,8 @@ const DiscussionWeek3Component = defineSlide(DiscussionWeek3, 'DiscussionWeek3')
 const ProblemsNextStepsComponent = defineSlide(ProblemsNextSteps, 'ProblemsNextSteps');
 const ThankYouComponent = defineSlide(ThankYou, 'ThankYou');
 const AppendixPermutationConvergenceComponent = defineSlide(AppendixPermutationConvergence, 'AppendixPermutationConvergence');
-const QuestionsWeek3Component = defineSlide(QuestionsWeek3, 'QuestionsWeek3');
+const SpearmanCorrelationAppendixComponent = defineSlide(SpearmanCorrelationAppendix, 'SpearmanCorrelationAppendix');
+const BonferroniCorrectionAppendixComponent = defineSlide(BonferroniCorrectionAppendix, 'BonferroniCorrectionAppendix');
 
 // ── Deck ───────────────────────────────────────────────────────────────────
 const deck: DeckSection[] = [
@@ -86,7 +88,8 @@ const deck: DeckSection[] = [
     slides: [
       ThankYouComponent,
       AppendixPermutationConvergenceComponent,
-      QuestionsWeek3Component,
+      SpearmanCorrelationAppendixComponent,
+      BonferroniCorrectionAppendixComponent,
     ],
   },
 ];

@@ -11,28 +11,28 @@ export function OverviewWeek3() {
   const topics = [
     {
       qNum: "RQ3",
-      title: "Personal Formula × Big-Five Personality",
-      desc: "Investigating whether an individual's personal aesthetic preferences (their 7 emotion weights) correlate with broad, standardized personality traits.",
+      title: "Does the formula connect to personality?",
+      desc: "Do users who score high in Openness also care more about intellectually challenging images?",
       accent: "#7C3AED",
       bg: "rgba(124, 58, 237, 0.03)",
       border: "1px solid rgba(124, 58, 237, 0.15)",
       bullets: [
-        "Are aesthetic formulas psychologically grounded?",
-        "Do negative emotion weights align with Emotional Stability?",
-        "Does Openness to Experience map to intellectually challenged weights?",
+        "Test whether emotion weights connect to broad personality traits.",
+        "Look for links between Openness and intellectually challenging images.",
+        "Check whether negative emotion weights align with Emotional Stability.",
       ],
     },
     {
       qNum: "RQ4",
-      title: "Cross-Domain Consistency of Personal Formula",
-      desc: "Testing if a person's aesthetic judgments stay consistent across different visual domains (Art, Fashion, and Landscape images).",
+      title: "Does the formula stay the same across image types?",
+      desc: "If someone cares a lot about nostalgia in art images, do they also care about it in fashion images?",
       accent: "#EC4899",
       bg: "rgba(236, 72, 153, 0.03)",
       border: "1px solid rgba(236, 72, 153, 0.15)",
       bullets: [
-        "Do users maintain a unique 'aesthetic signature' across domains?",
-        "How does same-user consistency compare to a permutation baseline?",
-        "Which specific emotions are most and least consistent across domains?",
+        "Check whether the personal formula is stable across Art, Fashion, and Landscape.",
+        "Compare same-user consistency against a permutation baseline.",
+        "Identify which emotions are most and least stable across domains.",
       ],
     },
   ];
@@ -41,8 +41,8 @@ export function OverviewWeek3() {
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Weekly Update Overview"
-        title="This Week's Work: "
-        highlight="Interpretability Analysis."
+        title="This week: two analysis questions"
+        highlight="about the personal formula."
       />
 
       <div
