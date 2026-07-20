@@ -10,33 +10,28 @@ const GLOWS = [
 const findings = [
   {
     icon: "01",
-    title: "The comparison is now fair",
-    desc: "Same data split, and duplicate ratings averaged. We now compare with ICI and MIR on exactly the same images.",
+    title: "The honest ceiling is ~0.69",
+    desc: "Self-agreement consistency of 0.693 shows our 0.400 model is at 58% of the reachable ceiling, not 55% as compared to the inflated 0.725 ceiling.",
   },
   {
     icon: "02",
-    title: "The emotion step really helps",
-    desc: "A paired test (Wilcoxon) shows a significant improvement for both backbones (p < 0.001), so it isn't down to chance.",
+    title: "Emotion helps 92% of users",
+    desc: "Expected gain is driven continuously by emo_r (r = +0.30) with no hard threshold—even the hardest-to-read group gains +0.031 on average.",
   },
   {
     icon: "03",
-    title: "It helps once you have 25+ images",
-    desc: "With fewer than 25 images per person, the emotion step barely helps. Above that, it clearly does.",
+    title: "Art difference is a ceiling effect",
+    desc: "High baseline Direct performance (0.384) leaves less headroom for improvement, though statistical significance tests sit right on the borderline.",
   },
   {
     icon: "04",
-    title: "Scaling matters for big features",
-    desc: "The 4096-number VLM features collapse without StandardScaler. The 512-number CLIP features are barely affected.",
+    title: "Smaller Qwen-4B holds its own",
+    desc: "Achieves slightly higher Hybrid CCC (0.385) than the 8B model (0.382) on XPASS-Vis while saving significant computational resources.",
   },
   {
     icon: "05",
-    title: "A small tuned model can win",
-    desc: "Fine-tuned CLIP (0.400) does better than the frozen Qwen3-VL-8B (0.382). We don't need a huge model.",
-  },
-  {
-    icon: "06",
-    title: "Better backbone, less to add",
-    desc: "The stronger the backbone, the less the emotion step adds, because a good backbone already carries emotion.",
+    title: "Strong backbones need emotion less",
+    desc: "A near-perfect negative correlation (r = −0.95) across 6 models confirms that powerful vision backbones already carry emotional information.",
   },
 ];
 
@@ -79,6 +74,9 @@ export function SummaryWeek4() {
               gap: 14,
               justifyContent: "flex-start",
               boxShadow: "0 8px 30px rgba(0, 0, 0, 0.04)",
+              ...(i === findings.length - 1 && findings.length % 2 !== 0
+                ? { gridColumn: "span 2" }
+                : {}),
             }}
           >
             <div

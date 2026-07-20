@@ -10,33 +10,18 @@ const GLOWS = [
 const QUESTIONS = [
   {
     num: "1",
-    q: "Target Venue",
-    desc: "Is this story strong enough for ACM MM 2027, or is ACII (Affective Computing) a better fit? What is our main weakness?",
+    q: "Should I stop chasing accuracy and start writing up?",
+    desc: "Our accuracy has plateaued within ~0.01 of the ICI and MIR baselines. This limit is fundamentally constrained by how well we can predict emotion from the image alone (average emo_r = 0.27).",
   },
   {
     num: "2",
-    q: "Cross-Dataset Validation",
-    desc: "Should I validate on FLICKR-AES / PARA? (Note: they lack emotion labels, so only direct/transferred evaluation is possible)",
+    q: "Which target venue should we aim for?",
+    desc: "Is this emotion-mediation story strong enough to target ACM MM 2027, or is ACII (Affective Computing) a better and more natural fit for our current contribution?",
   },
   {
     num: "3",
-    q: "Next Computational Step",
-    desc: "Worth fine-tuning Qwen4B end-to-end for potential accuracy gains, or should I freeze the code and start writing?",
-  },
-  {
-    num: "4",
-    q: "ICI Baseline Ablation",
-    desc: "Should I run an ICI ablation without personality traits to isolate whether its gain comes from traits or architecture?",
-  },
-  {
-    num: "5",
-    q: "Model Ablation Options",
-    desc: "Any baseline ablation missing? (e.g. replacing Ridge regression with Elastic Net for Stage-2 personal fitting)",
-  },
-  {
-    num: "6",
-    q: "Presentation Style",
-    desc: "Are animated slides considered unprofessional in Japanese academic lab culture?",
+    q: "Is the mechanism story substantial enough for its own section?",
+    desc: "Is our detailed analysis of when and why emotion helps (dose-response behavior, controlling for Direct model confound, and exploring the art baseline ceiling) strong enough for a major paper section?",
   },
 ];
 
@@ -52,37 +37,38 @@ export function QuestionsWeek4() {
       <div
         style={{
           flex: 1,
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 16,
-          alignContent: "center",
+          display: "flex",
+          flexDirection: "column",
+          gap: 20,
+          justifyContent: "center",
         }}
       >
         {QUESTIONS.map((item, idx) => (
           <motion.div
             key={item.num}
-            {...cardRise(idx * 0.08)}
+            {...cardRise(idx * 0.1)}
             style={{
               background: "#FFFFFF",
               border: "1px solid #E5E7EB",
-              borderRadius: 16,
-              padding: "16px 20px",
+              borderRadius: 20,
+              padding: "24px 28px",
               display: "flex",
-              gap: 16,
-              boxShadow: "0 4px 16px rgba(0,0,0,0.02)",
+              alignItems: "center",
+              gap: 20,
+              boxShadow: "0 8px 30px rgba(0,0,0,0.04)",
             }}
           >
             <div
               style={{
-                width: 40,
-                height: 40,
+                width: 44,
+                height: 44,
                 borderRadius: "50%",
                 background: "rgba(124, 58, 237, 0.1)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 18,
-                fontWeight: 800,
+                fontSize: 20,
+                fontWeight: 900,
                 color: "#7C3AED",
                 flexShrink: 0,
               }}
@@ -91,10 +77,10 @@ export function QuestionsWeek4() {
             </div>
 
             <div>
-              <h4 style={{ margin: "0 0 8px", fontSize: 20, fontWeight: 800, color: "#111827" }}>
+              <h4 style={{ margin: "0 0 6px", fontSize: 20, fontWeight: 800, color: "#111827" }}>
                 {item.q}
               </h4>
-              <p style={{ margin: 0, fontSize: 17, color: "#4B5563", lineHeight: 1.45 }}>
+              <p style={{ margin: 0, fontSize: 17, color: "#4B5563", lineHeight: 1.5 }}>
                 {item.desc}
               </p>
             </div>
