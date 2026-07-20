@@ -10,9 +10,9 @@ const GLOWS = [
 const AGENDA = [
   {
     n: "01",
-    color: "#EC4899",
-    title: "Qwen3-VL-4B Model",
-    desc: "Testing the smaller 4B model recommended in Ryu & Yanaka to check compute vs accuracy.",
+    color: "#06B6D4",
+    title: "Noise Ceiling Analysis",
+    desc: "Uncovering the true upper bound by accounting for human self-agreement.",
   },
   {
     n: "02",
@@ -22,9 +22,9 @@ const AGENDA = [
   },
   {
     n: "03",
-    color: "#06B6D4",
-    title: "Noise Ceiling Analysis",
-    desc: "Uncovering the true upper bound by accounting for human self-agreement.",
+    color: "#EC4899",
+    title: "Qwen3-VL-4B Model",
+    desc: "Testing the smaller 4B model recommended in Ryu & Yanaka to check compute vs accuracy.",
   },
 ];
 
