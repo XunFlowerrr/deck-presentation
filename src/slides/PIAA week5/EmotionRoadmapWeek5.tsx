@@ -264,21 +264,42 @@ export function EmotionRoadmapWeek5() {
           bottom: 24,
           left: 108,
           right: 108,
-          background: "#F3F4F6",
-          border: "1px solid #E5E7EB",
-          borderRadius: 10,
-          padding: "10px 16px",
-          fontSize: 15,
-          color: "#6B7280",
-          textAlign: "center",
-          lineHeight: 1.45,
-          boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
+          background: "#FFFFFF",
+          border: "1.5px dashed rgba(124, 58, 237, 0.4)",
+          borderRadius: 20,
+          padding: "20px 40px",
+          display: "flex",
+          flexDirection: "column",
+          gap: 10,
+          alignItems: "center",
+          boxShadow: "0 8px 30px rgba(0,0,0,0.04)",
         }}
       >
-        <strong style={{ color: "#374151" }}>delta</strong> = Hybrid CCC − Direct CCC
-        &nbsp;·&nbsp; <strong style={{ color: "#374151" }}>emo_r</strong> = how accurately we read
-        that person's 7 emotions (dataset mean 0.27) &nbsp;·&nbsp; secondary analysis of existing
-        runs, zero retraining
+        <span
+          style={{
+            fontSize: 18,
+            fontWeight: 900,
+            color: "#7C3AED",
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+          }}
+        >
+          The Setup
+        </span>
+        <div
+          style={{
+            fontSize: 19,
+            color: "#374151",
+            textAlign: "center",
+            lineHeight: 1.5,
+            fontWeight: 600,
+          }}
+        >
+          <strong style={{ color: "#1F2937" }}>delta</strong> = Hybrid CCC − Direct CCC
+          &nbsp;·&nbsp; <strong style={{ color: "#1F2937" }}>emo_r</strong> = how accurately we read
+          that person's 7 emotions (dataset mean 0.27) &nbsp;·&nbsp; secondary analysis of existing
+          runs, zero retraining
+        </div>
       </motion.div>
     </SlideShell>
   );
