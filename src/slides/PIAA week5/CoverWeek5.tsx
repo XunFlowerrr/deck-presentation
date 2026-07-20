@@ -3,11 +3,11 @@ import { AccentLine, GradientText, SlideShell } from "../../components/index.ts"
 import { bodyText, bottomStrip, heroTitle, topBar } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -320, right: -180, size: 960, color: "124, 58, 237", opacity: 0.18 }, // Purple
-  { bottom: -200, left: -120, size: 640, color: "236, 72, 153", opacity: 0.12 }, // Pink
+  { top: -320, right: -180, size: 960, color: "124, 58, 237", opacity: 0.18 },
+  { bottom: -200, left: -120, size: 640, color: "236, 72, 153", opacity: 0.12 },
 ];
 
-export function CoverWeek4() {
+export function CoverWeek5() {
   return (
     <SlideShell glows={GLOWS}>
       {/* Top bar */}
@@ -31,7 +31,7 @@ export function CoverWeek4() {
           />
           <span
             style={{
-              fontSize: 17,
+              fontSize: 16,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
               color: "#7C3AED",
@@ -45,19 +45,19 @@ export function CoverWeek4() {
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <span
             style={{
-              fontSize: 16,
+              fontSize: 15,
               color: "#7C3AED",
               letterSpacing: "0.08em",
               fontWeight: 600,
             }}
           >
-            Aesthetic Assessment
+            Progress Update #4 (Week 5)
           </span>
           <div style={{ width: 1, height: 14, background: "#E5E7EB" }} />
           <span
-            style={{ fontSize: 16, color: "#9CA3AF", letterSpacing: "0.06em" }}
+            style={{ fontSize: 15, color: "#9CA3AF", letterSpacing: "0.06em" }}
           >
-            July 7, 2026
+            JAIST Internship
           </span>
         </div>
       </motion.div>
@@ -74,7 +74,7 @@ export function CoverWeek4() {
         <motion.span
           {...bodyText(0.1)}
           style={{
-            fontSize: 24,
+            fontSize: 22,
             fontWeight: 700,
             color: "#7C3AED",
             textTransform: "uppercase",
@@ -82,17 +82,17 @@ export function CoverWeek4() {
             marginBottom: 16,
           }}
         >
-          Weekly Progress Update
+          Progress Update #4
         </motion.span>
 
         <motion.h1
           {...heroTitle(0.12, 48)}
           style={{
-            fontSize: 100,
+            fontSize: 76,
             fontWeight: 900,
-            letterSpacing: "-3px",
+            letterSpacing: "-2.5px",
             lineHeight: 1.15,
-            margin: "0 0 36px",
+            margin: "0 0 28px",
             color: "#0A0A0A",
             userSelect: "none",
           }}
@@ -104,21 +104,21 @@ export function CoverWeek4() {
           <GradientText>Aesthetic Assessment</GradientText>
         </motion.h1>
 
-        <AccentLine delay={0.55} width={140} style={{ marginBottom: 36 }} />
+        <AccentLine delay={0.55} width={140} style={{ marginBottom: 28 }} />
 
         <motion.p
           {...bodyText(0.72)}
           style={{
-            fontSize: 34,
+            fontSize: 26,
             color: "#6B7280",
             margin: 0,
             fontWeight: 400,
             letterSpacing: "-0.3px",
             lineHeight: 1.5,
+            maxWidth: 920,
           }}
         >
-          Predicting individual aesthetic preferences through emotional
-          responses
+          Predicting individual aesthetic preferences through emotional responses first
         </motion.p>
       </div>
 
@@ -130,15 +130,15 @@ export function CoverWeek4() {
           justifyContent: "space-between",
           alignItems: "center",
           borderTop: "1px solid #F3F4F6",
-          paddingTop: 24,
+          paddingTop: 20,
         }}
       >
-        <div style={{ display: "flex", gap: 28 }}>
-          {["PIAA", "Emotion Mediation", "Fair Comparison"].map((tag, i) => (
+        <div style={{ display: "flex", gap: 24 }}>
+          {["PIAA", "Emotion Mediation", "Noise Ceiling", "Qwen3-VL"].map((tag, i) => (
             <span
               key={tag}
               style={{
-                fontSize: 16,
+                fontSize: 14,
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
                 color: i === 0 ? "#7C3AED" : "#9CA3AF",
@@ -151,13 +151,13 @@ export function CoverWeek4() {
         </div>
         <span
           style={{
-            fontSize: 20,
+            fontSize: 18,
             color: "#374151",
             fontWeight: 600,
             letterSpacing: "0.02em",
           }}
         >
-          Presenter: <span style={{ color: "#7C3AED" }}>Pinwa</span>{" "}
+          Presenter: <span style={{ color: "#7C3AED" }}>Pinwa</span> · JAIST Internship
         </span>
       </motion.div>
     </SlideShell>
