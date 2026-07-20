@@ -43,15 +43,21 @@ function PhotoCard({ photo, good }: { photo: CasePhoto; good: boolean }) {
       <img
         src={photo.src}
         alt="case study photo"
-        style={{ width: "100%", height: 108, objectFit: "cover", display: "block" }}
+        style={{
+          width: "100%",
+          height: 200,
+          objectFit: "cover",
+          objectPosition: good ? "center" : "center 15%",
+          display: "block",
+        }}
       />
-      <div style={{ padding: "8px 10px", display: "flex", flexDirection: "column", gap: 4 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#4B5563" }}>
+      <div style={{ padding: "12px 16px", display: "flex", flexDirection: "column", gap: 5 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, color: "#4B5563" }}>
           <span>true <strong style={{ color: "#111827" }}>{photo.trueScore}</strong></span>
           <span>direct <strong style={{ color: "#6B7280" }}>{photo.direct}</strong></span>
           <span>hybrid <strong style={{ color: accent }}>{photo.hybrid}</strong></span>
         </div>
-        <div style={{ fontSize: 10, color: "#9CA3AF", lineHeight: 1.3 }}>{photo.topFeelings}</div>
+        <div style={{ fontSize: 12, color: "#9CA3AF", lineHeight: 1.3 }}>{photo.topFeelings}</div>
       </div>
     </div>
   );
@@ -66,41 +72,41 @@ export function CaseStudyWeek4() {
         highlight="side by side."
       />
 
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 16, justifyContent: "center" }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 22, justifyContent: "center", paddingBottom: 32 }}>
         {/* Row 1: helped */}
-        <motion.div {...cardRise(0.1)} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <motion.div {...cardRise(0.1)} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <span
               style={{
-                fontSize: 12, fontWeight: 800, color: "#10B981",
-                background: "rgba(16, 185, 129, 0.1)", padding: "3px 12px",
+                fontSize: 14, fontWeight: 800, color: "#10B981",
+                background: "rgba(16, 185, 129, 0.1)", padding: "5px 14px",
                 borderRadius: 10, textTransform: "uppercase", letterSpacing: "0.06em",
               }}
             >
               Emotions helped &nbsp;·&nbsp; avg error 2.64 → 1.41
             </span>
-            <span style={{ fontSize: 12, color: "#6B7280" }}>the feeling is clear and strong</span>
+            <span style={{ fontSize: 14, color: "#6B7280" }}>the feeling is clear and strong</span>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
             {HELPED.map((p) => <PhotoCard key={p.src} photo={p} good />)}
           </div>
         </motion.div>
 
         {/* Row 2: hurt */}
-        <motion.div {...cardRise(0.25)} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <motion.div {...cardRise(0.25)} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <span
               style={{
-                fontSize: 12, fontWeight: 800, color: "#EF4444",
-                background: "rgba(239, 68, 68, 0.1)", padding: "3px 12px",
+                fontSize: 14, fontWeight: 800, color: "#EF4444",
+                background: "rgba(239, 68, 68, 0.1)", padding: "5px 14px",
                 borderRadius: 10, textTransform: "uppercase", letterSpacing: "0.06em",
               }}
             >
               Emotions hurt &nbsp;·&nbsp; avg error 2.16 → 2.81
             </span>
-            <span style={{ fontSize: 12, color: "#6B7280" }}>the feeling is weak or mixed</span>
+            <span style={{ fontSize: 14, color: "#6B7280" }}>the feeling is weak or mixed</span>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
             {HURT.map((p) => <PhotoCard key={p.src} photo={p} good={false} />)}
           </div>
         </motion.div>
@@ -110,7 +116,7 @@ export function CaseStudyWeek4() {
           {...fadeInUp(0.45)}
           style={{
             background: "#F9FAFB", border: "1px solid #F3F4F6", borderRadius: 14,
-            padding: "12px 20px", fontSize: 13.5, color: "#374151", textAlign: "center",
+            padding: "16px 24px", fontSize: 16, color: "#374151", textAlign: "center", lineHeight: 1.5,
           }}
         >
           <strong style={{ color: "#7C3AED" }}>What this tells us: </strong>

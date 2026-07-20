@@ -21,8 +21,9 @@ export function WhatDecidesWhoWeek4() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          gap: 20,
-          justifyContent: "space-between",
+          gap: 24,
+          minHeight: 0,
+          paddingBottom: 40,
         }}
       >
         {/* Top: Hypothesis & Summary Banner */}
@@ -68,33 +69,35 @@ export function WhatDecidesWhoWeek4() {
         {/* Middle: Quartile Grid comparison + Plot Image */}
         <div
           style={{
+            flex: 1,
             display: "grid",
             gridTemplateColumns: "1fr 1.3fr",
-            gap: 24,
+            gap: 28,
             alignItems: "center",
+            minHeight: 0,
           }}
         >
           {/* Left Quartile Breakdown */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <motion.div
               {...cardRise(0.25)}
               style={{
                 background: "#FFFFFF",
                 border: "1px solid #E5E7EB",
                 borderRadius: 14,
-                padding: "16px 20px",
+                padding: "22px 24px",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
               }}
             >
               <div>
-                <span style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase" }}>Hardest to read (bottom 25%)</span>
-                <div style={{ fontSize: 14, fontWeight: 700, color: "#4B5563" }}>emo_r ≈ 0.09</div>
+                <span style={{ fontSize: 12, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase" }}>Hardest to read (bottom 25%)</span>
+                <div style={{ fontSize: 16, fontWeight: 700, color: "#4B5563" }}>emo_r ≈ 0.09</div>
               </div>
               <div style={{ textAlign: "right" }}>
-                <div style={{ fontSize: 22, fontWeight: 900, color: "#F59E0B" }}>+0.040 gain</div>
-                <div style={{ fontSize: 12, color: "#6B7280" }}>80% helped</div>
+                <div style={{ fontSize: 26, fontWeight: 900, color: "#F59E0B" }}>+0.040 gain</div>
+                <div style={{ fontSize: 13, color: "#6B7280" }}>80% helped</div>
               </div>
             </motion.div>
 
@@ -104,7 +107,7 @@ export function WhatDecidesWhoWeek4() {
                 background: "#FFFFFF",
                 border: "2px solid rgba(124, 58, 237, 0.3)",
                 borderRadius: 14,
-                padding: "16px 20px",
+                padding: "22px 24px",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -112,12 +115,12 @@ export function WhatDecidesWhoWeek4() {
               }}
             >
               <div>
-                <span style={{ fontSize: 11, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase" }}>Easiest to read (top 25%)</span>
-                <div style={{ fontSize: 14, fontWeight: 700, color: "#111827" }}>emo_r ≈ 0.45</div>
+                <span style={{ fontSize: 12, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase" }}>Easiest to read (top 25%)</span>
+                <div style={{ fontSize: 16, fontWeight: 700, color: "#111827" }}>emo_r ≈ 0.45</div>
               </div>
               <div style={{ textAlign: "right" }}>
-                <div style={{ fontSize: 22, fontWeight: 900, color: "#10B981" }}>+0.092 gain</div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: "#10B981" }}>97% helped</div>
+                <div style={{ fontSize: 26, fontWeight: 900, color: "#10B981" }}>+0.092 gain</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#10B981" }}>97% helped</div>
               </div>
             </motion.div>
 
@@ -128,10 +131,10 @@ export function WhatDecidesWhoWeek4() {
                 background: "rgba(239, 68, 68, 0.04)",
                 border: "1px solid rgba(239, 68, 68, 0.2)",
                 borderRadius: 14,
-                padding: "14px 18px",
-                fontSize: 13,
+                padding: "18px 22px",
+                fontSize: 15,
                 color: "#7F1D1D",
-                lineHeight: 1.45,
+                lineHeight: 1.5,
               }}
             >
               <strong style={{ color: "#EF4444" }}>The 32 users it made worse: </strong>
@@ -152,7 +155,7 @@ export function WhatDecidesWhoWeek4() {
                 { label: "Q4 Gain", value: "+0.092", color: "#10B981" },
                 { label: "Spearman r", value: "+0.30", color: "#7C3AED" },
               ]}
-              maxHeight={320}
+              maxHeight={520}
             />
           </motion.div>
         </div>
