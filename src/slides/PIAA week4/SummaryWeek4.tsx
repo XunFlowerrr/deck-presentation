@@ -10,28 +10,28 @@ const GLOWS = [
 const findings = [
   {
     icon: "01",
-    title: "The honest ceiling is ~0.69",
-    desc: "Self-agreement consistency of 0.693 shows our 0.400 model is at 58% of the reachable ceiling, not 55% as compared to the inflated 0.725 ceiling.",
+    title: "The true human ceiling is about 0.69, not 0.725",
+    desc: "Measuring 4,509 image rating pairs where the same person rated the exact same photo twice shows a self-agreement of 0.693. The old 0.725 ceiling was inflated by shared mood noise because emotions and scores were rated in the same sitting.",
   },
   {
     icon: "02",
-    title: "Emotion helps 92% of users",
-    desc: "Expected gain is driven continuously by emo_r (r = +0.30) with no hard threshold—even the hardest-to-read group gains +0.031 on average.",
+    title: "Emotion helps 92 percent of people",
+    desc: "Expected gain is a gradual effect driven by how well we read their feelings, not a fixed cutoff, and not about how strong the plain model is on its own. Even the hardest-to-read group still sees a small average gain (+0.031).",
   },
   {
     icon: "03",
-    title: "Art difference is a ceiling effect",
-    desc: "High baseline Direct performance (0.384) leaves less headroom for improvement, though statistical significance tests sit right on the borderline.",
+    title: "Direct model strength is not the real driver of the gain",
+    desc: "Direct strength correlates with gains at r = +0.15, but it moves closely with emo_r at +0.66. Removing emo_r's influence via partial correlation drops Direct's correlation to −0.08 (non-significant), showing that only emotion accuracy truly matters.",
   },
   {
     icon: "04",
-    title: "Smaller Qwen-4B holds its own",
-    desc: "Achieves slightly higher Hybrid CCC (0.385) than the 8B model (0.382) on XPASS-Vis while saving significant computational resources.",
+    title: "Art difference is a ceiling effect, not a new mechanism",
+    desc: "Art looks different mostly because it's already close to its ceiling, not because it works by a different mechanism—though the evidence there is borderline. Controlling for baseline strength via partial correlation restores significance (+0.175, p=0.048).",
   },
   {
     icon: "05",
-    title: "Strong backbones need emotion less",
-    desc: "A near-perfect negative correlation (r = −0.95) across 6 models confirms that powerful vision backbones already carry emotional information.",
+    title: "Stronger backbones need emotion less",
+    desc: "A near-perfect negative correlation (r = −0.95) across 6 models confirms that powerful backbones already capture emotional features. The smaller 4B model holds up fine, adding a sixth data point to this clean pattern.",
   },
 ];
 
@@ -43,18 +43,17 @@ export function SummaryWeek4() {
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Summary"
-        title="Key findings "
-        highlight="this round."
+        title="To sum "
+        highlight="up."
       />
 
       <div
         style={{
           flex: 1,
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gridTemplateRows: "repeat(3, 1fr)",
-          gap: 24,
-          alignItems: "stretch",
+          display: "flex",
+          flexDirection: "column",
+          gap: 14,
+          justifyContent: "center",
           minHeight: 0,
           paddingBottom: 12,
         }}
@@ -66,66 +65,56 @@ export function SummaryWeek4() {
             style={{
               background: "#FFFFFF",
               border: `1.5px solid rgba(${themeRgb}, 0.18)`,
-              borderRadius: 20,
-              padding: "26px 30px",
-              minHeight: 140,
+              borderRadius: 18,
+              padding: "16px 24px",
               display: "flex",
-              flexDirection: "column",
-              gap: 14,
-              justifyContent: "flex-start",
+              alignItems: "center",
+              gap: 20,
               boxShadow: "0 8px 30px rgba(0, 0, 0, 0.04)",
-              ...(i === findings.length - 1 && findings.length % 2 !== 0
-                ? { gridColumn: "span 2" }
-                : {}),
             }}
           >
-            <div
+            <span
               style={{
+                fontSize: 20,
+                width: 46,
+                height: 46,
                 display: "flex",
                 alignItems: "center",
-                gap: 14,
+                justifyContent: "center",
+                borderRadius: 11,
+                background: `rgba(${themeRgb}, 0.12)`,
+                color: themeColor,
+                fontWeight: 900,
+                flexShrink: 0,
               }}
             >
-              <span
-                style={{
-                  fontSize: 18,
-                  width: 42,
-                  height: 42,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: 11,
-                  background: `rgba(${themeRgb}, 0.12)`,
-                  color: themeColor,
-                  fontWeight: 900,
-                  flexShrink: 0,
-                }}
-              >
-                {f.icon}
-              </span>
+              {f.icon}
+            </span>
+
+            <div style={{ flex: 1 }}>
               <h4
                 style={{
-                  fontSize: 23,
-                  fontWeight: 850,
+                  fontSize: 22,
+                  fontWeight: 800,
                   color: "#111827",
-                  margin: 0,
+                  margin: "0 0 6px",
                   lineHeight: 1.25,
                 }}
               >
                 {f.title}
               </h4>
+              <p
+                style={{
+                  fontSize: 19,
+                  color: "#374151",
+                  fontWeight: 600,
+                  lineHeight: 1.5,
+                  margin: 0,
+                }}
+              >
+                {f.desc}
+              </p>
             </div>
-            <p
-              style={{
-                fontSize: 19,
-                color: "#1F2937",
-                fontWeight: 500,
-                lineHeight: 1.5,
-                margin: 0,
-              }}
-            >
-              {f.desc}
-            </p>
           </motion.div>
         ))}
       </div>
