@@ -9,8 +9,8 @@ const GLOWS = [
 
 const TABLE_ROWS = [
   { group: "Ceiling", model: "P-oracle (ceiling)", art: "0.725", fashion: "0.715", landscape: "0.734", avg: "0.725", style: "oracle", badgeColor: "#7C3AED" },
-  { group: "Baseline", model: "ICI (Hiyoshi-san)",  art: "0.480", fashion: "0.315", landscape: "0.430", avg: "0.409", style: "baseline", badgeColor: "#4B5563" },
-  { group: "Baseline", model: "MIR (Hiyoshi-san)",  art: "0.484", fashion: "0.313", landscape: "0.435", avg: "0.411", style: "baseline", badgeColor: "#4B5563" },
+  { group: "Baseline", model: "ICI",  art: "0.480", fashion: "0.315", landscape: "0.430", avg: "0.409", style: "baseline", badgeColor: "#4B5563" },
+  { group: "Baseline", model: "MIR",  art: "0.484", fashion: "0.313", landscape: "0.435", avg: "0.411", style: "baseline", badgeColor: "#4B5563" },
   { group: "Ours", model: "Ours: CLIP Hybrid",  art: "0.456", fashion: "0.264", landscape: "0.377", avg: "0.366", style: "ours", badgeColor: "#10B981" },
   { group: "Ours", model: "Ours: CLIP Direct",  art: "0.384", fashion: "0.202", landscape: "0.292", avg: "0.293", style: "ours", badgeColor: "#10B981" },
 ];

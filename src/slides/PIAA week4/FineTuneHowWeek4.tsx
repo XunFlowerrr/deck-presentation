@@ -80,7 +80,7 @@ export function FineTuneHowWeek4() {
             <Arrow x1={464} y1={71} x2={516} y2={71} />
             <Box x={518} y={40} w={130} h={62} title="linear head" variant="train" />
             <Arrow x1={648} y1={71} x2={700} y2={71} />
-            <Box x={702} y={40} w={150} h={62} title="predict 9 emotions" />
+            <Box x={702} y={40} w={150} h={62} title="predict 7 emotions" />
             <Arrow x1={852} y1={71} x2={904} y2={71} />
             <Box x={906} y={40} w={130} h={62} title="MSE loss" />
 
