@@ -1,135 +1,119 @@
 import { motion } from "framer-motion";
 import { SlideHeader, SlideShell } from "../../components/index.ts";
-import { cardRise } from "../../lib/motion.ts";
+import { cardRise, fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, right: -120, size: 800, color: "124, 58, 237", opacity: 0.12 },
-  { bottom: -200, left: -100, size: 700, color: "16, 185, 129", opacity: 0.1 },
+  { top: -200, left: -100, size: 700, color: "124, 58, 237", opacity: 0.14 },
+  { bottom: -200, right: -100, size: 600, color: "236, 72, 153", opacity: 0.1 },
 ];
 
-const findings = [
+const SUMMARY_ITEMS = [
   {
-    icon: "01",
-    title: "The comparison is now fair",
-    desc: "Same data split, and duplicate ratings averaged. We now compare with ICI and MIR on exactly the same images.",
+    num: "01",
+    title: "Real Noise Ceiling ≈ 0.69 (Not 0.725)",
+    desc: "The original P-oracle (0.725) was inflated by same-session mood noise. Accounting for human self-agreement (CCC 0.693), our 0.400 reaches ~58% of the true reachable ceiling.",
+    color: "#7C3AED",
   },
   {
-    icon: "02",
-    title: "The emotion step really helps",
-    desc: "The Wilcoxon test shows a significant improvement for both backbones (p < 0.001), so it isn't down to chance.",
+    num: "02",
+    title: "Broad Benefit Driven by emo_r (Dose-Response)",
+    desc: "91.7% of users benefit (+0.071 median gain). Benefit tracks emotion prediction accuracy (emo_r) with no threshold and zero direct strength effect after partial control.",
+    color: "#EC4899",
   },
   {
-    icon: "03",
-    title: "It helps once you have 25+ images",
-    desc: "With fewer than 25 images per person, the emotion step barely helps. Above that, it clearly does.",
+    num: "03",
+    title: "Art Difference Explained by Baseline Ceiling Effect",
+    desc: "Weaker correlation in art stems from high Direct baseline (0.384), limiting headroom (art p=0.048 controlled, interaction p=0.056 ns). Reported transparently as borderline.",
+    color: "#06B6D4",
   },
   {
-    icon: "04",
-    title: "Scaling matters for big features",
-    desc: "The 4096-number VLM features collapse without StandardScaler. The 512-number CLIP features are barely affected.",
+    num: "04",
+    title: "Qwen 4B Matches 8B & Confirms Redundancy (r = -0.95)",
+    desc: "Smaller 4B model (LT17) reaches 0.385 Hybrid CCC, saving compute. Trend across 6 backbones proves strong VLMs already implicitly encode emotion representations.",
+    color: "#10B981",
   },
   {
-    icon: "05",
-    title: "A small tuned model can win",
-    desc: "Fine-tuned CLIP (0.400) does better than the frozen Qwen3-VL-8B (0.382). We don't need a huge model.",
-  },
-  {
-    icon: "06",
-    title: "Better backbone, less to add",
-    desc: "The stronger the backbone, the less the emotion step adds, because a good backbone already carries emotion.",
+    num: "05",
+    title: "Performance Plateau Bounded by Stage-1 (emo_r = 0.27)",
+    desc: "Model accuracy has plateaued (~0.40 vs ICI/MIR 0.409/0.411). The fundamental bottleneck is Stage-1 image-to-emotion prediction accuracy.",
+    color: "#F59E0B",
   },
 ];
 
 export function SummaryWeek4() {
-  const themeColor = "#7C3AED";
-  const themeRgb = "124, 58, 237";
-
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Summary"
-        title="Key findings "
-        highlight="this round."
+        label="Part 4 — Summary"
+        title="Key "
+        highlight="Takeaways."
       />
 
       <div
         style={{
           flex: 1,
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gridTemplateRows: "repeat(2, 1fr)",
-          gap: 24,
-          alignItems: "stretch",
-          minHeight: 0,
-          paddingBottom: 12,
+          display: "flex",
+          flexDirection: "column",
+          gap: 12,
+          justifyContent: "center",
         }}
       >
-        {findings.map((f, i) => (
+        {SUMMARY_ITEMS.map((item, idx) => (
           <motion.div
-            key={f.title}
-            {...cardRise(0.1 + i * 0.08)}
+            key={item.num}
+            {...cardRise(idx * 0.1)}
             style={{
-              background: `rgba(${themeRgb}, 0.045)`,
-              border: `2px solid rgba(${themeRgb}, 0.22)`,
-              borderRadius: 20,
-              padding: "26px 30px",
-              minHeight: 210,
+              background: "#FFFFFF",
+              border: "1px solid #E5E7EB",
+              borderRadius: 14,
+              padding: "14px 20px",
               display: "flex",
-              flexDirection: "column",
-              gap: 14,
-              justifyContent: "flex-start",
-              boxShadow: "0 6px 24px rgba(124, 58, 237, 0.02)",
+              alignItems: "center",
+              gap: 20,
+              boxShadow: "0 4px 16px rgba(0,0,0,0.02)",
             }}
           >
             <div
               style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 14,
+                fontSize: 22,
+                fontWeight: 900,
+                color: item.color,
+                width: 36,
+                flexShrink: 0,
               }}
             >
-              <span
-                style={{
-                  fontSize: 18,
-                  width: 42,
-                  height: 42,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: 11,
-                  background: `rgba(${themeRgb}, 0.12)`,
-                  color: themeColor,
-                  fontWeight: 900,
-                  flexShrink: 0,
-                }}
-              >
-                {f.icon}
-              </span>
-              <h4
-                style={{
-                  fontSize: 23,
-                  fontWeight: 850,
-                  color: "#111827",
-                  margin: 0,
-                  lineHeight: 1.25,
-                }}
-              >
-                {f.title}
-              </h4>
+              {item.num}
             </div>
-            <p
-              style={{
-                fontSize: 19,
-                color: "#374151",
-                lineHeight: 1.6,
-                margin: 0,
-              }}
-            >
-              {f.desc}
-            </p>
+
+            <div style={{ flex: 1 }}>
+              <h4 style={{ margin: 0, fontSize: 16, fontWeight: 800, color: "#111827" }}>
+                {item.title}
+              </h4>
+              <p style={{ margin: "2px 0 0", fontSize: 13, color: "#4B5563", lineHeight: 1.4 }}>
+                {item.desc}
+              </p>
+            </div>
           </motion.div>
         ))}
       </div>
+
+      {/* Small definition box at bottom right */}
+      <motion.div
+        {...fadeInUp(0.6)}
+        style={{
+          position: "absolute",
+          bottom: 20,
+          right: 32,
+          background: "#F3F4F6",
+          border: "1px solid #E5E7EB",
+          borderRadius: 10,
+          padding: "6px 14px",
+          fontSize: 11,
+          color: "#6B7280",
+        }}
+      >
+        Verified results across 129 users, 6,526 images, 3 domains (XPASS-Vis)
+      </motion.div>
     </SlideShell>
   );
 }

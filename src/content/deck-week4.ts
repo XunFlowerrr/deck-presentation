@@ -1,113 +1,142 @@
 /**
- * Deck configuration for Week 4 Update presentation.
+ * Deck configuration for Progress Update #4 presentation.
+ * 28 slides following the user's explicit presentation order.
  */
 
 import type { DeckSection, SlideComponent } from './types';
 
-// Import Week 4 Update slide components
+// Import Progress Meeting #4 slide components
 import { CoverWeek4 } from '../slides/PIAA week4/CoverWeek4';
 import { PipelineWeek4 } from '../slides/PIAA week4/PipelineWeek4';
-import { RecapWeek4 } from '../slides/PIAA week4/RecapWeek4';
-import { AgendaWeek4 } from '../slides/PIAA week4/AgendaWeek4';
-import { FairComparisonWeek4 } from '../slides/PIAA week4/FairComparisonWeek4';
-import { DedupProblemWeek4 } from '../slides/PIAA week4/DedupProblemWeek4';
-import { WilcoxonWeek4 } from '../slides/PIAA week4/WilcoxonWeek4';
-import { WilcoxonGraphWeek4 } from '../slides/PIAA week4/WilcoxonGraphWeek4';
-import { VlmBackboneWeek4 } from '../slides/PIAA week4/VlmBackboneWeek4';
-import { VlmFaithfulnessWeek4 } from '../slides/PIAA week4/VlmFaithfulnessWeek4';
-import { StandardScalerConceptWeek4 } from '../slides/PIAA week4/StandardScalerConceptWeek4';
-import { StandardScalerWeek4 } from '../slides/PIAA week4/StandardScalerWeek4';
-import { LayerSweepWeek4 } from '../slides/PIAA week4/LayerSweepWeek4';
-import { FineTuneHowWeek4 } from '../slides/PIAA week4/FineTuneHowWeek4';
-import { FineTuningWeek4 } from '../slides/PIAA week4/FineTuningWeek4';
+import { RecapAgendaWeek4 } from '../slides/PIAA week4/RecapAgendaWeek4';
+import { NoiseCeilingQuestionWeek4 } from '../slides/PIAA week4/NoiseCeilingQuestionWeek4';
+import { HumanDisagreementWeek4 } from '../slides/PIAA week4/HumanDisagreementWeek4';
+import { EmotionHelpFramingWeek4 } from '../slides/PIAA week4/EmotionHelpFramingWeek4';
+import { EmotionHelpSetupWeek4 } from '../slides/PIAA week4/EmotionHelpSetupWeek4';
+import { EmotionHelpsEveryoneWeek4 } from '../slides/PIAA week4/EmotionHelpsEveryoneWeek4';
+import { WhatDecidesWhoWeek4 } from '../slides/PIAA week4/WhatDecidesWhoWeek4';
+import { ThresholdOrDoseWeek4 } from '../slides/PIAA week4/ThresholdOrDoseWeek4';
+import { DirectConfoundWeek4 } from '../slides/PIAA week4/DirectConfoundWeek4';
+import { WhyArtDifferentWeek4 } from '../slides/PIAA week4/WhyArtDifferentWeek4';
+import { TestingArtExplanationsWeek4 } from '../slides/PIAA week4/TestingArtExplanationsWeek4';
+import { WhichImagesBenefitWeek4 } from '../slides/PIAA week4/WhichImagesBenefitWeek4';
+import { CaseStudyWeek4 } from '../slides/PIAA week4/CaseStudyWeek4';
+import { Qwen4BComparisonWeek4 } from '../slides/PIAA week4/Qwen4BComparisonWeek4';
+import { RedundancyTrendWeek4 } from '../slides/PIAA week4/RedundancyTrendWeek4';
 import { SummaryWeek4 } from '../slides/PIAA week4/SummaryWeek4';
-import { NextStepsWeek4 } from '../slides/PIAA week4/NextStepsWeek4';
-import { ThankYou } from '../slides/PIAA week4/ThankYou';
+import { QuestionsWeek4 } from '../slides/PIAA week4/QuestionsWeek4';
+import { ThankYouWeek4 } from '../slides/PIAA week4/ThankYouWeek4';
 
-// Helper to assign static slideId properties to components to prevent HMR/minification mismatch
+// Backup Q&A Slides
+import { QA1DeltaComputationWeek4 } from '../slides/PIAA week4/QA1DeltaComputationWeek4';
+import { QA2DirectConfoundWeek4 } from '../slides/PIAA week4/QA2DirectConfoundWeek4';
+import { QA3DataLeakageWeek4 } from '../slides/PIAA week4/QA3DataLeakageWeek4';
+import { QA4EmoRExactlyWeek4 } from '../slides/PIAA week4/QA4EmoRExactlyWeek4';
+import { QA5PValueInterpretationWeek4 } from '../slides/PIAA week4/QA5PValueInterpretationWeek4';
+import { QA6MultipleComparisonsWeek4 } from '../slides/PIAA week4/QA6MultipleComparisonsWeek4';
+import { QA7FailureCasesWeek4 } from '../slides/PIAA week4/QA7FailureCasesWeek4';
+import { QA8MetricChoiceWeek4 } from '../slides/PIAA week4/QA8MetricChoiceWeek4';
+
+// Helper to assign static slideId properties to components
 function defineSlide(component: any, slideId: string): SlideComponent {
   const slide = component as SlideComponent;
   slide.slideId = slideId;
   return slide;
 }
 
-const CoverWeek4Component = defineSlide(CoverWeek4, 'CoverWeek4');
-const PipelineWeek4Component = defineSlide(PipelineWeek4, 'PipelineWeek4');
-const RecapWeek4Component = defineSlide(RecapWeek4, 'RecapWeek4');
-const AgendaWeek4Component = defineSlide(AgendaWeek4, 'AgendaWeek4');
-const FairComparisonWeek4Component = defineSlide(FairComparisonWeek4, 'FairComparisonWeek4');
-const DedupProblemWeek4Component = defineSlide(DedupProblemWeek4, 'DedupProblemWeek4');
-const WilcoxonWeek4Component = defineSlide(WilcoxonWeek4, 'WilcoxonWeek4');
-const WilcoxonGraphWeek4Component = defineSlide(WilcoxonGraphWeek4, 'WilcoxonGraphWeek4');
-const VlmBackboneWeek4Component = defineSlide(VlmBackboneWeek4, 'VlmBackboneWeek4');
-const VlmFaithfulnessWeek4Component = defineSlide(VlmFaithfulnessWeek4, 'VlmFaithfulnessWeek4');
-const StandardScalerConceptWeek4Component = defineSlide(StandardScalerConceptWeek4, 'StandardScalerConceptWeek4');
-const StandardScalerWeek4Component = defineSlide(StandardScalerWeek4, 'StandardScalerWeek4');
-const LayerSweepWeek4Component = defineSlide(LayerSweepWeek4, 'LayerSweepWeek4');
-const FineTuneHowWeek4Component = defineSlide(FineTuneHowWeek4, 'FineTuneHowWeek4');
-const FineTuningWeek4Component = defineSlide(FineTuningWeek4, 'FineTuningWeek4');
-const SummaryWeek4Component = defineSlide(SummaryWeek4, 'SummaryWeek4');
-const NextStepsWeek4Component = defineSlide(NextStepsWeek4, 'NextStepsWeek4');
-const ThankYouComponent = defineSlide(ThankYou, 'ThankYou');
+const CoverSlide = defineSlide(CoverWeek4, 'CoverWeek4');
+const PipelineSlide = defineSlide(PipelineWeek4, 'PipelineWeek4');
+const RecapAgendaSlide = defineSlide(RecapAgendaWeek4, 'RecapAgendaWeek4');
+const NoiseCeilingQuestionSlide = defineSlide(NoiseCeilingQuestionWeek4, 'NoiseCeilingQuestionWeek4');
+const HumanDisagreementSlide = defineSlide(HumanDisagreementWeek4, 'HumanDisagreementWeek4');
+const EmotionHelpFramingSlide = defineSlide(EmotionHelpFramingWeek4, 'EmotionHelpFramingWeek4');
+const EmotionHelpSetupSlide = defineSlide(EmotionHelpSetupWeek4, 'EmotionHelpSetupWeek4');
+const EmotionHelpsEveryoneSlide = defineSlide(EmotionHelpsEveryoneWeek4, 'EmotionHelpsEveryoneWeek4');
+const WhatDecidesWhoSlide = defineSlide(WhatDecidesWhoWeek4, 'WhatDecidesWhoWeek4');
+const ThresholdOrDoseSlide = defineSlide(ThresholdOrDoseWeek4, 'ThresholdOrDoseWeek4');
+const DirectConfoundSlide = defineSlide(DirectConfoundWeek4, 'DirectConfoundWeek4');
+const WhyArtDifferentSlide = defineSlide(WhyArtDifferentWeek4, 'WhyArtDifferentWeek4');
+const TestingArtExplanationsSlide = defineSlide(TestingArtExplanationsWeek4, 'TestingArtExplanationsWeek4');
+const WhichImagesBenefitSlide = defineSlide(WhichImagesBenefitWeek4, 'WhichImagesBenefitWeek4');
+const CaseStudySlide = defineSlide(CaseStudyWeek4, 'CaseStudyWeek4');
+const Qwen4BComparisonSlide = defineSlide(Qwen4BComparisonWeek4, 'Qwen4BComparisonWeek4');
+const RedundancyTrendSlide = defineSlide(RedundancyTrendWeek4, 'RedundancyTrendWeek4');
+const SummarySlide = defineSlide(SummaryWeek4, 'SummaryWeek4');
+const QuestionsSlide = defineSlide(QuestionsWeek4, 'QuestionsWeek4');
+const ThankYouSlide = defineSlide(ThankYouWeek4, 'ThankYouWeek4');
+
+// Backup slides
+const QA1Slide = defineSlide(QA1DeltaComputationWeek4, 'QA1DeltaComputationWeek4');
+const QA2Slide = defineSlide(QA2DirectConfoundWeek4, 'QA2DirectConfoundWeek4');
+const QA3Slide = defineSlide(QA3DataLeakageWeek4, 'QA3DataLeakageWeek4');
+const QA4Slide = defineSlide(QA4EmoRExactlyWeek4, 'QA4EmoRExactlyWeek4');
+const QA5Slide = defineSlide(QA5PValueInterpretationWeek4, 'QA5PValueInterpretationWeek4');
+const QA6Slide = defineSlide(QA6MultipleComparisonsWeek4, 'QA6MultipleComparisonsWeek4');
+const QA7Slide = defineSlide(QA7FailureCasesWeek4, 'QA7FailureCasesWeek4');
+const QA8Slide = defineSlide(QA8MetricChoiceWeek4, 'QA8MetricChoiceWeek4');
 
 // ── Deck ───────────────────────────────────────────────────────────────────
 const deck: DeckSection[] = [
   {
-    label: 'Intro',
-    slides: [CoverWeek4Component],
+    label: 'Title',
+    slides: [CoverSlide],
   },
   {
     label: 'Pipeline',
-    slides: [PipelineWeek4Component],
-  },
-  {
-    label: 'Recap',
-    slides: [RecapWeek4Component],
+    slides: [PipelineSlide],
   },
   {
     label: 'Agenda',
-    slides: [AgendaWeek4Component],
+    slides: [RecapAgendaSlide],
   },
   {
-    label: 'Task 1',
+    label: 'Noise Ceiling',
     slides: [
-      FairComparisonWeek4Component,
-      WilcoxonWeek4Component,
-      WilcoxonGraphWeek4Component,
+      NoiseCeilingQuestionSlide,
+      HumanDisagreementSlide,
     ],
   },
   {
-    label: 'Task 2',
+    label: 'Emotion Analysis',
     slides: [
-      VlmBackboneWeek4Component,
-      StandardScalerWeek4Component,
-      LayerSweepWeek4Component,
+      EmotionHelpFramingSlide,
+      EmotionHelpSetupSlide,
+      EmotionHelpsEveryoneSlide,
+      WhatDecidesWhoSlide,
+      ThresholdOrDoseSlide,
+      DirectConfoundSlide,
+      WhyArtDifferentSlide,
+      TestingArtExplanationsSlide,
+      WhichImagesBenefitSlide,
+      CaseStudySlide,
     ],
   },
   {
-    label: 'Task 3',
+    label: 'Qwen4B',
     slides: [
-      FineTuneHowWeek4Component,
-      FineTuningWeek4Component,
+      Qwen4BComparisonSlide,
+      RedundancyTrendSlide,
     ],
   },
   {
-    label: 'Summary',
-    slides: [SummaryWeek4Component],
-  },
-  {
-    label: 'Outro',
+    label: 'Summary & Qs',
     slides: [
-      NextStepsWeek4Component,
-      ThankYouComponent,
+      SummarySlide,
+      QuestionsSlide,
+      ThankYouSlide,
     ],
   },
   {
-    label: 'Appendix',
+    label: 'Q&A Backup',
     slides: [
-      DedupProblemWeek4Component,
-      StandardScalerConceptWeek4Component,
-      VlmFaithfulnessWeek4Component,
+      QA1Slide,
+      QA2Slide,
+      QA3Slide,
+      QA4Slide,
+      QA5Slide,
+      QA6Slide,
+      QA7Slide,
+      QA8Slide,
     ],
   },
 ];

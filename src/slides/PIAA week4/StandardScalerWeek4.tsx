@@ -246,7 +246,7 @@ export function StandardScalerWeek4() {
                   <strong>VLM Outperforms CLIP:</strong> With StandardScaler, the VLM beats CLIP by <strong>+0.08 CCC</strong>.
                 </li>
                 <li>
-                  <strong>Text > Image Tokens:</strong> Text tokens consistently beat image tokens in middle-to-late layers, matching the Ryu &amp; Yanaka findings.
+                  <strong>Text &gt; Image Tokens:</strong> Text tokens consistently beat image tokens in middle-to-late layers, matching the Ryu &amp; Yanaka findings.
                 </li>
               </ul>
             </div>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SlideHeader, SlideShell } from "../../components/index.ts";
-import { cardRise, fadeInUp } from "../../lib/motion.ts";
+import { cardRise } from "../../lib/motion.ts";
 
 const GLOWS = [
   { top: -200, right: -120, size: 800, color: "124, 58, 237", opacity: 0.12 },
