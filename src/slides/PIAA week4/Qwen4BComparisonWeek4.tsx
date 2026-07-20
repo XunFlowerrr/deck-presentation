@@ -11,9 +11,9 @@ export function Qwen4BComparisonWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 3 — Qwen3-VL-4B"
-        title="Smaller Model: "
-        highlight="Same or Better."
+        label="Part 3 — smaller model"
+        title="Does the small model "
+        highlight="keep up?"
       />
 
       <div
@@ -57,9 +57,9 @@ export function Qwen4BComparisonWeek4() {
                 fontSize: 13,
               }}
             >
-              <div><strong style={{ color: "#7C3AED" }}>4B Best Layer:</strong> LT17</div>
+              <div><strong style={{ color: "#7C3AED" }}>4B Best layer we found:</strong> LT17</div>
               <div style={{ width: 1, height: 16, background: "#D1D5DB" }} />
-              <div><strong style={{ color: "#EC4899" }}>8B Best Layer:</strong> LT15</div>
+              <div><strong style={{ color: "#EC4899" }}>8B Best layer we found:</strong> LT15</div>
             </div>
           </motion.div>
 

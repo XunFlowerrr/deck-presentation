@@ -11,9 +11,9 @@ export function WhichImagesBenefitWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 2 — Image Level Analysis"
-        title="Which Images "
-        highlight="Benefit?"
+        label="Part 2 — now by photo"
+        title="Which photos "
+        highlight="benefit most?"
       />
 
       <div

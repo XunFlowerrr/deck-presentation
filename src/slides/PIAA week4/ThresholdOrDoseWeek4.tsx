@@ -11,9 +11,9 @@ export function ThresholdOrDoseWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 2 — Threshold Analysis"
-        title="Is It a Threshold "
-        highlight="or a Dose?"
+        label="Part 2 — is there a cut-off?"
+        title="How good must the "
+        highlight="emotion guess be?"
       />
 
       <div
@@ -58,7 +58,7 @@ export function ThresholdOrDoseWeek4() {
               No Threshold in Our Data
             </div>
             <p style={{ margin: 0, fontSize: 14, color: "#4B5563", lineHeight: 1.5 }}>
-              Even the worst quartile still gains <strong>+0.040</strong> on average. Fitted regression line crosses zero at <strong>emo_r = −0.29</strong> (far below any real user value).
+              Even the group we read worst still gains <strong>+0.031</strong> on average. The fitted line only reaches zero at <strong>emo_r = −0.29</strong>, which is below anything we actually see in the data.
             </p>
           </motion.div>
 
@@ -119,9 +119,9 @@ export function ThresholdOrDoseWeek4() {
             fallbackTitle="Dose-Response Regression: Delta vs emo_r"
             fallbackSubtitle="Linear fit shows positive gain throughout, zero-crossing at -0.29"
             fallbackStats={[
-              { label: "Zero-crossing emo_r", value: "-0.29", color: "#EF4444" },
-              { label: "Worst Group Risk", value: "31% negative", color: "#F59E0B" },
-              { label: "Best Group Risk", value: "3% negative", color: "#10B981" },
+              { label: "Line reaches zero at", value: "emo_r = −0.29", color: "#EF4444" },
+              { label: "Worst group: made worse", value: "31% of users", color: "#F59E0B" },
+              { label: "Best group: made worse", value: "3% of users", color: "#10B981" },
             ]}
             maxHeight={400}
           />
@@ -143,7 +143,7 @@ export function ThresholdOrDoseWeek4() {
           color: "#6B7280",
         }}
       >
-        Dose-response = benefit scales continuously with input accuracy without a discrete step threshold
+        In other words: reading feelings better does not switch the benefit on — it just makes it bigger, and safer.
       </motion.div>
     </SlideShell>
   );

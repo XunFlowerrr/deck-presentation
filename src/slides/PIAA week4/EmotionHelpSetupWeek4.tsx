@@ -11,9 +11,9 @@ export function EmotionHelpSetupWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 2 — Analytical Setup"
-        title="What We "
-        highlight="Measure."
+        label="Part 2 — how we measure it"
+        title="What we compare, "
+        highlight="user by user."
       />
 
       <div
@@ -25,7 +25,7 @@ export function EmotionHelpSetupWeek4() {
           alignItems: "center",
         }}
       >
-        {/* Left: Dependent Variable (delta) */}
+        {/* Left: What we are explaining (delta) */}
         <motion.div
           {...cardRise(0.15)}
           style={{
@@ -52,7 +52,7 @@ export function EmotionHelpSetupWeek4() {
                 letterSpacing: "0.08em",
               }}
             >
-              Dependent Variable
+              What we are explaining
             </span>
             <h3 style={{ margin: "10px 0 0", fontSize: 24, fontWeight: 800, color: "#111827" }}>
               Delta (<span style={{ color: "#7C3AED" }}>delta</span>)
@@ -91,7 +91,7 @@ export function EmotionHelpSetupWeek4() {
           </div>
         </motion.div>
 
-        {/* Right: Key Independent Variable (emo_r) */}
+        {/* Right: What might explain it (emo_r) */}
         <motion.div
           {...cardRise(0.3)}
           style={{
@@ -118,10 +118,10 @@ export function EmotionHelpSetupWeek4() {
                 letterSpacing: "0.08em",
               }}
             >
-              Key Independent Variable
+              What might explain it
             </span>
             <h3 style={{ margin: "10px 0 0", fontSize: 24, fontWeight: 800, color: "#111827" }}>
-              Emotion Predictability (<span style={{ color: "#EC4899" }}>emo_r</span>)
+              How well we read feelings (<span style={{ color: "#EC4899" }}>emo_r</span>)
             </h3>
           </div>
 
@@ -149,7 +149,7 @@ export function EmotionHelpSetupWeek4() {
           <div
             style={{
               background: "rgba(236, 72, 153, 0.06)",
-              border: "1px border rgba(236, 72, 153, 0.2)",
+              border: "1px solid rgba(236, 72, 153, 0.2)",
               borderRadius: 14,
               padding: "14px 18px",
               display: "flex",
@@ -158,7 +158,7 @@ export function EmotionHelpSetupWeek4() {
             }}
           >
             <div>
-              <div style={{ fontSize: 12, color: "#6B7280", fontWeight: 600 }}>Dataset Mean emo_r</div>
+              <div style={{ fontSize: 12, color: "#6B7280", fontWeight: 600 }}>Average across all users</div>
               <div style={{ fontSize: 28, fontWeight: 900, color: "#EC4899" }}>0.27</div>
             </div>
             <div style={{ fontSize: 13, fontWeight: 700, color: "#EC4899", maxWidth: 200, textAlign: "right" }}>

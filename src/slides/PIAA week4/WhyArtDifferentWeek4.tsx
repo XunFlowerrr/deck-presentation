@@ -11,9 +11,9 @@ export function WhyArtDifferentWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 2 — Domain Breakdown"
-        title="Why Is Art "
-        highlight="Different?"
+        label="Part 2 — the odd one out"
+        title="Why is art "
+        highlight="different?"
       />
 
       <div

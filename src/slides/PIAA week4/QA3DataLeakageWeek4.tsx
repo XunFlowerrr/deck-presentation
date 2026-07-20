@@ -11,9 +11,9 @@ export function QA3DataLeakageWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Q&A Backup — QA-3"
-        title="QA-3: Data Leakage "
-        highlight="Verification."
+        label="Backup"
+        title="How we keep test users "
+        highlight="out of training."
       />
 
       <div

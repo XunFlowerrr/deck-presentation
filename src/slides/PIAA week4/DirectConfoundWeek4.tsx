@@ -11,9 +11,9 @@ export function DirectConfoundWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 2 — Confound Control"
-        title="Direct Strength Is a "
-        highlight="Confound."
+        label="Part 2 — checking the finding"
+        title="Only one thing "
+        highlight="really explains it."
       />
 
       <div
@@ -42,13 +42,13 @@ export function DirectConfoundWeek4() {
             }}
           >
             <div style={{ fontSize: 12, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>
-              Surface Observation
+              What it looks like at first
             </div>
             <div style={{ fontSize: 15, color: "#374151", lineHeight: 1.4 }}>
-              Direct CCC correlates with delta at <strong>r = +0.15</strong> (looks like Direct strength helps delta).
+              Users whose plain model is already good also seem to gain more from emotions (<strong>r = +0.15</strong>).
             </div>
             <div style={{ background: "#F3F4F6", padding: "8px 14px", borderRadius: 10, fontSize: 13, color: "#7C3AED", fontWeight: 700 }}>
-              BUT Direct CCC ↔ emo_r = +0.66 (they move together!)
+              But those two go together: r = +0.66. If we read someone's photos well, we do well at both.
             </div>
           </motion.div>
 
@@ -67,7 +67,7 @@ export function DirectConfoundWeek4() {
             }}
           >
             <div style={{ fontSize: 12, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-              Partial Correlation Results
+              What happens when we hold emo_r fixed
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -86,7 +86,7 @@ export function DirectConfoundWeek4() {
                   delta ↔ Direct CCC | controlling for emo_r
                 </span>
                 <span style={{ fontSize: 16, fontWeight: 900, color: "#EF4444" }}>
-                  −0.04 (VANISHES)
+                  −0.08  (gone)
                 </span>
               </div>
 
@@ -131,14 +131,14 @@ export function DirectConfoundWeek4() {
         {/* Right: Scatter plot */}
         <motion.div {...cardRise(0.25)}>
           <PlotImage
-            src="/output/plots/emotion_help_scatter_emo_r.png"
+            src="/output/plots/confound_partial_corr.png"
             alt="Scatter plot of Delta vs emo_r"
-            fallbackTitle="Scatter Plot: Delta Gain vs emo_r"
-            fallbackSubtitle="Clear positive trend showing emo_r driving delta across 387 units"
+            fallbackTitle="Before and after removing emo_r"
+            fallbackSubtitle="The upward slope on the left flattens once emo_r is taken out"
             fallbackStats={[
               { label: "Unadjusted r", value: "+0.30", color: "#7C3AED" },
-              { label: "Partial r (Direct controlled)", value: "+0.26", color: "#10B981" },
-              { label: "Direct Partial r", value: "-0.04 (ns)", color: "#EF4444" },
+              { label: "emo_r, holding baseline fixed", value: "+0.28  (stays)", color: "#10B981" },
+              { label: "baseline, holding emo_r fixed", value: "−0.08  (gone)", color: "#EF4444" },
             ]}
             maxHeight={390}
           />

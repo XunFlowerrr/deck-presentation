@@ -11,9 +11,9 @@ export function EmotionHelpsEveryoneWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 2 — User Level Finding"
-        title="It Helps "
-        highlight="Almost Everyone."
+        label="Part 2 — first answer"
+        title="It helps "
+        highlight="almost everyone."
       />
 
       <div

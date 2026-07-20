@@ -11,9 +11,9 @@ export function HumanDisagreementWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 1 — Noise Ceiling"
-        title="Humans Disagree "
-        highlight="With Themselves."
+        label="Part 1 — the ceiling"
+        title="People do not agree "
+        highlight="with themselves."
       />
 
       <div

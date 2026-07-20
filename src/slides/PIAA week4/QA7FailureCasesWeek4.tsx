@@ -11,9 +11,9 @@ export function QA7FailureCasesWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Q&A Backup — QA-7"
-        title="QA-7: Emotion Hurt "
-        highlight="Failure Cases."
+        label="Backup"
+        title="The cases where "
+        highlight="emotions made it worse."
       />
 
       <div

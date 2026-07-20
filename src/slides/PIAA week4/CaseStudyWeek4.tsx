@@ -11,9 +11,9 @@ export function CaseStudyWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 2 — Case Study"
-        title="Qualitative "
-        highlight="Interpretability."
+        label="Part 2 — real examples"
+        title="Two photos, "
+        highlight="side by side."
       />
 
       <div
@@ -60,9 +60,9 @@ export function CaseStudyWeek4() {
                   letterSpacing: "0.08em",
                 }}
               >
-                Emotion Helped (+1.45 CCC)
+                Emotions helped  ·  error 1.23 → 0.57
               </span>
-              <span style={{ fontSize: 13, color: "#6B7280", fontWeight: 600 }}>Peaked Signal</span>
+              <span style={{ fontSize: 13, color: "#6B7280", fontWeight: 600 }}>clear feelings</span>
             </div>
 
             {/* Score Grid */}
@@ -93,10 +93,11 @@ export function CaseStudyWeek4() {
               }}
             >
               <div style={{ fontSize: 13, fontWeight: 700, color: "#111827" }}>
-                Vivid Emotion Profile (Spread SD = 1.35)
+                Strong, clear feelings &nbsp;(spread = 1.35)
               </div>
               <p style={{ margin: 0, fontSize: 14, color: "#4B5563", lineHeight: 1.45 }}>
-                Image evokes clear, peaked emotions (e.g. strong Amusement & Awe). The intermediate emotion layer captures distinct signals that drive accurate personalized scoring.
+                This photo scores high on <strong style={{ color: "#10B981" }}>impressed, intellectual and amused</strong> (4 out of 5 each).
+                The feelings are easy to read, so passing through them gives the model something useful to work with.
               </p>
             </div>
           </motion.div>
@@ -128,9 +129,9 @@ export function CaseStudyWeek4() {
                   letterSpacing: "0.08em",
                 }}
               >
-                Emotion Hurt (-0.66 CCC)
+                Emotions hurt  ·  error 2.77 → 3.43
               </span>
-              <span style={{ fontSize: 13, color: "#6B7280", fontWeight: 600 }}>Flat Signal</span>
+              <span style={{ fontSize: 13, color: "#6B7280", fontWeight: 600 }}>vague feelings</span>
             </div>
 
             {/* Score Grid */}
@@ -161,10 +162,11 @@ export function CaseStudyWeek4() {
               }}
             >
               <div style={{ fontSize: 13, fontWeight: 700, color: "#111827" }}>
-                Flat Emotion Profile (Spread SD = 0.64)
+                Weak, unclear feelings &nbsp;(spread = 0.64)
               </div>
               <p style={{ margin: 0, fontSize: 14, color: "#4B5563", lineHeight: 1.45 }}>
-                Image evokes ambiguous or flat emotions across all 7 categories. When there is no clear emotional response to detect, routing through emotion layer injects unnecessary noise.
+                Nothing stands out — the highest feeling is only <strong style={{ color: "#EF4444" }}>motivated / amused at 3 out of 5</strong>,
+                and the person still rated the photo 5.0. With no clear feeling to read, the emotion step passes on noise instead of information.
               </p>
             </div>
           </motion.div>
@@ -183,8 +185,8 @@ export function CaseStudyWeek4() {
             textAlign: "center",
           }}
         >
-          <strong style={{ color: "#7C3AED" }}>Mechanistic Takeaway: </strong>
-          Emotion mediation helps when emotional response is peaked and vivid, and adds noise when emotional response is flat or ambiguous.
+          <strong style={{ color: "#7C3AED" }}>What this tells us: </strong>
+          Going through emotions helps when the photo makes people feel something clear, and gets in the way when the feelings are vague.
         </motion.div>
       </div>
 
@@ -203,7 +205,7 @@ export function CaseStudyWeek4() {
           color: "#6B7280",
         }}
       >
-        Illustrative case study (3 images per group from exp3_case_images.csv)
+        Only 3 photos per side — these are examples, not proof
       </motion.div>
     </SlideShell>
   );

@@ -11,9 +11,9 @@ export function RecapAgendaWeek5() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Recap & Agenda"
-        title="Previous Finding & "
-        highlight="Today's Goals."
+        label="Recap & plan"
+        title="Last time, "
+        highlight="and today."
       />
 
       <div
@@ -136,7 +136,7 @@ export function RecapAgendaWeek5() {
                 Qwen3-VL-4B Model
               </h4>
               <p style={{ margin: 0, fontSize: 14, color: "#6B7280", lineHeight: 1.4 }}>
-                Evaluating the exact 4B model recommended in the literature on XPASS-Vis.
+                The paper says the smaller 4B model works well. Does that hold on our data?
               </p>
             </div>
 
@@ -153,10 +153,10 @@ export function RecapAgendaWeek5() {
             >
               <span style={{ fontSize: 32, fontWeight: 900, color: "#7C3AED", lineHeight: 1 }}>02</span>
               <h4 style={{ margin: 0, fontSize: 17, fontWeight: 800, color: "#111827" }}>
-                Mechanism Breakdown
+                When emotions help
               </h4>
               <p style={{ margin: 0, fontSize: 14, color: "#6B7280", lineHeight: 1.4 }}>
-                Deep dive: in which cases does emotion help, and in which cases does it hurt?
+                We look at who it helps, who it hurts, and what makes the difference.
               </p>
             </div>
 
@@ -176,7 +176,7 @@ export function RecapAgendaWeek5() {
                 Noise Ceiling Analysis
               </h4>
               <p style={{ margin: 0, fontSize: 14, color: "#6B7280", lineHeight: 1.4 }}>
-                Uncovering the true upper bound by accounting for human self-agreement.
+                How good can any model get, given people disagree with themselves?
               </p>
             </div>
           </div>

@@ -11,9 +11,9 @@ export function WhatDecidesWhoWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 2 — Core Finding ⭐"
-        title="What Decides "
-        highlight="WHO It Helps?"
+        label="Main finding"
+        title="Who does it help, "
+        highlight="and why?"
       />
 
       <div
@@ -41,10 +41,10 @@ export function WhatDecidesWhoWeek4() {
         >
           <div>
             <div style={{ fontSize: 12, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-              Core Mechanism Hypothesis
+              Our guess before testing
             </div>
             <div style={{ fontSize: 16, fontWeight: 700, color: "#111827", marginTop: 2 }}>
-              Emotion helps in direct proportion to how accurately we can predict that person's emotions (emo_r).
+              Emotions should help more when we guess that person's feelings well — and hurt when we guess them badly.
             </div>
           </div>
 
@@ -58,9 +58,9 @@ export function WhatDecidesWhoWeek4() {
               flexShrink: 0,
             }}
           >
-            <div style={{ fontSize: 11, color: "#6B7280" }}>Continuous Correlation</div>
+            <div style={{ fontSize: 11, color: "#6B7280" }}>Across all 387 users</div>
             <div style={{ fontSize: 18, fontWeight: 900, color: "#7C3AED" }}>
-              Spearman +0.30 (p = 1e-9)
+              r = +0.30 &nbsp;(p = 1e-9)
             </div>
           </div>
         </motion.div>
@@ -89,8 +89,8 @@ export function WhatDecidesWhoWeek4() {
               }}
             >
               <div>
-                <span style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase" }}>Worst Quartile</span>
-                <div style={{ fontSize: 14, fontWeight: 700, color: "#4B5563" }}>emo_r ≈ 0.10</div>
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase" }}>Hardest to read (bottom 25%)</span>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "#4B5563" }}>emo_r ≈ 0.09</div>
               </div>
               <div style={{ textAlign: "right" }}>
                 <div style={{ fontSize: 22, fontWeight: 900, color: "#F59E0B" }}>+0.040 gain</div>
@@ -112,7 +112,7 @@ export function WhatDecidesWhoWeek4() {
               }}
             >
               <div>
-                <span style={{ fontSize: 11, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase" }}>Best Quartile</span>
+                <span style={{ fontSize: 11, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase" }}>Easiest to read (top 25%)</span>
                 <div style={{ fontSize: 14, fontWeight: 700, color: "#111827" }}>emo_r ≈ 0.45</div>
               </div>
               <div style={{ textAlign: "right" }}>
@@ -126,7 +126,7 @@ export function WhatDecidesWhoWeek4() {
               {...fadeInUp(0.45)}
               style={{
                 background: "rgba(239, 68, 68, 0.04)",
-                border: "1px border rgba(239, 68, 68, 0.2)",
+                border: "1px solid rgba(239, 68, 68, 0.2)",
                 borderRadius: 14,
                 padding: "14px 18px",
                 fontSize: 13,
@@ -134,8 +134,9 @@ export function WhatDecidesWhoWeek4() {
                 lineHeight: 1.45,
               }}
             >
-              <strong style={{ color: "#EF4444" }}>Failure Analysis: </strong>
-              The 32 units where emotion hurt have a mean emo_r of <strong>0.15</strong> vs <strong>0.28</strong> for everyone else. Cases where emotion hurts are precisely those where Stage 1 predicts emotions poorly.
+              <strong style={{ color: "#EF4444" }}>The 32 users it made worse: </strong>
+              for them we read feelings at only <strong>0.15</strong>, against <strong>0.28</strong> for
+              everyone else. Emotions hurt exactly where we read them badly.
             </motion.div>
           </div>
 
@@ -144,8 +145,8 @@ export function WhatDecidesWhoWeek4() {
             <PlotImage
               src="/output/plots/emo_r_quartile.png"
               alt="Gain by emo_r Quartiles Boxplot / Bar Plot"
-              fallbackTitle="Delta Gain by Emotion Predictability (emo_r) Quartile"
-              fallbackSubtitle="Monotonic increase from Q1 (+0.040) to Q4 (+0.092)"
+              fallbackTitle="How much emotions help, by how well we read them"
+              fallbackSubtitle="Gain rises steadily from +0.040 to +0.092"
               fallbackStats={[
                 { label: "Q1 Gain", value: "+0.040", color: "#F59E0B" },
                 { label: "Q4 Gain", value: "+0.092", color: "#10B981" },
@@ -172,7 +173,7 @@ export function WhatDecidesWhoWeek4() {
           color: "#6B7280",
         }}
       >
-        <strong style={{ color: "#374151" }}>emo_r</strong> = Stage-1 emotion prediction accuracy per user (correlation across 7 emotions)
+        <strong style={{ color: "#374151" }}>emo_r</strong> = how well we guess this person's feelings (average match across the 7 emotions, 0–1)
       </motion.div>
     </SlideShell>
   );

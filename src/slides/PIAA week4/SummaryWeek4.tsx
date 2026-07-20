@@ -16,7 +16,7 @@ const findings = [
   {
     icon: "02",
     title: "The emotion step really helps",
-    desc: "The Wilcoxon test shows a significant improvement for both backbones (p < 0.001), so it isn't down to chance.",
+    desc: "A paired test (Wilcoxon) shows a significant improvement for both backbones (p < 0.001), so it isn't down to chance.",
   },
   {
     icon: "03",

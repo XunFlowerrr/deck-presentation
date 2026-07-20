@@ -11,9 +11,9 @@ export function EmotionHelpFramingWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 2 — Mechanism Analysis"
-        title="Framing the "
-        highlight="Question."
+        label="Part 2 — when do emotions help"
+        title="From an average "
+        highlight="to a reason."
       />
 
       <div
@@ -93,7 +93,7 @@ export function EmotionHelpFramingWeek4() {
                   letterSpacing: "0.1em",
                 }}
               >
-                USER Level Analysis
+                USER one by one
               </span>
             </div>
 
@@ -102,7 +102,7 @@ export function EmotionHelpFramingWeek4() {
             </h3>
 
             <p style={{ margin: 0, fontSize: 15, color: "#6B7280", lineHeight: 1.5 }}>
-              Analyzing individual user characteristics, emotion predictability (emo_r), baseline strength, and domain behavior across 129 users.
+              We look at each of the 129 users one by one: how well we read their feelings, how strong the plain model already is, and whether the domain changes anything.
             </p>
           </motion.div>
 
@@ -146,7 +146,7 @@ export function EmotionHelpFramingWeek4() {
                   letterSpacing: "0.1em",
                 }}
               >
-                IMAGE Level Analysis
+                IMAGE one by one
               </span>
             </div>
 

@@ -11,9 +11,9 @@ export function QA1DeltaComputationWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Q&A Backup — QA-1"
-        title="QA-1: How is Delta "
-        highlight="Computed?"
+        label="Backup"
+        title="How we measure "
+        highlight=""emotion helped"."
       />
 
       <div

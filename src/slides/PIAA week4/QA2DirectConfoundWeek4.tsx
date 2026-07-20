@@ -11,9 +11,9 @@ export function QA2DirectConfoundWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Q&A Backup — QA-2"
-        title="QA-2: Direct CCC "
-        highlight="Confound Explanation."
+        label="Backup"
+        title="Why a strong baseline "
+        highlight="is not a second cause."
       />
 
       <div

@@ -11,9 +11,9 @@ export function QA4EmoRExactlyWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Q&A Backup — QA-4"
-        title="QA-4: What Is emo_r "
-        highlight="Exactly?"
+        label="Backup"
+        title="What emo_r means, "
+        highlight="step by step."
       />
 
       <div
@@ -39,7 +39,7 @@ export function QA4EmoRExactlyWeek4() {
           }}
         >
           <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#111827" }}>
-            Formal Definition & Role of Emotion Predictability (emo_r)
+            What emo_r is, and why it matters
           </h3>
 
           <div
@@ -65,9 +65,9 @@ export function QA4EmoRExactlyWeek4() {
             </div>
 
             <div style={{ background: "#F9FAFB", padding: "16px", borderRadius: 14 }}>
-              <div style={{ fontSize: 12, color: "#6B7280", fontWeight: 600 }}>Stage-2 Headroom</div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: "#10B981", marginTop: 4 }}>0.693</div>
-              <div style={{ fontSize: 12, color: "#6B7280", marginTop: 4 }}>P-oracle given true ground-truth emotions</div>
+              <div style={{ fontSize: 12, color: "#6B7280", fontWeight: 600 }}>Step 2 already works</div>
+              <div style={{ fontSize: 32, fontWeight: 900, color: "#10B981", marginTop: 4 }}>0.725</div>
+              <div style={{ fontSize: 12, color: "#6B7280", marginTop: 4 }}>score we reach if we hand the model the real emotions</div>
             </div>
           </div>
         </motion.div>
@@ -84,7 +84,7 @@ export function QA4EmoRExactlyWeek4() {
             lineHeight: 1.5,
           }}
         >
-          <strong style={{ color: "#7C3AED" }}>The Fundamental Bottleneck: </strong>
+          <strong style={{ color: "#7C3AED" }}>The tight spot: </strong>
           Stage 2 personal fitting is capable of achieving 0.69 CCC if given perfect emotion features. The performance limit of the entire pipeline is locked by Stage 1 image-to-emotion prediction quality (0.27).
         </motion.div>
       </div>

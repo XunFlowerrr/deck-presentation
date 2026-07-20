@@ -11,9 +11,9 @@ export function QA5PValueInterpretationWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Q&A Backup — QA-5"
-        title="QA-5: p = 0.056 "
-        highlight="Interpretation."
+        label="Backup"
+        title="What p = 0.056 "
+        highlight="does and does not say."
       />
 
       <div
@@ -54,7 +54,7 @@ export function QA5PValueInterpretationWeek4() {
               Interaction Test: delta ~ emo_r × domain
             </div>
             <div style={{ fontSize: 28, fontWeight: 900, color: "#EF4444", marginTop: 4 }}>
-              p = 0.056 (Not Statistically Significant)
+              p = 0.056 (Not unlikely to be chance)
             </div>
           </div>
 

@@ -11,9 +11,9 @@ export function NoiseCeilingQuestionWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 1 — Noise Ceiling"
-        title="Re-evaluating the "
-        highlight="Upper Bound."
+        label="Part 1 — the ceiling"
+        title="How good "
+        highlight="can we even get?"
       />
 
       <div

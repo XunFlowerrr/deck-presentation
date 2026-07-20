@@ -11,9 +11,9 @@ export function RedundancyTrendWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 3 — Backbone Redundancy ⭐"
-        title="Redundancy Trend "
-        highlight="Across 6 Backbones."
+        label="Part 3 — the pattern"
+        title="The better the model, "
+        highlight="the less emotions add."
       />
 
       <div
@@ -80,11 +80,11 @@ export function RedundancyTrendWeek4() {
               src="/output/plots/redundancy_scatter.png"
               alt="Backbone Direct CCC vs Emotion Mediation Gain (r = -0.95)"
               fallbackTitle="Direct CCC vs Emotion Mediation Gain (6 Backbones)"
-              fallbackSubtitle="Strong linear inverse relationship: Weak CLIP (+0.073) vs Qwen VLMs (+0.010)"
+              fallbackSubtitle="Frozen CLIP gains +0.073; the strongest model, Qwen3-VL-8B, gains only +0.006"
               fallbackStats={[
-                { label: "Correlation r", value: "-0.95", color: "#7C3AED" },
-                { label: "CLIP Gain", value: "+0.073", color: "#EC4899" },
-                { label: "Qwen4B Gain", value: "+0.015", color: "#10B981" },
+                { label: "Trend across 6 models", value: "r = −0.95", color: "#7C3AED" },
+                { label: "Frozen CLIP gain", value: "+0.073", color: "#EC4899" },
+                { label: "Qwen3-VL-8B gain", value: "+0.006", color: "#10B981" },
               ]}
               maxHeight={340}
             />

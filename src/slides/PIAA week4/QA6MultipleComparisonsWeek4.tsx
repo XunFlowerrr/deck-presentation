@@ -11,9 +11,9 @@ export function QA6MultipleComparisonsWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Q&A Backup — QA-6"
-        title="QA-6: Multiple Testing "
-        highlight="Correction."
+        label="Backup"
+        title="We tested 28 things — "
+        highlight="here is the correction."
       />
 
       <div

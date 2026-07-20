@@ -44,9 +44,9 @@ export function QuestionsWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 4 — Discussion"
-        title="Questions for "
-        highlight="Discussion."
+        label="Discussion"
+        title="What I would like "
+        highlight="your view on."
       />
 
       <div

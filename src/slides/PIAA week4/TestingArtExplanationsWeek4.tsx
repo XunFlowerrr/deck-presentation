@@ -11,9 +11,9 @@ export function TestingArtExplanationsWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Part 2 — Hypothesis Testing"
-        title="Testing the Two "
-        highlight="Explanations."
+        label="Part 2 — the odd one out"
+        title="Testing the two "
+        highlight="possible reasons."
       />
 
       <div
@@ -116,7 +116,7 @@ export function TestingArtExplanationsWeek4() {
           <div
             style={{
               background: "#FFFFFF",
-              border: "1px border rgba(239, 68, 68, 0.3)",
+              border: "1px solid rgba(239, 68, 68, 0.3)",
               padding: "10px 16px",
               borderRadius: 12,
               fontSize: 12,

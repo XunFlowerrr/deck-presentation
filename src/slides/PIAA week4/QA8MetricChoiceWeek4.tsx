@@ -11,9 +11,9 @@ export function QA8MetricChoiceWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Q&A Backup — QA-8"
-        title="QA-8: Why CCC Over "
-        highlight="RMSE or Spearman?"
+        label="Backup"
+        title="Why we use CCC "
+        highlight="and not just ranking."
       />
 
       <div
