@@ -256,51 +256,6 @@ export function EmotionRoadmapWeek5() {
         </LevelGroup>
       </div>
 
-      {/* Definition box */}
-      <motion.div
-        {...fadeInUp(0.75)}
-        style={{
-          position: "absolute",
-          bottom: 24,
-          left: 108,
-          right: 108,
-          background: "#FFFFFF",
-          border: "1.5px dashed rgba(124, 58, 237, 0.4)",
-          borderRadius: 20,
-          padding: "20px 40px",
-          display: "flex",
-          flexDirection: "column",
-          gap: 10,
-          alignItems: "center",
-          boxShadow: "0 8px 30px rgba(0,0,0,0.04)",
-        }}
-      >
-        <span
-          style={{
-            fontSize: 18,
-            fontWeight: 900,
-            color: "#7C3AED",
-            textTransform: "uppercase",
-            letterSpacing: "0.1em",
-          }}
-        >
-          The Setup
-        </span>
-        <div
-          style={{
-            fontSize: 19,
-            color: "#374151",
-            textAlign: "center",
-            lineHeight: 1.5,
-            fontWeight: 600,
-          }}
-        >
-          <strong style={{ color: "#1F2937" }}>delta</strong> = Hybrid CCC − Direct CCC
-          &nbsp;·&nbsp; <strong style={{ color: "#1F2937" }}>emo_r</strong> = how accurately we read
-          that person's 7 emotions (dataset mean 0.27) &nbsp;·&nbsp; secondary analysis of existing
-          runs, zero retraining
-        </div>
-      </motion.div>
     </SlideShell>
   );
 }

@@ -12,8 +12,8 @@ export function EmotionHelpSetupWeek4() {
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Part 2 — how we measure it"
-        title="What we compare, "
-        highlight="user by user."
+        title="The "
+        highlight="setup."
       />
 
       <div
