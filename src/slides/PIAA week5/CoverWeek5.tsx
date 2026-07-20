@@ -31,7 +31,7 @@ export function CoverWeek5() {
           />
           <span
             style={{
-              fontSize: 16,
+              fontSize: 17,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
               color: "#7C3AED",
@@ -45,19 +45,19 @@ export function CoverWeek5() {
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <span
             style={{
-              fontSize: 15,
+              fontSize: 16,
               color: "#7C3AED",
               letterSpacing: "0.08em",
               fontWeight: 600,
             }}
           >
-            Progress Update #4 (Week 5)
+            Aesthetic Assessment
           </span>
           <div style={{ width: 1, height: 14, background: "#E5E7EB" }} />
           <span
-            style={{ fontSize: 15, color: "#9CA3AF", letterSpacing: "0.06em" }}
+            style={{ fontSize: 16, color: "#9CA3AF", letterSpacing: "0.06em" }}
           >
-            JAIST Internship
+            July 21, 2026
           </span>
         </div>
       </motion.div>
@@ -74,7 +74,7 @@ export function CoverWeek5() {
         <motion.span
           {...bodyText(0.1)}
           style={{
-            fontSize: 22,
+            fontSize: 24,
             fontWeight: 700,
             color: "#7C3AED",
             textTransform: "uppercase",
@@ -82,17 +82,17 @@ export function CoverWeek5() {
             marginBottom: 16,
           }}
         >
-          Progress Update #4
+          Weekly Progress Update #4
         </motion.span>
 
         <motion.h1
           {...heroTitle(0.12, 48)}
           style={{
-            fontSize: 76,
+            fontSize: 100,
             fontWeight: 900,
-            letterSpacing: "-2.5px",
+            letterSpacing: "-3px",
             lineHeight: 1.15,
-            margin: "0 0 28px",
+            margin: "0 0 36px",
             color: "#0A0A0A",
             userSelect: "none",
           }}
@@ -104,21 +104,20 @@ export function CoverWeek5() {
           <GradientText>Aesthetic Assessment</GradientText>
         </motion.h1>
 
-        <AccentLine delay={0.55} width={140} style={{ marginBottom: 28 }} />
+        <AccentLine delay={0.55} width={140} style={{ marginBottom: 36 }} />
 
         <motion.p
           {...bodyText(0.72)}
           style={{
-            fontSize: 26,
+            fontSize: 34,
             color: "#6B7280",
             margin: 0,
             fontWeight: 400,
             letterSpacing: "-0.3px",
             lineHeight: 1.5,
-            maxWidth: 920,
           }}
         >
-          Predicting individual aesthetic preferences through emotional responses first
+          Predicting individual aesthetic preferences through emotional responses
         </motion.p>
       </div>
 
@@ -130,15 +129,15 @@ export function CoverWeek5() {
           justifyContent: "space-between",
           alignItems: "center",
           borderTop: "1px solid #F3F4F6",
-          paddingTop: 20,
+          paddingTop: 24,
         }}
       >
-        <div style={{ display: "flex", gap: 24 }}>
-          {["PIAA", "Emotion Mediation", "Noise Ceiling", "Qwen3-VL"].map((tag, i) => (
+        <div style={{ display: "flex", gap: 28 }}>
+          {["PIAA", "Emotion Mediation"].map((tag, i) => (
             <span
               key={tag}
               style={{
-                fontSize: 14,
+                fontSize: 16,
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
                 color: i === 0 ? "#7C3AED" : "#9CA3AF",
@@ -151,13 +150,13 @@ export function CoverWeek5() {
         </div>
         <span
           style={{
-            fontSize: 18,
+            fontSize: 20,
             color: "#374151",
             fontWeight: 600,
             letterSpacing: "0.02em",
           }}
         >
-          Presenter: <span style={{ color: "#7C3AED" }}>Pinwa</span> · JAIST Internship
+          Presenter: <span style={{ color: "#7C3AED" }}>Pinwa</span>
         </span>
       </motion.div>
     </SlideShell>

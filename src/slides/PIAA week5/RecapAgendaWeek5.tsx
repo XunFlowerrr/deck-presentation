@@ -11,9 +11,9 @@ export function RecapAgendaWeek5() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Recap & plan"
-        title="Last time, "
-        highlight="and today."
+        label="Recap & Agenda"
+        title="Previous Finding & "
+        highlight="Today's Goals."
       />
 
       <div
@@ -25,6 +25,7 @@ export function RecapAgendaWeek5() {
           justifyContent: "center",
         }}
       >
+        {/* Top Section: Last Time */}
         <motion.div
           {...cardRise(0.15)}
           style={{
@@ -57,7 +58,7 @@ export function RecapAgendaWeek5() {
               Last Time (Update #3)
             </span>
             <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#111827" }}>
-              Qwen3 Backbone Findings
+              Baseline Performance & Qwen Findings
             </h3>
           </div>
 
@@ -70,9 +71,9 @@ export function RecapAgendaWeek5() {
                 padding: "14px 18px",
               }}
             >
-              <div style={{ fontSize: 13, color: "#6B7280", marginBottom: 4 }}>Experiment Setup</div>
-              <div style={{ fontSize: 15, fontWeight: 600, color: "#1F2937" }}>
-                Tested Qwen3-VL-8B following Ryu & Yanaka (though they noted 4B performed best).
+              <div style={{ fontSize: 13, color: "#6B7280", marginBottom: 4 }}>Strongest Overall Baseline</div>
+              <div style={{ fontSize: 15, fontWeight: 700, color: "#10B981" }}>
+                Fine-tuned CLIP remains our highest performing model (CCC ≈ 0.400).
               </div>
             </div>
 
@@ -84,14 +85,15 @@ export function RecapAgendaWeek5() {
                 padding: "14px 18px",
               }}
             >
-              <div style={{ fontSize: 13, color: "#6B7280", marginBottom: 4 }}>Key Discovery</div>
+              <div style={{ fontSize: 13, color: "#6B7280", marginBottom: 4 }}>Qwen3-VL Finding (Ryu & Yanaka)</div>
               <div style={{ fontSize: 15, fontWeight: 600, color: "#7C3AED" }}>
-                The stronger the backbone, the smaller the Hybrid−Direct gap.
+                Tested 8B: The stronger the backbone, the smaller the Hybrid−Direct gap.
               </div>
             </div>
           </div>
         </motion.div>
 
+        {/* Bottom Section: Today's Agenda */}
         <motion.div
           {...cardRise(0.35)}
           style={{
@@ -131,12 +133,12 @@ export function RecapAgendaWeek5() {
                 gap: 8,
               }}
             >
-              <span style={{ fontSize: 32, fontWeight: 900, color: "#06B6D4", lineHeight: 1 }}>01</span>
+              <span style={{ fontSize: 32, fontWeight: 900, color: "#EC4899", lineHeight: 1 }}>01</span>
               <h4 style={{ margin: 0, fontSize: 17, fontWeight: 800, color: "#111827" }}>
-                The real ceiling
+                Qwen3-VL-4B Model
               </h4>
               <p style={{ margin: 0, fontSize: 14, color: "#6B7280", lineHeight: 1.4 }}>
-                How good can any model get, given people disagree with themselves?
+                Testing the smaller 4B model recommended in Ryu & Yanaka to check compute vs accuracy.
               </p>
             </div>
 
@@ -153,10 +155,10 @@ export function RecapAgendaWeek5() {
             >
               <span style={{ fontSize: 32, fontWeight: 900, color: "#7C3AED", lineHeight: 1 }}>02</span>
               <h4 style={{ margin: 0, fontSize: 17, fontWeight: 800, color: "#111827" }}>
-                When emotions help
+                Mechanism Breakdown
               </h4>
               <p style={{ margin: 0, fontSize: 14, color: "#6B7280", lineHeight: 1.4 }}>
-                We look at who it helps, who it hurts, and what makes the difference.
+                In which cases does emotion help users, and in which cases does it hurt?
               </p>
             </div>
 
@@ -171,12 +173,12 @@ export function RecapAgendaWeek5() {
                 gap: 8,
               }}
             >
-              <span style={{ fontSize: 32, fontWeight: 900, color: "#EC4899", lineHeight: 1 }}>03</span>
+              <span style={{ fontSize: 32, fontWeight: 900, color: "#06B6D4", lineHeight: 1 }}>03</span>
               <h4 style={{ margin: 0, fontSize: 17, fontWeight: 800, color: "#111827" }}>
-                Qwen3-VL-4B Model
+                Noise Ceiling Analysis
               </h4>
               <p style={{ margin: 0, fontSize: 14, color: "#6B7280", lineHeight: 1.4 }}>
-                The paper says the smaller 4B model works well. Does that hold on our data?
+                Uncovering the true upper bound by accounting for human self-agreement.
               </p>
             </div>
           </div>
