@@ -53,17 +53,17 @@ function Tile({
         background: tint || "#F9FAFB",
         border: `1px solid ${border || "#F3F4F6"}`,
         borderRadius: 11,
-        padding: "10px 12px",
+        padding: "10px 13px",
       }}
     >
-      <div style={{ fontSize: 11, color: "#6B7280", fontWeight: 600, lineHeight: 1.25 }}>
+      <div style={{ fontSize: 12.5, color: "#6B7280", fontWeight: 600, lineHeight: 1.25 }}>
         {label}
       </div>
-      <div style={{ fontSize: 18, fontWeight: 900, color, marginTop: 2, lineHeight: 1.15 }}>
+      <div style={{ fontSize: 20, fontWeight: 900, color, marginTop: 3, lineHeight: 1.15 }}>
         {value}
       </div>
       {caption && (
-        <div style={{ fontSize: 10.5, color: "#9CA3AF", marginTop: 2, lineHeight: 1.25 }}>
+        <div style={{ fontSize: 12, color: "#9CA3AF", marginTop: 3, lineHeight: 1.25 }}>
           {caption}
         </div>
       )}
@@ -94,10 +94,10 @@ function TextBox({
         padding: "10px 13px",
       }}
     >
-      <div style={{ fontSize: 12, fontWeight: 800, color: headingColor, lineHeight: 1.25 }}>
+      <div style={{ fontSize: 13.5, fontWeight: 800, color: headingColor, lineHeight: 1.25 }}>
         {heading}
       </div>
-      <p style={{ margin: "4px 0 0", fontSize: 11.5, color: "#4B5563", lineHeight: 1.4 }}>
+      <p style={{ margin: "5px 0 0", fontSize: 13, color: "#4B5563", lineHeight: 1.4 }}>
         {children}
       </p>
     </div>
@@ -134,8 +134,8 @@ function Note({
         background: tint || "#F9FAFB",
         border: `1px solid ${border || "#F3F4F6"}`,
         borderRadius: 11,
-        padding: "10px 14px",
-        fontSize: 12,
+        padding: "11px 15px",
+        fontSize: 13.5,
         color: color || "#374151",
         lineHeight: 1.45,
       }}
@@ -166,23 +166,23 @@ function QACard({ item, delay }: { item: QAItem; delay: number }) {
         <span
           style={{
             flexShrink: 0,
-            fontSize: 10.5,
+            fontSize: 11.5,
             fontWeight: 800,
             color: "#7C3AED",
             background: "rgba(124, 58, 237, 0.1)",
-            padding: "4px 9px",
+            padding: "4px 10px",
             borderRadius: 8,
             letterSpacing: "0.06em",
           }}
         >
           QA-{item.n}
         </span>
-        <h3 style={{ margin: 0, fontSize: 16.5, fontWeight: 800, color: "#111827", lineHeight: 1.3 }}>
+        <h3 style={{ margin: 0, fontSize: 18.5, fontWeight: 800, color: "#111827", lineHeight: 1.28 }}>
           {item.question}
         </h3>
       </div>
 
-      <p style={{ margin: 0, fontSize: 13, color: "#4B5563", lineHeight: 1.5 }}>{item.desc}</p>
+      <p style={{ margin: 0, fontSize: 14.5, color: "#4B5563", lineHeight: 1.5 }}>{item.desc}</p>
 
       {item.body}
       {item.note}
@@ -213,9 +213,9 @@ function QAGrid({
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gridTemplateRows: "1fr 1fr",
-          gap: 18,
+          gap: 16,
           minHeight: 0,
-          paddingBottom: 36,
+          paddingBottom: 30,
         }}
       >
         {items.map((item, i) => (
@@ -251,7 +251,7 @@ const SETUP_ITEMS: QAItem[] = [
     desc: "A per-user pairwise difference, taken for every user in every domain from results that already existed.",
     body: (
       <>
-        <Equation size={19}>
+        <Equation size={21}>
           <Var>Δ</Var>
           <Sub>
             <Var>u,d</Var>
@@ -356,7 +356,7 @@ const SETUP_ITEMS: QAItem[] = [
     desc: "Emotion predictability for one specific user: how well Stage 1 recovers their 7 emotion ratings.",
     body: (
       <>
-        <Equation size={18}>
+        <Equation size={20}>
           <Op>emo_r</Op>(<Var>u</Var>) =
           <Frac num={<Op>1</Op>} den={<Op>7</Op>} color="#7C3AED" />
           <Sum from={<Var>e=1</Var>} to={<Op>7</Op>}>
@@ -404,7 +404,7 @@ const STATS_ITEMS: QAItem[] = [
     n: 5,
     question: "p = 0.056 — proven or not?",
     desc: (
-      <Equation inline size={15} color="#EF4444">
+      <Equation inline size={16.5} color="#EF4444">
         <Var>Δ</Var> ~ <Op>emo_r</Op> × <Op>domain</Op> &nbsp;→&nbsp; <Var>p</Var> = 0.056 (not
         significant)
       </Equation>
@@ -433,7 +433,7 @@ const STATS_ITEMS: QAItem[] = [
     desc: "28 candidate predictors of delta were screened, so the significance threshold has to be tightened.",
     body: (
       <>
-        <Equation size={17}>
+        <Equation size={19}>
           <Var>α</Var>
           <Sub>
             <Op>adj</Op>
