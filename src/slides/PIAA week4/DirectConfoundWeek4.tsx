@@ -45,7 +45,7 @@ export function DirectConfoundWeek4() {
               What it looks like at first
             </div>
             <div style={{ fontSize: 18, color: "#374151", lineHeight: 1.5 }}>
-              Users whose plain model is already good also seem to gain more from emotions (<strong>r = +0.15</strong>).
+              Users whose plain model is already good also seem to gain more from emotions<br />(<strong>r = +0.15</strong>).
             </div>
             <div style={{ background: "#F3F4F6", padding: "10px 14px", borderRadius: 10, fontSize: 16, color: "#7C3AED", fontWeight: 700, lineHeight: 1.45 }}>
               But those two go together: r = +0.66. If we read someone's photos well, we do well at both.
