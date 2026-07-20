@@ -162,7 +162,7 @@ export function EmotionHelpSetupWeek4() {
               <div style={{ fontSize: 28, fontWeight: 900, color: "#EC4899" }}>0.27</div>
             </div>
             <div style={{ fontSize: 13, fontWeight: 700, color: "#EC4899", maxWidth: 200, textAlign: "right" }}>
-              System-wide Bottleneck
+              the weak link in the whole system
             </div>
           </div>
         </motion.div>
@@ -184,7 +184,7 @@ export function EmotionHelpSetupWeek4() {
           maxWidth: 520,
         }}
       >
-        Both settings use the SAME user, SAME images, SAME fold. No retraining — secondary analysis of existing results.
+No new model here — I reuse the Direct and Hybrid scores each user already got in earlier runs, on the same images and the same fold, and just subtract them.
       </motion.div>
     </SlideShell>
   );

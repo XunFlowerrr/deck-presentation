@@ -7,205 +7,127 @@ const GLOWS = [
   { bottom: -200, right: -100, size: 600, color: "236, 72, 153", opacity: 0.1 },
 ];
 
+interface CasePhoto {
+  src: string;
+  trueScore: string;
+  direct: string;
+  hybrid: string;
+  topFeelings: string;
+}
+
+const HELPED: CasePhoto[] = [
+  { src: "/case-study/helps-5632.jpg", trueScore: "5.0", direct: "3.57", hybrid: "5.02", topFeelings: "impressed, intellectual (4/5)" },
+  { src: "/case-study/helps-5502.jpg", trueScore: "0.0", direct: "3.14", hybrid: "2.00", topFeelings: "distasteful (5/5)" },
+  { src: "/case-study/helps-3099.jpg", trueScore: "0.0", direct: "3.34", hybrid: "2.22", topFeelings: "distasteful (5/5)" },
+];
+
+const HURT: CasePhoto[] = [
+  { src: "/case-study/hurts-5017.jpg", trueScore: "5.0", direct: "2.23", hybrid: "1.57", topFeelings: "motivated, amused (3/5)" },
+  { src: "/case-study/hurts-5048.jpg", trueScore: "3.0", direct: "1.75", hybrid: "1.08", topFeelings: "amused (2/5)" },
+  { src: "/case-study/hurts-5201.jpg", trueScore: "1.0", direct: "3.46", hybrid: "4.07", topFeelings: "distasteful, amused (3/5)" },
+];
+
+function PhotoCard({ photo, good }: { photo: CasePhoto; good: boolean }) {
+  const accent = good ? "#10B981" : "#EF4444";
+  return (
+    <div
+      style={{
+        background: "#FFFFFF",
+        border: `1px solid ${good ? "rgba(16,185,129,0.25)" : "rgba(239,68,68,0.25)"}`,
+        borderRadius: 14,
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <img
+        src={photo.src}
+        alt="case study photo"
+        style={{ width: "100%", height: 108, objectFit: "cover", display: "block" }}
+      />
+      <div style={{ padding: "8px 10px", display: "flex", flexDirection: "column", gap: 4 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#4B5563" }}>
+          <span>true <strong style={{ color: "#111827" }}>{photo.trueScore}</strong></span>
+          <span>direct <strong style={{ color: "#6B7280" }}>{photo.direct}</strong></span>
+          <span>hybrid <strong style={{ color: accent }}>{photo.hybrid}</strong></span>
+        </div>
+        <div style={{ fontSize: 10, color: "#9CA3AF", lineHeight: 1.3 }}>{photo.topFeelings}</div>
+      </div>
+    </div>
+  );
+}
+
 export function CaseStudyWeek4() {
   return (
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Part 2 — real examples"
-        title="Two photos, "
+        title="Six real photos, "
         highlight="side by side."
       />
 
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          gap: 24,
-          justifyContent: "center",
-        }}
-      >
-        {/* 2 Column Comparison: Helped vs Hurt */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 32,
-          }}
-        >
-          {/* Column 1: EMOTION HELPED */}
-          <motion.div
-            {...cardRise(0.15)}
-            style={{
-              background: "#FFFFFF",
-              border: "2px solid rgba(16, 185, 129, 0.3)",
-              borderRadius: 20,
-              padding: "28px",
-              boxShadow: "0 8px 30px rgba(16, 185, 129, 0.06)",
-              display: "flex",
-              flexDirection: "column",
-              gap: 20,
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <span
-                style={{
-                  fontSize: 13,
-                  fontWeight: 800,
-                  color: "#10B981",
-                  background: "rgba(16, 185, 129, 0.1)",
-                  padding: "4px 14px",
-                  borderRadius: 12,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.08em",
-                }}
-              >
-                Emotions helped  ·  error 1.23 → 0.57
-              </span>
-              <span style={{ fontSize: 13, color: "#6B7280", fontWeight: 600 }}>clear feelings</span>
-            </div>
-
-            {/* Score Grid */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
-              <div style={{ background: "#F9FAFB", padding: "12px", borderRadius: 12, textAlign: "center" }}>
-                <div style={{ fontSize: 11, color: "#6B7280" }}>Ground Truth</div>
-                <div style={{ fontSize: 24, fontWeight: 900, color: "#111827" }}>5.00</div>
-              </div>
-              <div style={{ background: "#F9FAFB", padding: "12px", borderRadius: 12, textAlign: "center" }}>
-                <div style={{ fontSize: 11, color: "#6B7280" }}>Direct Score</div>
-                <div style={{ fontSize: 24, fontWeight: 900, color: "#6B7280" }}>3.57</div>
-              </div>
-              <div style={{ background: "rgba(16, 185, 129, 0.08)", padding: "12px", borderRadius: 12, textAlign: "center" }}>
-                <div style={{ fontSize: 11, color: "#065F46", fontWeight: 700 }}>Hybrid Score</div>
-                <div style={{ fontSize: 24, fontWeight: 900, color: "#10B981" }}>5.02</div>
-              </div>
-            </div>
-
-            <div
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 16, justifyContent: "center" }}>
+        {/* Row 1: helped */}
+        <motion.div {...cardRise(0.1)} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <span
               style={{
-                background: "#F9FAFB",
-                border: "1px solid #F3F4F6",
-                borderRadius: 14,
-                padding: "16px",
-                display: "flex",
-                flexDirection: "column",
-                gap: 8,
+                fontSize: 12, fontWeight: 800, color: "#10B981",
+                background: "rgba(16, 185, 129, 0.1)", padding: "3px 12px",
+                borderRadius: 10, textTransform: "uppercase", letterSpacing: "0.06em",
               }}
             >
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#111827" }}>
-                Strong, clear feelings &nbsp;(spread = 1.35)
-              </div>
-              <p style={{ margin: 0, fontSize: 14, color: "#4B5563", lineHeight: 1.45 }}>
-                This photo scores high on <strong style={{ color: "#10B981" }}>impressed, intellectual and amused</strong> (4 out of 5 each).
-                The feelings are easy to read, so passing through them gives the model something useful to work with.
-              </p>
-            </div>
-          </motion.div>
+              Emotions helped &nbsp;·&nbsp; avg error 2.64 → 1.41
+            </span>
+            <span style={{ fontSize: 12, color: "#6B7280" }}>the feeling is clear and strong</span>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+            {HELPED.map((p) => <PhotoCard key={p.src} photo={p} good />)}
+          </div>
+        </motion.div>
 
-          {/* Column 2: EMOTION HURT */}
-          <motion.div
-            {...cardRise(0.3)}
-            style={{
-              background: "#FFFFFF",
-              border: "2px solid rgba(239, 68, 68, 0.3)",
-              borderRadius: 20,
-              padding: "28px",
-              boxShadow: "0 8px 30px rgba(239, 68, 68, 0.06)",
-              display: "flex",
-              flexDirection: "column",
-              gap: 20,
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <span
-                style={{
-                  fontSize: 13,
-                  fontWeight: 800,
-                  color: "#EF4444",
-                  background: "rgba(239, 68, 68, 0.1)",
-                  padding: "4px 14px",
-                  borderRadius: 12,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.08em",
-                }}
-              >
-                Emotions hurt  ·  error 2.77 → 3.43
-              </span>
-              <span style={{ fontSize: 13, color: "#6B7280", fontWeight: 600 }}>vague feelings</span>
-            </div>
-
-            {/* Score Grid */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
-              <div style={{ background: "#F9FAFB", padding: "12px", borderRadius: 12, textAlign: "center" }}>
-                <div style={{ fontSize: 11, color: "#6B7280" }}>Ground Truth</div>
-                <div style={{ fontSize: 24, fontWeight: 900, color: "#111827" }}>5.00</div>
-              </div>
-              <div style={{ background: "#F9FAFB", padding: "12px", borderRadius: 12, textAlign: "center" }}>
-                <div style={{ fontSize: 11, color: "#6B7280" }}>Direct Score</div>
-                <div style={{ fontSize: 24, fontWeight: 900, color: "#6B7280" }}>2.23</div>
-              </div>
-              <div style={{ background: "rgba(239, 68, 68, 0.08)", padding: "12px", borderRadius: 12, textAlign: "center" }}>
-                <div style={{ fontSize: 11, color: "#991B1B", fontWeight: 700 }}>Hybrid Score</div>
-                <div style={{ fontSize: 24, fontWeight: 900, color: "#EF4444" }}>1.57</div>
-              </div>
-            </div>
-
-            <div
+        {/* Row 2: hurt */}
+        <motion.div {...cardRise(0.25)} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <span
               style={{
-                background: "#F9FAFB",
-                border: "1px solid #F3F4F6",
-                borderRadius: 14,
-                padding: "16px",
-                display: "flex",
-                flexDirection: "column",
-                gap: 8,
+                fontSize: 12, fontWeight: 800, color: "#EF4444",
+                background: "rgba(239, 68, 68, 0.1)", padding: "3px 12px",
+                borderRadius: 10, textTransform: "uppercase", letterSpacing: "0.06em",
               }}
             >
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#111827" }}>
-                Weak, unclear feelings &nbsp;(spread = 0.64)
-              </div>
-              <p style={{ margin: 0, fontSize: 14, color: "#4B5563", lineHeight: 1.45 }}>
-                Nothing stands out — the highest feeling is only <strong style={{ color: "#EF4444" }}>motivated / amused at 3 out of 5</strong>,
-                and the person still rated the photo 5.0. With no clear feeling to read, the emotion step passes on noise instead of information.
-              </p>
-            </div>
-          </motion.div>
-        </div>
+              Emotions hurt &nbsp;·&nbsp; avg error 2.16 → 2.81
+            </span>
+            <span style={{ fontSize: 12, color: "#6B7280" }}>the feeling is weak or mixed</span>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+            {HURT.map((p) => <PhotoCard key={p.src} photo={p} good={false} />)}
+          </div>
+        </motion.div>
 
-        {/* Bottom Takeaway */}
+        {/* Bottom takeaway */}
         <motion.div
           {...fadeInUp(0.45)}
           style={{
-            background: "#F9FAFB",
-            border: "1px solid #F3F4F6",
-            borderRadius: 14,
-            padding: "14px 20px",
-            fontSize: 14,
-            color: "#374151",
-            textAlign: "center",
+            background: "#F9FAFB", border: "1px solid #F3F4F6", borderRadius: 14,
+            padding: "12px 20px", fontSize: 13.5, color: "#374151", textAlign: "center",
           }}
         >
           <strong style={{ color: "#7C3AED" }}>What this tells us: </strong>
-          Going through emotions helps when the photo makes people feel something clear, and gets in the way when the feelings are vague.
+          when a photo makes people feel one strong, clear thing, guessing the feeling first helps the score.
+          When the feeling is faint or mixed, guessing it just adds a wrong guess on top of a wrong guess.
         </motion.div>
       </div>
 
-      {/* Small definition box at bottom right */}
       <motion.div
         {...fadeInUp(0.6)}
         style={{
-          position: "absolute",
-          bottom: 20,
-          right: 32,
-          background: "#F3F4F6",
-          border: "1px solid #E5E7EB",
-          borderRadius: 10,
-          padding: "6px 14px",
-          fontSize: 11,
-          color: "#6B7280",
+          position: "absolute", bottom: 20, right: 32,
+          background: "#F3F4F6", border: "1px solid #E5E7EB", borderRadius: 10,
+          padding: "6px 14px", fontSize: 11, color: "#6B7280",
         }}
       >
-        Only 3 photos per side — these are examples, not proof
+        Real photos from the dataset — 3 per side, examples not proof
       </motion.div>
     </SlideShell>
   );

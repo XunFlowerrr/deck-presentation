@@ -131,12 +131,12 @@ export function RecapAgendaWeek5() {
                 gap: 8,
               }}
             >
-              <span style={{ fontSize: 32, fontWeight: 900, color: "#EC4899", lineHeight: 1 }}>01</span>
+              <span style={{ fontSize: 32, fontWeight: 900, color: "#06B6D4", lineHeight: 1 }}>01</span>
               <h4 style={{ margin: 0, fontSize: 17, fontWeight: 800, color: "#111827" }}>
-                Qwen3-VL-4B Model
+                The real ceiling
               </h4>
               <p style={{ margin: 0, fontSize: 14, color: "#6B7280", lineHeight: 1.4 }}>
-                The paper says the smaller 4B model works well. Does that hold on our data?
+                How good can any model get, given people disagree with themselves?
               </p>
             </div>
 
@@ -171,12 +171,12 @@ export function RecapAgendaWeek5() {
                 gap: 8,
               }}
             >
-              <span style={{ fontSize: 32, fontWeight: 900, color: "#06B6D4", lineHeight: 1 }}>03</span>
+              <span style={{ fontSize: 32, fontWeight: 900, color: "#EC4899", lineHeight: 1 }}>03</span>
               <h4 style={{ margin: 0, fontSize: 17, fontWeight: 800, color: "#111827" }}>
-                Noise Ceiling Analysis
+                Qwen3-VL-4B Model
               </h4>
               <p style={{ margin: 0, fontSize: 14, color: "#6B7280", lineHeight: 1.4 }}>
-                How good can any model get, given people disagree with themselves?
+                The paper says the smaller 4B model works well. Does that hold on our data?
               </p>
             </div>
           </div>
