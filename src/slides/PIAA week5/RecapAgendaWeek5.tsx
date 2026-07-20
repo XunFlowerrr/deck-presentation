@@ -191,10 +191,10 @@ export function RecapAgendaWeek5() {
               }}
             >
               <div style={{ fontSize: 14, color: "#6B7280", marginBottom: 6 }}>
-                Strongest Overall Baseline
+                Qwen3-VL Finding (Ryu & Yanaka)
               </div>
-              <div style={{ fontSize: 17, fontWeight: 700, color: "#10B981", lineHeight: 1.45 }}>
-                Fine-tuned CLIP remains our highest performing model (CCC ≈ 0.400).
+              <div style={{ fontSize: 17, fontWeight: 600, color: "#7C3AED", lineHeight: 1.45 }}>
+                Tested 8B: The stronger the backbone, the smaller the Hybrid−Direct gap.
               </div>
             </div>
 
@@ -207,10 +207,10 @@ export function RecapAgendaWeek5() {
               }}
             >
               <div style={{ fontSize: 14, color: "#6B7280", marginBottom: 6 }}>
-                Qwen3-VL Finding (Ryu & Yanaka)
+                Strongest Overall Baseline
               </div>
-              <div style={{ fontSize: 17, fontWeight: 600, color: "#7C3AED", lineHeight: 1.45 }}>
-                Tested 8B: The stronger the backbone, the smaller the Hybrid−Direct gap.
+              <div style={{ fontSize: 17, fontWeight: 700, color: "#10B981", lineHeight: 1.45 }}>
+                Fine-tuned CLIP remains our highest performing model (CCC ≈ 0.400).
               </div>
             </div>
           </div>
