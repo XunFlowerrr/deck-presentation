@@ -23,6 +23,7 @@ import { CaseStudyWeek4 } from '../slides/PIAA week4/CaseStudyWeek4';
 import { Qwen4BComparisonWeek4 } from '../slides/PIAA week4/Qwen4BComparisonWeek4';
 import { RedundancyTrendWeek4 } from '../slides/PIAA week4/RedundancyTrendWeek4';
 import { SummaryWeek4 } from '../slides/PIAA week4/SummaryWeek4';
+import { NextStepsWeek5 } from '../slides/PIAA week5/NextStepsWeek5';
 import { QuestionsWeek4 } from '../slides/PIAA week4/QuestionsWeek4';
 import { ThankYouWeek4 } from '../slides/PIAA week4/ThankYouWeek4';
 
@@ -53,6 +54,7 @@ const CaseStudySlide = defineSlide(CaseStudyWeek4, 'CaseStudyWeek5');
 const Qwen4BComparisonSlide = defineSlide(Qwen4BComparisonWeek4, 'Qwen4BComparisonWeek5');
 const RedundancyTrendSlide = defineSlide(RedundancyTrendWeek4, 'RedundancyTrendWeek5');
 const SummarySlide = defineSlide(SummaryWeek4, 'SummaryWeek5');
+const NextStepsSlide = defineSlide(NextStepsWeek5, 'NextStepsWeek5');
 const QuestionsSlide = defineSlide(QuestionsWeek4, 'QuestionsWeek5');
 const ThankYouSlide = defineSlide(ThankYouWeek4, 'ThankYouWeek5');
 
@@ -104,6 +106,7 @@ const deck: DeckSection[] = [
     label: 'Summary & Qs',
     slides: [
       SummarySlide,
+      NextStepsSlide,
       QuestionsSlide,
       ThankYouSlide,
     ],
