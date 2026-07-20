@@ -21,8 +21,9 @@ export function RedundancyTrendWeek4() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          gap: 20,
-          justifyContent: "space-between",
+          gap: 24,
+          minHeight: 0,
+          paddingBottom: 40,
         }}
       >
         {/* Top Summary Banner */}
@@ -69,10 +70,12 @@ export function RedundancyTrendWeek4() {
         {/* Middle Plot Image & Description */}
         <div
           style={{
+            flex: 1,
             display: "grid",
             gridTemplateColumns: "1.4fr 1fr",
-            gap: 24,
+            gap: 28,
             alignItems: "center",
+            minHeight: 0,
           }}
         >
           <motion.div {...cardRise(0.25)}>
@@ -86,7 +89,7 @@ export function RedundancyTrendWeek4() {
                 { label: "Frozen CLIP gain", value: "+0.073", color: "#EC4899" },
                 { label: "Qwen3-VL-8B gain", value: "+0.006", color: "#10B981" },
               ]}
-              maxHeight={340}
+              maxHeight={540}
             />
           </motion.div>
 
@@ -103,14 +106,14 @@ export function RedundancyTrendWeek4() {
                 background: "#FFFFFF",
                 border: "1px solid #E5E7EB",
                 borderRadius: 16,
-                padding: "20px",
+                padding: "26px 24px",
                 boxShadow: "0 4px 16px rgba(0,0,0,0.03)",
               }}
             >
-              <h4 style={{ margin: "0 0 8px", fontSize: 16, fontWeight: 800, color: "#111827" }}>
+              <h4 style={{ margin: "0 0 10px", fontSize: 19, fontWeight: 800, color: "#111827" }}>
                 Implicit vs Explicit Representations
               </h4>
-              <p style={{ margin: 0, fontSize: 14, color: "#4B5563", lineHeight: 1.5 }}>
+              <p style={{ margin: 0, fontSize: 16, color: "#4B5563", lineHeight: 1.55 }}>
                 Strong VLMs already encode emotional semantics implicitly within their feature space. Making emotions explicit in Stage 2 yields diminishing returns as backbone capacity grows.
               </p>
             </div>
@@ -120,10 +123,10 @@ export function RedundancyTrendWeek4() {
                 background: "#F9FAFB",
                 border: "1px solid #F3F4F6",
                 borderRadius: 14,
-                padding: "16px 20px",
-                fontSize: 13,
+                padding: "20px 24px",
+                fontSize: 15,
                 color: "#374151",
-                lineHeight: 1.45,
+                lineHeight: 1.55,
               }}
             >
               <strong style={{ color: "#7C3AED" }}>Multi-Backbone Rigor: </strong>
