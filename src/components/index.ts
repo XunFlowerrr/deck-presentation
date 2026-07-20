@@ -32,6 +32,7 @@ export { AccentLine } from "./primitives/AccentLine.tsx";
 export { AnimatedBeam } from "./primitives/AnimatedBeam.tsx";
 export type { AnimatedBeamProps } from "./primitives/AnimatedBeam.tsx";
 export { DotPoint } from "./primitives/DotPoint.tsx";
+export { Equation, Var, Op, Sub, Sup, Frac, Sum } from "./primitives/Equation.tsx";
 export { ProgressTracker } from "./primitives/ProgressTracker.tsx";
 export type { ProgressTrackerProps, TrackerVariant } from "./primitives/ProgressTracker.tsx";
 

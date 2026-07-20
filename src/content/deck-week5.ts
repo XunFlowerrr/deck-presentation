@@ -26,15 +26,8 @@ import { SummaryWeek4 } from '../slides/PIAA week4/SummaryWeek4';
 import { QuestionsWeek4 } from '../slides/PIAA week4/QuestionsWeek4';
 import { ThankYouWeek4 } from '../slides/PIAA week4/ThankYouWeek4';
 
-// Backup Q&A Slides
-import { QA1DeltaComputationWeek5 } from '../slides/PIAA week5/QA1DeltaComputationWeek5';
-import { QA2DirectConfoundWeek5 } from '../slides/PIAA week5/QA2DirectConfoundWeek5';
-import { QA3DataLeakageWeek5 } from '../slides/PIAA week5/QA3DataLeakageWeek5';
-import { QA4EmoRExactlyWeek5 } from '../slides/PIAA week5/QA4EmoRExactlyWeek5';
-import { QA5PValueInterpretationWeek5 } from '../slides/PIAA week5/QA5PValueInterpretationWeek5';
-import { QA6MultipleComparisonsWeek5 } from '../slides/PIAA week5/QA6MultipleComparisonsWeek5';
-import { QA7FailureCasesWeek5 } from '../slides/PIAA week5/QA7FailureCasesWeek5';
-import { QA8MetricChoiceWeek5 } from '../slides/PIAA week5/QA8MetricChoiceWeek5';
+// Backup Q&A Slides (8 questions merged onto 2 slides, 4 per slide)
+import { QASetupWeek5, QAStatsWeek5 } from '../slides/PIAA week5/QABackupWeek5';
 
 // Helper to assign static slideId properties to components
 function defineSlide(component: any, slideId: string): SlideComponent {
@@ -64,14 +57,8 @@ const QuestionsSlide = defineSlide(QuestionsWeek4, 'QuestionsWeek5');
 const ThankYouSlide = defineSlide(ThankYouWeek4, 'ThankYouWeek5');
 
 // Backup slides
-const QA1Slide = defineSlide(QA1DeltaComputationWeek5, 'QA1DeltaComputationWeek5');
-const QA2Slide = defineSlide(QA2DirectConfoundWeek5, 'QA2DirectConfoundWeek5');
-const QA3Slide = defineSlide(QA3DataLeakageWeek5, 'QA3DataLeakageWeek5');
-const QA4Slide = defineSlide(QA4EmoRExactlyWeek5, 'QA4EmoRExactlyWeek5');
-const QA5Slide = defineSlide(QA5PValueInterpretationWeek5, 'QA5PValueInterpretationWeek5');
-const QA6Slide = defineSlide(QA6MultipleComparisonsWeek5, 'QA6MultipleComparisonsWeek5');
-const QA7Slide = defineSlide(QA7FailureCasesWeek5, 'QA7FailureCasesWeek5');
-const QA8Slide = defineSlide(QA8MetricChoiceWeek5, 'QA8MetricChoiceWeek5');
+const QASetupSlide = defineSlide(QASetupWeek5, 'QASetupWeek5');
+const QAStatsSlide = defineSlide(QAStatsWeek5, 'QAStatsWeek5');
 
 // ── Deck ───────────────────────────────────────────────────────────────────
 const deck: DeckSection[] = [
@@ -121,25 +108,18 @@ const deck: DeckSection[] = [
       ThankYouSlide,
     ],
   },
-  {
-    label: 'Q&A Backup',
-    slides: [
-      QA1Slide,
-      QA2Slide,
-      QA3Slide,
-      QA4Slide,
-      QA5Slide,
-      QA6Slide,
-      QA7Slide,
-      QA8Slide,
-    ],
-  },
 ];
+
+/**
+ * Backup slides. Reachable by navigating past the end of the deck, but kept out
+ * of the progress tracker so the audience never sees them advertised.
+ */
+const backupSlides: SlideComponent[] = [QASetupSlide, QAStatsSlide];
 
 // ── Derived exports consumed by the presentation engine ────────────────────
 
-/** Flat ordered slide array used by the presentation engine. */
-export const slides = deck.flatMap((s) => s.slides);
+/** Flat ordered slide array used by the presentation engine, backups last. */
+export const slides = [...deck.flatMap((s) => s.slides), ...backupSlides];
 
 /** Section metadata with auto-derived counts — consumed by ProgressTracker. */
 export const sections: { label: string; count: number }[] = deck.map((s) => ({
@@ -147,5 +127,11 @@ export const sections: { label: string; count: number }[] = deck.map((s) => ({
   count: s.slides.length,
 }));
 
-/** Total slide count used for the progress tracker visibility guard. */
-export const trackerSlideCount: number = slides.length;
+/**
+ * Slides covered by the progress tracker. Backup slides sit past this count, so
+ * the tracker hides itself once you navigate into them.
+ */
+export const trackerSlideCount: number = deck.reduce(
+  (acc, s) => acc + s.slides.length,
+  0,
+);
