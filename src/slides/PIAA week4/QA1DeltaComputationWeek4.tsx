@@ -13,7 +13,7 @@ export function QA1DeltaComputationWeek4() {
       <SlideHeader
         label="Backup"
         title="How we measure "
-        highlight=""emotion helped"."
+        highlight='"emotion helped".'
       />
 
       <div

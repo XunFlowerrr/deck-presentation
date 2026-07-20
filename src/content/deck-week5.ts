@@ -9,23 +9,22 @@ import type { DeckSection, SlideComponent } from './types';
 import { CoverWeek5 } from '../slides/PIAA week5/CoverWeek5';
 import { PipelineWeek5 } from '../slides/PIAA week5/PipelineWeek5';
 import { RecapAgendaWeek5 } from '../slides/PIAA week5/RecapAgendaWeek5';
-import { NoiseCeilingQuestionWeek5 } from '../slides/PIAA week5/NoiseCeilingQuestionWeek5';
-import { HumanDisagreementWeek5 } from '../slides/PIAA week5/HumanDisagreementWeek5';
-import { EmotionHelpFramingWeek5 } from '../slides/PIAA week5/EmotionHelpFramingWeek5';
-import { EmotionHelpSetupWeek5 } from '../slides/PIAA week5/EmotionHelpSetupWeek5';
-import { EmotionHelpsEveryoneWeek5 } from '../slides/PIAA week5/EmotionHelpsEveryoneWeek5';
-import { WhatDecidesWhoWeek5 } from '../slides/PIAA week5/WhatDecidesWhoWeek5';
-import { ThresholdOrDoseWeek5 } from '../slides/PIAA week5/ThresholdOrDoseWeek5';
-import { DirectConfoundWeek5 } from '../slides/PIAA week5/DirectConfoundWeek5';
-import { WhyArtDifferentWeek5 } from '../slides/PIAA week5/WhyArtDifferentWeek5';
-import { TestingArtExplanationsWeek5 } from '../slides/PIAA week5/TestingArtExplanationsWeek5';
-import { WhichImagesBenefitWeek5 } from '../slides/PIAA week5/WhichImagesBenefitWeek5';
-import { CaseStudyWeek5 } from '../slides/PIAA week5/CaseStudyWeek5';
-import { Qwen4BComparisonWeek5 } from '../slides/PIAA week5/Qwen4BComparisonWeek5';
-import { RedundancyTrendWeek5 } from '../slides/PIAA week5/RedundancyTrendWeek5';
-import { SummaryWeek5 } from '../slides/PIAA week5/SummaryWeek5';
-import { QuestionsWeek5 } from '../slides/PIAA week5/QuestionsWeek5';
-import { ThankYouWeek5 } from '../slides/PIAA week5/ThankYouWeek5';
+import { NoiseCeilingWeek5 } from '../slides/PIAA week5/NoiseCeilingWeek5';
+import { EmotionRoadmapWeek5 } from '../slides/PIAA week5/EmotionRoadmapWeek5';
+import { EmotionHelpSetupWeek4 } from '../slides/PIAA week4/EmotionHelpSetupWeek4';
+import { EmotionHelpsEveryoneWeek4 } from '../slides/PIAA week4/EmotionHelpsEveryoneWeek4';
+import { WhatDecidesWhoWeek4 } from '../slides/PIAA week4/WhatDecidesWhoWeek4';
+import { ThresholdOrDoseWeek4 } from '../slides/PIAA week4/ThresholdOrDoseWeek4';
+import { DirectConfoundWeek4 } from '../slides/PIAA week4/DirectConfoundWeek4';
+import { WhyArtDifferentWeek4 } from '../slides/PIAA week4/WhyArtDifferentWeek4';
+import { TestingArtExplanationsWeek4 } from '../slides/PIAA week4/TestingArtExplanationsWeek4';
+import { WhichImagesBenefitWeek4 } from '../slides/PIAA week4/WhichImagesBenefitWeek4';
+import { CaseStudyWeek4 } from '../slides/PIAA week4/CaseStudyWeek4';
+import { Qwen4BComparisonWeek4 } from '../slides/PIAA week4/Qwen4BComparisonWeek4';
+import { RedundancyTrendWeek4 } from '../slides/PIAA week4/RedundancyTrendWeek4';
+import { SummaryWeek4 } from '../slides/PIAA week4/SummaryWeek4';
+import { QuestionsWeek4 } from '../slides/PIAA week4/QuestionsWeek4';
+import { ThankYouWeek4 } from '../slides/PIAA week4/ThankYouWeek4';
 
 // Backup Q&A Slides
 import { QA1DeltaComputationWeek5 } from '../slides/PIAA week5/QA1DeltaComputationWeek5';
@@ -47,23 +46,22 @@ function defineSlide(component: any, slideId: string): SlideComponent {
 const CoverSlide = defineSlide(CoverWeek5, 'CoverWeek5');
 const PipelineSlide = defineSlide(PipelineWeek5, 'PipelineWeek5');
 const RecapAgendaSlide = defineSlide(RecapAgendaWeek5, 'RecapAgendaWeek5');
-const NoiseCeilingQuestionSlide = defineSlide(NoiseCeilingQuestionWeek5, 'NoiseCeilingQuestionWeek5');
-const HumanDisagreementSlide = defineSlide(HumanDisagreementWeek5, 'HumanDisagreementWeek5');
-const EmotionHelpFramingSlide = defineSlide(EmotionHelpFramingWeek5, 'EmotionHelpFramingWeek5');
-const EmotionHelpSetupSlide = defineSlide(EmotionHelpSetupWeek5, 'EmotionHelpSetupWeek5');
-const EmotionHelpsEveryoneSlide = defineSlide(EmotionHelpsEveryoneWeek5, 'EmotionHelpsEveryoneWeek5');
-const WhatDecidesWhoSlide = defineSlide(WhatDecidesWhoWeek5, 'WhatDecidesWhoWeek5');
-const ThresholdOrDoseSlide = defineSlide(ThresholdOrDoseWeek5, 'ThresholdOrDoseWeek5');
-const DirectConfoundSlide = defineSlide(DirectConfoundWeek5, 'DirectConfoundWeek5');
-const WhyArtDifferentSlide = defineSlide(WhyArtDifferentWeek5, 'WhyArtDifferentWeek5');
-const TestingArtExplanationsSlide = defineSlide(TestingArtExplanationsWeek5, 'TestingArtExplanationsWeek5');
-const WhichImagesBenefitSlide = defineSlide(WhichImagesBenefitWeek5, 'WhichImagesBenefitWeek5');
-const CaseStudySlide = defineSlide(CaseStudyWeek5, 'CaseStudyWeek5');
-const Qwen4BComparisonSlide = defineSlide(Qwen4BComparisonWeek5, 'Qwen4BComparisonWeek5');
-const RedundancyTrendSlide = defineSlide(RedundancyTrendWeek5, 'RedundancyTrendWeek5');
-const SummarySlide = defineSlide(SummaryWeek5, 'SummaryWeek5');
-const QuestionsSlide = defineSlide(QuestionsWeek5, 'QuestionsWeek5');
-const ThankYouSlide = defineSlide(ThankYouWeek5, 'ThankYouWeek5');
+const NoiseCeilingSlide = defineSlide(NoiseCeilingWeek5, 'NoiseCeilingWeek5');
+const EmotionRoadmapSlide = defineSlide(EmotionRoadmapWeek5, 'EmotionRoadmapWeek5');
+const EmotionHelpSetupSlide = defineSlide(EmotionHelpSetupWeek4, 'EmotionHelpSetupWeek5');
+const EmotionHelpsEveryoneSlide = defineSlide(EmotionHelpsEveryoneWeek4, 'EmotionHelpsEveryoneWeek5');
+const WhatDecidesWhoSlide = defineSlide(WhatDecidesWhoWeek4, 'WhatDecidesWhoWeek5');
+const ThresholdOrDoseSlide = defineSlide(ThresholdOrDoseWeek4, 'ThresholdOrDoseWeek5');
+const DirectConfoundSlide = defineSlide(DirectConfoundWeek4, 'DirectConfoundWeek5');
+const WhyArtDifferentSlide = defineSlide(WhyArtDifferentWeek4, 'WhyArtDifferentWeek5');
+const TestingArtExplanationsSlide = defineSlide(TestingArtExplanationsWeek4, 'TestingArtExplanationsWeek5');
+const WhichImagesBenefitSlide = defineSlide(WhichImagesBenefitWeek4, 'WhichImagesBenefitWeek5');
+const CaseStudySlide = defineSlide(CaseStudyWeek4, 'CaseStudyWeek5');
+const Qwen4BComparisonSlide = defineSlide(Qwen4BComparisonWeek4, 'Qwen4BComparisonWeek5');
+const RedundancyTrendSlide = defineSlide(RedundancyTrendWeek4, 'RedundancyTrendWeek5');
+const SummarySlide = defineSlide(SummaryWeek4, 'SummaryWeek5');
+const QuestionsSlide = defineSlide(QuestionsWeek4, 'QuestionsWeek5');
+const ThankYouSlide = defineSlide(ThankYouWeek4, 'ThankYouWeek5');
 
 // Backup slides
 const QA1Slide = defineSlide(QA1DeltaComputationWeek5, 'QA1DeltaComputationWeek5');
@@ -91,15 +89,12 @@ const deck: DeckSection[] = [
   },
   {
     label: 'Noise Ceiling',
-    slides: [
-      NoiseCeilingQuestionSlide,
-      HumanDisagreementSlide,
-    ],
+    slides: [NoiseCeilingSlide],
   },
   {
     label: 'Emotion Analysis',
     slides: [
-      EmotionHelpFramingSlide,
+      EmotionRoadmapSlide,
       EmotionHelpSetupSlide,
       EmotionHelpsEveryoneSlide,
       WhatDecidesWhoSlide,
