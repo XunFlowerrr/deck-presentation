@@ -56,8 +56,8 @@ export function SummaryWeek4() {
         style={{
           flex: 1,
           display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gridTemplateRows: "repeat(2, 1fr)",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gridTemplateRows: "repeat(3, 1fr)",
           gap: 24,
           alignItems: "stretch",
           minHeight: 0,
@@ -69,16 +69,16 @@ export function SummaryWeek4() {
             key={f.title}
             {...cardRise(0.1 + i * 0.08)}
             style={{
-              background: `rgba(${themeRgb}, 0.045)`,
-              border: `2px solid rgba(${themeRgb}, 0.22)`,
+              background: "#FFFFFF",
+              border: `1.5px solid rgba(${themeRgb}, 0.18)`,
               borderRadius: 20,
               padding: "26px 30px",
-              minHeight: 210,
+              minHeight: 140,
               display: "flex",
               flexDirection: "column",
               gap: 14,
               justifyContent: "flex-start",
-              boxShadow: "0 6px 24px rgba(124, 58, 237, 0.02)",
+              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.04)",
             }}
           >
             <div
@@ -120,8 +120,9 @@ export function SummaryWeek4() {
             <p
               style={{
                 fontSize: 19,
-                color: "#374151",
-                lineHeight: 1.6,
+                color: "#1F2937",
+                fontWeight: 500,
+                lineHeight: 1.5,
                 margin: 0,
               }}
             >

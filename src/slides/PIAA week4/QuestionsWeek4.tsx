@@ -74,14 +74,14 @@ export function QuestionsWeek4() {
           >
             <div
               style={{
-                width: 32,
-                height: 32,
+                width: 40,
+                height: 40,
                 borderRadius: "50%",
                 background: "rgba(124, 58, 237, 0.1)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 15,
+                fontSize: 18,
                 fontWeight: 800,
                 color: "#7C3AED",
                 flexShrink: 0,
@@ -91,10 +91,10 @@ export function QuestionsWeek4() {
             </div>
 
             <div>
-              <h4 style={{ margin: "0 0 4px", fontSize: 15, fontWeight: 800, color: "#111827" }}>
+              <h4 style={{ margin: "0 0 8px", fontSize: 20, fontWeight: 800, color: "#111827" }}>
                 {item.q}
               </h4>
-              <p style={{ margin: 0, fontSize: 13, color: "#4B5563", lineHeight: 1.45 }}>
+              <p style={{ margin: 0, fontSize: 17, color: "#4B5563", lineHeight: 1.45 }}>
                 {item.desc}
               </p>
             </div>
@@ -113,7 +113,7 @@ export function QuestionsWeek4() {
           border: "1px solid #E5E7EB",
           borderRadius: 10,
           padding: "6px 14px",
-          fontSize: 11,
+          fontSize: 14,
           color: "#6B7280",
         }}
       >
