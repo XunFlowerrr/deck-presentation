@@ -22,7 +22,8 @@ export function EmotionHelpSetupWeek4() {
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: 32,
-          alignItems: "center",
+          alignContent: "center",
+          alignItems: "stretch",
         }}
       >
         {/* Left: What we are explaining (delta) */}
@@ -76,13 +77,72 @@ export function EmotionHelpSetupWeek4() {
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-            <div style={{ background: "rgba(16, 185, 129, 0.08)", border: "1px solid rgba(16, 185, 129, 0.2)", padding: "12px", borderRadius: 12, textAlign: "center" }}>
-              <span style={{ fontSize: 13, fontWeight: 800, color: "#10B981" }}>positive delta</span>
-              <div style={{ fontSize: 13, color: "#065F46", marginTop: 2 }}>Emotion helped</div>
+            <div
+              style={{
+                background: "#F9FAFB",
+                border: "1px solid #F3F4F6",
+                padding: "12px",
+                borderRadius: 12,
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+              }}
+            >
+              <span
+                style={{
+                  width: 32,
+                  height: 32,
+                  flexShrink: 0,
+                  borderRadius: "50%",
+                  background: "rgba(16, 185, 129, 0.12)",
+                  color: "#10B981",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <rect x="6.5" y="2" width="3" height="12" rx="1.5" />
+                  <rect x="2" y="6.5" width="12" height="3" rx="1.5" />
+                </svg>
+              </span>
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 800, color: "#10B981" }}>positive delta</div>
+                <div style={{ fontSize: 13, color: "#6B7280", marginTop: 2 }}>Emotion helped</div>
+              </div>
             </div>
-            <div style={{ background: "rgba(239, 68, 68, 0.08)", border: "1px solid rgba(239, 68, 68, 0.2)", padding: "12px", borderRadius: 12, textAlign: "center" }}>
-              <span style={{ fontSize: 13, fontWeight: 800, color: "#EF4444" }}>negative delta</span>
-              <div style={{ fontSize: 13, color: "#991B1B", marginTop: 2 }}>Emotion hurt</div>
+            <div
+              style={{
+                background: "#F9FAFB",
+                border: "1px solid #F3F4F6",
+                padding: "12px",
+                borderRadius: 12,
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+              }}
+            >
+              <span
+                style={{
+                  width: 32,
+                  height: 32,
+                  flexShrink: 0,
+                  borderRadius: "50%",
+                  background: "rgba(239, 68, 68, 0.12)",
+                  color: "#EF4444",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <rect x="2" y="6.5" width="12" height="3" rx="1.5" />
+                </svg>
+              </span>
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 800, color: "#EF4444" }}>negative delta</div>
+                <div style={{ fontSize: 13, color: "#6B7280", marginTop: 2 }}>Emotion hurt</div>
+              </div>
             </div>
           </div>
 
@@ -96,10 +156,10 @@ export function EmotionHelpSetupWeek4() {
           {...cardRise(0.3)}
           style={{
             background: "#FFFFFF",
-            border: "2px solid rgba(236, 72, 153, 0.25)",
+            border: "1px solid #E5E7EB",
             borderRadius: 20,
             padding: "32px 28px",
-            boxShadow: "0 8px 30px rgba(236, 72, 153, 0.06)",
+            boxShadow: "0 8px 30px rgba(0,0,0,0.04)",
             display: "flex",
             flexDirection: "column",
             gap: 20,
