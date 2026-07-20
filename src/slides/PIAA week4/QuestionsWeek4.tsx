@@ -10,18 +10,28 @@ const GLOWS = [
 const QUESTIONS = [
   {
     num: "1",
-    q: "Should I stop chasing accuracy and start writing up?",
-    desc: "Our accuracy has plateaued within ~0.01 of the ICI and MIR baselines. This limit is fundamentally constrained by how well we can predict emotion from the image alone (average emo_r = 0.27).",
+    q: "Should we run cross-dataset validation?",
+    desc: "Should I validate the Hybrid pipeline on other datasets (like FLICKR-AES or PARA) to verify generalization, and do you have recommendations? Or is evaluating on a single unique dataset generally accepted in this community?",
   },
   {
     num: "2",
-    q: "Which target venue should we aim for?",
-    desc: "Is this emotion-mediation story strong enough to target ACM MM 2027, or is ACII (Affective Computing) a better and more natural fit for our current contribution?",
+    q: "Should we fine-tune Qwen-4B end-to-end?",
+    desc: "Is end-to-end fine-tuning on the recommended Qwen-4B model worth the computation for potential accuracy gains, or should we freeze the model here and start writing the paper?",
   },
   {
     num: "3",
-    q: "Is the mechanism story substantial enough for its own section?",
-    desc: "Is our detailed analysis of when and why emotion helps (dose-response behavior, controlling for Direct model confound, and exploring the art baseline ceiling) strong enough for a major paper section?",
+    q: "Does the ICI baseline actually benefit from traits?",
+    desc: "Should we run an ablation study by removing personality traits from the ICI baseline to verify whether its accuracy gain comes from traits or its architecture?",
+  },
+  {
+    num: "4",
+    q: "What is our weakest point for an ACM MM submission?",
+    desc: "If we submit this work to ACM MM 2027, what do you think is our main weakness or the most likely reason reviewers might reject it?",
+  },
+  {
+    num: "5",
+    q: "ACM MM vs. ACII: Which is more suitable?",
+    desc: "Which venue fits this project's profile better: a major multimedia conference like ACM MM, or an affective computing focus like ACII?",
   },
 ];
 
@@ -39,19 +49,21 @@ export function QuestionsWeek4() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          gap: 20,
+          gap: 14,
           justifyContent: "center",
+          minHeight: 0,
+          paddingBottom: 12,
         }}
       >
         {QUESTIONS.map((item, idx) => (
           <motion.div
             key={item.num}
-            {...cardRise(idx * 0.1)}
+            {...cardRise(idx * 0.08)}
             style={{
               background: "#FFFFFF",
               border: "1px solid #E5E7EB",
-              borderRadius: 20,
-              padding: "24px 28px",
+              borderRadius: 18,
+              padding: "16px 24px",
               display: "flex",
               alignItems: "center",
               gap: 20,
@@ -60,8 +72,8 @@ export function QuestionsWeek4() {
           >
             <div
               style={{
-                width: 44,
-                height: 44,
+                width: 46,
+                height: 46,
                 borderRadius: "50%",
                 background: "rgba(124, 58, 237, 0.1)",
                 display: "flex",
@@ -77,10 +89,10 @@ export function QuestionsWeek4() {
             </div>
 
             <div>
-              <h4 style={{ margin: "0 0 6px", fontSize: 20, fontWeight: 800, color: "#111827" }}>
+              <h4 style={{ margin: "0 0 6px", fontSize: 22, fontWeight: 800, color: "#111827" }}>
                 {item.q}
               </h4>
-              <p style={{ margin: 0, fontSize: 17, color: "#4B5563", lineHeight: 1.5 }}>
+              <p style={{ margin: 0, fontSize: 19, color: "#374151", fontWeight: 600, lineHeight: 1.45 }}>
                 {item.desc}
               </p>
             </div>
@@ -99,7 +111,7 @@ export function QuestionsWeek4() {
           border: "1px solid #E5E7EB",
           borderRadius: 10,
           padding: "6px 14px",
-          fontSize: 14,
+          fontSize: 15,
           color: "#6B7280",
         }}
       >
