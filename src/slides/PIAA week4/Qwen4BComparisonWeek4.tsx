@@ -20,7 +20,7 @@ export function Qwen4BComparisonWeek4() {
         style={{
           flex: 1,
           display: "grid",
-          gridTemplateColumns: "1fr 1.1fr",
+          gridTemplateColumns: "1fr 1.35fr",
           gap: 32,
           alignItems: "center",
         }}
@@ -41,10 +41,10 @@ export function Qwen4BComparisonWeek4() {
               gap: 10,
             }}
           >
-            <div style={{ fontSize: 12, fontWeight: 700, color: "#7C3AED", textTransform: "uppercase" }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "#7C3AED", textTransform: "uppercase" }}>
               Model Validation & Layer Sweeping
             </div>
-            <p style={{ margin: 0, fontSize: 14, color: "#374151", lineHeight: 1.45 }}>
+            <p style={{ margin: 0, fontSize: 18, color: "#374151", lineHeight: 1.5 }}>
               Ryu & Yanaka noted 4B performed best on AADB. We evaluated whether this holds on XPASS-Vis.
             </p>
             <div
@@ -54,7 +54,7 @@ export function Qwen4BComparisonWeek4() {
                 background: "#F9FAFB",
                 padding: "10px 14px",
                 borderRadius: 12,
-                fontSize: 13,
+                fontSize: 16,
               }}
             >
               <div><strong style={{ color: "#7C3AED" }}>4B Best layer we found:</strong> LT17</div>
@@ -77,26 +77,26 @@ export function Qwen4BComparisonWeek4() {
               gap: 12,
             }}
           >
-            <div style={{ fontSize: 12, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <div style={{ fontSize: 14, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.08em" }}>
               Performance Comparison (CCC)
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr", gap: 12, alignItems: "center" }}>
-              <div style={{ fontSize: 12, color: "#6B7280", fontWeight: 700 }}>Model (Dimensions)</div>
-              <div style={{ fontSize: 12, color: "#6B7280", fontWeight: 700, textAlign: "center" }}>Direct CCC</div>
-              <div style={{ fontSize: 12, color: "#6B7280", fontWeight: 700, textAlign: "center" }}>Hybrid CCC</div>
+              <div style={{ fontSize: 14, color: "#6B7280", fontWeight: 700 }}>Model (Dimensions)</div>
+              <div style={{ fontSize: 14, color: "#6B7280", fontWeight: 700, textAlign: "center" }}>Direct CCC</div>
+              <div style={{ fontSize: 14, color: "#6B7280", fontWeight: 700, textAlign: "center" }}>Hybrid CCC</div>
 
               {/* 4B Row */}
-              <div style={{ fontWeight: 800, color: "#111827", fontSize: 14 }}>Qwen4B (2560-d)</div>
-              <div style={{ textAlign: "center", fontSize: 16, fontWeight: 700, color: "#4B5563" }}>0.370</div>
-              <div style={{ textAlign: "center", fontSize: 18, fontWeight: 900, color: "#10B981", background: "rgba(16, 185, 129, 0.1)", padding: "4px 8px", borderRadius: 8 }}>
+              <div style={{ fontWeight: 800, color: "#111827", fontSize: 16 }}>Qwen4B (2560-d)</div>
+              <div style={{ textAlign: "center", fontSize: 18, fontWeight: 700, color: "#4B5563" }}>0.370</div>
+              <div style={{ textAlign: "center", fontSize: 20, fontWeight: 900, color: "#10B981", background: "rgba(16, 185, 129, 0.1)", padding: "4px 8px", borderRadius: 8 }}>
                 0.385 ⭐
               </div>
 
               {/* 8B Row */}
-              <div style={{ fontWeight: 700, color: "#6B7280", fontSize: 14 }}>Qwen8B (4096-d)</div>
-              <div style={{ textAlign: "center", fontSize: 16, fontWeight: 700, color: "#4B5563" }}>0.376</div>
-              <div style={{ textAlign: "center", fontSize: 16, fontWeight: 700, color: "#6B7280" }}>0.382</div>
+              <div style={{ fontWeight: 700, color: "#6B7280", fontSize: 16 }}>Qwen8B (4096-d)</div>
+              <div style={{ textAlign: "center", fontSize: 18, fontWeight: 700, color: "#4B5563" }}>0.376</div>
+              <div style={{ textAlign: "center", fontSize: 18, fontWeight: 700, color: "#6B7280" }}>0.382</div>
             </div>
           </motion.div>
 
@@ -106,10 +106,10 @@ export function Qwen4BComparisonWeek4() {
               background: "#F9FAFB",
               border: "1px solid #F3F4F6",
               borderRadius: 14,
-              padding: "14px 18px",
-              fontSize: 13,
+              padding: "16px 20px",
+              fontSize: 16,
               color: "#374151",
-              lineHeight: 1.45,
+              lineHeight: 1.5,
             }}
           >
             <strong style={{ color: "#7C3AED" }}>Efficiency Gain: </strong>
@@ -129,7 +129,7 @@ export function Qwen4BComparisonWeek4() {
               { label: "8B Hybrid CCC", value: "0.382", color: "#6B7280" },
               { label: "4B Feature Dim", value: "2560-d", color: "#7C3AED" },
             ]}
-            maxHeight={400}
+            maxHeight={460}
           />
         </motion.div>
       </div>
@@ -145,7 +145,7 @@ export function Qwen4BComparisonWeek4() {
           border: "1px solid #E5E7EB",
           borderRadius: 10,
           padding: "6px 14px",
-          fontSize: 11,
+          fontSize: 13,
           color: "#6B7280",
         }}
       >

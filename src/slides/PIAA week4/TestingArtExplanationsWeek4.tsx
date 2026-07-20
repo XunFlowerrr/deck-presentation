@@ -37,54 +37,54 @@ export function TestingArtExplanationsWeek4() {
           }}
         >
           <div style={{ display: "grid", gridTemplateColumns: "2fr 1.2fr 1.5fr", gap: 16, marginBottom: 12, borderBottom: "1px solid #F3F4F6", paddingBottom: 10 }}>
-            <span style={{ fontSize: 12, fontWeight: 800, color: "#6B7280", textTransform: "uppercase" }}>Diagnostic Test</span>
-            <span style={{ fontSize: 12, fontWeight: 800, color: "#6B7280", textTransform: "uppercase" }}>Statistical Result</span>
-            <span style={{ fontSize: 12, fontWeight: 800, color: "#6B7280", textTransform: "uppercase" }}>Finding Interpretation</span>
+            <span style={{ fontSize: 14, fontWeight: 800, color: "#6B7280", textTransform: "uppercase" }}>Diagnostic Test</span>
+            <span style={{ fontSize: 14, fontWeight: 800, color: "#6B7280", textTransform: "uppercase" }}>Statistical Result</span>
+            <span style={{ fontSize: 14, fontWeight: 800, color: "#6B7280", textTransform: "uppercase" }}>Finding Interpretation</span>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {/* Test 1 */}
             <div style={{ display: "grid", gridTemplateColumns: "2fr 1.2fr 1.5fr", gap: 16, alignItems: "center", padding: "12px 14px", background: "#F9FAFB", borderRadius: 12 }}>
               <div>
-                <strong style={{ color: "#111827", fontSize: 14 }}>1. Partial Correlation (controlling Direct CCC)</strong>
-                <div style={{ fontSize: 12, color: "#6B7280" }}>Removes the baseline strength ceiling confound</div>
+                <strong style={{ color: "#111827", fontSize: 18 }}>1. Partial Correlation (controlling Direct CCC)</strong>
+                <div style={{ fontSize: 15, color: "#6B7280", marginTop: 2 }}>Removes the baseline strength ceiling confound</div>
               </div>
               <div>
-                <span style={{ fontSize: 15, fontWeight: 800, color: "#10B981" }}>Art p = 0.048 ✓</span>
+                <span style={{ fontSize: 18, fontWeight: 800, color: "#10B981" }}>Art p = 0.048 ✓</span>
               </div>
               <div>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#7C3AED" }}>Supports Ceiling (H1)</span>
-                <div style={{ fontSize: 11, color: "#6B7280" }}>Art becomes significant once controlled</div>
+                <span style={{ fontSize: 16, fontWeight: 700, color: "#7C3AED" }}>Supports Ceiling (H1)</span>
+                <div style={{ fontSize: 14, color: "#6B7280", marginTop: 2 }}>Art becomes significant once controlled</div>
               </div>
             </div>
 
             {/* Test 2 */}
             <div style={{ display: "grid", gridTemplateColumns: "2fr 1.2fr 1.5fr", gap: 16, alignItems: "center", padding: "12px 14px", background: "#F9FAFB", borderRadius: 12 }}>
               <div>
-                <strong style={{ color: "#111827", fontSize: 14 }}>2. Variance of Delta per Domain (SD)</strong>
-                <div style={{ fontSize: 12, color: "#6B7280" }}>Measures available headroom for gain</div>
+                <strong style={{ color: "#111827", fontSize: 18 }}>2. Variance of Delta per Domain (SD)</strong>
+                <div style={{ fontSize: 15, color: "#6B7280", marginTop: 2 }}>Measures available headroom for gain</div>
               </div>
               <div>
-                <span style={{ fontSize: 15, fontWeight: 800, color: "#7C3AED" }}>Art Lowest SD</span>
+                <span style={{ fontSize: 18, fontWeight: 800, color: "#7C3AED" }}>Art Lowest SD</span>
               </div>
               <div>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#7C3AED" }}>Supports Ceiling (H1)</span>
-                <div style={{ fontSize: 11, color: "#6B7280" }}>Less headroom limits correlation variance</div>
+                <span style={{ fontSize: 16, fontWeight: 700, color: "#7C3AED" }}>Supports Ceiling (H1)</span>
+                <div style={{ fontSize: 14, color: "#6B7280", marginTop: 2 }}>Less headroom limits correlation variance</div>
               </div>
             </div>
 
             {/* Test 3 */}
             <div style={{ display: "grid", gridTemplateColumns: "2fr 1.2fr 1.5fr", gap: 16, alignItems: "center", padding: "12px 14px", background: "#F9FAFB", borderRadius: 12 }}>
               <div>
-                <strong style={{ color: "#111827", fontSize: 14 }}>3. Domain Interaction Test</strong>
-                <div style={{ fontSize: 12, color: "#6B7280" }}>Regression: delta ~ emo_r × domain</div>
+                <strong style={{ color: "#111827", fontSize: 18 }}>3. Domain Interaction Test</strong>
+                <div style={{ fontSize: 15, color: "#6B7280", marginTop: 2 }}>Regression: delta ~ emo_r × domain</div>
               </div>
               <div>
-                <span style={{ fontSize: 15, fontWeight: 800, color: "#EF4444" }}>p = 0.056 (ns)</span>
+                <span style={{ fontSize: 18, fontWeight: 800, color: "#EF4444" }}>p = 0.056 (ns)</span>
               </div>
               <div>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#4B5563" }}>No Evidence for H2</span>
-                <div style={{ fontSize: 11, color: "#6B7280" }}>Slopes do not statistically differ</div>
+                <span style={{ fontSize: 16, fontWeight: 700, color: "#4B5563" }}>No Evidence for H2</span>
+                <div style={{ fontSize: 14, color: "#6B7280", marginTop: 2 }}>Slopes do not statistically differ</div>
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@ export function TestingArtExplanationsWeek4() {
               border: "1px solid rgba(239, 68, 68, 0.3)",
               padding: "10px 16px",
               borderRadius: 12,
-              fontSize: 12,
+              fontSize: 15,
               color: "#991B1B",
               fontWeight: 700,
               maxWidth: 320,
@@ -142,7 +142,7 @@ export function TestingArtExplanationsWeek4() {
           border: "1px solid #E5E7EB",
           borderRadius: 10,
           padding: "6px 14px",
-          fontSize: 11,
+          fontSize: 13,
           color: "#6B7280",
         }}
       >

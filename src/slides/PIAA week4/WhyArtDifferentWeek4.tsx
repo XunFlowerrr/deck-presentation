@@ -20,7 +20,7 @@ export function WhyArtDifferentWeek4() {
         style={{
           flex: 1,
           display: "grid",
-          gridTemplateColumns: "1.1fr 1fr",
+          gridTemplateColumns: "1fr 1.25fr",
           gap: 32,
           alignItems: "center",
         }}
@@ -38,11 +38,11 @@ export function WhyArtDifferentWeek4() {
               boxShadow: "0 8px 30px rgba(0,0,0,0.04)",
             }}
           >
-            <div style={{ fontSize: 12, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>
+            <div style={{ fontSize: 14, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>
               emo_r → Delta Gain Correlation by Domain
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, fontSize: 17 }}>
               <div style={{ display: "flex", justifyContent: "space-between", padding: "10px 14px", background: "rgba(16, 185, 129, 0.06)", borderRadius: 10 }}>
                 <span style={{ fontWeight: 700, color: "#111827" }}>Fashion</span>
                 <span style={{ fontWeight: 800, color: "#10B981" }}>r = +0.38 ✓ (significant)</span>
@@ -72,8 +72,8 @@ export function WhyArtDifferentWeek4() {
                 gap: 6,
               }}
             >
-              <span style={{ fontSize: 11, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase" }}>H1: Ceiling Effect</span>
-              <p style={{ margin: 0, fontSize: 13, color: "#4B5563", lineHeight: 1.45 }}>
+              <span style={{ fontSize: 14, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase" }}>H1: Ceiling Effect</span>
+              <p style={{ margin: 0, fontSize: 16, color: "#4B5563", lineHeight: 1.5 }}>
                 Art Direct baseline is already high (<strong>0.384</strong> vs fashion <strong>0.202</strong>). Less headroom → delta varies less → correlation harder to detect statistically.
               </p>
             </motion.div>
@@ -90,8 +90,8 @@ export function WhyArtDifferentWeek4() {
                 gap: 6,
               }}
             >
-              <span style={{ fontSize: 11, fontWeight: 800, color: "#EC4899", textTransform: "uppercase" }}>H2: Different Mechanism</span>
-              <p style={{ margin: 0, fontSize: 13, color: "#4B5563", lineHeight: 1.45 }}>
+              <span style={{ fontSize: 14, fontWeight: 800, color: "#EC4899", textTransform: "uppercase" }}>H2: Different Mechanism</span>
+              <p style={{ margin: 0, fontSize: 16, color: "#4B5563", lineHeight: 1.5 }}>
                 Aesthetic judgments in artistic works stem from non-emotional features like technique, composition, or historical context rather than emotions.
               </p>
             </motion.div>
@@ -110,7 +110,7 @@ export function WhyArtDifferentWeek4() {
               { label: "Landscape r", value: "+0.34 (p<0.001)", color: "#10B981" },
               { label: "Art r", value: "+0.14 (p=0.11 ns)", color: "#EF4444" },
             ]}
-            maxHeight={400}
+            maxHeight={460}
           />
         </motion.div>
       </div>
@@ -126,7 +126,7 @@ export function WhyArtDifferentWeek4() {
           border: "1px solid #E5E7EB",
           borderRadius: 10,
           padding: "6px 14px",
-          fontSize: 11,
+          fontSize: 13,
           color: "#6B7280",
         }}
       >

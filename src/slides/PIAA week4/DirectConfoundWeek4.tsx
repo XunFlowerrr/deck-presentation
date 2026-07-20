@@ -20,7 +20,7 @@ export function DirectConfoundWeek4() {
         style={{
           flex: 1,
           display: "grid",
-          gridTemplateColumns: "1fr 1.1fr",
+          gridTemplateColumns: "1fr 1.35fr",
           gap: 32,
           alignItems: "center",
         }}
@@ -41,13 +41,13 @@ export function DirectConfoundWeek4() {
               gap: 10,
             }}
           >
-            <div style={{ fontSize: 12, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>
               What it looks like at first
             </div>
-            <div style={{ fontSize: 15, color: "#374151", lineHeight: 1.4 }}>
+            <div style={{ fontSize: 18, color: "#374151", lineHeight: 1.5 }}>
               Users whose plain model is already good also seem to gain more from emotions (<strong>r = +0.15</strong>).
             </div>
-            <div style={{ background: "#F3F4F6", padding: "8px 14px", borderRadius: 10, fontSize: 13, color: "#7C3AED", fontWeight: 700 }}>
+            <div style={{ background: "#F3F4F6", padding: "10px 14px", borderRadius: 10, fontSize: 16, color: "#7C3AED", fontWeight: 700, lineHeight: 1.45 }}>
               But those two go together: r = +0.66. If we read someone's photos well, we do well at both.
             </div>
           </motion.div>
@@ -66,7 +66,7 @@ export function DirectConfoundWeek4() {
               gap: 12,
             }}
           >
-            <div style={{ fontSize: 12, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <div style={{ fontSize: 14, fontWeight: 800, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.08em" }}>
               What happens when we hold emo_r fixed
             </div>
 
@@ -82,10 +82,10 @@ export function DirectConfoundWeek4() {
                   borderRadius: 10,
                 }}
               >
-                <span style={{ fontSize: 13, fontWeight: 600, color: "#374151" }}>
+                <span style={{ fontSize: 16, fontWeight: 600, color: "#374151" }}>
                   delta ↔ Direct CCC | controlling for emo_r
                 </span>
-                <span style={{ fontSize: 16, fontWeight: 900, color: "#EF4444" }}>
+                <span style={{ fontSize: 20, fontWeight: 900, color: "#EF4444" }}>
                   −0.08  (gone)
                 </span>
               </div>
@@ -101,10 +101,10 @@ export function DirectConfoundWeek4() {
                   borderRadius: 10,
                 }}
               >
-                <span style={{ fontSize: 13, fontWeight: 600, color: "#374151" }}>
+                <span style={{ fontSize: 16, fontWeight: 600, color: "#374151" }}>
                   delta ↔ emo_r | controlling for Direct CCC
                 </span>
-                <span style={{ fontSize: 16, fontWeight: 900, color: "#10B981" }}>
+                <span style={{ fontSize: 20, fontWeight: 900, color: "#10B981" }}>
                   +0.26 (SURVIVES)
                 </span>
               </div>
@@ -117,10 +117,10 @@ export function DirectConfoundWeek4() {
               background: "#F9FAFB",
               border: "1px solid #F3F4F6",
               borderRadius: 14,
-              padding: "14px 18px",
-              fontSize: 13,
+              padding: "16px 20px",
+              fontSize: 16,
               color: "#374151",
-              lineHeight: 1.45,
+              lineHeight: 1.5,
             }}
           >
             <strong style={{ color: "#7C3AED" }}>Single Mechanism: </strong>
@@ -140,7 +140,7 @@ export function DirectConfoundWeek4() {
               { label: "emo_r, holding baseline fixed", value: "+0.28  (stays)", color: "#10B981" },
               { label: "baseline, holding emo_r fixed", value: "−0.08  (gone)", color: "#EF4444" },
             ]}
-            maxHeight={390}
+            maxHeight={460}
           />
         </motion.div>
       </div>
@@ -156,7 +156,7 @@ export function DirectConfoundWeek4() {
           border: "1px solid #E5E7EB",
           borderRadius: 10,
           padding: "8px 14px",
-          fontSize: 11,
+          fontSize: 13,
           color: "#6B7280",
           maxWidth: 560,
         }}
