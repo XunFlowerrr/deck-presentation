@@ -38,7 +38,7 @@ const NODES: PipelineNode[] = [
     color: "#3B82F6",
     rgb: "59, 130, 246",
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
         <circle cx="9" cy="9" r="2" />
         <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
@@ -53,7 +53,7 @@ const NODES: PipelineNode[] = [
     color: "#7C3AED",
     rgb: "124, 58, 237",
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 8V4H8" />
         <rect width="16" height="12" x="4" y="8" rx="2" />
         <path d="M2 14h2" />
@@ -71,7 +71,7 @@ const NODES: PipelineNode[] = [
     color: "#EC4899",
     rgb: "236, 72, 153",
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#EC4899" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#EC4899" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
       </svg>
     ),
@@ -85,7 +85,7 @@ const NODES: PipelineNode[] = [
     color: "#06B6D4",
     rgb: "6, 182, 212",
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 5h16" />
         <path d="M4 12h10" />
         <path d="M4 19h7" />
@@ -101,7 +101,7 @@ const NODES: PipelineNode[] = [
     color: "#10B981",
     rgb: "16, 185, 129",
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
       </svg>
     ),
@@ -114,9 +114,9 @@ function Arrow({ color, delay }: { color: string; delay: number }) {
       {...fadeIn(delay)}
       style={{ display: "flex", alignItems: "center", flexShrink: 0, margin: "0 2px" }}
     >
-      <svg width="34" height="18" viewBox="0 0 34 18" fill="none">
-        <line x1="0" y1="9" x2="23" y2="9" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
-        <polygon points="23,3.5 32,9 23,14.5" fill={color} />
+      <svg width="37" height="18" viewBox="0 0 37 18" fill="none">
+        <line x1="0" y1="9" x2="26" y2="9" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+        <polygon points="26,3.5 35,9 26,14.5" fill={color} />
       </svg>
     </motion.div>
   );
@@ -179,16 +179,16 @@ export function PipelineWeek5() {
                 <motion.div
                   {...cardRise(delay)}
                   style={{
-                    width: isEmotion ? 208 : 168,
-                    minHeight: 232,
+                    width: isEmotion ? 264 : 218,
+                    minHeight: 304,
                     background: `rgba(${node.rgb}, 0.03)`,
                     border: `2px solid rgba(${node.rgb}, ${isEmotion ? "0.4" : "0.2"})`,
                     borderRadius: 16,
-                    padding: "16px 12px",
+                    padding: "21px 16px",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    gap: 7,
+                    gap: 9,
                     boxShadow: isEmotion
                       ? "0 8px 24px rgba(236, 72, 153, 0.12)"
                       : "0 4px 16px rgba(0,0,0,0.03)",
@@ -196,7 +196,7 @@ export function PipelineWeek5() {
                 >
                   <div
                     style={{
-                      width: 42, height: 42, borderRadius: "50%",
+                      width: 46, height: 46, borderRadius: "50%",
                       background: `rgba(${node.rgb}, 0.08)`,
                       display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
                     }}
@@ -204,7 +204,7 @@ export function PipelineWeek5() {
                     {node.icon}
                   </div>
 
-                  <h4 style={{ fontSize: 15.5, fontWeight: 800, color: "#111827", margin: 0, textAlign: "center", lineHeight: 1.2 }}>
+                  <h4 style={{ fontSize: 17, fontWeight: 800, color: "#111827", margin: 0, textAlign: "center", lineHeight: 1.2 }}>
                     {node.label}
                   </h4>
 
@@ -213,7 +213,7 @@ export function PipelineWeek5() {
                       style={{
                         fontSize: 10, fontWeight: 700, color: node.color,
                         background: `rgba(${node.rgb}, 0.1)`,
-                        padding: "2px 9px", borderRadius: 10,
+                        padding: "2px 10px", borderRadius: 10,
                         textTransform: "uppercase", letterSpacing: 0.3,
                       }}
                     >
@@ -221,19 +221,19 @@ export function PipelineWeek5() {
                     </span>
                   )}
 
-                  <div style={{ fontSize: 11.5, color: "#4B5563", textAlign: "center", lineHeight: 1.35 }}>
+                  <div style={{ fontSize: 12, color: "#4B5563", textAlign: "center", lineHeight: 1.4 }}>
                     {node.detail}
                   </div>
 
                   {node.emotions && (
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 3, justifyContent: "center" }}>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 4, justifyContent: "center" }}>
                       {node.emotions.map((e) => (
                         <span
                           key={e}
                           style={{
-                            fontSize: 9.5, color: "#EC4899",
+                            fontSize: 10.5, color: "#EC4899",
                             background: "rgba(236, 72, 153, 0.07)",
-                            padding: "2px 6px", borderRadius: 6, fontWeight: 600,
+                            padding: "2px 7px", borderRadius: 6, fontWeight: 600,
                           }}
                         >
                           {e}
@@ -246,9 +246,9 @@ export function PipelineWeek5() {
                   <div
                     style={{
                       marginTop: "auto",
-                      fontSize: 10, color: "#9CA3AF", textAlign: "center",
-                      lineHeight: 1.3, borderTop: "1px dashed #E5E7EB",
-                      paddingTop: 6, width: "100%",
+                      fontSize: 10.5, color: "#9CA3AF", textAlign: "center",
+                      lineHeight: 1.35, borderTop: "1px dashed #E5E7EB",
+                      paddingTop: 8, width: "100%",
                     }}
                   >
                     {node.trainedOn}
@@ -268,11 +268,11 @@ export function PipelineWeek5() {
             style={{
               flex: 1.15,
               background: "#F9FAFB", border: "1px solid #E5E7EB",
-              borderRadius: 14, padding: "12px 18px",
-              fontSize: 13, color: "#4B5563", lineHeight: 1.5,
+              borderRadius: 14, padding: "18px 24px",
+              fontSize: 15, color: "#4B5563", lineHeight: 1.55,
             }}
           >
-            <div style={{ fontWeight: 800, color: "#374151", marginBottom: 5 }}>
+            <div style={{ fontWeight: 800, color: "#374151", marginBottom: 7, fontSize: 16 }}>
               Two separate steps, each fitted on different people
             </div>
             The emotion step learns from <strong style={{ color: "#EC4899" }}>104 other users</strong>, so it
@@ -286,11 +286,11 @@ export function PipelineWeek5() {
             style={{
               flex: 1,
               background: "#F3F4F6", border: "1px solid #E5E7EB",
-              borderRadius: 14, padding: "12px 16px",
-              fontSize: 11.5, color: "#6B7280", lineHeight: 1.5,
+              borderRadius: 14, padding: "18px 22px",
+              fontSize: 13.5, color: "#6B7280", lineHeight: 1.55,
             }}
           >
-            <div style={{ fontWeight: 800, color: "#374151", marginBottom: 4 }}>Terms &amp; data</div>
+            <div style={{ fontWeight: 800, color: "#374151", marginBottom: 6, fontSize: 16 }}>Terms &amp; data</div>
             <div><strong style={{ color: "#4B5563" }}>CCC</strong> — how close predictions are to real scores (0–1). Punishes wrong order <em>and</em> wrong size.</div>
             <div><strong style={{ color: "#4B5563" }}>emo_r</strong> — how well we guess this person's emotions. Average now <strong>0.27</strong>.</div>
             <div style={{ marginTop: 3 }}>
