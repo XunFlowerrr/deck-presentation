@@ -92,7 +92,6 @@ const deck: DeckSection[] = [
       WhyArtDifferentSlide,
       TestingArtExplanationsSlide,
       WhichImagesBenefitSlide,
-      CaseStudySlide,
     ],
   },
   {
