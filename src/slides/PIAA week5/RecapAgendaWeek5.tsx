@@ -17,7 +17,7 @@ const AGENDA = [
   {
     n: "02",
     color: "#7C3AED",
-    title: "Mechanism Breakdown",
+    title: "When emotion help",
     desc: "In which cases does emotion help users, and in which cases does it hurt?",
   },
   {
