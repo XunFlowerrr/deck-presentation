@@ -20,148 +20,138 @@ export function EmotionHelpsEveryoneWeek4() {
         style={{
           flex: 1,
           display: "grid",
-          gridTemplateColumns: "1fr 1.1fr",
+          gridTemplateColumns: "1fr 1.3fr",
           gap: 32,
-          alignItems: "center",
+          alignItems: "stretch",
+          minHeight: 0,
         }}
       >
-        {/* Left: Big numbers & stats */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          {/* 91.7% card */}
+        {/* Left: Step-by-step story that annotates the chart */}
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: 14 }}>
+
+          {/* Step 1: The zero line is the verdict */}
           <motion.div
-            {...cardRise(0.15)}
+            {...cardRise(0.12)}
             style={{
-              background: "linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(124, 58, 237, 0.05))",
-              border: "2px solid rgba(16, 185, 129, 0.3)",
-              borderRadius: 20,
-              padding: "24px 28px",
-              display: "flex",
-              alignItems: "center",
-              gap: 24,
+              background: "#FFFFFF",
+              border: "1.5px solid #E5E7EB",
+              borderRadius: 18,
+              padding: "18px 22px",
+              boxShadow: "0 4px 16px rgba(0,0,0,0.03)",
             }}
           >
-            <div style={{ fontSize: 56, fontWeight: 900, color: "#10B981", lineHeight: 1 }}>
-              91.7%
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>
+              What the histogram shows
             </div>
-            <div>
-              <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#111827" }}>
-                of users benefit from emotion-mediation
-              </h3>
-              <p style={{ margin: "4px 0 0", fontSize: 14, color: "#6B7280" }}>
-                355 out of 387 user-domain units gained positive delta (Hybrid &gt; Direct)
-              </p>
+            <p style={{ margin: 0, fontSize: 17, color: "#374151", fontWeight: 600, lineHeight: 1.5 }}>
+              Each bar is one user × domain unit. Bars to the <strong style={{ color: "#7C3AED" }}>right of zero</strong> = emotion helped. Bars to the <strong style={{ color: "#EF4444" }}>left</strong> = emotion hurt.
+            </p>
+          </motion.div>
+
+          {/* Step 2: The big number — the main finding */}
+          <motion.div
+            {...cardRise(0.22)}
+            style={{
+              background: "rgba(16, 185, 129, 0.04)",
+              border: "1.5px solid rgba(16, 185, 129, 0.3)",
+              borderRadius: 18,
+              padding: "18px 22px",
+              boxShadow: "0 4px 16px rgba(16, 185, 129, 0.04)",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <span style={{ fontSize: 52, fontWeight: 900, color: "#10B981", lineHeight: 1 }}>91.7%</span>
+              <span style={{ fontSize: 17, fontWeight: 700, color: "#374151" }}>of units sit right of zero</span>
+            </div>
+            <div style={{ display: "flex", gap: 12, marginTop: 12 }}>
+              {[
+                { label: "p-value", value: "< 0.001" },
+                { label: "Median gain", value: "+0.071" },
+                { label: "Effect r", value: "0.82" },
+              ].map((s) => (
+                <div
+                  key={s.label}
+                  style={{
+                    flex: 1,
+                    background: "#FFFFFF",
+                    border: "1px solid #E5E7EB",
+                    borderRadius: 10,
+                    padding: "8px 10px",
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{ fontSize: 12, color: "#9CA3AF", fontWeight: 600 }}>{s.label}</div>
+                  <div style={{ fontSize: 17, fontWeight: 900, color: "#10B981", marginTop: 2 }}>{s.value}</div>
+                </div>
+              ))}
             </div>
           </motion.div>
 
-          {/* Key statistical metrics grid */}
+          {/* Step 3: The clue — left tail is NOT random */}
           <motion.div
-            {...cardRise(0.3)}
+            {...cardRise(0.34)}
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              gap: 14,
+              background: "rgba(239, 68, 68, 0.03)",
+              border: "1.5px solid rgba(239, 68, 68, 0.2)",
+              borderRadius: 18,
+              padding: "18px 22px",
+              boxShadow: "0 4px 16px rgba(239, 68, 68, 0.03)",
             }}
           >
-            <div
-              style={{
-                background: "#FFFFFF",
-                border: "1px solid #E5E7EB",
-                borderRadius: 14,
-                padding: "16px",
-                textAlign: "center",
-                boxShadow: "0 4px 16px rgba(0,0,0,0.03)",
-              }}
-            >
-              <div style={{ fontSize: 12, color: "#6B7280", fontWeight: 600 }}>Median Gain</div>
-              <div style={{ fontSize: 26, fontWeight: 900, color: "#7C3AED", marginTop: 4 }}>
-                +0.071
-              </div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#EF4444", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>
+              The left tail (8.3%, 32 units)
             </div>
-
-            <div
-              style={{
-                background: "#FFFFFF",
-                border: "1px solid #E5E7EB",
-                borderRadius: 14,
-                padding: "16px",
-                textAlign: "center",
-                boxShadow: "0 4px 16px rgba(0,0,0,0.03)",
-              }}
-            >
-              <div style={{ fontSize: 12, color: "#6B7280", fontWeight: 600 }}>Wilcoxon Test</div>
-              <div style={{ fontSize: 26, fontWeight: 900, color: "#EC4899", marginTop: 4 }}>
-                p &lt; 0.001
+            <p style={{ margin: "0 0 10px", fontSize: 17, color: "#374151", fontWeight: 600, lineHeight: 1.5 }}>
+              Not random. They cluster exactly where emotion prediction was poor:
+            </p>
+            <div style={{ display: "flex", gap: 10 }}>
+              <div style={{ flex: 1, background: "#FFFFFF", border: "1px solid rgba(239, 68, 68, 0.15)", borderRadius: 10, padding: "10px 12px", textAlign: "center" }}>
+                <div style={{ fontSize: 12, color: "#9CA3AF", fontWeight: 600 }}>Left-tail avg emo_r</div>
+                <div style={{ fontSize: 22, fontWeight: 900, color: "#EF4444", marginTop: 2 }}>0.153</div>
               </div>
-            </div>
-
-            <div
-              style={{
-                background: "#FFFFFF",
-                border: "1px solid #E5E7EB",
-                borderRadius: 14,
-                padding: "16px",
-                textAlign: "center",
-                boxShadow: "0 4px 16px rgba(0,0,0,0.03)",
-              }}
-            >
-              <div style={{ fontSize: 12, color: "#6B7280", fontWeight: 600 }}>Effect Size</div>
-              <div style={{ fontSize: 26, fontWeight: 900, color: "#06B6D4", marginTop: 4 }}>
-                r = 0.82
+              <div style={{ display: "flex", alignItems: "center", fontSize: 20, color: "#9CA3AF" }}>vs</div>
+              <div style={{ flex: 1, background: "#FFFFFF", border: "1px solid rgba(16, 185, 129, 0.2)", borderRadius: 10, padding: "10px 12px", textAlign: "center" }}>
+                <div style={{ fontSize: 12, color: "#9CA3AF", fontWeight: 600 }}>Rest avg emo_r</div>
+                <div style={{ fontSize: 22, fontWeight: 900, color: "#10B981", marginTop: 2 }}>0.283</div>
               </div>
             </div>
           </motion.div>
 
+          {/* Step 4: The next question */}
           <motion.div
             {...fadeInUp(0.45)}
             style={{
-              background: "#F9FAFB",
-              border: "1px solid #F3F4F6",
+              background: "rgba(124, 58, 237, 0.04)",
+              border: "1.5px dashed rgba(124, 58, 237, 0.3)",
               borderRadius: 14,
-              padding: "16px 20px",
-              fontSize: 14,
-              color: "#374151",
-              lineHeight: 1.5,
+              padding: "14px 18px",
             }}
           >
-            <strong style={{ color: "#7C3AED" }}>Broad Population Effect: </strong>
-            Emotion mediation provides a consistent, highly statistically significant improvement across almost the entire dataset, rather than being driven by a small outlier subset.
+            <p style={{ margin: 0, fontSize: 16, color: "#7C3AED", fontWeight: 700, lineHeight: 1.45 }}>
+              → So emotion accuracy (<strong>emo_r</strong>) seems to decide whether it helps or hurts. Is that true?
+            </p>
           </motion.div>
         </div>
 
-        {/* Right: Plot Image */}
-        <motion.div {...cardRise(0.25)}>
+        {/* Right: Plot Image — wider and more prominent */}
+        <motion.div
+          {...cardRise(0.2)}
+          style={{ display: "flex", alignItems: "center" }}
+        >
           <PlotImage
             src="/output/plots/emotion_help_hist.png"
             alt="Delta Hybrid-Direct CCC Distribution Histogram"
             fallbackTitle="Distribution of Delta (Hybrid - Direct CCC)"
-            fallbackSubtitle="Histogram showing 91.7% of 387 user-domain units strictly above 0"
+            fallbackSubtitle="387 user-domain units — bars right of zero = emotion helped"
             fallbackStats={[
-              { label: "Positive Benefit Share", value: "91.7%", color: "#10B981" },
-              { label: "Median Gain", value: "+0.071", color: "#7C3AED" },
-              { label: "Effect Size r", value: "0.82 (Large)", color: "#06B6D4" },
+              { label: "Positive (right of zero)", value: "91.7%", color: "#10B981" },
+              { label: "Negative (left tail)", value: "8.3%", color: "#EF4444" },
+              { label: "Mean gain", value: "+0.073", color: "#7C3AED" },
             ]}
-            maxHeight={400}
+            maxHeight={480}
           />
         </motion.div>
       </div>
-
-      {/* Small definition box at bottom right */}
-      <motion.div
-        {...fadeInUp(0.6)}
-        style={{
-          position: "absolute",
-          bottom: 24,
-          right: 32,
-          background: "#F3F4F6",
-          border: "1px solid #E5E7EB",
-          borderRadius: 10,
-          padding: "8px 14px",
-          fontSize: 11,
-          color: "#6B7280",
-        }}
-      >
-        <strong style={{ color: "#374151" }}>Wilcoxon signed-rank</strong> = paired, non-parametric test (assumes no normal distribution)
-      </motion.div>
     </SlideShell>
   );
 }
