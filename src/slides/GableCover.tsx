@@ -57,7 +57,7 @@ export function GableCover() {
           <span
             style={{ fontSize: 16, color: "#9CA3AF", letterSpacing: "0.06em" }}
           >
-            June 2026
+            July 2026
           </span>
         </div>
       </motion.div>
@@ -128,8 +128,7 @@ export function GableCover() {
             fontFamily: "'Inter', 'Noto Sans Thai', sans-serif",
           }}
         >
-          การทำงานในระบบ Enterprise การพัฒนา Code ที่ได้มาตรฐาน <br />
-          และการบริหารจัดการงานอย่างเป็นระบบ
+          ประสบการณ์ลุยงานระบบระดับองค์กร และการทำงานร่วมกับทีม
         </motion.p>
       </div>
 

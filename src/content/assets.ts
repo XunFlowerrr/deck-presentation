@@ -40,6 +40,7 @@ export { default as frustImg }         from '../assets/images/results/frust.png'
 
 // ── Intern ─────────────────────────────────────────────────────────────────
 export { default as internSelfieImg }   from '../assets/images/intern/intern-selfie.jpg';
+export { default as internActImg }      from '../assets/images/intern/Intern-act.jpg';
 
 // ── Textures ───────────────────────────────────────────────────────────────
 export { default as lanyardTexture }   from '../assets/images/textures/lanyard.png';

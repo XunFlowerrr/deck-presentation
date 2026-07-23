@@ -7,7 +7,7 @@ import type { DeckSection, SlideComponent } from './types';
 
 import { GableCover } from '../slides/GableCover';
 import { GableWorkProcess } from '../slides/GableWorkProcess';
-import { GableTechSkills } from '../slides/GableTechSkills';
+import { GableSoftSkills } from '../slides/GableSoftSkills';
 import { GableSelfie } from '../slides/GableSelfie';
 
 // Helper to assign static slideId properties to components to prevent HMR/minification mismatch
@@ -19,7 +19,7 @@ function defineSlide(component: any, slideId: string): SlideComponent {
 
 const GableCoverComponent = defineSlide(GableCover, 'GableCover');
 const GableWorkProcessComponent = defineSlide(GableWorkProcess, 'GableWorkProcess');
-const GableTechSkillsComponent = defineSlide(GableTechSkills, 'GableTechSkills');
+const GableSoftSkillsComponent = defineSlide(GableSoftSkills, 'GableSoftSkills');
 const GableSelfieComponent = defineSlide(GableSelfie, 'GableSelfie');
 
 // ── Deck ───────────────────────────────────────────────────────────────────
@@ -32,7 +32,7 @@ const deck: DeckSection[] = [
     label: 'Takeaways',
     slides: [
       GableWorkProcessComponent,
-      GableTechSkillsComponent,
+      GableSoftSkillsComponent,
     ],
   },
   {
