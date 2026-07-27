@@ -128,8 +128,8 @@ export function PipelineSlide() {
     <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
       <SlideHeader
         label="Pipeline"
-        title="Two pathways: "
-        highlight="Direct and Hybrid."
+        title="Two-Stage Architecture: "
+        highlight="Shared Perception & Personal Weighting."
       />
 
       <div
@@ -137,41 +137,10 @@ export function PipelineSlide() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
+          justifyContent: "center",
           paddingBottom: 8,
         }}
       >
-        {/* Pathway Comparison */}
-        <motion.div
-          {...fadeInUp(0.15)}
-          style={{ display: "flex", justifyContent: "center", gap: 20, marginBottom: 4 }}
-        >
-          <div
-            style={{
-              display: "flex", alignItems: "center", gap: 8,
-              background: "#FFFFFF", border: "1px solid #EEEDEA",
-              padding: "7px 18px", borderRadius: 20,
-              fontSize: 14, fontWeight: 700, color: "#C2185B",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.01)",
-            }}
-          >
-            <span style={{ fontWeight: 800 }}>Direct Pathway:</span>
-            <span>photo &rarr; score &nbsp;(skips the emotion mediation step)</span>
-          </div>
-          <div
-            style={{
-              display: "flex", alignItems: "center", gap: 8,
-              background: "#FFFFFF",
-              border: "1px solid rgba(123, 44, 143, 0.2)",
-              padding: "7px 18px", borderRadius: 20,
-              fontSize: 14, fontWeight: 700, color: "#7B2C8F",
-              boxShadow: "0 6px 16px rgba(123, 44, 143, 0.02)",
-            }}
-          >
-            <span style={{ fontWeight: 800 }}>Hybrid Pathway:</span>
-            <span>photo &rarr; 7 emotions &rarr; score (mediates via explainable emotions)</span>
-          </div>
-        </motion.div>
 
         {/* Pipeline Diagram */}
         <div style={{ display: "flex", alignItems: "stretch", justifyContent: "center", margin: "auto 0", position: "relative" }}>
@@ -328,42 +297,6 @@ export function PipelineSlide() {
           })}
         </div>
 
-        {/* Bottom Details */}
-        <div style={{ display: "flex", alignItems: "stretch", gap: 16, marginTop: 12 }}>
-          <motion.div
-            {...fadeInUp(0.7)}
-            style={{
-              flex: 1.1,
-              background: "#FFFFFF", border: "1px solid #EEEDEA",
-              borderRadius: 14, padding: "14px 20px",
-              fontSize: 14, color: "#6B5B6E", lineHeight: 1.5,
-              boxShadow: "0 6px 20px rgba(0, 0, 0, 0.01)",
-            }}
-          >
-            <div style={{ fontWeight: 800, color: "#4A1533", marginBottom: 4, fontSize: 15 }}>
-              Shared Perception vs. Personalized Judgment
-            </div>
-            • <strong style={{ color: "#4A1533" }}>Stage 1 (Perception) is Shared:</strong> Predicts general aesthetic emotions, trained across 104 users to extract standard emotional features.
-            <br />
-            • <strong style={{ color: "#4A1533" }}>Stage 2 (Judgment) is Personalized:</strong> Subjective weighting is customized, fitting weights on target user&apos;s adaptation ratings.
-          </motion.div>
-
-          <motion.div
-            {...fadeInUp(0.8)}
-            style={{
-              flex: 0.9,
-              background: "#FFFFFF", border: "1px solid #EEEDEA",
-              borderRadius: 14, padding: "14px 20px",
-              fontSize: 13, color: "#6B5B6E", lineHeight: 1.45,
-              boxShadow: "0 6px 20px rgba(0, 0, 0, 0.01)",
-            }}
-          >
-            <div style={{ fontWeight: 800, color: "#4A1533", marginBottom: 4, fontSize: 15 }}>Core Statistics &amp; Metrics</div>
-            <div><strong style={{ color: "#C2185B" }}>CCC</strong> &mdash; Lin&apos;s Concordance Correlation Coefficient (measures prediction accuracy).</div>
-            <div><strong style={{ color: "#7B2C8F" }}>emo_r</strong> &mdash; Emotion predictability (individual emotion correlation).</div>
-            <div><strong style={{ color: "#C2185B" }}>XPASS-Vis</strong> &mdash; Deep aesthetic dataset: 129 users &middot; 6,526 images.</div>
-          </motion.div>
-        </div>
       </div>
     </SlideShell>
   );
