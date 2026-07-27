@@ -40,6 +40,9 @@ export default function App() {
 
   if (typeof window !== "undefined") {
     (window as any).__total_slides = slides.length;
+    // Read by scripts/export-pptx.mjs to look up per-slide export overrides.
+    (window as any).__current_slide_id =
+      (CurrentSlide as any).slideId || CurrentSlide.name || String(currentIndex + 1);
   }
 
   const currentSlideNum = currentIndex + 1;

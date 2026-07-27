@@ -245,3 +245,48 @@ The project supports adding images to slides dynamically from the web interface 
    - **Keyboard Micro-tuning**: Select an image in edit mode and use the **arrow keys** to nudge it by 1px (or 10px with `Shift`). Press **`Delete`** or **`Backspace`** to remove the selected image.
 
 
+
+---
+
+## 8. Exporting the Deck (PDF & PowerPoint)
+
+Both exporters drive the live dev server with a headless Chrome, so **`pnpm dev` must be running first**. They read `window.__total_slides` and step through the deck with `ArrowRight`, waiting until each slide's entrance animation has settled before capturing.
+
+```bash
+pnpm export-pdf     # -> PIAA-Presentation.pdf
+pnpm export-pptx    # -> PIAA-Presentation.pptx
+```
+
+Chrome is located automatically (Windows / macOS / Linux paths, then puppeteer's bundled Chromium). Override with `PUPPETEER_EXECUTABLE_PATH` if needed. Pass a URL as the first argument to target a different server.
+
+### PDF — a picture of each slide
+`scripts/export-pdf.mjs` screenshots the whole 1920x1080 viewport per slide and stitches the images into a PDF. Perfectly faithful, completely flat.
+
+### PPTX — native PowerPoint objects
+`scripts/export-pptx.mjs` does **not** screenshot whole slides. It walks the rendered DOM and rebuilds each slide out of real PowerPoint objects: editable text boxes, shapes with real fills, borders, corner radii and shadows, and pictures only where PowerPoint has no equivalent.
+
+It works because the canvas is a fixed 1920x1080, which maps exactly onto a 13.333in x 7.5in 16:9 slide — **1 inch = 144 px, 1 px = 0.5 pt**.
+
+- `scripts/lib/pptx-extract.mjs` — the in-page DOM walker (runs inside the browser)
+- `scripts/lib/pptx-emit.mjs` — primitives to pptxgenjs; owns every unit conversion
+- `scripts/lib/browser.mjs` — Chrome discovery, dev-server probing, animation settling
+- `scripts/pptx-overrides.js` — per-slide escape hatches, keyed by `slideId`
+
+Flags: `--debug` dumps the extracted primitives per slide to `scripts/.pptx-debug/`, `--only=3,7` exports selected slides, `--jpeg-quality=90` controls plot image compression.
+
+**What does not survive the conversion:**
+- **Fonts are referenced by name.** Inter and Noto Sans Thai must be installed on the machine opening the file, or PowerPoint substitutes them and text shifts.
+- **Gradient headlines (`GradientText`), inline SVG icons, and `SlideShell` glow blobs become pictures** — native picture objects, but not editable as text or vector.
+- **Small body text runs a few percent wider** than in Chrome. PowerPoint's text metrics are not Chrome's; the exporter pins each line where the browser put it, but the line itself can render slightly long.
+- Multi-layer `box-shadow` collapses to its first layer.
+- The result is precisely-positioned free-floating boxes, not semantic bulleted placeholders.
+
+If one slide comes out wrong, add an override rather than editing the walker:
+
+```js
+// scripts/pptx-overrides.js
+export default {
+  Pipeline: { rasterize: ['[data-pipeline-diagram]'] },  // force a subtree to one picture
+  Cover:    { skip: ['.some-decoration'] },              // drop a subtree entirely
+};
+```
