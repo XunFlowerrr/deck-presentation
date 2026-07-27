@@ -3,8 +3,8 @@ import { SlideHeader, SlideShell } from "../../components/index.ts";
 import { cardRise } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, left: -100, size: 700, color: "24, 95, 165", opacity: 0.06 },
-  { bottom: -200, right: -100, size: 600, color: "29, 158, 117", opacity: 0.04 },
+  { top: -200, left: -100, size: 700, color: "194, 24, 91", opacity: 0.06 },
+  { bottom: -200, right: -100, size: 600, color: "123, 44, 143", opacity: 0.04 },
 ];
 
 const BLOCKS = [
@@ -37,11 +37,12 @@ const BLOCKS = [
 
 export function AgendaSlide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
+    <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Agenda"
-        title="Roadmap: "
-        highlight="5 Core Blocks."
+        title="What we'll "
+        highlight="cover today."
+        accentWidth={100}
       />
 
       <div
@@ -50,12 +51,26 @@ export function AgendaSlide() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          maxWidth: 960,
+          maxWidth: 900,
           margin: "0 auto",
           width: "100%",
-          gap: 20,
+          gap: 16,
+          position: "relative",
         }}
       >
+        {/* Subtle Purple Connecting Line behind circles */}
+        <div
+          style={{
+            position: "absolute",
+            left: 45, // Centered with the 44px circles (24px padding + 22px half-width)
+            top: 40,
+            bottom: 40,
+            width: 2,
+            background: "linear-gradient(180deg, rgba(194, 24, 91, 0.1) 0%, rgba(123, 44, 143, 0.3) 50%, rgba(194, 24, 91, 0.1) 100%)",
+            zIndex: 0,
+          }}
+        />
+
         {BLOCKS.map((block, idx) => (
           <motion.div
             key={block.num}
@@ -64,20 +79,21 @@ export function AgendaSlide() {
               background: "#FFFFFF",
               border: "1px solid #EEEDEA",
               borderRadius: 16,
-              padding: "16px 24px",
-              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
+              padding: "12px 24px",
+              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.01)",
               display: "flex",
               alignItems: "center",
               gap: 24,
+              zIndex: 1,
             }}
           >
-            {/* Blue circle number */}
+            {/* Pink circle number */}
             <div
               style={{
                 width: 44,
                 height: 44,
                 borderRadius: "50%",
-                background: "#185FA5",
+                background: "#C2185B", // Primary Pink
                 color: "#FFFFFF",
                 display: "flex",
                 alignItems: "center",
@@ -85,17 +101,18 @@ export function AgendaSlide() {
                 fontSize: 20,
                 fontWeight: 900,
                 flexShrink: 0,
+                boxShadow: "0 4px 10px rgba(194, 24, 91, 0.15)",
               }}
             >
               {block.num}
             </div>
 
             {/* Block content */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#222222" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <h3 style={{ margin: 0, fontSize: 19, fontWeight: 800, color: "#4A1533" }}>
                 {block.title}
               </h3>
-              <p style={{ margin: 0, fontSize: 15, color: "#888888", fontWeight: 500 }}>
+              <p style={{ margin: 0, fontSize: 14.5, color: "#6B5B6E", fontWeight: 500 }}>
                 {block.desc}
               </p>
             </div>
@@ -105,3 +122,4 @@ export function AgendaSlide() {
     </SlideShell>
   );
 }
+AgendaSlide.slideId = "Agenda";

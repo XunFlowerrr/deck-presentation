@@ -1,6 +1,6 @@
 /**
  * Deck configuration for the Final Presentation: Emotion-Mediated PIAA.
- * 19 slides + 5 Q&A backup slides.
+ * 17 slides + 6 Q&A backup slides.
  */
 
 import type { DeckSection, SlideComponent } from './types';
@@ -9,20 +9,18 @@ import type { DeckSection, SlideComponent } from './types';
 import { CoverSlide } from '../slides/final/CoverSlide';
 import { AgendaSlide } from '../slides/final/AgendaSlide';
 import { IaaPiaaSlide } from '../slides/final/IaaPiaaSlide';
-import { ProblemSlide } from '../slides/final/ProblemSlide';
 import { IdeaSlide } from '../slides/final/IdeaSlide';
 import { PipelineSlide } from '../slides/final/PipelineSlide';
 import { DatasetProtocolSlide } from '../slides/final/DatasetProtocolSlide';
+import { TransitionSlide } from '../slides/final/TransitionSlide';
 import { Finding1Slide } from '../slides/final/Finding1Slide';
 import { Finding3Slide } from '../slides/final/Finding3Slide';
-import { TransitionSlide } from '../slides/final/TransitionSlide';
+import { QuestionTransitionSlide } from '../slides/final/QuestionTransitionSlide';
 import { Finding4Slide } from '../slides/final/Finding4Slide';
 import { Finding2Slide } from '../slides/final/Finding2Slide';
-import { Finding5Slide } from '../slides/final/Finding5Slide';
 import { Finding6Slide } from '../slides/final/Finding6Slide';
 import { Finding8Slide } from '../slides/final/Finding8Slide';
 import { PlaceboSlide } from '../slides/final/PlaceboSlide';
-import { Finding10Slide } from '../slides/final/Finding10Slide';
 import { SummarySlide } from '../slides/final/SummarySlide';
 import { FutureWorkSlide } from '../slides/final/FutureWorkSlide';
 
@@ -32,7 +30,8 @@ import {
   QaaCeilingSlide,
   QaaProtocolSlide,
   QaaPartialCorrSlide,
-  QaaDesignChoiceSlide
+  QaaDesignChoiceSlide,
+  QaaRelatedWorkSlide
 } from '../slides/final/QABackupSlides';
 
 // Helper to assign static slideId properties to components
@@ -45,20 +44,18 @@ function defineSlide(component: any, slideId: string): SlideComponent {
 const Cover = defineSlide(CoverSlide, 'Cover');
 const Agenda = defineSlide(AgendaSlide, 'Agenda');
 const IaaPiaa = defineSlide(IaaPiaaSlide, 'IaaPiaa');
-const Problem = defineSlide(ProblemSlide, 'Problem');
 const Idea = defineSlide(IdeaSlide, 'Idea');
 const Pipeline = defineSlide(PipelineSlide, 'Pipeline');
 const DatasetProtocol = defineSlide(DatasetProtocolSlide, 'DatasetProtocol');
+const Transition = defineSlide(TransitionSlide, 'Transition');
 const Finding1 = defineSlide(Finding1Slide, 'Finding1');
 const Finding3 = defineSlide(Finding3Slide, 'Finding3');
-const Transition = defineSlide(TransitionSlide, 'Transition');
+const QuestionTransition = defineSlide(QuestionTransitionSlide, 'QuestionTransition');
 const Finding4 = defineSlide(Finding4Slide, 'Finding4');
 const Finding2 = defineSlide(Finding2Slide, 'Finding2');
-const Finding5 = defineSlide(Finding5Slide, 'Finding5');
 const Finding6 = defineSlide(Finding6Slide, 'Finding6');
 const Finding8 = defineSlide(Finding8Slide, 'Finding8');
 const Placebo = defineSlide(PlaceboSlide, 'Placebo');
-const Finding10 = defineSlide(Finding10Slide, 'Finding10');
 const Summary = defineSlide(SummarySlide, 'Summary');
 const FutureWork = defineSlide(FutureWorkSlide, 'FutureWork');
 
@@ -68,6 +65,7 @@ const QaaCeiling = defineSlide(QaaCeilingSlide, 'QaaCeiling');
 const QaaProtocol = defineSlide(QaaProtocolSlide, 'QaaProtocol');
 const QaaPartialCorr = defineSlide(QaaPartialCorrSlide, 'QaaPartialCorr');
 const QaaDesignChoice = defineSlide(QaaDesignChoiceSlide, 'QaaDesignChoice');
+const QaaRelatedWork = defineSlide(QaaRelatedWorkSlide, 'QaaRelatedWork');
 
 const deck: DeckSection[] = [
   {
@@ -76,15 +74,15 @@ const deck: DeckSection[] = [
   },
   {
     label: 'Problem & Idea',
-    slides: [IaaPiaa, Problem, Idea, Pipeline],
+    slides: [IaaPiaa, Idea, Pipeline],
   },
   {
     label: 'Evaluation & Baselines',
-    slides: [DatasetProtocol, Finding1, Finding3, Transition],
+    slides: [DatasetProtocol, Transition, Finding1, Finding3],
   },
   {
     label: 'Mechanisms',
-    slides: [Finding4, Finding2, Finding5],
+    slides: [QuestionTransition, Finding4, Finding2],
   },
   {
     label: 'Ceilings & Cold-Start',
@@ -92,7 +90,7 @@ const deck: DeckSection[] = [
   },
   {
     label: 'Validity',
-    slides: [Placebo, Finding10],
+    slides: [Placebo],
   },
   {
     label: 'Summary & Outro',
@@ -106,6 +104,7 @@ const backupSlides: SlideComponent[] = [
   QaaProtocol,
   QaaPartialCorr,
   QaaDesignChoice,
+  QaaRelatedWork,
 ];
 
 export const slides = [...deck.flatMap((s) => s.slides), ...backupSlides];

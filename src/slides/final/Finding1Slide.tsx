@@ -3,17 +3,18 @@ import { SlideHeader, SlideShell, PlotImage } from "../../components/index.ts";
 import { cardRise, fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, left: -100, size: 700, color: "24, 95, 165", opacity: 0.05 },
-  { bottom: -200, right: -100, size: 600, color: "29, 158, 117", opacity: 0.04 },
+  { top: -200, left: -100, size: 700, color: "194, 24, 91", opacity: 0.05 },
+  { bottom: -200, right: -100, size: 600, color: "123, 44, 143", opacity: 0.04 },
 ];
 
 export function Finding1Slide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
+    <SlideShell glows={GLOWS}>
       <SlideHeader
-        label="Block 2 — Does It Work?"
+        label="Finding 1"
         title="Going through emotion "
-        highlight="Helps 93% of the Time."
+        highlight="helps 93% of users."
+        accentWidth={100}
       />
 
       <div
@@ -26,7 +27,7 @@ export function Finding1Slide() {
         }}
       >
         {/* Left Column: Key results and stats */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           {/* Main Gain Card */}
           <motion.div
             {...cardRise(0.15)}
@@ -35,108 +36,82 @@ export function Finding1Slide() {
               border: "1px solid #EEEDEA",
               borderRadius: 20,
               padding: "24px 28px",
-              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
+              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.01)",
               display: "flex",
-              alignItems: "center",
-              gap: 24,
+              flexDirection: "column",
+              gap: 12,
             }}
           >
-            <div style={{ fontSize: 56, fontWeight: 900, color: "#1D9E75", lineHeight: 1 }}>
-              +0.066
+            <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 16, color: "#6B5B6E", fontWeight: 700 }}>
+              <span>Direct CCC: 0.293</span>
+              <span style={{ color: "#7B2C8F" }}>&rarr;</span>
+              <span style={{ color: "#7B2C8F", fontWeight: 800 }}>Hybrid CCC: 0.359</span>
             </div>
-            <div>
-              <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#222222" }}>
-                Significant Accuracy Gain
-              </h3>
-              <p style={{ margin: "4px 0 0", fontSize: 16, color: "#888888", fontWeight: 700 }}>
-                Direct CCC (0.293) &rarr; Hybrid CCC (0.359)
-              </p>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
+              <span style={{ fontSize: 64, fontWeight: 950, color: "#C2185B", lineHeight: 1, letterSpacing: "-2px" }}>
+                +0.066
+              </span>
+              <span style={{ fontSize: 20, fontWeight: 850, color: "#4A1533" }}>
+                Gain (Delta CCC)
+              </span>
+            </div>
+            <div style={{ fontSize: 16, fontWeight: 750, color: "#7B2C8F", marginTop: 4 }}>
+              helps 92.8% (93%) of people
             </div>
           </motion.div>
 
-          {/* Detailed stats grids */}
+          {/* Details Card */}
           <motion.div
-            {...cardRise(0.3)}
+            {...cardRise(0.28)}
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 16,
-            }}
-          >
-            {/* Help Share */}
-            <div
-              style={{
-                background: "#FFFFFF",
-                border: "1px solid #EEEDEA",
-                borderRadius: 14,
-                padding: "16px",
-                textAlign: "center",
-                boxShadow: "0 8px 30px rgba(0, 0, 0, 0.01)",
-              }}
-            >
-              <div style={{ fontSize: 12, color: "#888888", fontWeight: 800 }}>Helped Share</div>
-              <div style={{ fontSize: 28, fontWeight: 900, color: "#185FA5", marginTop: 4 }}>
-                92.8%
-              </div>
-              <div style={{ fontSize: 11, color: "#888888", marginTop: 2, fontWeight: 700 }}>of user-domain units</div>
-            </div>
-
-            {/* Dose Response */}
-            <div
-              style={{
-                background: "#FFFFFF",
-                border: "1px solid rgba(24, 95, 165, 0.12)",
-                borderRadius: 14,
-                padding: "16px",
-                textAlign: "center",
-                boxShadow: "0 8px 30px rgba(24, 95, 165, 0.02)",
-              }}
-            >
-              <div style={{ fontSize: 12, color: "#888888", fontWeight: 800 }}>Support Effect</div>
-              <div style={{ fontSize: 20, fontWeight: 800, color: "#222222", marginTop: 10 }}>
-                Dose-Response
-              </div>
-              <div style={{ fontSize: 11, color: "#888888", marginTop: 2, fontWeight: 700 }}>More ratings = higher gain</div>
-            </div>
-          </motion.div>
-
-          {/* Key takeaway */}
-          <motion.div
-            {...fadeInUp(0.45)}
-            style={{
-              background: "#FFFFFF",
-              border: "1px solid #EEEDEA",
-              borderRadius: 14,
+              background: "#FCE4EC", // Soft Pink Box
+              border: "1px solid rgba(194, 24, 91, 0.15)",
+              borderRadius: 16,
               padding: "16px 20px",
-              fontSize: 14,
-              color: "#222222",
-              lineHeight: 1.5,
-              fontWeight: 600,
-              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.01)",
+              fontSize: 14.5,
+              color: "#2B2230",
+              lineHeight: 1.45,
+              fontWeight: 550,
             }}
           >
-            <strong style={{ color: "#1D9E75" }}>Dose-Response Effect: </strong>
-            As user rating data grows, the accuracy improvement (Delta CCC) increases consistently. This confirms that collecting personalized preference data provides solid, scalable benefits.
+            <strong style={{ color: "#C2185B" }}>Dose-Response Behavior:</strong>
+            <br />
+            As the number of ratings per user increases, the accuracy improvement becomes larger and more stable. Emotion mediation prevents model overfitting when adapting to small amounts of personal taste data.
           </motion.div>
         </div>
 
         {/* Right Column: Support Curve Plot */}
-        <motion.div {...cardRise(0.25)} style={{ width: "100%" }}>
+        <motion.div {...cardRise(0.22)} style={{ width: "100%" }}>
           <PlotImage
             src="/output/plots/emotion_help_scatter_n_unique.png"
             alt="Delta Gain vs Ratings Count (Dose-Response)"
             fallbackTitle="Dose-Response Support Curve"
             fallbackSubtitle="Delta (Hybrid - Direct) increases with user ratings size"
             fallbackStats={[
-              { label: "Direct CCC", value: "0.293", color: "#888888" },
-              { label: "Hybrid CCC", value: "0.359", color: "#1D9E75" },
-              { label: "Helped Share", value: "92.8%", color: "#185FA5" },
+              { label: "Direct Baseline", value: "0.293", color: "#9E9E9E" },
+              { label: "Hybrid Pathway", value: "0.359", color: "#7B2C8F" },
+              { label: "Accuracy Gain", value: "+0.066 (helps 93%)", color: "#C2185B" },
             ]}
-            style={{ border: "1px solid #EEEDEA", boxShadow: "0 12px 40px rgba(0, 0, 0, 0.02)" }}
-            maxHeight={420}
+            style={{ border: "1px solid #EEEDEA", boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)" }}
+            maxHeight={360}
           />
         </motion.div>
       </div>
+
+      {/* Bottom Caption */}
+      <motion.div
+        {...fadeInUp(0.35)}
+        style={{
+          marginTop: 20,
+          textAlign: "center",
+          fontSize: 16,
+          fontWeight: 800,
+          color: "#7B2C8F", // Secondary purple
+        }}
+      >
+        more personal data &rarr; more help
+      </motion.div>
     </SlideShell>
   );
 }
+Finding1Slide.slideId = "Finding1";

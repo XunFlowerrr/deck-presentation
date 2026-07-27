@@ -3,44 +3,41 @@ import { SlideHeader, SlideShell } from "../../components/index.ts";
 import { cardRise, fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, left: -100, size: 700, color: "24, 95, 165", opacity: 0.05 },
-  { bottom: -200, right: -100, size: 600, color: "29, 158, 117", opacity: 0.04 },
+  { top: -200, left: -100, size: 700, color: "194, 24, 91", opacity: 0.05 },
+  { bottom: -200, right: -100, size: 600, color: "123, 44, 143", opacity: 0.04 },
 ];
 
-const TAKE_HOMES = [
+const POINTS = [
   {
-    num: "01",
-    label: "Predict",
-    title: "Emotion Mediation",
-    desc: "Achieve comparable personalization accuracy to standard SOTA methods while safeguarding user privacy (no intrusive personality surveys required).",
-    color: "#185FA5",
-    glow: "rgba(24, 95, 165, 0.04)",
+    num: "1",
+    title: "Explainable PIAA",
+    desc: "Provides readable weights per person, achieving positive performance gains for 93% of users.",
   },
   {
-    num: "02",
-    label: "Understand",
-    title: "Transparent Rationale",
-    desc: "Cleanly decompose and analyze individual aesthetic differences into shared perception vs. subjective personal weighting formulas.",
-    color: "#1D9E75",
-    glow: "rgba(29, 158, 117, 0.04)",
+    num: "2",
+    title: "No Intrusive Traits",
+    desc: "Matches SOTA baselines using emotional intermediate representations, fully protecting user privacy.",
   },
   {
-    num: "03",
-    label: "Deploy",
-    title: "Cold-Start & Ceiling",
-    desc: "Requires 50 user ratings to outperform population-level baselines, aiming for a realistic temporal ceiling of 0.64.",
-    color: "#BA7517",
-    glow: "rgba(186, 117, 23, 0.04)",
+    num: "3",
+    title: "Realistic Ceiling",
+    desc: "Temporal ceiling is capped at 0.64 due to measurement noise rather than model capacity.",
+  },
+  {
+    num: "4",
+    title: "Cold-Start Limit",
+    desc: "Requires approximately 50 ratings to outperform the generic population average model.",
   },
 ];
 
 export function SummarySlide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
+    <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Conclusion"
-        title="Takeaways"
-        highlight=""
+        title="Key "
+        highlight="takeaways."
+        accentWidth={100}
       />
 
       <div
@@ -48,90 +45,94 @@ export function SummarySlide() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          gap: 32,
-          maxWidth: 960,
-          margin: "0 auto",
-          width: "100%",
+          justifyContent: "space-between",
+          paddingBottom: 16,
         }}
       >
-        {/* Sequence of 3 summaries */}
+        {/* 2x2 Grid for the 4 Points */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
+            gridTemplateColumns: "1fr 1fr",
             gap: 20,
+            maxWidth: 900,
+            margin: "auto auto",
+            width: "100%",
           }}
         >
-          {TAKE_HOMES.map((item, idx) => (
+          {POINTS.map((item, idx) => (
             <motion.div
               key={item.num}
               {...cardRise(0.1 + idx * 0.08)}
               style={{
                 background: "#FFFFFF",
-                border: `1px solid #EEEDEA`,
-                borderRadius: 20,
-                padding: "28px 24px",
-                boxShadow: `0 8px 30px ${item.glow}`,
+                border: "1px solid #EEEDEA",
+                borderRadius: 16,
+                padding: "20px 24px",
+                boxShadow: "0 4px 15px rgba(0, 0, 0, 0.01)",
                 display: "flex",
-                flexDirection: "column",
                 gap: 16,
-                minHeight: 260,
-                position: "relative",
-                overflow: "hidden",
+                alignItems: "flex-start",
               }}
             >
-              {/* Top highlight bar */}
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: item.color }} />
-
-              <div style={{ display: "flex", alignItems: "center", gap: 10, zIndex: 1 }}>
-                <span
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 900,
-                    color: "#FFFFFF",
-                    background: item.color,
-                    padding: "2px 8px",
-                    borderRadius: 6,
-                  }}
-                >
-                  {item.num}
-                </span>
-                <span style={{ fontSize: 13, fontWeight: 900, color: item.color, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                  {item.label}
-                </span>
+              {/* Pink Circle Number */}
+              <div
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: "50%",
+                  background: "#C2185B", // Primary Pink
+                  color: "#FFFFFF",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 15,
+                  fontWeight: 900,
+                  flexShrink: 0,
+                  boxShadow: "0 2px 6px rgba(194, 24, 91, 0.15)",
+                }}
+              >
+                {item.num}
               </div>
 
-              <h4 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#222222", lineHeight: 1.2, zIndex: 1 }}>
-                {item.title}
-              </h4>
-
-              <p style={{ margin: 0, fontSize: 14, color: "#888888", lineHeight: 1.5, zIndex: 1, fontWeight: 500 }}>
-                {item.desc}
-              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                <h4 style={{ margin: 0, fontSize: 17, fontWeight: 800, color: "#4A1533" }}>
+                  {item.title}
+                </h4>
+                <p style={{ margin: 0, fontSize: 14, color: "#6B5B6E", lineHeight: 1.4, fontWeight: 550 }}>
+                  {item.desc}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Concluding publication statement */}
+        {/* Bottom Tagline Quote */}
         <motion.div
-          {...fadeInUp(0.4)}
+          {...fadeInUp(0.45)}
           style={{
-            alignSelf: "center",
-            background: "#FFFFFF",
-            border: "1px solid #EEEDEA",
-            borderRadius: 14,
-            padding: "12px 28px",
-            fontSize: 14,
-            fontWeight: 800,
-            color: "#888888",
             textAlign: "center",
-            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.01)",
+            maxWidth: 720,
+            margin: "12px auto 0",
+            borderTop: "1px solid #EEEDEA",
+            paddingTop: 16,
+            width: "100%",
           }}
         >
-          Publication Plan: <span style={{ color: "#185FA5" }}>Preparing conference submission for ACMMM / CVPR</span>
+          <p
+            style={{
+              margin: 0,
+              fontSize: 19,
+              fontWeight: 800,
+              color: "#4A1533", // Deep Plum
+              fontStyle: "italic",
+            }}
+          >
+            &ldquo;Emotion is a powerful, explainable bridge to subjective taste.&rdquo;
+          </p>
         </motion.div>
       </div>
     </SlideShell>
   );
 }
+SummarySlide.slideId = "Summary";
