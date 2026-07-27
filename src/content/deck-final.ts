@@ -1,6 +1,9 @@
 /**
  * Deck configuration for the Final Presentation: Emotion-Mediated PIAA.
- * 19 slides + 5 Q&A backup slides.
+ * Aligned with Speaking Script v4:
+ * - Keeps 3 background slides (IaaPiaa, Problem, Idea)
+ * - 17 main slides matching script flow
+ * - 7 Q&A backup slides (including Finding 5 & Finding 10)
  */
 
 import type { DeckSection, SlideComponent } from './types';
@@ -71,36 +74,42 @@ const QaaDesignChoice = defineSlide(QaaDesignChoiceSlide, 'QaaDesignChoice');
 
 const deck: DeckSection[] = [
   {
-    label: 'Intro',
+    label: 'Opening',
     slides: [Cover, Agenda],
   },
   {
-    label: 'Problem & Idea',
-    slides: [IaaPiaa, Problem, Idea, Pipeline],
+    label: 'Background & Idea',
+    slides: [IaaPiaa, Problem, Idea],
   },
   {
-    label: 'Evaluation & Baselines',
-    slides: [DatasetProtocol, Finding1, Finding3, Transition],
+    label: 'Block 1: Pipeline & Data',
+    slides: [Pipeline, DatasetProtocol],
   },
   {
-    label: 'Mechanisms',
-    slides: [Finding4, Finding2, Finding5],
+    label: 'Block 2: Does It Work',
+    slides: [Finding1, Finding3, Transition],
   },
   {
-    label: 'Ceilings & Cold-Start',
+    label: 'Block 3: When & Why',
+    slides: [Finding4, Finding2],
+  },
+  {
+    label: 'Block 4: How Far',
     slides: [Finding6, Finding8],
   },
   {
-    label: 'Validity',
-    slides: [Placebo, Finding10],
+    label: 'Block 5: Is Gain Real',
+    slides: [Placebo],
   },
   {
-    label: 'Summary & Outro',
+    label: 'Closing',
     slides: [Summary, FutureWork],
   },
 ];
 
 const backupSlides: SlideComponent[] = [
+  Finding5,
+  Finding10,
   QaaDecomposition,
   QaaCeiling,
   QaaProtocol,
@@ -119,3 +128,4 @@ export const trackerSlideCount: number = deck.reduce(
   (acc, s) => acc + s.slides.length,
   0,
 );
+
