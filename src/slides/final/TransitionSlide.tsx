@@ -23,17 +23,6 @@ export function TransitionSlide() {
         }}
       >
         <motion.div {...fadeInUp(0.1)}>
-          <span
-            style={{
-              fontSize: 18,
-              fontWeight: 800,
-              color: "#C2185B",
-              textTransform: "uppercase",
-              letterSpacing: "0.2em",
-            }}
-          >
-            Transition
-          </span>
           <h2
             style={{
               margin: "12px 0 0",
