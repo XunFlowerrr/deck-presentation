@@ -304,9 +304,29 @@ export function extractSlidePrimitives(config) {
     900: ["Black", "Heavy", "ExtraBold"],
   };
 
+  // Authoritative list of installed fonts, enumerated by the orchestrator via
+  // the Local Font Access API. `families` are typographic families ("Segoe UI");
+  // `faces` are per-face full names ("Segoe UI Semibold"), which is what
+  // PowerPoint matches a typeface name against.
+  const installedFamilies = config.installedFonts
+    ? new Set(config.installedFonts.families)
+    : null;
+  const installedFaces = config.installedFonts
+    ? new Set(config.installedFonts.faces)
+    : null;
+
   const availabilityCache = new Map();
   let probeEl = null;
 
+  /**
+   * Width-comparison fallback for when the font list could not be enumerated.
+   *
+   * Note this is only trustworthy for whole families. It cannot tell a real
+   * face from DirectWrite fuzzy-matching an invented name onto the base family
+   * — Chrome happily renders "Segoe UI Medium" by synthesising a weight, so the
+   * probe called it available and the exported file named a font that does not
+   * exist. PowerPoint then refused to embed it.
+   */
   const isFontAvailable = (family) => {
     if (availabilityCache.has(family)) return availabilityCache.get(family);
 
@@ -334,6 +354,16 @@ export function extractSlidePrimitives(config) {
     return available;
   };
 
+  const isFamilyAvailable = (name) =>
+    installedFamilies ? installedFamilies.has(name) : isFontAvailable(name);
+
+  /**
+   * A weight-specific face may only be named if it is genuinely installed.
+   * Without an enumerated list we decline entirely and fall back to the base
+   * family plus a bold flag — always embeddable, if slightly less faithful.
+   */
+  const isFaceAvailable = (name) => (installedFaces ? installedFaces.has(name) : false);
+
   const familyCache = new Map();
 
   const resolveFontFace = (stack, weight) => {
@@ -346,7 +376,7 @@ export function extractSlidePrimitives(config) {
       const name = raw.trim().replace(/^["']|["']$/g, "");
       if (!name) continue;
       const candidates = GENERIC_FAMILIES[name.toLowerCase()] ?? [name];
-      const hit = candidates.find(isFontAvailable);
+      const hit = candidates.find(isFamilyAvailable);
       if (hit) {
         base = hit;
         break;
@@ -359,7 +389,7 @@ export function extractSlidePrimitives(config) {
 
     for (const suffix of WEIGHT_CANDIDATES[w] ?? []) {
       const named = `${base} ${suffix}`;
-      if (isFontAvailable(named)) {
+      if (isFaceAvailable(named)) {
         // The face carries the weight; a bold flag on top makes PowerPoint
         // synthesize a second, fake bold.
         result = { fontFace: named, fontFaceBase: base, bold: false };

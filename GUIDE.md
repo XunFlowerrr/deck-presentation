@@ -280,12 +280,18 @@ This is the part that is easy to get wrong. `SlideShell` sets `font-family: syst
 
 So the extractor resolves fonts *inside the browser*, where Chrome's own matching is the authority:
 - generic keywords (`system-ui`, `sans-serif`, ...) are expanded to real families and the first **installed** one wins;
-- weights other than 400/700 look for the weight-specific family (`Segoe UI Black` for `font-weight: 900`) and only use it if it is actually installed — Windows ships `Segoe UI Semibold` but no `Segoe UI Medium`.
+- weights other than 400/700 look for the weight-specific face (`Segoe UI Black` for `font-weight: 900`), and use it only when that face is genuinely installed.
+
+Availability is checked against the machine's real font list, enumerated once per run through the Local Font Access API (`queryLocalFonts()`, with the `localFonts` permission granted over CDP). Matching is against each face's **full name** — `Segoe UI Semibold`, not the typographic family `Segoe UI` — because that is what PowerPoint resolves a typeface name against.
+
+**Do not go back to measuring text widths to test availability.** Chrome will happily render `Segoe UI Medium` by fuzzy-matching the name onto the Segoe UI family and synthesising a weight, so a width probe reports it as present. It isn't: Windows ships no such family, and PowerPoint then refuses to embed the font ("Font Not Available") when saving. Same for `Cambria Math Medium` / `Cambria Math ExtraBold` — Cambria Math has exactly one weight.
+
+If the font list cannot be enumerated the exporter degrades safely to base families only, mapping every weight onto regular/bold, and says so on stderr.
 
 Naming the wrong family is not a subtle error: exporting Segoe UI text as Inter made every line roughly 4.5% wide, which showed up as `SlideHeader`'s black title colliding with the `GradientText` picture beside it.
 
 **What does not survive the conversion:**
-- **Fonts are referenced by name.** The faces resolved at export time must also be installed on the machine opening the file, or PowerPoint substitutes and text shifts. Use `--no-weight-faces` if the target machine only has Regular + Bold.
+- **Fonts are referenced by name.** Faces are verified against the *exporting* machine's font list, so they are always embeddable there — but they must also be installed wherever the file is opened, or PowerPoint substitutes and text shifts. Use `--no-weight-faces` to map every weight onto regular/bold if the target machine is sparser than this one.
 - **Gradient headlines (`GradientText`), inline SVG icons, and `SlideShell` glow blobs become pictures** — native picture objects, but not editable as text or vector.
 - Text still drifts a few pixels per line; PowerPoint's metrics are not Chrome's. Each line is pinned where the browser put it, so drift cannot accumulate down a paragraph.
 - Multi-layer `box-shadow` collapses to its first layer.
