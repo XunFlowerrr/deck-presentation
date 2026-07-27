@@ -235,6 +235,111 @@ export function extractSlidePrimitives(config) {
       .filter((l) => l.text.length > 0 && Number.isFinite(l.left));
   };
 
+  // ------------------------------------------------------------ font resolution
+
+  /**
+   * Turn a CSS font stack + weight into a concrete font family PowerPoint can
+   * actually use.
+   *
+   * This matters more than it looks. SlideShell sets `system-ui`, which Chrome
+   * resolves to Segoe UI on Windows — but PowerPoint has no notion of
+   * `system-ui`, so naming it (or guessing "Inter") silently swaps in a
+   * different typeface roughly 4.5% wider, throwing off every line in the deck.
+   * Resolving here, in the page, means Chrome's own font matching decides, and
+   * it stays correct on any platform.
+   *
+   * PowerPoint also has no weight axis, only a bold flag, so weights other than
+   * 400/700 have to name the weight-specific family ("Segoe UI Black"). Those
+   * families are probed rather than assumed — Windows ships "Segoe UI Semibold"
+   * but no "Segoe UI Medium".
+   */
+  const GENERIC_FAMILIES = {
+    "system-ui": ["Segoe UI", "SF Pro Text", "Helvetica Neue", "Roboto", "Cantarell"],
+    "-apple-system": ["SF Pro Text", "Helvetica Neue", "Segoe UI"],
+    blinkmacsystemfont: ["SF Pro Text", "Helvetica Neue", "Segoe UI"],
+    "sans-serif": ["Arial", "Helvetica"],
+    serif: ["Times New Roman", "Georgia"],
+    monospace: ["Consolas", "Menlo", "Courier New"],
+  };
+
+  // Heavier-first so a missing exact face degrades the way CSS would.
+  const WEIGHT_CANDIDATES = {
+    100: ["Thin", "ExtraLight", "Light"],
+    200: ["ExtraLight", "Thin", "Light"],
+    300: ["Light", "ExtraLight"],
+    500: ["Medium"],
+    600: ["SemiBold", "Semibold", "DemiBold"],
+    800: ["ExtraBold", "Black", "Heavy"],
+    900: ["Black", "Heavy", "ExtraBold"],
+  };
+
+  const availabilityCache = new Map();
+  let probeEl = null;
+
+  const isFontAvailable = (family) => {
+    if (availabilityCache.has(family)) return availabilityCache.get(family);
+
+    if (!probeEl) {
+      probeEl = document.createElement("span");
+      probeEl.textContent = "mmmmmmmmmmlliWWWWWWi&%#@";
+      probeEl.style.cssText =
+        "position:absolute;left:-9999px;top:-9999px;font-size:96px;white-space:pre;";
+      document.body.appendChild(probeEl);
+    }
+
+    // A family is present if it shifts the width away from every fallback.
+    let available = false;
+    for (const fallback of ["monospace", "serif", "sans-serif"]) {
+      probeEl.style.fontFamily = fallback;
+      const base = probeEl.getBoundingClientRect().width;
+      probeEl.style.fontFamily = `"${family}", ${fallback}`;
+      if (Math.abs(probeEl.getBoundingClientRect().width - base) > 0.5) {
+        available = true;
+        break;
+      }
+    }
+
+    availabilityCache.set(family, available);
+    return available;
+  };
+
+  const familyCache = new Map();
+
+  const resolveFontFace = (stack, weight) => {
+    const key = `${stack}|${weight}`;
+    if (familyCache.has(key)) return familyCache.get(key);
+
+    // First concrete, installed family in the stack — same order Chrome used.
+    let base = null;
+    for (const raw of (stack || "").split(",")) {
+      const name = raw.trim().replace(/^["']|["']$/g, "");
+      if (!name) continue;
+      const candidates = GENERIC_FAMILIES[name.toLowerCase()] ?? [name];
+      const hit = candidates.find(isFontAvailable);
+      if (hit) {
+        base = hit;
+        break;
+      }
+    }
+    if (!base) base = "Arial";
+
+    const w = Math.round((weight || 400) / 100) * 100;
+    let result = { fontFace: base, fontFaceBase: base, bold: w >= 600 };
+
+    for (const suffix of WEIGHT_CANDIDATES[w] ?? []) {
+      const named = `${base} ${suffix}`;
+      if (isFontAvailable(named)) {
+        // The face carries the weight; a bold flag on top makes PowerPoint
+        // synthesize a second, fake bold.
+        result = { fontFace: named, fontFaceBase: base, bold: false };
+        break;
+      }
+    }
+
+    familyCache.set(key, result);
+    return result;
+  };
+
   /** CSS text-transform is a render-time effect; textContent gives the source. */
   const applyTextTransform = (text, transform) => {
     if (transform === "uppercase") return text.toUpperCase();
@@ -269,6 +374,7 @@ export function extractSlidePrimitives(config) {
         text: applyTextTransform(line.text, cs.textTransform),
         raw: applyTextTransform(line.raw, cs.textTransform),
         fontFamily: cs.fontFamily,
+        ...resolveFontFace(cs.fontFamily, num(cs.fontWeight) || 400),
         fontSizePx: num(cs.fontSize),
         fontWeight: num(cs.fontWeight) || 400,
         fontStyle: cs.fontStyle,
