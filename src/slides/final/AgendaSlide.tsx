@@ -40,8 +40,8 @@ export function AgendaSlide() {
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Agenda"
-        title="Roadmap: "
-        highlight="5 Core Blocks."
+        title="What we'll "
+        highlight="cover today."
       />
 
       <div
