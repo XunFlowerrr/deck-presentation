@@ -3,8 +3,8 @@ import { SlideHeader, SlideShell } from "../../components/index.ts";
 import { cardRise, fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, left: -100, size: 700, color: "24, 95, 165", opacity: 0.05 },
-  { bottom: -200, right: -100, size: 600, color: "29, 158, 117", opacity: 0.04 },
+  { top: -200, left: -100, size: 700, color: "194, 24, 91", opacity: 0.05 },
+  { bottom: -200, right: -100, size: 600, color: "123, 44, 143", opacity: 0.04 },
 ];
 
 const TAKE_HOMES = [
@@ -13,30 +13,30 @@ const TAKE_HOMES = [
     label: "Predict",
     title: "Emotion Mediation",
     desc: "Achieve comparable personalization accuracy to standard SOTA methods while safeguarding user privacy (no intrusive personality surveys required).",
-    color: "#185FA5",
-    glow: "rgba(24, 95, 165, 0.04)",
+    color: "#C2185B",
+    glow: "rgba(194, 24, 91, 0.04)",
   },
   {
     num: "02",
     label: "Understand",
     title: "Transparent Rationale",
     desc: "Cleanly decompose and analyze individual aesthetic differences into shared perception vs. subjective personal weighting formulas.",
-    color: "#1D9E75",
-    glow: "rgba(29, 158, 117, 0.04)",
+    color: "#7B2C8F",
+    glow: "rgba(123, 44, 143, 0.04)",
   },
   {
     num: "03",
     label: "Deploy",
     title: "Cold-Start & Ceiling",
     desc: "Requires 50 user ratings to outperform population-level baselines, aiming for a realistic temporal ceiling of 0.64.",
-    color: "#BA7517",
-    glow: "rgba(186, 117, 23, 0.04)",
+    color: "#C2185B",
+    glow: "rgba(194, 24, 91, 0.04)",
   },
 ];
 
 export function SummarySlide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
+    <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Conclusion"
         title="Takeaways"
@@ -102,11 +102,11 @@ export function SummarySlide() {
                 </span>
               </div>
 
-              <h4 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#222222", lineHeight: 1.2, zIndex: 1 }}>
+              <h4 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#4A1533", lineHeight: 1.2, zIndex: 1 }}>
                 {item.title}
               </h4>
 
-              <p style={{ margin: 0, fontSize: 14, color: "#888888", lineHeight: 1.5, zIndex: 1, fontWeight: 500 }}>
+              <p style={{ margin: 0, fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, zIndex: 1, fontWeight: 500 }}>
                 {item.desc}
               </p>
             </motion.div>
@@ -124,12 +124,12 @@ export function SummarySlide() {
             padding: "12px 28px",
             fontSize: 14,
             fontWeight: 800,
-            color: "#888888",
+            color: "#6B5B6E",
             textAlign: "center",
             boxShadow: "0 4px 20px rgba(0, 0, 0, 0.01)",
           }}
         >
-          Publication Plan: <span style={{ color: "#185FA5" }}>Preparing conference submission for ACMMM / CVPR</span>
+          Publication Plan: <span style={{ color: "#C2185B" }}>Preparing conference submission for ACMMM / CVPR</span>
         </motion.div>
       </div>
     </SlideShell>

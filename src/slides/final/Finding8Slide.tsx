@@ -3,13 +3,13 @@ import { SlideHeader, SlideShell, PlotImage } from "../../components/index.ts";
 import { cardRise, fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, left: -100, size: 700, color: "24, 95, 165", opacity: 0.05 },
-  { bottom: -200, right: -100, size: 600, color: "29, 158, 117", opacity: 0.04 },
+  { top: -200, left: -100, size: 700, color: "194, 24, 91", opacity: 0.05 },
+  { bottom: -200, right: -100, size: 600, color: "123, 44, 143", opacity: 0.04 },
 ];
 
 export function Finding8Slide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
+    <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Block 4 — Cold-Start Analysis"
         title="Emotion makes "
@@ -38,13 +38,13 @@ export function Finding8Slide() {
               boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
             }}
           >
-            <span style={{ fontSize: 11, fontWeight: 900, color: "#BA7517", textTransform: "uppercase", letterSpacing: "0.05em", background: "rgba(186, 117, 23, 0.05)", padding: "4px 10px", borderRadius: 8, alignSelf: "flex-start", marginBottom: 12, display: "inline-block", border: "1px solid rgba(186, 117, 23, 0.12)" }}>
+            <span style={{ fontSize: 11, fontWeight: 900, color: "#C2185B", textTransform: "uppercase", letterSpacing: "0.05em", background: "rgba(194, 24, 91, 0.05)", padding: "4px 10px", borderRadius: 8, alignSelf: "flex-start", marginBottom: 12, display: "inline-block", border: "1px solid rgba(194, 24, 91, 0.15)" }}>
               The 50-Ratings Threshold
             </span>
-            <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: "#222222" }}>
+            <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: "#4A1533" }}>
               When is Personalization Worthwhile?
             </h3>
-            <p style={{ margin: "8px 0 0", fontSize: 14, color: "#888888", lineHeight: 1.5, fontWeight: 500 }}>
+            <p style={{ margin: "8px 0 0", fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 500 }}>
               Below approximately 50 user ratings, individual personalization performs worse than the population average model due to data sparsity.
             </p>
           </motion.div>
@@ -54,22 +54,22 @@ export function Finding8Slide() {
             {...cardRise(0.3)}
             style={{
               background: "#FFFFFF",
-              border: "1px solid rgba(29, 158, 117, 0.15)",
+              border: "1px solid rgba(123, 44, 143, 0.15)",
               borderRadius: 18,
               padding: "20px 24px",
               display: "flex",
               flexDirection: "column",
               gap: 10,
-              boxShadow: "0 10px 30px rgba(29, 158, 117, 0.02)",
+              boxShadow: "0 10px 30px rgba(123, 44, 143, 0.02)",
             }}
           >
-            <div style={{ fontSize: 12, fontWeight: 900, color: "#1D9E75", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <div style={{ fontSize: 12, fontWeight: 900, color: "#7B2C8F", textTransform: "uppercase", letterSpacing: "0.08em" }}>
               Critical Practical Insight
             </div>
-            <div style={{ fontSize: 14, fontWeight: 800, color: "#222222", lineHeight: 1.4 }}>
+            <div style={{ fontSize: 14, fontWeight: 800, color: "#4A1533", lineHeight: 1.4 }}>
               &ldquo;Unless you use emotion mediation (Hybrid), personalizing with few ratings (under 50) is worse than simply using the population average.&rdquo;
             </div>
-            <div style={{ fontSize: 12.5, color: "#888888", fontWeight: 500 }}>
+            <div style={{ fontSize: 12.5, color: "#6B5B6E", fontWeight: 500 }}>
               The Hybrid model quickly outperforms the population average past 50 ratings, whereas the Direct baseline fails to beat the population average even with more data.
             </div>
           </motion.div>
@@ -79,14 +79,14 @@ export function Finding8Slide() {
             {...fadeInUp(0.4)}
             style={{
               background: "#FFFFFF",
-              border: "1px solid rgba(24, 95, 165, 0.15)",
+              border: "1px solid rgba(194, 24, 91, 0.15)",
               borderRadius: 14,
               padding: "16px 20px",
               fontSize: 16,
-              color: "#222222",
+              color: "#4A1533",
               lineHeight: 1.5,
               fontWeight: 700,
-              boxShadow: "0 8px 24px rgba(24, 95, 165, 0.02)",
+              boxShadow: "0 8px 24px rgba(194, 24, 91, 0.02)",
             }}
           >
             Direct never clearly beats the crowd. Hybrid does, from 50 ratings.
@@ -101,9 +101,9 @@ export function Finding8Slide() {
             fallbackTitle="Cold-Start Threshold Curve"
             fallbackSubtitle="Hybrid personalization begins to strictly outperform population baseline after 50 user ratings"
             fallbackStats={[
-              { label: "Critical Threshold", value: "~50 ratings", color: "#BA7517" },
-              { label: "Hybrid (Teal)", value: "Beats population at 50", color: "#1D9E75" },
-              { label: "Direct (Blue)", value: "Sub-population", color: "#185FA5" },
+              { label: "Critical Threshold", value: "~50 ratings", color: "#C2185B" },
+              { label: "Hybrid (Purple)", value: "Beats population at 50", color: "#7B2C8F" },
+              { label: "Direct (Muted)", value: "Sub-population", color: "#6B5B6E" },
             ]}
             style={{ border: "1px solid #EEEDEA", boxShadow: "0 12px 40px rgba(0, 0, 0, 0.02)" }}
             maxHeight={360}

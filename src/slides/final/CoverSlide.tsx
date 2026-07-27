@@ -3,13 +3,13 @@ import { AccentLine, GradientText, SlideShell } from "../../components/index.ts"
 import { bodyText, bottomStrip, heroTitle, topBar } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -320, right: -180, size: 960, color: "24, 95, 165", opacity: 0.08 },
-  { bottom: -200, left: -120, size: 640, color: "29, 158, 117", opacity: 0.05 },
+  { top: -320, right: -180, size: 960, color: "194, 24, 91", opacity: 0.08 },
+  { bottom: -200, left: -120, size: 640, color: "123, 44, 143", opacity: 0.05 },
 ];
 
 export function CoverSlide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
+    <SlideShell glows={GLOWS}>
       {/* Top bar */}
       <motion.div
         {...topBar()}
@@ -27,8 +27,8 @@ export function CoverSlide() {
               width: 8,
               height: 8,
               borderRadius: "50%",
-              background: "#185FA5",
-              boxShadow: "0 0 6px rgba(24, 95, 165, 0.3)",
+              background: "linear-gradient(135deg, #C2185B, #7B2C8F)",
+              boxShadow: "0 0 6px rgba(194, 24, 91, 0.3)",
             }}
           />
           <span
@@ -36,7 +36,7 @@ export function CoverSlide() {
               fontSize: 17,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
-              color: "#185FA5",
+              color: "#C2185B",
               fontWeight: 800,
             }}
           >
@@ -48,7 +48,7 @@ export function CoverSlide() {
           <span
             style={{
               fontSize: 16,
-              color: "#222222",
+              color: "#6B5B6E",
               letterSpacing: "0.06em",
               fontWeight: 800,
             }}
@@ -78,7 +78,7 @@ export function CoverSlide() {
             style={{
               fontSize: 18,
               fontWeight: 800,
-              color: "#185FA5",
+              color: "#C2185B",
               textTransform: "uppercase",
               letterSpacing: "0.15em",
             }}
@@ -94,16 +94,16 @@ export function CoverSlide() {
               letterSpacing: "-2.5px",
               lineHeight: 1.1,
               margin: 0,
-              color: "#222222",
+              color: "#4A1533",
               userSelect: "none",
             }}
           >
             Emotion-Mediated 
             <br />
-            <GradientText from="#185FA5" to="#1D9E75">Personalized Image Aesthetic Assessment</GradientText>
+            <GradientText from="#C2185B" to="#7B2C8F">Personalized Image Aesthetic Assessment</GradientText>
           </motion.h1>
 
-          <AccentLine delay={0.3} width={160} style={{ margin: "12px auto 0", background: "linear-gradient(90deg, #185FA5, #1D9E75)" }} />
+          <AccentLine delay={0.3} width={160} style={{ margin: "12px auto 0", background: "linear-gradient(90deg, #C2185B, #7B2C8F)" }} />
         </div>
 
         {/* Short Description Tagline */}
@@ -111,7 +111,7 @@ export function CoverSlide() {
           {...bodyText(0.4)}
           style={{
             fontSize: 22,
-            color: "#888888",
+            color: "#C2185B",
             margin: "0 auto",
             fontWeight: 700,
             maxWidth: 820,
@@ -140,12 +140,12 @@ export function CoverSlide() {
               style={{ width: 68, height: 68, objectFit: "cover", borderRadius: 10, border: "1px solid #EEEDEA" }}
             />
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 13, fontWeight: 900, color: "#222222", textTransform: "uppercase", letterSpacing: "0.05em" }}>Landscape Photo</div>
+              <div style={{ fontSize: 13, fontWeight: 900, color: "#4A1533", textTransform: "uppercase", letterSpacing: "0.05em" }}>Landscape Photo</div>
               <div style={{ display: "flex", gap: 8, marginTop: 6 }}>
-                <span style={{ fontSize: 11, background: "rgba(29, 158, 117, 0.05)", color: "#1D9E75", padding: "2px 6px", borderRadius: 6, fontWeight: 800, border: "1px solid rgba(29, 158, 117, 0.15)" }}>
+                <span style={{ fontSize: 11, background: "rgba(123, 44, 143, 0.05)", color: "#7B2C8F", padding: "2px 6px", borderRadius: 6, fontWeight: 800, border: "1px solid rgba(123, 44, 143, 0.15)" }}>
                   User A: 5.5
                 </span>
-                <span style={{ fontSize: 11, background: "rgba(24, 95, 165, 0.05)", color: "#185FA5", padding: "2px 6px", borderRadius: 6, fontWeight: 800, border: "1px solid rgba(24, 95, 165, 0.15)" }}>
+                <span style={{ fontSize: 11, background: "rgba(194, 24, 91, 0.05)", color: "#C2185B", padding: "2px 6px", borderRadius: 6, fontWeight: 800, border: "1px solid rgba(194, 24, 91, 0.15)" }}>
                   User B: 2.1
                 </span>
               </div>
@@ -160,12 +160,12 @@ export function CoverSlide() {
               style={{ width: 68, height: 68, objectFit: "cover", borderRadius: 10, border: "1px solid #EEEDEA" }}
             />
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 13, fontWeight: 900, color: "#222222", textTransform: "uppercase", letterSpacing: "0.05em" }}>Artistic Design</div>
+              <div style={{ fontSize: 13, fontWeight: 900, color: "#4A1533", textTransform: "uppercase", letterSpacing: "0.05em" }}>Artistic Design</div>
               <div style={{ display: "flex", gap: 8, marginTop: 6 }}>
-                <span style={{ fontSize: 11, background: "rgba(24, 95, 165, 0.05)", color: "#185FA5", padding: "2px 6px", borderRadius: 6, fontWeight: 800, border: "1px solid rgba(24, 95, 165, 0.15)" }}>
+                <span style={{ fontSize: 11, background: "rgba(194, 24, 91, 0.05)", color: "#C2185B", padding: "2px 6px", borderRadius: 6, fontWeight: 800, border: "1px solid rgba(194, 24, 91, 0.15)" }}>
                   User A: 1.8
                 </span>
-                <span style={{ fontSize: 11, background: "rgba(29, 158, 117, 0.05)", color: "#1D9E75", padding: "2px 6px", borderRadius: 6, fontWeight: 800, border: "1px solid rgba(29, 158, 117, 0.15)" }}>
+                <span style={{ fontSize: 11, background: "rgba(123, 44, 143, 0.05)", color: "#7B2C8F", padding: "2px 6px", borderRadius: 6, fontWeight: 800, border: "1px solid rgba(123, 44, 143, 0.15)" }}>
                   User B: 4.9
                 </span>
               </div>
@@ -193,7 +193,7 @@ export function CoverSlide() {
                 fontSize: 14,
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
-                color: i === 0 ? "#1D9E75" : "#888888",
+                color: i === 0 ? "#C2185B" : "#6B5B6E",
                 fontWeight: 800,
               }}
             >
@@ -204,12 +204,12 @@ export function CoverSlide() {
         <span
           style={{
             fontSize: 18,
-            color: "#222222",
+            color: "#2B2230",
             fontWeight: 800,
             letterSpacing: "0.02em",
           }}
         >
-          Presenter: <span style={{ color: "#185FA5" }}>Pinwa</span>
+          Presenter: <span style={{ color: "#C2185B" }}>Pinwa</span>
         </span>
       </motion.div>
     </SlideShell>

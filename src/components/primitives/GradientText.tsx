@@ -2,8 +2,8 @@ import type { CSSProperties, ReactNode } from "react";
 
 export function GradientText({
   children,
-  from = "#185FA5",
-  to = "#1D9E75",
+  from = "#4A1533",
+  to = "#C2185B",
   via,
   style,
 }: {
