@@ -270,6 +270,7 @@ export function PresentationFrame({ children }: PresentationFrameProps) {
       }}
     >
       <div
+        data-slide-root=""
         style={{
           width: SLIDE_WIDTH,
           height: SLIDE_HEIGHT,
