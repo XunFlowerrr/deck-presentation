@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { SlideHeader, SlideShell } from "../../components/index.ts";
 import { cardRise } from "../../lib/motion.ts";
+import { Equation, Var, Sub, Sup, Frac } from "../../components/primitives/Equation.tsx";
 
 const GLOWS = [
   { top: -200, left: -100, size: 700, color: "194, 24, 91", opacity: 0.05 },
@@ -31,7 +32,7 @@ function QABadge({ n, label }: { n: string; label: string }) {
   );
 }
 
-// ── Q&A-1: Table 1 (All Metrics) ──────────────────────────────────────────
+// ── Q&A-1: Table 1 (All Performance Metrics) ──────────────────────────────
 export function QaaDecompositionSlide() {
   return (
     <SlideShell glows={GLOWS}>
@@ -150,11 +151,55 @@ export function QaaCeilingSlide() {
   );
 }
 
-// ── Q&A-3: PCA Details & Formula ──────────────────────────────────────────
+// ── Q&A-3: Noise Ceiling Calculation (from preferred-v.02) ────────────────
+export function QaaNoiseCeilingSlide() {
+  return (
+    <SlideShell glows={GLOWS}>
+      <SlideHeader label="Q&A Backup — 3" title="Noise Ceiling: " highlight="Upper Limit Derivation." />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20, justifyContent: "center" }}>
+        <motion.div
+          {...cardRise(0.1)}
+          style={{
+            background: "#FFFFFF", border: "1px solid #EEEDEA", borderRadius: 20, padding: "24px 28px",
+            boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)", display: "flex", flexDirection: "column", gap: 14,
+          }}
+        >
+          <QABadge n="3" label="Human Noise Ceiling Calculation" />
+          
+          <p style={{ margin: 0, fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 500 }}>
+            The upper bound for preference prediction is bounded by human test-retest reliability across sessions:
+          </p>
+
+          <Equation size={20} color="#7B2C8F">
+            <Var>Ceiling</Var> = <Var>r</Var><Sub><Var>test-retest</Var></Sub> = <Frac num={<><Var>Cov</Var>(<Var>S</Var><Sub>1</Sub>, <Var>S</Var><Sub>2</Sub>)</>} den={<><Var>&sigma;</Var><Sub>1</Sub> <Var>&sigma;</Var><Sub>2</Sub></>} /> = 0.639 &asymp; 0.64
+          </Equation>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 4 }}>
+            <div style={{ background: "#FDFCFD", padding: 14, borderRadius: 12, border: "1px solid #EEEDEA" }}>
+              <div style={{ fontSize: 13, fontWeight: 900, color: "#C2185B" }}>Same-Session Consistency</div>
+              <div style={{ fontSize: 13, color: "#4A1533", marginTop: 4, fontWeight: 700 }}>
+                CCC = 0.81 (High intra-rater agreement)
+              </div>
+            </div>
+
+            <div style={{ background: "#FDFCFD", padding: 14, borderRadius: 12, border: "1px solid #EEEDEA" }}>
+              <div style={{ fontSize: 13, fontWeight: 900, color: "#7B2C8F" }}>Cross-Session (Days Later)</div>
+              <div style={{ fontSize: 13, color: "#4A1533", marginTop: 4, fontWeight: 700 }}>
+                CCC = 0.64 (Realistic Deployment Ceiling)
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </SlideShell>
+  );
+}
+
+// ── Q&A-4: PCA Details & Formula (from HEAD) ──────────────────────────────
 export function QaaProtocolSlide() {
   return (
     <SlideShell glows={GLOWS}>
-      <SlideHeader label="Q&A Backup — 3" title="Placebo: " highlight="PCA Details & Formula." />
+      <SlideHeader label="Q&A Backup — 4" title="Placebo: " highlight="PCA Details & Formula." />
       <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20, justifyContent: "center" }}>
         <motion.div
           {...cardRise(0.1)}
@@ -163,7 +208,7 @@ export function QaaProtocolSlide() {
             boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)", display: "flex", flexDirection: "column", gap: 12,
           }}
         >
-          <QABadge n="3" label="PCA Baseline Construction" />
+          <QABadge n="4" label="PCA Baseline Construction" />
           <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: "#4A1533" }}>
             How are the placebo PCA features projected?
           </h3>
@@ -171,7 +216,7 @@ export function QaaProtocolSlide() {
             To check if the gain is from actual emotional semantics, we swap emotion dimensions with PCA features of the same length (7 dimensions) extracted from VLM features:
           </p>
 
-          <div style={{ background: "#FDFCFD", padding: "16px 20px", borderRadius: 12, border: "1px solid #EEEDEA", fontFamily: "monospace", fontSize: 15, color: "#4A1533", margin: "8px 0" }}>
+          <div style={{ background: "#FDFCFD", padding: "16px 20px", borderRadius: 12, border: "1px solid #EEEDEA", fontFamily: "monospace", fontSize: 14, color: "#4A1533", margin: "4px 0" }}>
             {`PCA_Features(i) = VLM_Features(i) * PCA_Projection_Matrix`}
             <br />
             <br />
@@ -181,7 +226,7 @@ export function QaaProtocolSlide() {
           <div style={{ display: "flex", gap: 12, background: "rgba(123, 44, 143, 0.05)", border: "1px dashed rgba(123, 44, 143, 0.2)", borderRadius: 12, padding: 14 }}>
             <span style={{ color: "#7B2C8F", fontWeight: 900 }}>★ Placebo Result:</span>
             <span style={{ fontSize: 13, color: "#6B5B6E", fontWeight: 500, lineHeight: 1.4 }}>
-              The PCA baseline drops personalization CCC gain from <strong>0.380</strong> down to <strong>0.160</strong>. This verifies that actual human emotional semantics (not just generic bottlenecks) drive aesthetic personalization.
+              The PCA baseline drops personalization CCC gain from <strong>0.380</strong> down to <strong>0.160</strong>. This verifies that actual human emotional semantics drive aesthetic personalization.
             </span>
           </div>
         </motion.div>
@@ -190,11 +235,11 @@ export function QaaProtocolSlide() {
   );
 }
 
-// ── Q&A-4: Hyperparameters & Regularization ──────────────────────────────
+// ── Q&A-5: Partial Correlation Analysis (from preferred-v.02) ──────────────
 export function QaaPartialCorrSlide() {
   return (
     <SlideShell glows={GLOWS}>
-      <SlideHeader label="Q&A Backup — 4" title="Parameters: " highlight="Hyperparameter Settings." />
+      <SlideHeader label="Q&A Backup — 5" title="Analysis: " highlight="Partial Correlation Driver." />
       <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20, justifyContent: "center" }}>
         <motion.div
           {...cardRise(0.1)}
@@ -203,7 +248,41 @@ export function QaaPartialCorrSlide() {
             boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)", display: "flex", flexDirection: "column", gap: 12,
           }}
         >
-          <QABadge n="4" label="Regularization & Training Details" />
+          <QABadge n="5" label="Partial Correlation Analysis" />
+          
+          <p style={{ margin: 0, fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 500 }}>
+            Controlling for the Direct baseline model&apos;s performance confirms that emotion predictability (<Equation inline size={14} color="#7B2C8F"><Var>emo</Var><Sub><Var>r</Var></Sub></Equation>) is the true driver of gain:
+          </p>
+
+          <Equation size={20} color="#C2185B">
+            <Var>r</Var><Sub><Var>gain</Var>, <Var>emo_r</Var> &middot; <Var>Direct</Var></Sub> = 0.42 &nbsp; (<Var>p</Var> &lt; 0.001)
+          </Equation>
+
+          <div style={{ background: "rgba(194, 24, 91, 0.05)", border: "1px solid rgba(194, 24, 91, 0.15)", borderRadius: 14, padding: 16 }}>
+            <span style={{ fontSize: 13.5, color: "#4A1533", fontWeight: 700, lineHeight: 1.5 }}>
+              Key Insight: Emotion accuracy (<Equation inline size={13} color="#C2185B"><Var>emo</Var><Sub><Var>r</Var></Sub></Equation>) is the primary driver of accuracy gain, independent of how much prediction room the baseline provides.
+            </span>
+          </div>
+        </motion.div>
+      </div>
+    </SlideShell>
+  );
+}
+
+// ── Q&A-6: Hyperparameters & Regularization (from HEAD) ────────────────────
+export function QaaHyperparamsSlide() {
+  return (
+    <SlideShell glows={GLOWS}>
+      <SlideHeader label="Q&A Backup — 6" title="Parameters: " highlight="Hyperparameter Settings." />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20, justifyContent: "center" }}>
+        <motion.div
+          {...cardRise(0.1)}
+          style={{
+            background: "#FFFFFF", border: "1px solid #EEEDEA", borderRadius: 20, padding: "24px 28px",
+            boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)", display: "flex", flexDirection: "column", gap: 12,
+          }}
+        >
+          <QABadge n="6" label="Regularization & Training Details" />
           
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginTop: 8 }}>
             <div style={{ background: "#FDFCFD", padding: 16, borderRadius: 14, border: "1px solid #EEEDEA" }}>
@@ -236,11 +315,11 @@ export function QaaPartialCorrSlide() {
   );
 }
 
-// ── Q&A-5: Why 7 Emotions? ────────────────────────────────────────────────
+// ── Q&A-7: Design Choices (Why Linear & Why 7 Emotions) ────────────────────
 export function QaaDesignChoiceSlide() {
   return (
     <SlideShell glows={GLOWS}>
-      <SlideHeader label="Q&A Backup — 5" title="Design Choice: " highlight="Why 7 Core Emotions?" />
+      <SlideHeader label="Q&A Backup — 7" title="Design Choice: " highlight="Why Linear & Why 7 Emotions?" />
       <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20, justifyContent: "center" }}>
         <motion.div
           {...cardRise(0.1)}
@@ -249,29 +328,83 @@ export function QaaDesignChoiceSlide() {
             boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)", display: "flex", flexDirection: "column", gap: 12,
           }}
         >
-          <QABadge n="5" label="Taxonomy Selection" />
-          <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: "#4A1533" }}>
-            Why choose exactly these 7 emotions?
-          </h3>
-          <p style={{ margin: 0, fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 500 }}>
-            The 7 emotions (impressed, intellectual, motivated, amused, nostalgic, sad, distasteful) are selected based on these academic design rules:
-          </p>
-
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 16, marginTop: 8 }}>
-            <div style={{ background: "#FDFCFD", padding: 14, borderRadius: 12, border: "1px solid #EEEDEA" }}>
-              <div style={{ fontSize: 13, fontWeight: 900, color: "#C2185B" }}>Source: AESTHEMOS</div>
-              <div style={{ fontSize: 12, color: "#6B5B6E", marginTop: 4, lineHeight: 1.4, fontWeight: 500 }}>
-                Selected from the 21 emotional sub-scales in the AESTHEMOS taxonomy. Excludes direct evaluative adjectives (like &ldquo;beautiful&rdquo; or &ldquo;like&rdquo;) to prevent circular reasoning.
+          <QABadge n="7" label="Model Architecture Rationale" />
+          
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginTop: 8 }}>
+            <div style={{ background: "#FDFCFD", padding: 16, borderRadius: 14, border: "1px solid #EEEDEA" }}>
+              <div style={{ fontSize: 13, fontWeight: 900, color: "#C2185B", textTransform: "uppercase" }}>
+                Why Linear Model?
               </div>
+              <ul style={{ margin: "8px 0 0", paddingLeft: 18, fontSize: 12.5, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 500 }}>
+                <li><strong>Cognitive Science:</strong> Linear weighting on mediated emotions matches human cognitive findings (Iigaya et al. 2020).</li>
+                <li><strong>Explainability:</strong> Yields a transparent per-person weight vector (<Equation inline size={12} color="#C2185B"><Var>w</Var><Sub><Var>u,e</Var></Sub></Equation>).</li>
+                <li><strong>Regularization:</strong> Ridge regression handles emotion collinearity without overfitting.</li>
+              </ul>
             </div>
 
-            <div style={{ background: "#FDFCFD", padding: 14, borderRadius: 12, border: "1px solid #EEEDEA" }}>
-              <div style={{ fontSize: 13, fontWeight: 900, color: "#7B2C8F" }}>Sufficient Coverage &amp; Sparsity</div>
-              <div style={{ fontSize: 12, color: "#6B5B6E", marginTop: 4, lineHeight: 1.4, fontWeight: 500 }}>
-                Spans both positive (amused, motivated) and negative (sad, distasteful) aesthetic experiences. A small feature space prevents regression overfitting while preserving explainable granularity.
+            <div style={{ background: "#FDFCFD", padding: 16, borderRadius: 14, border: "1px solid #EEEDEA" }}>
+              <div style={{ fontSize: 13, fontWeight: 900, color: "#7B2C8F", textTransform: "uppercase" }}>
+                Why Exactly 7 Emotions?
               </div>
+              <ul style={{ margin: "8px 0 0", paddingLeft: 18, fontSize: 12.5, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 500 }}>
+                <li><strong>Taxonomy:</strong> Selected from the 21 emotional sub-scales in AESTHEMOS.</li>
+                <li><strong>No Circularity:</strong> Excludes adjectives like &ldquo;beautiful&rdquo; to prevent predicting preference from preference.</li>
+                <li><strong>Sparsity:</strong> Small feature space prevents overfitting while preserving granularity.</li>
+              </ul>
             </div>
           </div>
+        </motion.div>
+      </div>
+    </SlideShell>
+  );
+}
+
+// ── Q&A-8: Comparison with Prior PIAA Works (from preferred-v.02) ──────────
+export function QaaRelatedWorkSlide() {
+  return (
+    <SlideShell glows={GLOWS}>
+      <SlideHeader label="Q&A Backup — 8" title="Related Work: " highlight="Comparison with Prior PIAA." />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20, justifyContent: "center" }}>
+        <motion.div
+          {...cardRise(0.1)}
+          style={{
+            background: "#FFFFFF", border: "1px solid #EEEDEA", borderRadius: 20, padding: "24px 28px",
+            boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)", display: "flex", flexDirection: "column", gap: 12,
+          }}
+        >
+          <QABadge n="8" label="Comparison with Prior PIAA Literature" />
+          
+          <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", marginTop: 8 }}>
+            <thead>
+              <tr style={{ borderBottom: "2px solid #EEEDEA" }}>
+                <th style={{ padding: "8px 6px", color: "#4A1533", fontWeight: 800, fontSize: 13, width: "22%" }}>Prior Work</th>
+                <th style={{ padding: "8px 6px", color: "#4A1533", fontWeight: 800, fontSize: 13, width: "35%" }}>Approach</th>
+                <th style={{ padding: "8px 6px", color: "#4A1533", fontWeight: 800, fontSize: 13, width: "43%" }}>Our Key Difference</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style={{ borderBottom: "1px solid #EEEDEA" }}>
+                <td style={{ padding: "10px 6px", fontSize: 13, fontWeight: 700, color: "#4A1533" }}>Ryu &amp; Yanaka (2022)</td>
+                <td style={{ padding: "10px 6px", fontSize: 12.5, color: "#6B5B6E" }}>Big Five personality traits to group users.</td>
+                <td style={{ padding: "10px 6px", fontSize: 12.5, color: "#6B5B6E" }}><strong style={{ color: "#C2185B" }}>Traits-free:</strong> Bypasses intrusive surveys using emotion semantics.</td>
+              </tr>
+              <tr style={{ borderBottom: "1px solid #EEEDEA" }}>
+                <td style={{ padding: "10px 6px", fontSize: 13, fontWeight: 700, color: "#4A1533" }}>Liu &amp; Wagemans (2020)</td>
+                <td style={{ padding: "10px 6px", fontSize: 12.5, color: "#6B5B6E" }}>Shared (generic) consensus emotional ratings.</td>
+                <td style={{ padding: "10px 6px", fontSize: 12.5, color: "#6B5B6E" }}><strong style={{ color: "#C2185B" }}>Personal weights:</strong> Adapts weighting profiles per user.</td>
+              </tr>
+              <tr style={{ borderBottom: "1px solid #EEEDEA" }}>
+                <td style={{ padding: "10px 6px", fontSize: 13, fontWeight: 700, color: "#4A1533" }}>Lan et al. (2021)</td>
+                <td style={{ padding: "10px 6px", fontSize: 12.5, color: "#6B5B6E" }}>Deep end-to-end black-box personalization.</td>
+                <td style={{ padding: "10px 6px", fontSize: 12.5, color: "#6B5B6E" }}><strong style={{ color: "#C2185B" }}>White-box explainability:</strong> Yields readable user weights.</td>
+              </tr>
+              <tr style={{ borderBottom: "2px solid #EEEDEA" }}>
+                <td style={{ padding: "10px 6px", fontSize: 13, fontWeight: 700, color: "#4A1533" }}>Iigaya et al. (2020)</td>
+                <td style={{ padding: "10px 6px", fontSize: 12.5, color: "#6B5B6E" }}>Linear weighting on low-level features.</td>
+                <td style={{ padding: "10px 6px", fontSize: 12.5, color: "#6B5B6E" }}><strong style={{ color: "#C2185B" }}>High-level VLM features:</strong> Models semantic visual emotions.</td>
+              </tr>
+            </tbody>
+          </table>
         </motion.div>
       </div>
     </SlideShell>
