@@ -49,7 +49,7 @@ export function SlideHeader({
       {...slideHeader()}
       style={{
         paddingBottom,
-        borderBottom: "1px solid #F0F0F0",
+        borderBottom: "1px solid rgba(45, 49, 54, 0.08)",
         marginBottom,
         ...style,
       }}
@@ -62,12 +62,12 @@ export function SlideHeader({
           letterSpacing: "-2.5px",
           lineHeight: 1.0,
           margin: `0 0 ${tagline ? 16 : 18}px`,
-          color: "#0A0A0A",
+          color: "#2D3136",
           userSelect: "none",
           paddingTop: 4,
         }}
       >
-        {title} <GradientText>{highlight}</GradientText>
+        {title} <GradientText from="#C24F71" to="#E390A4">{highlight}</GradientText>
       </h1>
       {tagline ? (
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
@@ -75,8 +75,8 @@ export function SlideHeader({
           <span
             style={{
               fontSize: 13,
-              color: "#9CA3AF",
-              fontWeight: 500,
+              color: "#626B74",
+              fontWeight: 650,
               letterSpacing: "0.06em",
               textTransform: "uppercase",
             }}

@@ -27,7 +27,7 @@ export function SlideShell({
       style={{
         width: "100%",
         height: "100%",
-        background: "#FFFBF5",
+        background: "#FCFAF6",
         position: "relative",
         overflow: "hidden",
         fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif',
