@@ -3,13 +3,13 @@ import { SlideHeader, SlideShell } from "../../components/index.ts";
 import { cardRise, fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, left: -100, size: 700, color: "24, 95, 165", opacity: 0.05 },
-  { bottom: -200, right: -100, size: 600, color: "29, 158, 117", opacity: 0.04 },
+  { top: -200, left: -100, size: 700, color: "194, 24, 91", opacity: 0.05 },
+  { bottom: -200, right: -100, size: 600, color: "123, 44, 143", opacity: 0.04 },
 ];
 
 export function IdeaSlide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
+    <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Our Approach"
         title="Predict taste "
@@ -60,11 +60,11 @@ export function IdeaSlide() {
               alt="Input"
               style={{ width: "100%", height: 80, objectFit: "cover", borderRadius: 8 }}
             />
-            <span style={{ fontSize: 13, fontWeight: 800, color: "#222222" }}>Target Image</span>
+            <span style={{ fontSize: 13, fontWeight: 800, color: "#4A1533" }}>Target Image</span>
           </div>
 
           {/* Arrow */}
-          <svg width="32" height="24" viewBox="0 0 32 24" fill="none" stroke="#185FA5" strokeWidth="2.5">
+          <svg width="32" height="24" viewBox="0 0 32 24" fill="none" stroke="#C2185B" strokeWidth="2.5">
             <line x1="0" y1="12" x2="26" y2="12" />
             <polyline points="20,6 26,12 20,18" />
           </svg>
@@ -85,13 +85,13 @@ export function IdeaSlide() {
               textAlign: "center",
             }}
           >
-            <div style={{ fontSize: 24, fontWeight: 900, color: "#1D9E75" }}>7</div>
-            <span style={{ fontSize: 13, fontWeight: 800, color: "#222222" }}>Aesthetic Emotions</span>
-            <span style={{ fontSize: 11, color: "#888888", fontWeight: 700 }}>e.g. peaceful, nostalgic</span>
+            <div style={{ fontSize: 24, fontWeight: 900, color: "#C2185B" }}>7</div>
+            <span style={{ fontSize: 13, fontWeight: 800, color: "#4A1533" }}>Aesthetic Emotions</span>
+            <span style={{ fontSize: 11, color: "#6B5B6E", fontWeight: 700 }}>e.g. peaceful, nostalgic</span>
           </div>
 
           {/* Arrow */}
-          <svg width="32" height="24" viewBox="0 0 32 24" fill="none" stroke="#185FA5" strokeWidth="2.5">
+          <svg width="32" height="24" viewBox="0 0 32 24" fill="none" stroke="#C2185B" strokeWidth="2.5">
             <line x1="0" y1="12" x2="26" y2="12" />
             <polyline points="20,6 26,12 20,18" />
           </svg>
@@ -100,11 +100,11 @@ export function IdeaSlide() {
           <div
             style={{
               width: 240,
-              background: "rgba(29, 158, 117, 0.04)",
-              border: "2px solid #1D9E75",
+              background: "rgba(123, 44, 143, 0.04)",
+              border: "2px solid #7B2C8F",
               borderRadius: 20,
               padding: "20px 16px",
-              boxShadow: "0 10px 30px rgba(29, 158, 117, 0.03)",
+              boxShadow: "0 10px 30px rgba(123, 44, 143, 0.03)",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -117,7 +117,7 @@ export function IdeaSlide() {
               style={{
                 position: "absolute",
                 top: -12,
-                background: "#1D9E75",
+                background: "#7B2C8F",
                 color: "#FFFFFF",
                 fontSize: 10,
                 fontWeight: 900,
@@ -129,16 +129,16 @@ export function IdeaSlide() {
             >
               Explainable
             </div>
-            <span style={{ fontSize: 18, fontWeight: 900, color: "#1D9E75", marginTop: 4 }}>
+            <span style={{ fontSize: 18, fontWeight: 900, color: "#7B2C8F", marginTop: 4 }}>
               Linear Weighting
             </span>
-            <span style={{ fontSize: 12, color: "#222222", fontWeight: 700, lineHeight: 1.3 }}>
+            <span style={{ fontSize: 12, color: "#2B2230", fontWeight: 700, lineHeight: 1.3 }}>
               Gives a readable per-person formula
             </span>
           </div>
 
           {/* Arrow */}
-          <svg width="32" height="24" viewBox="0 0 32 24" fill="none" stroke="#185FA5" strokeWidth="2.5">
+          <svg width="32" height="24" viewBox="0 0 32 24" fill="none" stroke="#C2185B" strokeWidth="2.5">
             <line x1="0" y1="12" x2="26" y2="12" />
             <polyline points="20,6 26,12 20,18" />
           </svg>
@@ -147,8 +147,8 @@ export function IdeaSlide() {
           <div
             style={{
               width: 130,
-              background: "#EEEDEA",
-              border: "1px solid #EEEDEA",
+              background: "#FCE4EC",
+              border: "1px solid rgba(194, 24, 91, 0.15)",
               borderRadius: 16,
               padding: "20px 16px",
               display: "flex",
@@ -158,10 +158,10 @@ export function IdeaSlide() {
               textAlign: "center",
             }}
           >
-            <span style={{ fontSize: 12, color: "#888888", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+            <span style={{ fontSize: 12, color: "#6B5B6E", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Output
             </span>
-            <span style={{ fontSize: 18, fontWeight: 900, color: "#222222", marginTop: 4 }}>
+            <span style={{ fontSize: 18, fontWeight: 900, color: "#4A1533", marginTop: 4 }}>
               Aesthetic Score
             </span>
           </div>
@@ -178,13 +178,13 @@ export function IdeaSlide() {
             width: "100%",
           }}
         >
-          <span style={{ fontSize: 13, color: "#185FA5", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.08em" }}>
+          <span style={{ fontSize: 13, color: "#C2185B", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.08em" }}>
             The Core Inquiry
           </span>
-          <h2 style={{ margin: "6px 0 0", fontSize: 24, fontWeight: 800, color: "#222222", lineHeight: 1.4 }}>
+          <h2 style={{ margin: "6px 0 0", fontSize: 24, fontWeight: 800, color: "#4A1533", lineHeight: 1.4 }}>
             Research Question: Do users disagree because they{" "}
-            <span style={{ color: "#BA7517" }}>feel differently</span> or{" "}
-            <span style={{ color: "#1D9E75" }}>weight emotions differently</span>?
+            <span style={{ color: "#C2185B" }}>feel differently</span> or{" "}
+            <span style={{ color: "#7B2C8F" }}>weight emotions differently</span>?
           </h2>
         </motion.div>
       </div>

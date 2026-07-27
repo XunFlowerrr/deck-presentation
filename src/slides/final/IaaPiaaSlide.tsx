@@ -3,13 +3,13 @@ import { SlideHeader, SlideShell } from "../../components/index.ts";
 import { cardRise, fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, left: -100, size: 700, color: "24, 95, 165", opacity: 0.06 },
-  { bottom: -200, right: -100, size: 600, color: "29, 158, 117", opacity: 0.04 },
+  { top: -200, left: -100, size: 700, color: "194, 24, 91", opacity: 0.06 },
+  { bottom: -200, right: -100, size: 600, color: "123, 44, 143", opacity: 0.04 },
 ];
 
 export function IaaPiaaSlide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
+    <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Introduction"
         title="Taste is "
@@ -41,10 +41,10 @@ export function IaaPiaaSlide() {
           }}
         >
           <div style={{ alignSelf: "flex-start" }}>
-            <span style={{ fontSize: 12, fontWeight: 900, color: "#888888", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <span style={{ fontSize: 12, fontWeight: 900, color: "#6B5B6E", textTransform: "uppercase", letterSpacing: "0.08em" }}>
               Standard Paradigm
             </span>
-            <h3 style={{ margin: "4px 0 0", fontSize: 22, fontWeight: 800, color: "#222222" }}>
+            <h3 style={{ margin: "4px 0 0", fontSize: 22, fontWeight: 800, color: "#4A1533" }}>
               IAA: Image Aesthetic Assessment
             </h3>
           </div>
@@ -57,9 +57,9 @@ export function IaaPiaaSlide() {
               style={{ width: "100%", height: 180, objectFit: "cover", borderRadius: 12, filter: "grayscale(100%)", opacity: 0.8 }}
             />
             <div style={{ display: "flex", alignItems: "center", gap: 12, background: "#EEEDEA", padding: "10px 24px", borderRadius: 12, border: "1px solid #EEEDEA" }}>
-              <span style={{ fontSize: 24, fontWeight: 900, color: "#222222" }}>3.5 / 5.0</span>
+              <span style={{ fontSize: 24, fontWeight: 900, color: "#4A1533" }}>3.5 / 5.0</span>
             </div>
-            <span style={{ fontSize: 14, color: "#888888", fontWeight: 700 }}>
+            <span style={{ fontSize: 14, color: "#6B5B6E", fontWeight: 700 }}>
               &ldquo;One score for everyone&rdquo;
             </span>
           </div>
@@ -70,10 +70,10 @@ export function IaaPiaaSlide() {
           {...cardRise(0.3)}
           style={{
             background: "#FFFFFF",
-            border: "1px solid rgba(24, 95, 165, 0.12)",
+            border: "1px solid rgba(194, 24, 91, 0.15)",
             borderRadius: 20,
             padding: "28px",
-            boxShadow: "0 10px 30px rgba(24, 95, 165, 0.02)",
+            boxShadow: "0 10px 30px rgba(194, 24, 91, 0.03)",
             display: "flex",
             flexDirection: "column",
             gap: 20,
@@ -81,10 +81,10 @@ export function IaaPiaaSlide() {
           }}
         >
           <div style={{ alignSelf: "flex-start" }}>
-            <span style={{ fontSize: 12, fontWeight: 900, color: "#185FA5", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <span style={{ fontSize: 12, fontWeight: 900, color: "#C2185B", textTransform: "uppercase", letterSpacing: "0.08em" }}>
               Personalized Paradigm
             </span>
-            <h3 style={{ margin: "4px 0 0", fontSize: 22, fontWeight: 800, color: "#185FA5" }}>
+            <h3 style={{ margin: "4px 0 0", fontSize: 22, fontWeight: 800, color: "#C2185B" }}>
               PIAA: Personalized Aesthetic Assessment
             </h3>
           </div>
@@ -97,20 +97,20 @@ export function IaaPiaaSlide() {
               style={{ width: "100%", height: 180, objectFit: "cover", borderRadius: 12 }}
             />
             <div style={{ display: "flex", gap: 12, justifyContent: "center", width: "100%" }}>
-              <div style={{ background: "rgba(29, 158, 117, 0.06)", border: "1px solid rgba(29, 158, 117, 0.2)", borderRadius: 10, padding: "6px 12px", textAlign: "center", flex: 1 }}>
-                <div style={{ fontSize: 11, color: "#888888", fontWeight: 700 }}>User A</div>
-                <div style={{ fontSize: 16, fontWeight: 900, color: "#1D9E75", marginTop: 2 }}>5.0 / 5.0</div>
+              <div style={{ background: "rgba(123, 44, 143, 0.06)", border: "1px solid rgba(123, 44, 143, 0.2)", borderRadius: 10, padding: "6px 12px", textAlign: "center", flex: 1 }}>
+                <div style={{ fontSize: 11, color: "#6B5B6E", fontWeight: 700 }}>User A</div>
+                <div style={{ fontSize: 16, fontWeight: 900, color: "#7B2C8F", marginTop: 2 }}>5.0 / 5.0</div>
               </div>
-              <div style={{ background: "rgba(24, 95, 165, 0.06)", border: "1px solid rgba(24, 95, 165, 0.2)", borderRadius: 10, padding: "6px 12px", textAlign: "center", flex: 1 }}>
-                <div style={{ fontSize: 11, color: "#888888", fontWeight: 700 }}>User B</div>
-                <div style={{ fontSize: 16, fontWeight: 900, color: "#185FA5", marginTop: 2 }}>4.0 / 5.0</div>
+              <div style={{ background: "rgba(194, 24, 91, 0.06)", border: "1px solid rgba(194, 24, 91, 0.2)", borderRadius: 10, padding: "6px 12px", textAlign: "center", flex: 1 }}>
+                <div style={{ fontSize: 11, color: "#6B5B6E", fontWeight: 700 }}>User B</div>
+                <div style={{ fontSize: 16, fontWeight: 900, color: "#C2185B", marginTop: 2 }}>4.0 / 5.0</div>
               </div>
-              <div style={{ background: "rgba(186, 117, 23, 0.06)", border: "1px solid rgba(186, 117, 23, 0.2)", borderRadius: 10, padding: "6px 12px", textAlign: "center", flex: 1 }}>
-                <div style={{ fontSize: 11, color: "#888888", fontWeight: 700 }}>User C</div>
-                <div style={{ fontSize: 16, fontWeight: 900, color: "#BA7517", marginTop: 2 }}>2.0 / 5.0</div>
+              <div style={{ background: "rgba(74, 21, 51, 0.06)", border: "1px solid rgba(74, 21, 51, 0.2)", borderRadius: 10, padding: "6px 12px", textAlign: "center", flex: 1 }}>
+                <div style={{ fontSize: 11, color: "#6B5B6E", fontWeight: 700 }}>User C</div>
+                <div style={{ fontSize: 16, fontWeight: 900, color: "#4A1533", marginTop: 2 }}>2.0 / 5.0</div>
               </div>
             </div>
-            <span style={{ fontSize: 14, color: "#1D9E75", fontWeight: 800 }}>
+            <span style={{ fontSize: 14, color: "#C2185B", fontWeight: 800 }}>
               &ldquo;How much do YOU like it?&rdquo;
             </span>
           </div>
@@ -122,8 +122,8 @@ export function IaaPiaaSlide() {
         {...fadeInUp(0.45)}
         style={{
           marginTop: 24,
-          background: "#EEEDEA",
-          border: "1px solid #EEEDEA",
+          background: "#FCE4EC",
+          border: "1px solid rgba(194, 24, 91, 0.15)",
           borderRadius: 12,
           padding: "10px 16px",
           display: "flex",
@@ -132,14 +132,14 @@ export function IaaPiaaSlide() {
           gap: 16,
           fontSize: 14,
           fontWeight: 700,
-          color: "#222222",
+          color: "#4A1533",
         }}
       >
-        <span style={{ color: "#185FA5", fontWeight: 900 }}>Used in:</span>
+        <span style={{ color: "#C2185B", fontWeight: 900 }}>Used in:</span>
         <span>Photo Applications</span>
-        <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#888888" }} />
+        <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#6B5B6E" }} />
         <span>Recommendation Systems</span>
-        <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#888888" }} />
+        <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#6B5B6E" }} />
         <span>Ranking AI-Generated Images</span>
       </motion.div>
     </SlideShell>

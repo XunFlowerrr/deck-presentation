@@ -3,8 +3,8 @@ import { SlideHeader, SlideShell } from "../../components/index.ts";
 import { cardRise } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, left: -100, size: 700, color: "24, 95, 165", opacity: 0.06 },
-  { bottom: -200, right: -100, size: 600, color: "29, 158, 117", opacity: 0.04 },
+  { top: -200, left: -100, size: 700, color: "194, 24, 91", opacity: 0.06 },
+  { bottom: -200, right: -100, size: 600, color: "123, 44, 143", opacity: 0.04 },
 ];
 
 const BLOCKS = [
@@ -37,11 +37,11 @@ const BLOCKS = [
 
 export function AgendaSlide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
+    <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Agenda"
-        title="Roadmap: "
-        highlight="5 Core Blocks."
+        title="What we'll "
+        highlight="cover today."
       />
 
       <div
@@ -71,13 +71,13 @@ export function AgendaSlide() {
               gap: 24,
             }}
           >
-            {/* Blue circle number */}
+            {/* Pink circle number */}
             <div
               style={{
                 width: 44,
                 height: 44,
                 borderRadius: "50%",
-                background: "#185FA5",
+                background: "#C2185B",
                 color: "#FFFFFF",
                 display: "flex",
                 alignItems: "center",
@@ -92,10 +92,10 @@ export function AgendaSlide() {
 
             {/* Block content */}
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#222222" }}>
+              <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#4A1533" }}>
                 {block.title}
               </h3>
-              <p style={{ margin: 0, fontSize: 15, color: "#888888", fontWeight: 500 }}>
+              <p style={{ margin: 0, fontSize: 15, color: "#6B5B6E", fontWeight: 500 }}>
                 {block.desc}
               </p>
             </div>

@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
-import { AccentLine, GradientText, SlideShell } from "../../components/index.ts";
+import { AccentLine, SlideShell } from "../../components/index.ts";
 import { bodyText, bottomStrip, heroTitle, topBar } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -320, right: -180, size: 960, color: "24, 95, 165", opacity: 0.08 },
-  { bottom: -200, left: -120, size: 640, color: "29, 158, 117", opacity: 0.05 },
+  { top: -320, right: -180, size: 960, color: "194, 24, 91", opacity: 0.08 },
+  { bottom: -200, left: -120, size: 640, color: "123, 44, 143", opacity: 0.05 },
 ];
 
 export function CoverSlide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
+    <SlideShell glows={GLOWS}>
       {/* Top bar */}
       <motion.div
         {...topBar()}
@@ -27,16 +27,16 @@ export function CoverSlide() {
               width: 8,
               height: 8,
               borderRadius: "50%",
-              background: "#185FA5",
-              boxShadow: "0 0 6px rgba(24, 95, 165, 0.3)",
+              background: "#C2185B",
+              boxShadow: "0 0 6px rgba(194, 24, 91, 0.3)",
             }}
           />
           <span
             style={{
-              fontSize: 17,
+              fontSize: 16,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
-              color: "#185FA5",
+              color: "#C2185B",
               fontWeight: 800,
             }}
           >
@@ -47,18 +47,18 @@ export function CoverSlide() {
         <div style={{ display: "flex", alignItems: "center" }}>
           <span
             style={{
-              fontSize: 16,
-              color: "#222222",
+              fontSize: 15,
+              color: "#6B5B6E",
               letterSpacing: "0.06em",
-              fontWeight: 800,
+              fontWeight: 700,
             }}
           >
-            Final Presentation | July 30, 2026
+            JAIST
           </span>
         </div>
       </motion.div>
 
-      {/* Main Content Layout: Centered Title and Descriptions */}
+      {/* Main Content Layout: Centered Title, Subtitle, Presenter */}
       <div
         style={{
           flex: 1,
@@ -67,133 +67,147 @@ export function CoverSlide() {
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
-          gap: 24,
-          padding: "32px 0",
+          gap: 20,
+          padding: "36px 0 20px 0",
         }}
       >
-        {/* Title / Hero Side */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+          {/* Top Label */}
           <motion.span
-            {...bodyText(0.1)}
+            {...bodyText(0.08)}
             style={{
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: 800,
-              color: "#185FA5",
+              color: "#6B5B6E",
               textTransform: "uppercase",
               letterSpacing: "0.15em",
             }}
           >
-            Emotion Mediation for PIAA
+            When, Why, and How Far It Helps
           </motion.span>
 
+          {/* Main Title */}
           <motion.h1
-            {...heroTitle(0.12, 40)}
+            {...heroTitle(0.1, 40)}
             style={{
-              fontSize: 56,
+              fontSize: 48,
               fontWeight: 900,
-              letterSpacing: "-2.5px",
-              lineHeight: 1.1,
-              margin: 0,
-              color: "#222222",
+              letterSpacing: "-2px",
+              lineHeight: 1.15,
+              margin: "8px 0 4px",
+              color: "#4A1533",
+              maxWidth: 900,
               userSelect: "none",
             }}
           >
-            Emotion-Mediated 
+            Emotion-Mediated Personalized Image
             <br />
-            <GradientText from="#185FA5" to="#1D9E75">Personalized Image Aesthetic Assessment</GradientText>
+            Aesthetic Assessment
           </motion.h1>
 
-          <AccentLine delay={0.3} width={160} style={{ margin: "12px auto 0", background: "linear-gradient(90deg, #185FA5, #1D9E75)" }} />
+          {/* Subtitle */}
+          <motion.p
+            {...bodyText(0.12)}
+            style={{
+              fontSize: 22,
+              color: "#C2185B",
+              margin: "4px auto 0",
+              fontWeight: 700,
+              maxWidth: 800,
+              lineHeight: 1.35,
+              letterSpacing: "-0.5px",
+            }}
+          >
+            Predicting individual aesthetic preferences through intermediate emotional responses
+          </motion.p>
+
+          <AccentLine delay={0.25} width={160} style={{ margin: "16px auto 0", background: "linear-gradient(90deg, #C2185B, #7B2C8F)" }} />
         </div>
 
-        {/* Short Description Tagline */}
-        <motion.p
-          {...bodyText(0.4)}
-          style={{
-            fontSize: 22,
-            color: "#888888",
-            margin: "0 auto",
-            fontWeight: 700,
-            maxWidth: 820,
-            lineHeight: 1.45,
-          }}
-        >
-          Predicting individual aesthetic preferences through emotional responses
-        </motion.p>
-
-        {/* Visual Mock Grid Showing PIAA Concept - Horizontal Side-by-Side Row */}
+        {/* Presenter Info */}
         <motion.div
-          {...bodyText(0.5)}
+          {...bodyText(0.35)}
           style={{
             display: "flex",
-            gap: 24,
-            width: "100%",
-            justifyContent: "center",
-            marginTop: 12,
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 4,
+            marginTop: 4,
           }}
         >
-          {/* Image 1 Comparison */}
-          <div style={{ display: "flex", alignItems: "center", gap: 16, background: "#FFFFFF", borderRadius: 16, padding: "12px 20px", border: "1px solid #EEEDEA", width: 340, textAlign: "left", boxShadow: "0 4px 20px rgba(0, 0, 0, 0.01)" }}>
-            <img
-              src="/case-study/helps-3099.jpg"
-              alt="Sample 1"
-              style={{ width: 68, height: 68, objectFit: "cover", borderRadius: 10, border: "1px solid #EEEDEA" }}
-            />
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 13, fontWeight: 900, color: "#222222", textTransform: "uppercase", letterSpacing: "0.05em" }}>Landscape Photo</div>
-              <div style={{ display: "flex", gap: 8, marginTop: 6 }}>
-                <span style={{ fontSize: 11, background: "rgba(29, 158, 117, 0.05)", color: "#1D9E75", padding: "2px 6px", borderRadius: 6, fontWeight: 800, border: "1px solid rgba(29, 158, 117, 0.15)" }}>
-                  User A: 5.5
-                </span>
-                <span style={{ fontSize: 11, background: "rgba(24, 95, 165, 0.05)", color: "#185FA5", padding: "2px 6px", borderRadius: 6, fontWeight: 800, border: "1px solid rgba(24, 95, 165, 0.15)" }}>
-                  User B: 2.1
-                </span>
-              </div>
-            </div>
-          </div>
+          <span style={{ fontSize: 22, fontWeight: 800, color: "#2B2230" }}>Pinwa</span>
+          <span style={{ fontSize: 16, color: "#6B5B6E", fontWeight: 600 }}>Final presentation July 30, 2026</span>
+        </motion.div>
 
-          {/* Image 2 Comparison */}
-          <div style={{ display: "flex", alignItems: "center", gap: 16, background: "#FFFFFF", borderRadius: 16, padding: "12px 20px", border: "1px solid #EEEDEA", width: 340, textAlign: "left", boxShadow: "0 4px 20px rgba(0, 0, 0, 0.01)" }}>
-            <img
-              src="/case-study/helps-5632.jpg"
-              alt="Sample 2"
-              style={{ width: 68, height: 68, objectFit: "cover", borderRadius: 10, border: "1px solid #EEEDEA" }}
-            />
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 13, fontWeight: 900, color: "#222222", textTransform: "uppercase", letterSpacing: "0.05em" }}>Artistic Design</div>
-              <div style={{ display: "flex", gap: 8, marginTop: 6 }}>
-                <span style={{ fontSize: 11, background: "rgba(24, 95, 165, 0.05)", color: "#185FA5", padding: "2px 6px", borderRadius: 6, fontWeight: 800, border: "1px solid rgba(24, 95, 165, 0.15)" }}>
-                  User A: 1.8
-                </span>
-                <span style={{ fontSize: 11, background: "rgba(29, 158, 117, 0.05)", color: "#1D9E75", padding: "2px 6px", borderRadius: 6, fontWeight: 800, border: "1px solid rgba(29, 158, 117, 0.15)" }}>
-                  User B: 4.9
-                </span>
+        {/* Visual Mock Grid Showing Subjective Aesthetic Disagreement */}
+        <motion.div
+          {...bodyText(0.45)}
+          style={{
+            display: "flex",
+            gap: 20,
+            justifyContent: "center",
+            marginTop: 16,
+            width: "100%",
+          }}
+        >
+          {[
+            { user: "User A", score: "2.0 / 7.0", label: "Sad / Distasteful", bg: "rgba(194, 24, 91, 0.04)", border: "rgba(194, 24, 91, 0.15)", color: "#C2185B" },
+            { user: "User B", score: "5.0 / 7.0", label: "Intellectual / Motivated", bg: "rgba(123, 44, 143, 0.04)", border: "rgba(123, 44, 143, 0.15)", color: "#7B2C8F" },
+            { user: "User C", score: "6.0 / 7.0", label: "Impressed / Nostalgic", bg: "#FCE4EC", border: "rgba(194, 24, 91, 0.2)", color: "#C2185B" },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                background: "#FFFFFF",
+                borderRadius: 16,
+                padding: "10px 16px",
+                border: "1px solid #EEEDEA",
+                width: 280,
+                boxShadow: "0 6px 20px rgba(0, 0, 0, 0.01)",
+              }}
+            >
+              <img
+                src="/case-study/helps-3099.jpg"
+                alt="Sample landscape photo"
+                style={{ width: 50, height: 50, objectFit: "cover", borderRadius: 8, border: "1px solid #EEEDEA" }}
+              />
+              <div style={{ flex: 1, textAlign: "left" }}>
+                <div style={{ fontSize: 12, fontWeight: 800, color: "#6B5B6E", textTransform: "uppercase", letterSpacing: "0.03em" }}>{item.user}</div>
+                <div style={{ display: "flex", gap: 6, marginTop: 4, alignItems: "center" }}>
+                  <span style={{ fontSize: 12, background: item.bg, color: item.color, padding: "1px 6px", borderRadius: 4, fontWeight: 800, border: `1px solid ${item.border}` }}>
+                    {item.score}
+                  </span>
+                  <span style={{ fontSize: 10, color: "#6B5B6E", fontWeight: 500 }}>{item.label}</span>
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </motion.div>
       </div>
 
       {/* Bottom strip */}
       <motion.div
-        {...bottomStrip(0.8)}
+        {...bottomStrip(0.55)}
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           borderTop: "1px solid #EEEDEA",
-          paddingTop: 24,
+          paddingTop: 16,
         }}
       >
-        <div style={{ display: "flex", gap: 28 }}>
+        <div style={{ display: "flex", gap: 24 }}>
           {["Emotion Mediation", "Explainable AI", "PIAA"].map((tag, i) => (
             <span
               key={tag}
               style={{
-                fontSize: 14,
-                letterSpacing: "0.15em",
+                fontSize: 13,
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: i === 0 ? "#1D9E75" : "#888888",
+                color: i === 0 ? "#C2185B" : "#6B5B6E",
                 fontWeight: 800,
               }}
             >
@@ -201,16 +215,7 @@ export function CoverSlide() {
             </span>
           ))}
         </div>
-        <span
-          style={{
-            fontSize: 18,
-            color: "#222222",
-            fontWeight: 800,
-            letterSpacing: "0.02em",
-          }}
-        >
-          Presenter: <span style={{ color: "#185FA5" }}>Pinwa</span>
-        </span>
+        <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#FCE4EC" }} />
       </motion.div>
     </SlideShell>
   );

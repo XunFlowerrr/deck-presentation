@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Export artifacts
+PIAA-Presentation.pdf
+PIAA-Presentation.pptx
+scripts/.pptx-debug/
+~$*.pptx
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

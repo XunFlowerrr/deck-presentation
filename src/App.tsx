@@ -40,6 +40,9 @@ export default function App() {
 
   if (typeof window !== "undefined") {
     (window as any).__total_slides = slides.length;
+    // Read by scripts/export-pptx.mjs to look up per-slide export overrides.
+    (window as any).__current_slide_id =
+      (CurrentSlide as any).slideId || CurrentSlide.name || String(currentIndex + 1);
   }
 
   const currentSlideNum = currentIndex + 1;
@@ -83,7 +86,7 @@ export default function App() {
             sections={sections}
             current={currentSlideNum}
             variant="dots"
-            activeColor="#185FA5"
+            activeColor="#1B365D"
             baseColor="rgba(0,0,0,0.1)"
             thickness={6}
             gap={6}

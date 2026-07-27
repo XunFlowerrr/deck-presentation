@@ -245,3 +245,64 @@ The project supports adding images to slides dynamically from the web interface 
    - **Keyboard Micro-tuning**: Select an image in edit mode and use the **arrow keys** to nudge it by 1px (or 10px with `Shift`). Press **`Delete`** or **`Backspace`** to remove the selected image.
 
 
+
+---
+
+## 8. Exporting the Deck (PDF & PowerPoint)
+
+Both exporters drive the live dev server with a headless Chrome, so **`pnpm dev` must be running first**. They read `window.__total_slides` and step through the deck with `ArrowRight`, waiting until each slide's entrance animation has settled before capturing.
+
+```bash
+pnpm export-pdf     # -> PIAA-Presentation.pdf
+pnpm export-pptx    # -> PIAA-Presentation.pptx
+```
+
+Chrome is located automatically (Windows / macOS / Linux paths, then puppeteer's bundled Chromium). Override with `PUPPETEER_EXECUTABLE_PATH` if needed. Pass a URL as the first argument to target a different server.
+
+### PDF — a picture of each slide
+`scripts/export-pdf.mjs` screenshots the whole 1920x1080 viewport per slide and stitches the images into a PDF. Perfectly faithful, completely flat.
+
+### PPTX — native PowerPoint objects
+`scripts/export-pptx.mjs` does **not** screenshot whole slides. It walks the rendered DOM and rebuilds each slide out of real PowerPoint objects: editable text boxes, shapes with real fills, borders, corner radii and shadows, and pictures only where PowerPoint has no equivalent.
+
+It works because the canvas is a fixed 1920x1080, which maps exactly onto a 13.333in x 7.5in 16:9 slide — **1 inch = 144 px, 1 px = 0.5 pt**.
+
+- `scripts/lib/pptx-extract.mjs` — the in-page DOM walker (runs inside the browser)
+- `scripts/lib/pptx-emit.mjs` — primitives to pptxgenjs; owns every unit conversion
+- `scripts/lib/browser.mjs` — Chrome discovery, dev-server probing, animation settling
+- `scripts/pptx-overrides.js` — per-slide escape hatches, keyed by `slideId`
+
+Flags: `--debug` dumps the extracted primitives per slide to `scripts/.pptx-debug/`, `--only=3,7` exports selected slides, `--jpeg-quality=90` controls plot image compression, `--no-weight-faces` disables weight-specific font families (see below).
+
+#### Fonts are resolved in the page, not guessed
+
+This is the part that is easy to get wrong. `SlideShell` sets `font-family: system-ui`, which Chrome resolves to **Segoe UI** on Windows — while the tracker, which lives outside `SlideShell`, inherits **Inter** from `index.css`. PowerPoint understands neither `system-ui` nor a font-weight axis.
+
+So the extractor resolves fonts *inside the browser*, where Chrome's own matching is the authority:
+- generic keywords (`system-ui`, `sans-serif`, ...) are expanded to real families and the first **installed** one wins;
+- weights other than 400/700 look for the weight-specific face (`Segoe UI Black` for `font-weight: 900`), and use it only when that face is genuinely installed.
+
+Availability is checked against the machine's real font list, enumerated once per run through the Local Font Access API (`queryLocalFonts()`, with the `localFonts` permission granted over CDP). Matching is against each face's **full name** — `Segoe UI Semibold`, not the typographic family `Segoe UI` — because that is what PowerPoint resolves a typeface name against.
+
+**Do not go back to measuring text widths to test availability.** Chrome will happily render `Segoe UI Medium` by fuzzy-matching the name onto the Segoe UI family and synthesising a weight, so a width probe reports it as present. It isn't: Windows ships no such family, and PowerPoint then refuses to embed the font ("Font Not Available") when saving. Same for `Cambria Math Medium` / `Cambria Math ExtraBold` — Cambria Math has exactly one weight.
+
+If the font list cannot be enumerated the exporter degrades safely to base families only, mapping every weight onto regular/bold, and says so on stderr.
+
+Naming the wrong family is not a subtle error: exporting Segoe UI text as Inter made every line roughly 4.5% wide, which showed up as `SlideHeader`'s black title colliding with the `GradientText` picture beside it.
+
+**What does not survive the conversion:**
+- **Fonts are referenced by name.** Faces are verified against the *exporting* machine's font list, so they are always embeddable there — but they must also be installed wherever the file is opened, or PowerPoint substitutes and text shifts. Use `--no-weight-faces` to map every weight onto regular/bold if the target machine is sparser than this one.
+- **Gradient headlines (`GradientText`), inline SVG icons, and `SlideShell` glow blobs become pictures** — native picture objects, but not editable as text or vector.
+- Text still drifts a few pixels per line; PowerPoint's metrics are not Chrome's. Each line is pinned where the browser put it, so drift cannot accumulate down a paragraph.
+- Multi-layer `box-shadow` collapses to its first layer.
+- The result is precisely-positioned free-floating boxes, not semantic bulleted placeholders.
+
+If one slide comes out wrong, add an override rather than editing the walker:
+
+```js
+// scripts/pptx-overrides.js
+export default {
+  Pipeline: { rasterize: ['[data-pipeline-diagram]'] },  // force a subtree to one picture
+  Cover:    { skip: ['.some-decoration'] },              // drop a subtree entirely
+};
+```
