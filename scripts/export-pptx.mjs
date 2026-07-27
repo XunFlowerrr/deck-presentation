@@ -51,10 +51,10 @@ const ONLY = flag("only")
   .map((n) => Number(n.trim()) - 1)
   .filter((n) => Number.isInteger(n) && n >= 0);
 
-// Weight-specific families ("Inter Black") are used by default. Pass
-// --no-weight-faces on a machine that only has Regular + Bold installed,
-// where naming a missing face would fall back to a wholly different font.
-setUseWeightFaces(!args.includes("--no-weight-faces"));
+// Weight-specific faces ("Inter Black") are used when they are verifiably
+// installed. Pass --no-weight-faces to map every weight onto regular/bold.
+const USE_WEIGHT_FACES = !args.includes("--no-weight-faces");
+setUseWeightFaces(USE_WEIGHT_FACES);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -91,6 +91,46 @@ async function rasterize(page, targets) {
   return assets;
 }
 
+/**
+ * Enumerate the fonts actually installed on this machine.
+ *
+ * Needed because naming a font that does not exist produces a file PowerPoint
+ * cannot embed ("Font Not Available"). Chrome's renderer is no guide here: ask
+ * it to draw "Segoe UI Medium" and DirectWrite fuzzy-matches the name onto the
+ * Segoe UI family with a synthesised weight, so it looks available while the
+ * family is imaginary.
+ *
+ * Returns null if the API or permission is unavailable, in which case the
+ * extractor sticks to base families that are always safe to name.
+ */
+async function collectInstalledFonts(browser, page, devUrl) {
+  try {
+    const cdp = await browser.target().createCDPSession();
+    await cdp.send("Browser.grantPermissions", {
+      origin: new URL(devUrl).origin,
+      permissions: ["localFonts"],
+    });
+  } catch {
+    // Older Chrome without the localFonts permission — fall through and let
+    // the in-page check decide.
+  }
+
+  return page.evaluate(async () => {
+    if (typeof window.queryLocalFonts !== "function") return null;
+    try {
+      const fonts = await window.queryLocalFonts();
+      return {
+        families: [...new Set(fonts.map((f) => f.family))],
+        // Per-face full names ("Segoe UI Semibold") — what PowerPoint resolves
+        // a typeface name against.
+        faces: [...new Set(fonts.map((f) => f.fullName))],
+      };
+    } catch {
+      return null;
+    }
+  });
+}
+
 async function currentSlideId(page) {
   return page.evaluate(() => {
     const w = window;
@@ -124,6 +164,14 @@ async function main() {
     if (!total) throw new Error("Could not read window.__total_slides from the page.");
     console.log(`📊  ${total} slides detected`);
 
+    const installedFonts = USE_WEIGHT_FACES ? await collectInstalledFonts(browser, page, devUrl) : null;
+    if (USE_WEIGHT_FACES && !installedFonts) {
+      console.warn(
+        "   ⚠  could not enumerate installed fonts — using base families only " +
+          "(weights will map to regular/bold)",
+      );
+    }
+
     const pptx = createPresentation(PptxGenJS);
     pptx.title = "Emotion-Mediated PIAA";
 
@@ -144,10 +192,11 @@ async function main() {
       const slideId = await currentSlideId(page);
       const slideOverrides = (slideId && overrides[slideId]) || {};
 
-      const { primitives, rasterTargets } = await page.evaluate(
-        extractSlidePrimitives,
-        { rootSelector: "[data-slide-root]", overrides: slideOverrides },
-      );
+      const { primitives, rasterTargets } = await page.evaluate(extractSlidePrimitives, {
+        rootSelector: "[data-slide-root]",
+        overrides: slideOverrides,
+        installedFonts,
+      });
 
       const assets = await rasterize(page, rasterTargets);
 
