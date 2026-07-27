@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { SlideHeader, SlideShell } from "../../components/index.ts";
 import { cardRise } from "../../lib/motion.ts";
-import { Equation, Var, Sub, Sup, Frac } from "../../components/primitives/Equation.tsx";
+import { Equation, Var, Op, Sub, Sup, Frac } from "../../components/primitives/Equation.tsx";
 
 const GLOWS = [
   { top: -200, left: -100, size: 700, color: "194, 24, 91", opacity: 0.05 },
@@ -216,11 +216,14 @@ export function QaaProtocolSlide() {
             To check if the gain is from actual emotional semantics, we swap emotion dimensions with PCA features of the same length (7 dimensions) extracted from VLM features:
           </p>
 
-          <div style={{ background: "#FDFCFD", padding: "16px 20px", borderRadius: 12, border: "1px solid #EEEDEA", fontFamily: "monospace", fontSize: 14, color: "#4A1533", margin: "4px 0" }}>
-            {`PCA_Features(i) = VLM_Features(i) * PCA_Projection_Matrix`}
-            <br />
-            <br />
-            {`Score(u, i) = w_0 + w_{u,1}*PCA_1(i) + ... + w_{u,7}*PCA_7(i)`}
+          <div style={{ display: "flex", flexDirection: "column", gap: 10, margin: "6px 0" }}>
+            <Equation size={18} color="#4A1533">
+              <Var>z</Var><Sub><Op>PCA</Op></Sub>(<Var>i</Var>) = <Var>f</Var><Sub><Op>VLM</Op></Sub>(<Var>i</Var>) &middot; <Var>W</Var><Sub><Op>PCA</Op></Sub> &nbsp;&nbsp; <span style={{ fontSize: "0.75em", color: "#6B5B6E", fontFamily: "sans-serif" }}>(7-dim PCA projection)</span>
+            </Equation>
+
+            <Equation size={18} color="#C2185B">
+              <Var>Score</Var>(<Var>u</Var>, <Var>i</Var>) = <Var>w</Var><Sub>0</Sub> + <Var>w</Var><Sub><Var>u</Var>,1</Sub> <Var>z</Var><Sub><Op>PCA</Op>,1</Sub>(<Var>i</Var>) + &dots; + <Var>w</Var><Sub><Var>u</Var>,7</Sub> <Var>z</Var><Sub><Op>PCA</Op>,7</Sub>(<Var>i</Var>)
+            </Equation>
           </div>
 
           <div style={{ display: "flex", gap: 12, background: "rgba(123, 44, 143, 0.05)", border: "1px dashed rgba(123, 44, 143, 0.2)", borderRadius: 12, padding: 14 }}>

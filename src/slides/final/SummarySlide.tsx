@@ -7,30 +7,26 @@ const GLOWS = [
   { bottom: -200, right: -100, size: 600, color: "123, 44, 143", opacity: 0.04 },
 ];
 
-const TAKE_HOMES = [
+const POINTS = [
   {
-    num: "01",
-    label: "Predict",
-    title: "Emotion Mediation",
-    desc: "Achieve comparable personalization accuracy to standard SOTA methods while safeguarding user privacy (no intrusive personality surveys required).",
-    color: "#C2185B",
-    glow: "rgba(194, 24, 91, 0.04)",
+    num: "1",
+    title: "Explainable Emotion Model",
+    desc: "Built an explainable model that predicts preference through 7 intermediate emotions.",
   },
   {
-    num: "02",
-    label: "Understand",
-    title: "Transparent Rationale",
-    desc: "Cleanly decompose and analyze individual aesthetic differences into shared perception vs. subjective personal weighting formulas.",
-    color: "#7B2C8F",
-    glow: "rgba(123, 44, 143, 0.04)",
+    num: "2",
+    title: "Trait-Free Parity",
+    desc: "Comparable to trait-based baselines while using only emotion (protecting user privacy).",
   },
   {
-    num: "03",
-    label: "Deploy",
-    title: "Cold-Start & Ceiling",
-    desc: "Requires 50 user ratings to outperform population-level baselines, aiming for a realistic temporal ceiling of 0.64.",
-    color: "#C2185B",
-    glow: "rgba(194, 24, 91, 0.04)",
+    num: "3",
+    title: "Accuracy-Driven Gain",
+    desc: "Helps more when we predict a person's emotions more accurately ($emo\\_r$).",
+  },
+  {
+    num: "4",
+    title: "Ceiling & Cold-Start",
+    desc: "Realistic ceiling is 0.63, and emotion is what makes personalizing worthwhile (from 50 ratings).",
   },
 ];
 
@@ -39,8 +35,8 @@ export function SummarySlide() {
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Conclusion"
-        title="Takeaways"
-        highlight=""
+        title="Key "
+        highlight="takeaways."
       />
 
       <div
@@ -48,88 +44,91 @@ export function SummarySlide() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          gap: 32,
-          maxWidth: 960,
-          margin: "0 auto",
-          width: "100%",
+          justifyContent: "space-between",
+          paddingBottom: 16,
         }}
       >
-        {/* Sequence of 3 summaries */}
+        {/* 2x2 Grid for the 4 Takeaways */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
+            gridTemplateColumns: "1fr 1fr",
             gap: 20,
+            maxWidth: 920,
+            margin: "auto auto",
+            width: "100%",
           }}
         >
-          {TAKE_HOMES.map((item, idx) => (
+          {POINTS.map((item, idx) => (
             <motion.div
               key={item.num}
               {...cardRise(0.1 + idx * 0.08)}
               style={{
                 background: "#FFFFFF",
-                border: `1px solid #EEEDEA`,
-                borderRadius: 20,
-                padding: "28px 24px",
-                boxShadow: `0 8px 30px ${item.glow}`,
+                border: "1px solid #EEEDEA",
+                borderRadius: 18,
+                padding: "22px 26px",
+                boxShadow: "0 4px 15px rgba(0, 0, 0, 0.015)",
                 display: "flex",
-                flexDirection: "column",
-                gap: 16,
-                minHeight: 260,
-                position: "relative",
-                overflow: "hidden",
+                gap: 18,
+                alignItems: "flex-start",
               }}
             >
-              {/* Top highlight bar */}
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: item.color }} />
-
-              <div style={{ display: "flex", alignItems: "center", gap: 10, zIndex: 1 }}>
-                <span
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 900,
-                    color: "#FFFFFF",
-                    background: item.color,
-                    padding: "2px 8px",
-                    borderRadius: 6,
-                  }}
-                >
-                  {item.num}
-                </span>
-                <span style={{ fontSize: 13, fontWeight: 900, color: item.color, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                  {item.label}
-                </span>
+              {/* Pink Circle Number */}
+              <div
+                style={{
+                  width: 36,
+                  height: 36,
+                  borderRadius: "50%",
+                  background: idx % 2 === 0 ? "#C2185B" : "#7B2C8F",
+                  color: "#FFFFFF",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 16,
+                  fontWeight: 900,
+                  flexShrink: 0,
+                  boxShadow: "0 4px 10px rgba(194, 24, 91, 0.2)",
+                }}
+              >
+                {item.num}
               </div>
 
-              <h4 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#4A1533", lineHeight: 1.2, zIndex: 1 }}>
-                {item.title}
-              </h4>
-
-              <p style={{ margin: 0, fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, zIndex: 1, fontWeight: 500 }}>
-                {item.desc}
-              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                <h4 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: "#4A1533" }}>
+                  {item.title}
+                </h4>
+                <p style={{ margin: 0, fontSize: 14.5, color: "#6B5B6E", lineHeight: 1.45, fontWeight: 550 }}>
+                  {item.desc}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Concluding publication statement */}
+        {/* Bottom Tagline Quote */}
         <motion.div
-          {...fadeInUp(0.4)}
+          {...fadeInUp(0.45)}
           style={{
-            alignSelf: "center",
-            background: "#FFFFFF",
-            border: "1px solid #EEEDEA",
-            borderRadius: 14,
-            padding: "12px 28px",
-            fontSize: 14,
-            fontWeight: 800,
-            color: "#6B5B6E",
             textAlign: "center",
-            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.01)",
+            maxWidth: 760,
+            margin: "12px auto 0",
+            borderTop: "1px solid #EEEDEA",
+            paddingTop: 16,
+            width: "100%",
           }}
         >
-          Publication Plan: <span style={{ color: "#C2185B" }}>Preparing conference submission for ACMMM / CVPR</span>
+          <p
+            style={{
+              margin: 0,
+              fontSize: 18,
+              fontWeight: 800,
+              color: "#4A1533",
+              fontStyle: "italic",
+            }}
+          >
+            &ldquo;Emotion is a powerful, explainable bridge to subjective taste.&rdquo;
+          </p>
         </motion.div>
       </div>
     </SlideShell>
