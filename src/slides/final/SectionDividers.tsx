@@ -82,3 +82,14 @@ export function ClosingDividerSlide() {
     />
   );
 }
+
+export function QaaDividerSlide() {
+  return (
+    <SectionDividerSlide
+      badge="BACKUP SLIDES"
+      title="Questions"
+      highlight="&amp; Answers"
+      subtitle="Supplementary slides, complete metric tables, and methodology details"
+    />
+  );
+}

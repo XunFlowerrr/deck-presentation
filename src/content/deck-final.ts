@@ -40,6 +40,7 @@ import {
   Block4DividerSlide,
   Block5DividerSlide,
   ClosingDividerSlide,
+  QaaDividerSlide,
 } from '../slides/final/SectionDividers';
 
 // Import Q&A backups (Union of 8 backup slides)
@@ -94,7 +95,8 @@ const ClosingDivider = defineSlide(ClosingDividerSlide, 'ClosingDivider');
 const Summary = defineSlide(SummarySlide, 'Summary');
 const FutureWork = defineSlide(FutureWorkSlide, 'FutureWork');
 
-// Q&A Backups (8 Union Slides)
+// Q&A Backups (8 Union Slides + Section Divider)
+const QaaDivider = defineSlide(QaaDividerSlide, 'QaaDivider');
 const QaaDecomposition = defineSlide(QaaDecompositionSlide, 'QaaDecomposition');
 const QaaCeiling = defineSlide(QaaCeilingSlide, 'QaaCeiling');
 const QaaNoiseCeiling = defineSlide(QaaNoiseCeilingSlide, 'QaaNoiseCeiling');
@@ -140,6 +142,7 @@ const deck: DeckSection[] = [
 ];
 
 const backupSlides: SlideComponent[] = [
+  QaaDivider,
   QaaDecomposition,
   QaaCeiling,
   QaaNoiseCeiling,
