@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { SlideHeader, SlideShell } from "../../components/index.ts";
 import { cardRise } from "../../lib/motion.ts";
-import { Equation, Var, Op, Sub, Sup, Frac } from "../../components/primitives/Equation.tsx";
+import { Equation, Var, Op, Sub, Frac } from "../../components/primitives/Equation.tsx";
 
 const GLOWS = [
   { top: -200, left: -100, size: 700, color: "194, 24, 91", opacity: 0.05 },

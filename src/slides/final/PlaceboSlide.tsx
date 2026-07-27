@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SlideHeader, SlideShell } from "../../components/index.ts";
-import { cardRise, fadeInUp } from "../../lib/motion.ts";
+import { cardRise } from "../../lib/motion.ts";
 import { Var, Op } from "../../components/primitives/Equation.tsx";
 
 const GLOWS = [
