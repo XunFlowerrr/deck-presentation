@@ -65,28 +65,62 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
  */
 async function rasterize(page, targets) {
   const assets = new Map();
+  if (!targets.length) return assets;
+
+  // Hide everything, then reveal one target at a time. A screenshot captures
+  // the composited page, so without this a SlideShell glow blob comes back
+  // with the headline that overlaps it baked in — and since the blob paints
+  // early, that headline then gets drawn a second time underneath the real
+  // one. `visibility` (not `display`) keeps layout identical while hiding.
+  await page.evaluate(() => {
+    document.body.style.visibility = "hidden";
+    // `omitBackground` only suppresses the *default* white canvas. index.css
+    // paints html/body/#root #2A1A4E, which normally sits behind the slide's
+    // own opaque background — but with everything hidden it would bleed into
+    // every transparent capture as a solid dark rectangle.
+    for (const el of [document.documentElement, document.body, document.getElementById("root")]) {
+      if (el) el.style.background = "transparent";
+    }
+  });
 
   for (const target of targets) {
-    const handle = await page.$(`[data-pptx-raster="${target.id}"]`);
-    if (!handle) continue;
-
     try {
-      const buffer = target.transparent
-        ? await handle.screenshot({ type: "png", omitBackground: true })
-        : await handle.screenshot({ type: "jpeg", quality: JPEG_QUALITY });
+      await page.evaluate((id) => {
+        const el = document.querySelector(`[data-pptx-raster="${id}"]`);
+        if (el) el.style.visibility = "visible";
+      }, target.id);
+      // Capture an explicit region rather than an element handle. Element
+      // screenshots scroll partially-offscreen nodes into view first, which
+      // silently captures the wrong pixels; the extractor has already clipped
+      // this rect to the slide canvas.
+      const buffer = await page.screenshot(
+        target.transparent
+          ? { type: "png", omitBackground: true, clip: target.clip }
+          : { type: "jpeg", quality: JPEG_QUALITY, clip: target.clip },
+      );
 
       assets.set(target.id, {
         mime: target.transparent ? "image/png" : "image/jpeg",
         base64: Buffer.from(buffer).toString("base64"),
       });
     } catch (err) {
-      // Zero-area or off-screen elements can't be captured; skipping one
-      // decorative node is better than failing the whole export.
+      // Skipping one decorative node beats failing the whole export.
       console.warn(`   ⚠  could not rasterize ${target.id}: ${err.message}`);
     } finally {
-      await handle.dispose();
+      // Clearing the inline style puts it back to inheriting the hidden body.
+      await page.evaluate((id) => {
+        const el = document.querySelector(`[data-pptx-raster="${id}"]`);
+        if (el) el.style.visibility = "";
+      }, target.id);
     }
   }
+
+  await page.evaluate(() => {
+    document.body.style.visibility = "";
+    for (const el of [document.documentElement, document.body, document.getElementById("root")]) {
+      if (el) el.style.background = "";
+    }
+  });
 
   return assets;
 }

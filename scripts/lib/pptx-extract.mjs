@@ -168,11 +168,42 @@ export function extractSlidePrimitives(config) {
     h: rect.height,
   });
 
-  const registerRaster = (el, transparent) => {
+  /**
+   * Register an element to be screenshotted, clipped to the slide canvas.
+   *
+   * The clip matters: puppeteer's elementHandle.screenshot() scrolls a
+   * partially-offscreen element into view before capturing, so a SlideShell
+   * glow blob hanging off the top-left corner came back holding a picture of
+   * the slide's title and cards, which then got pasted back at the blob's
+   * coordinates as a ghost copy. Capturing an explicit region never scrolls.
+   *
+   * Returns null when the element lies entirely outside the canvas.
+   */
+  const registerRaster = (el, transparent, rect) => {
+    const left = Math.max(rect.left, originX);
+    const top = Math.max(rect.top, originY);
+    const right = Math.min(rect.right, originX + 1920);
+    const bottom = Math.min(rect.bottom, originY + 1080);
+    if (right - left <= 0 || bottom - top <= 0) return null;
+
     const id = `r${rasterCounter++}`;
     el.setAttribute("data-pptx-raster", id);
-    rasterTargets.push({ id, transparent });
-    return id;
+    rasterTargets.push({
+      id,
+      transparent,
+      // Page coordinates for puppeteer's clip.
+      clip: {
+        x: Math.round(left + window.scrollX),
+        y: Math.round(top + window.scrollY),
+        width: Math.round(right - left),
+        height: Math.round(bottom - top),
+      },
+    });
+
+    return {
+      id,
+      local: { x: left - originX, y: top - originY, w: right - left, h: bottom - top },
+    };
   };
 
   // ------------------------------------------------------------ text splitting
@@ -411,14 +442,28 @@ export function extractSlidePrimitives(config) {
     if (alpha <= 0.01) return;
 
     const rect = el.getBoundingClientRect();
-    if (rect.width <= 0 || rect.height <= 0) return;
+    const hasArea = rect.width > 0 && rect.height > 0;
+
+    // A zero-area box can still lay out visible text. Equation's <Sub>/<Sup>
+    // set `line-height: 0`, which collapses the span's own bounding rect to
+    // zero height while the text node inside it still renders at full size —
+    // that is how the subscript in "w0" went missing. So don't draw a
+    // zero-area element, but do keep walking into it.
+    //
+    // Don't try to narrow this to inline boxes: a <Sub> inside a display-style
+    // <Equation> is a flex item, and flex blockifies its children, so the very
+    // case this exists for computes as `display: block`. Clipping is the real
+    // signal — if the element hides its overflow, the children truly aren't
+    // visible and the subtree should stay dropped.
+    if (!hasArea && cs.overflow !== "visible") return;
 
     // Fully outside the slide canvas (decorative overflow) — nothing to export.
     if (
-      rect.right <= originX ||
-      rect.bottom <= originY ||
-      rect.left >= originX + 1920 ||
-      rect.top >= originY + 1080
+      hasArea &&
+      (rect.right <= originX ||
+        rect.bottom <= originY ||
+        rect.left >= originX + 1920 ||
+        rect.top >= originY + 1080)
     ) {
       return;
     }
@@ -455,18 +500,22 @@ export function extractSlidePrimitives(config) {
       hasNonTranslateTransform(cs) ||
       matchesAny(el, rasterizeSelectors);
 
-    if (mustRasterize || tag === "img") {
+    // Rasterizing needs something to screenshot; a zero-area element has
+    // nothing to capture, so fall through and walk its children instead.
+    if (hasArea && (mustRasterize || tag === "img")) {
       // Images are rasterized too: screenshotting the element bakes in
       // object-fit cropping and any border-radius/shadow for free.
       const opaque = isVisibleColor(cs.backgroundColor) && parseAlpha(cs.backgroundColor) === 1;
-      const local = toLocal(rect);
-      push({
-        kind: "image",
-        zPath,
-        ...local,
-        id: registerRaster(el, !opaque),
-        transparent: !opaque,
-      });
+      const raster = registerRaster(el, !opaque, rect);
+      if (raster) {
+        push({
+          kind: "image",
+          zPath,
+          ...raster.local,
+          id: raster.id,
+          transparent: !opaque,
+        });
+      }
       return; // do not descend — the raster already contains the subtree
     }
 
@@ -474,7 +523,7 @@ export function extractSlidePrimitives(config) {
     const shadow = parseShadow(cs.boxShadow);
     const hasBackground = isVisibleColor(cs.backgroundColor);
 
-    if (hasBackground || border || shadow) {
+    if (hasArea && (hasBackground || border || shadow)) {
       const radius = parseRadius(cs, rect.width, rect.height);
       const local = toLocal(rect);
       push({
