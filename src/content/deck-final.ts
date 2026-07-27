@@ -21,11 +21,9 @@ import { Finding3Slide } from '../slides/final/Finding3Slide';
 import { TransitionSlide } from '../slides/final/TransitionSlide';
 import { Finding4Slide } from '../slides/final/Finding4Slide';
 import { Finding2Slide } from '../slides/final/Finding2Slide';
-import { Finding5Slide } from '../slides/final/Finding5Slide';
 import { Finding6Slide } from '../slides/final/Finding6Slide';
 import { Finding8Slide } from '../slides/final/Finding8Slide';
 import { PlaceboSlide } from '../slides/final/PlaceboSlide';
-import { Finding10Slide } from '../slides/final/Finding10Slide';
 import { SummarySlide } from '../slides/final/SummarySlide';
 import { FutureWorkSlide } from '../slides/final/FutureWorkSlide';
 
@@ -57,11 +55,9 @@ const Finding3 = defineSlide(Finding3Slide, 'Finding3');
 const Transition = defineSlide(TransitionSlide, 'Transition');
 const Finding4 = defineSlide(Finding4Slide, 'Finding4');
 const Finding2 = defineSlide(Finding2Slide, 'Finding2');
-const Finding5 = defineSlide(Finding5Slide, 'Finding5');
 const Finding6 = defineSlide(Finding6Slide, 'Finding6');
 const Finding8 = defineSlide(Finding8Slide, 'Finding8');
 const Placebo = defineSlide(PlaceboSlide, 'Placebo');
-const Finding10 = defineSlide(Finding10Slide, 'Finding10');
 const Summary = defineSlide(SummarySlide, 'Summary');
 const FutureWork = defineSlide(FutureWorkSlide, 'FutureWork');
 
@@ -108,8 +104,6 @@ const deck: DeckSection[] = [
 ];
 
 const backupSlides: SlideComponent[] = [
-  Finding5,
-  Finding10,
   QaaDecomposition,
   QaaCeiling,
   QaaProtocol,
