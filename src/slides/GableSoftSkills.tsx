@@ -27,8 +27,8 @@ export function GableSoftSkills() {
       border: "1px solid rgba(79, 70, 229, 0.18)",
       icon: (
         <svg
-          width="24"
-          height="24"
+          width="26"
+          height="26"
           viewBox="0 0 24 24"
           fill="none"
           stroke="#4F46E5"
@@ -54,8 +54,8 @@ export function GableSoftSkills() {
       border: "1px solid rgba(13, 148, 136, 0.18)",
       icon: (
         <svg
-          width="24"
-          height="24"
+          width="26"
+          height="26"
           viewBox="0 0 24 24"
           fill="none"
           stroke="#0D9488"
@@ -82,8 +82,8 @@ export function GableSoftSkills() {
       border: "1px solid rgba(217, 70, 239, 0.18)",
       icon: (
         <svg
-          width="24"
-          height="24"
+          width="26"
+          height="26"
           viewBox="0 0 24 24"
           fill="none"
           stroke="#D946EF"
@@ -107,7 +107,7 @@ export function GableSoftSkills() {
         label="Personal Growth & Collaboration"
         title="Soft Skills &"
         highlight="Communication."
-        titleSize={52}
+        titleSize={54}
         paddingBottom={12}
         marginBottom={24}
         tagline={
@@ -164,15 +164,15 @@ export function GableSoftSkills() {
             >
               <div
                 style={{
-                  width: 32,
-                  height: 32,
+                  width: 36,
+                  height: 36,
                   borderRadius: "50%",
                   backgroundColor: "#FFFFFF",
                   border: `2.5px solid ${st.color}`,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: 14,
+                  fontSize: 16,
                   fontWeight: 850,
                   color: st.color,
                   boxShadow: `0 0 14px ${st.color}40`,
@@ -182,7 +182,7 @@ export function GableSoftSkills() {
               </div>
               <span
                 style={{
-                  fontSize: 13.5,
+                  fontSize: 15,
                   fontWeight: 800,
                   color: st.color,
                   textTransform: "uppercase",
@@ -216,10 +216,10 @@ export function GableSoftSkills() {
                 background: card.bg,
                 border: card.border,
                 borderRadius: "22px",
-                padding: "26px 28px",
+                padding: "28px 30px",
                 display: "flex",
                 flexDirection: "column",
-                gap: 16,
+                gap: 18,
                 boxShadow: "0 10px 28px rgba(0,0,0,0.018)",
                 position: "relative",
               }}
@@ -308,8 +308,8 @@ export function GableSoftSkills() {
               >
                 <div
                   style={{
-                    width: 48,
-                    height: 48,
+                    width: 52,
+                    height: 52,
                     borderRadius: "14px",
                     backgroundColor: "#FFFFFF",
                     display: "flex",
@@ -324,7 +324,7 @@ export function GableSoftSkills() {
 
                 <span
                   style={{
-                    fontSize: 34,
+                    fontSize: 38,
                     fontWeight: 900,
                     color: card.color,
                     opacity: 0.22,
@@ -339,10 +339,10 @@ export function GableSoftSkills() {
               <div>
                 <h3
                   style={{
-                    fontSize: 22,
+                    fontSize: 25,
                     fontWeight: 850,
                     color: "#111827",
-                    margin: "0 0 5px 0",
+                    margin: "0 0 6px 0",
                     fontFamily: "'Inter', 'Noto Sans Thai', sans-serif",
                     lineHeight: 1.3,
                   }}
@@ -351,7 +351,7 @@ export function GableSoftSkills() {
                 </h3>
                 <span
                   style={{
-                    fontSize: 13.5,
+                    fontSize: 15,
                     fontWeight: 700,
                     color: card.color,
                     fontFamily: "'Inter', sans-serif",
@@ -363,10 +363,10 @@ export function GableSoftSkills() {
 
               <p
                 style={{
-                  fontSize: 16,
+                  fontSize: 18,
                   color: "#4B5563",
                   margin: 0,
-                  lineHeight: 1.6,
+                  lineHeight: 1.65,
                   fontFamily: "'Inter', 'Noto Sans Thai', sans-serif",
                 }}
               >
@@ -378,13 +378,13 @@ export function GableSoftSkills() {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  gap: 8,
+                  gap: 10,
                   backgroundColor: "#FFFFFF",
                   borderRadius: "14px",
-                  padding: "14px 16px",
+                  padding: "16px 18px",
                   border: "1px solid rgba(0,0,0,0.04)",
                   boxShadow: "0 2px 10px rgba(0,0,0,0.01)",
-                  marginTop: 4,
+                  marginTop: 6,
                 }}
               >
                 {card.bullets.map((b, idx) => (
@@ -394,8 +394,8 @@ export function GableSoftSkills() {
                   >
                     <div
                       style={{
-                        width: 7,
-                        height: 7,
+                        width: 8,
+                        height: 8,
                         borderRadius: "50%",
                         backgroundColor: card.color,
                         flexShrink: 0,
@@ -403,8 +403,8 @@ export function GableSoftSkills() {
                     />
                     <span
                       style={{
-                        fontSize: 14.5,
-                        fontWeight: 650,
+                        fontSize: 16.5,
+                        fontWeight: 700,
                         color: "#374151",
                         fontFamily: "'Inter', 'Noto Sans Thai', sans-serif",
                       }}
