@@ -3,135 +3,173 @@ import { SlideHeader, SlideShell } from "../../components/index.ts";
 import { cardRise, fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, left: -100, size: 700, color: "194, 79, 113", opacity: 0.08 },
-  { bottom: -200, right: -100, size: 600, color: "194, 79, 113", opacity: 0.06 },
+  { top: -200, left: -100, size: 700, color: "24, 95, 165", opacity: 0.05 },
+  { bottom: -200, right: -100, size: 600, color: "29, 158, 117", opacity: 0.04 },
 ];
 
 export function Finding2Slide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FCFAF6" }}>
+    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
       <SlideHeader
         label="Block 3 — Variance Decomposition"
-        title="Finding 2: Perception vs Weighting "
-        highlight="are Both Substantial."
+        title="Feeling vs weighting: "
+        highlight="It Depends How We Measure."
       />
 
       <div
         style={{
           flex: 1,
-          display: "grid",
-          gridTemplateColumns: "0.95fr 1.05fr",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
           gap: 32,
-          alignItems: "center",
+          maxWidth: 960,
+          margin: "0 auto",
+          width: "100%",
         }}
       >
-        {/* Left Column: Conceptual Breakdown */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          {/* Intro Card */}
+        {/* Three Columns side-by-side */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            gap: 24,
+            width: "100%",
+          }}
+        >
+          {/* Case 1: Same-Session */}
           <motion.div
             {...cardRise(0.15)}
             style={{
               background: "#FFFFFF",
-              border: "1px solid rgba(45, 49, 54, 0.08)",
-              borderRadius: 18,
-              padding: "20px 24px",
-              boxShadow: "0 8px 30px rgba(45, 49, 54, 0.03)",
+              border: "1px solid #EEEDEA",
+              borderRadius: 20,
+              padding: "24px",
+              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 16,
             }}
           >
-            <h4 style={{ margin: "0 0 8px", fontSize: 16, fontWeight: 900, color: "#2D3136" }}>
-              Isolating Aesthetic Variance Share
-            </h4>
-            <p style={{ margin: 0, fontSize: 13, color: "#626B74", lineHeight: 1.45 }}>
-              We analyze individual taste characteristics via 3 distinct predictors:
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 12 }}>
-              <div style={{ fontSize: 12.5, color: "#2D3136", fontWeight: 700 }}>
-                1. <span style={{ color: "#C24F71" }}>$P$ (Perception):</span> Personal Emotion $E$ + Global Weight $W$
-              </div>
-              <div style={{ fontSize: 12.5, color: "#2D3136", fontWeight: 700 }}>
-                2. <span style={{ color: "#C24F71" }}>$S$ (Weighting):</span> Global Emotion $E$ + Personal Weight $W$
-              </div>
-              <div style={{ fontSize: 12.5, color: "#2D3136", fontWeight: 700 }}>
-                3. <span>$S_{global}$ (Global):</span> Global Emotion $E$ + Global Weight $W$
-              </div>
+            <div style={{ textAlign: "center" }}>
+              <h4 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: "#222222" }}>Same-Session</h4>
+              <span style={{ fontSize: 11, color: "#888888", fontWeight: 700 }}>Single recording interval</span>
+            </div>
+
+            {/* Stacked bar */}
+            <div style={{ width: 44, height: 160, borderRadius: 6, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+              <div style={{ height: "60%", background: "#185FA5", display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", fontSize: 11, fontWeight: 900 }}>60%</div>
+              <div style={{ height: "40%", background: "#1D9E75", display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", fontSize: 11, fontWeight: 900 }}>40%</div>
+            </div>
+
+            <div style={{ display: "flex", gap: 12, fontSize: 12, fontWeight: 700 }}>
+              <span style={{ color: "#185FA5" }}>● Perception</span>
+              <span style={{ color: "#1D9E75" }}>● Weighting</span>
             </div>
           </motion.div>
 
-          {/* Honest conclusion card */}
+          {/* Case 2: Cross-Session */}
           <motion.div
-            {...cardRise(0.3)}
+            {...cardRise(0.25)}
             style={{
               background: "#FFFFFF",
-              border: "1px solid rgba(194, 79, 113, 0.15)",
-              borderRadius: 16,
-              padding: "16px 20px",
-              boxShadow: "0 8px 24px rgba(194, 79, 113, 0.04)",
+              border: "1px solid #EEEDEA",
+              borderRadius: 20,
+              padding: "24px",
+              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 16,
             }}
           >
-            <div style={{ fontSize: 12, fontWeight: 900, color: "#C24F71", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>
-              Scientific Integrity
+            <div style={{ textAlign: "center" }}>
+              <h4 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: "#222222" }}>Cross-Session</h4>
+              <span style={{ fontSize: 11, color: "#888888", fontWeight: 700 }}>Across recording sessions</span>
             </div>
-            <h4 style={{ margin: "0 0 6px", fontSize: 16, fontWeight: 900, color: "#2D3136" }}>
-              Scientific Integrity &amp; Transparency
-            </h4>
-            <p style={{ margin: 0, fontSize: 13, color: "#626B74", lineHeight: 1.4 }}>
-              Since the confidence intervals overlap the 50% boundary, we report that both components are substantial contributors to personalized aesthetic variation.
-            </p>
+
+            {/* Stacked bar */}
+            <div style={{ width: 44, height: 160, borderRadius: 6, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+              <div style={{ height: "40%", background: "#185FA5", display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", fontSize: 11, fontWeight: 900 }}>40%</div>
+              <div style={{ height: "60%", background: "#1D9E75", display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", fontSize: 11, fontWeight: 900 }}>60%</div>
+            </div>
+
+            <div style={{ display: "flex", gap: 12, fontSize: 12, fontWeight: 700 }}>
+              <span style={{ color: "#185FA5" }}>● Perception</span>
+              <span style={{ color: "#1D9E75" }}>● Weighting</span>
+            </div>
+          </motion.div>
+
+          {/* Case 3: Averaged (Highlighted in Orange) */}
+          <motion.div
+            {...cardRise(0.35)}
+            style={{
+              background: "#FFFFFF",
+              border: "2px dashed #BA7517",
+              borderRadius: 20,
+              padding: "24px",
+              boxShadow: "0 8px 30px rgba(186, 117, 23, 0.02)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 16,
+              position: "relative",
+            }}
+          >
+            {/* Orange Badge */}
+            <div
+              style={{
+                position: "absolute",
+                top: -12,
+                background: "#BA7517",
+                color: "#FFFFFF",
+                fontSize: 10,
+                fontWeight: 900,
+                padding: "2px 8px",
+                borderRadius: 6,
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+              }}
+            >
+              &approx; 50/50, can&apos;t tell
+            </div>
+
+            <div style={{ textAlign: "center" }}>
+              <h4 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: "#BA7517" }}>Averaged (Mixed)</h4>
+              <span style={{ fontSize: 11, color: "#888888", fontWeight: 700 }}>Overlap limit</span>
+            </div>
+
+            {/* Stacked bar */}
+            <div style={{ width: 44, height: 160, borderRadius: 6, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+              <div style={{ height: "50%", background: "#185FA5", display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", fontSize: 11, fontWeight: 900 }}>50%</div>
+              <div style={{ height: "50%", background: "#1D9E75", display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", fontSize: 11, fontWeight: 900 }}>50%</div>
+            </div>
+
+            <div style={{ display: "flex", gap: 12, fontSize: 12, fontWeight: 700 }}>
+              <span style={{ color: "#185FA5" }}>● Perception</span>
+              <span style={{ color: "#1D9E75" }}>● Weighting</span>
+            </div>
           </motion.div>
         </div>
 
-        {/* Right Column: Visual CI Bar Chart */}
+        {/* Caption */}
         <motion.div
-          {...cardRise(0.25)}
+          {...fadeInUp(0.5)}
           style={{
+            alignSelf: "center",
             background: "#FFFFFF",
-            border: "1px solid rgba(45, 49, 54, 0.08)",
-            borderRadius: 24,
-            padding: 24,
-            boxShadow: "0 12px 40px rgba(45, 49, 54, 0.04)",
-            display: "flex",
-            flexDirection: "column",
-            gap: 16,
+            border: "1px solid #EEEDEA",
+            borderRadius: 14,
+            padding: "12px 28px",
+            fontSize: 16,
+            fontWeight: 800,
+            color: "#222222",
+            textAlign: "center",
+            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.01)",
           }}
         >
-          <div style={{ fontSize: 13, fontWeight: 900, color: "#2D3136", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-            Confidence Intervals of Variance Share
-          </div>
-
-          {/* Table / CI Visual Representation */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 16, margin: "8px 0" }}>
-            {/* Perception bar */}
-            <div>
-              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, fontWeight: 800, color: "#2D3136", marginBottom: 6 }}>
-                <span>Perception Share ($P$)</span>
-                <span style={{ color: "#C24F71" }}>CI [40.2%, 63.8%]</span>
-              </div>
-              <div style={{ height: 24, background: "#FCFAF6", border: "1px solid rgba(45, 49, 54, 0.08)", borderRadius: 6, position: "relative", overflow: "hidden" }}>
-                {/* 50% line indicator */}
-                <div style={{ position: "absolute", left: "50%", top: 0, bottom: 0, width: 2, background: "#C24F71", zIndex: 2 }} />
-                {/* CI Range */}
-                <div style={{ position: "absolute", left: "40.2%", width: "23.6%", top: 4, bottom: 4, background: "rgba(194, 79, 113, 0.12)", border: "1px dashed #C24F71", borderRadius: 4 }} />
-              </div>
-            </div>
-
-            {/* Weighting bar */}
-            <div>
-              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, fontWeight: 800, color: "#2D3136", marginBottom: 6 }}>
-                <span>Weighting Share ($S$)</span>
-                <span style={{ color: "#C24F71" }}>CI [43.1%, 67.5%]</span>
-              </div>
-              <div style={{ height: 24, background: "#FCFAF6", border: "1px solid rgba(45, 49, 54, 0.08)", borderRadius: 6, position: "relative", overflow: "hidden" }}>
-                {/* 50% line indicator */}
-                <div style={{ position: "absolute", left: "50%", top: 0, bottom: 0, width: 2, background: "#C24F71", zIndex: 2 }} />
-                {/* CI Range */}
-                <div style={{ position: "absolute", left: "43.1%", width: "24.4%", top: 4, bottom: 4, background: "rgba(194, 79, 113, 0.12)", border: "1px dashed #C24F71", borderRadius: 4 }} />
-              </div>
-            </div>
-          </div>
-
-          <div style={{ background: "rgba(45, 49, 54, 0.02)", border: "1.5px dashed rgba(45, 49, 54, 0.08)", borderRadius: 12, padding: "12px 14px", fontSize: 12, color: "#626B74", lineHeight: 1.4 }}>
-            <span style={{ color: "#C24F71", fontWeight: 800 }}>★ Integrity Note:</span> Inconclusive boundary (crosses 50% line). We treat this as a supporting analysis that respects experimental noise with high academic integrity rather than forcing a singular conclusion.
-          </div>
+          so we report it honestly, as a supporting result with ranges
         </motion.div>
       </div>
     </SlideShell>

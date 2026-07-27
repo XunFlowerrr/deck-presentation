@@ -19,7 +19,7 @@ import { DirectConfoundWeek4 } from '../slides/PIAA week4/DirectConfoundWeek4';
 import { WhyArtDifferentWeek4 } from '../slides/PIAA week4/WhyArtDifferentWeek4';
 import { TestingArtExplanationsWeek4 } from '../slides/PIAA week4/TestingArtExplanationsWeek4';
 import { WhichImagesBenefitWeek4 } from '../slides/PIAA week4/WhichImagesBenefitWeek4';
-import { CaseStudyWeek4 } from '../slides/PIAA week4/CaseStudyWeek4';
+// import { CaseStudyWeek4 } from '../slides/PIAA week4/CaseStudyWeek4';
 import { Qwen4BComparisonWeek4 } from '../slides/PIAA week4/Qwen4BComparisonWeek4';
 import { RedundancyTrendWeek4 } from '../slides/PIAA week4/RedundancyTrendWeek4';
 import { SummaryWeek4 } from '../slides/PIAA week4/SummaryWeek4';
@@ -50,7 +50,7 @@ const DirectConfoundSlide = defineSlide(DirectConfoundWeek4, 'DirectConfoundWeek
 const WhyArtDifferentSlide = defineSlide(WhyArtDifferentWeek4, 'WhyArtDifferentWeek5');
 const TestingArtExplanationsSlide = defineSlide(TestingArtExplanationsWeek4, 'TestingArtExplanationsWeek5');
 const WhichImagesBenefitSlide = defineSlide(WhichImagesBenefitWeek4, 'WhichImagesBenefitWeek5');
-const CaseStudySlide = defineSlide(CaseStudyWeek4, 'CaseStudyWeek5');
+// const CaseStudySlide = defineSlide(CaseStudyWeek4, 'CaseStudyWeek5');
 const Qwen4BComparisonSlide = defineSlide(Qwen4BComparisonWeek4, 'Qwen4BComparisonWeek5');
 const RedundancyTrendSlide = defineSlide(RedundancyTrendWeek4, 'RedundancyTrendWeek5');
 const SummarySlide = defineSlide(SummaryWeek4, 'SummaryWeek5');

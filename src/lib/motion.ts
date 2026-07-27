@@ -24,12 +24,12 @@ export const DURATION = {
 } as const;
 
 export const DISTANCE = {
-  xs: 12,
-  sm: 16,
-  md: 20,
-  lg: 32,
-  xl: 56,
-  xxl: 64,
+  xs: 4,
+  sm: 6,
+  md: 8,
+  lg: 12,
+  xl: 16,
+  xxl: 20,
 } as const;
 
 // ─────────────────────────────────────────────────────────────────────────────

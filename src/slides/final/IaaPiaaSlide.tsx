@@ -1,19 +1,19 @@
 import { motion } from "framer-motion";
-import { SlideHeader, SlideShell, PlotImage } from "../../components/index.ts";
+import { SlideHeader, SlideShell } from "../../components/index.ts";
 import { cardRise, fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, left: -100, size: 700, color: "194, 79, 113", opacity: 0.08 },
-  { bottom: -200, right: -100, size: 600, color: "194, 79, 113", opacity: 0.06 },
+  { top: -200, left: -100, size: 700, color: "24, 95, 165", opacity: 0.06 },
+  { bottom: -200, right: -100, size: 600, color: "29, 158, 117", opacity: 0.04 },
 ];
 
 export function IaaPiaaSlide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FCFAF6" }}>
+    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
       <SlideHeader
         label="Introduction"
-        title="What is "
-        highlight="IAA vs PIAA?"
+        title="Taste is "
+        highlight="Personal."
       />
 
       <div
@@ -21,119 +21,127 @@ export function IaaPiaaSlide() {
           flex: 1,
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
-          gap: 40,
+          gap: 32,
           alignItems: "center",
         }}
       >
-        {/* Left Column: Conceptual Breakdown */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          {/* IAA Card */}
-          <motion.div
-            {...cardRise(0.15)}
-            style={{
-              background: "#FFFFFF",
-              border: "1px solid rgba(45, 49, 54, 0.08)",
-              borderRadius: 18,
-              padding: "20px 24px",
-              boxShadow: "0 8px 30px rgba(45, 49, 54, 0.03)",
-            }}
-          >
-            <span style={{ fontSize: 11, fontWeight: 900, color: "#626B74", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-              Standard Paradigm
-            </span>
-            <h3 style={{ margin: "4px 0 8px", fontSize: 20, fontWeight: 900, color: "#2D3136" }}>
-              IAA: Image Aesthetic Assessment
-            </h3>
-            <p style={{ margin: 0, fontSize: 14, color: "#626B74", lineHeight: 1.5 }}>
-              Evaluates <strong>&ldquo;how beautiful is this image?&rdquo;</strong> by predicting a single consensus score representing the average population preference, ignoring individual taste variations.
-            </p>
-          </motion.div>
-
-          {/* PIAA Card */}
-          <motion.div
-            {...cardRise(0.3)}
-            style={{
-              background: "#FFFFFF",
-              border: "1px solid rgba(194, 79, 113, 0.15)",
-              borderRadius: 18,
-              padding: "20px 24px",
-              boxShadow: "0 10px 30px rgba(194, 79, 113, 0.04)",
-            }}
-          >
-            <span style={{ fontSize: 11, fontWeight: 900, color: "#C24F71", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-              Personalized Paradigm
-            </span>
-            <h3 style={{ margin: "4px 0 8px", fontSize: 20, fontWeight: 900, color: "#C24F71" }}>
-              PIAA: Personalized Aesthetic Assessment
-            </h3>
-            <p style={{ margin: 0, fontSize: 14, color: "#626B74", lineHeight: 1.5 }}>
-              Evaluates <strong>&ldquo;how much will this specific person like this image?&rdquo;</strong> by incorporating individual personalization to capture subjective and diverse aesthetic judgments.
-            </p>
-          </motion.div>
-
-          {/* Use cases card */}
-          <motion.div
-            {...fadeInUp(0.45)}
-            style={{
-              background: "#FFFFFF",
-              borderRadius: 14,
-              padding: "16px 20px",
-              border: "1px solid rgba(45, 49, 54, 0.08)",
-              boxShadow: "0 8px 30px rgba(45, 49, 54, 0.03)",
-            }}
-          >
-            <div style={{ fontSize: 13, fontWeight: 900, color: "#2D3136", marginBottom: 8 }}>
-              Real-world Applications
-            </div>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              {["Recommendation Systems", "Photo Curation", "AI Image Ranking"].map((app) => (
-                <span
-                  key={app}
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 700,
-                    background: "#FCFAF6",
-                    border: "1px solid rgba(45, 49, 54, 0.08)",
-                    padding: "4px 10px",
-                    borderRadius: 8,
-                    color: "#2D3136",
-                  }}
-                >
-                  {app}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Right Column: Image Demonstration */}
+        {/* Left Column: IAA (Generic) */}
         <motion.div
-          {...cardRise(0.25)}
+          {...cardRise(0.15)}
           style={{
+            background: "#FFFFFF",
+            border: "1px solid #EEEDEA",
+            borderRadius: 20,
+            padding: "28px",
+            boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
             display: "flex",
             flexDirection: "column",
+            gap: 20,
             alignItems: "center",
-            gap: 12,
           }}
         >
-          <PlotImage
-            src="/src/assets/images/general/piaa_sample.png"
-            alt="IAA vs PIAA ratings sample"
-            fallbackTitle="PIAA Disagreement Demonstration"
-            fallbackSubtitle="Single image rated differently by three distinct individuals"
-            fallbackStats={[
-              { label: "User A Score", value: "5.4 / 6.0", color: "#C24F71" },
-              { label: "User B Score", value: "3.2 / 6.0", color: "#2D3136" },
-              { label: "User C Score", value: "1.5 / 6.0", color: "#626B74" },
-            ]}
-            style={{ border: "1px solid rgba(45, 49, 54, 0.08)", boxShadow: "0 12px 40px rgba(45, 49, 54, 0.04)" }}
-            maxHeight={440}
-          />
-          <span style={{ fontSize: 13, color: "#626B74", fontWeight: 700, textAlign: "center" }}>
-            Figure: Single image receives divergent ratings based on individual aesthetic styles
-          </span>
+          <div style={{ alignSelf: "flex-start" }}>
+            <span style={{ fontSize: 12, fontWeight: 900, color: "#888888", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              Standard Paradigm
+            </span>
+            <h3 style={{ margin: "4px 0 0", fontSize: 22, fontWeight: 800, color: "#222222" }}>
+              IAA: Image Aesthetic Assessment
+            </h3>
+          </div>
+
+          {/* IAA Concept Image & Single Rating */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, width: "100%" }}>
+            <img
+              src="/case-study/helps-3099.jpg"
+              alt="Consensus Image"
+              style={{ width: "100%", height: 180, objectFit: "cover", borderRadius: 12, filter: "grayscale(100%)", opacity: 0.8 }}
+            />
+            <div style={{ display: "flex", alignItems: "center", gap: 12, background: "#EEEDEA", padding: "10px 24px", borderRadius: 12, border: "1px solid #EEEDEA" }}>
+              <span style={{ fontSize: 24, fontWeight: 900, color: "#222222" }}>3.5 / 5.0</span>
+            </div>
+            <span style={{ fontSize: 14, color: "#888888", fontWeight: 700 }}>
+              &ldquo;One score for everyone&rdquo;
+            </span>
+          </div>
+        </motion.div>
+
+        {/* Right Column: PIAA (Personalized) */}
+        <motion.div
+          {...cardRise(0.3)}
+          style={{
+            background: "#FFFFFF",
+            border: "1px solid rgba(24, 95, 165, 0.12)",
+            borderRadius: 20,
+            padding: "28px",
+            boxShadow: "0 10px 30px rgba(24, 95, 165, 0.02)",
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+            alignItems: "center",
+          }}
+        >
+          <div style={{ alignSelf: "flex-start" }}>
+            <span style={{ fontSize: 12, fontWeight: 900, color: "#185FA5", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              Personalized Paradigm
+            </span>
+            <h3 style={{ margin: "4px 0 0", fontSize: 22, fontWeight: 800, color: "#185FA5" }}>
+              PIAA: Personalized Aesthetic Assessment
+            </h3>
+          </div>
+
+          {/* PIAA Concept Image & Personalized Ratings */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, width: "100%" }}>
+            <img
+              src="/case-study/helps-3099.jpg"
+              alt="Personalized Image"
+              style={{ width: "100%", height: 180, objectFit: "cover", borderRadius: 12 }}
+            />
+            <div style={{ display: "flex", gap: 12, justifyContent: "center", width: "100%" }}>
+              <div style={{ background: "rgba(29, 158, 117, 0.06)", border: "1px solid rgba(29, 158, 117, 0.2)", borderRadius: 10, padding: "6px 12px", textAlign: "center", flex: 1 }}>
+                <div style={{ fontSize: 11, color: "#888888", fontWeight: 700 }}>User A</div>
+                <div style={{ fontSize: 16, fontWeight: 900, color: "#1D9E75", marginTop: 2 }}>5.0 / 5.0</div>
+              </div>
+              <div style={{ background: "rgba(24, 95, 165, 0.06)", border: "1px solid rgba(24, 95, 165, 0.2)", borderRadius: 10, padding: "6px 12px", textAlign: "center", flex: 1 }}>
+                <div style={{ fontSize: 11, color: "#888888", fontWeight: 700 }}>User B</div>
+                <div style={{ fontSize: 16, fontWeight: 900, color: "#185FA5", marginTop: 2 }}>4.0 / 5.0</div>
+              </div>
+              <div style={{ background: "rgba(186, 117, 23, 0.06)", border: "1px solid rgba(186, 117, 23, 0.2)", borderRadius: 10, padding: "6px 12px", textAlign: "center", flex: 1 }}>
+                <div style={{ fontSize: 11, color: "#888888", fontWeight: 700 }}>User C</div>
+                <div style={{ fontSize: 16, fontWeight: 900, color: "#BA7517", marginTop: 2 }}>2.0 / 5.0</div>
+              </div>
+            </div>
+            <span style={{ fontSize: 14, color: "#1D9E75", fontWeight: 800 }}>
+              &ldquo;How much do YOU like it?&rdquo;
+            </span>
+          </div>
         </motion.div>
       </div>
+
+      {/* Bottom use cases ribbon */}
+      <motion.div
+        {...fadeInUp(0.45)}
+        style={{
+          marginTop: 24,
+          background: "#EEEDEA",
+          border: "1px solid #EEEDEA",
+          borderRadius: 12,
+          padding: "10px 16px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 16,
+          fontSize: 14,
+          fontWeight: 700,
+          color: "#222222",
+        }}
+      >
+        <span style={{ color: "#185FA5", fontWeight: 900 }}>Used in:</span>
+        <span>Photo Applications</span>
+        <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#888888" }} />
+        <span>Recommendation Systems</span>
+        <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#888888" }} />
+        <span>Ranking AI-Generated Images</span>
+      </motion.div>
     </SlideShell>
   );
 }

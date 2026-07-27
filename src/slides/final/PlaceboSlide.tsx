@@ -1,19 +1,19 @@
 import { motion } from "framer-motion";
 import { SlideHeader, SlideShell, PlotImage } from "../../components/index.ts";
-import { cardRise, fadeInUp } from "../../lib/motion.ts";
+import { cardRise } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, left: -100, size: 700, color: "194, 79, 113", opacity: 0.08 },
-  { bottom: -200, right: -100, size: 600, color: "194, 79, 113", opacity: 0.06 },
+  { top: -200, left: -100, size: 700, color: "24, 95, 165", opacity: 0.05 },
+  { bottom: -200, right: -100, size: 600, color: "29, 158, 117", opacity: 0.04 },
 ];
 
 export function PlaceboSlide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FCFAF6" }}>
+    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
       <SlideHeader
         label="Block 5 — Placebo Control"
-        title="Finding 9: Placebo Control Confirms "
-        highlight="Real Semantic Gain."
+        title="Validation: "
+        highlight="Placebo Control is Random Noise."
       />
 
       <div
@@ -26,57 +26,67 @@ export function PlaceboSlide() {
         }}
       >
         {/* Left Column: Placebo description and controls */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          {/* Main Gain Card */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          {/* Mini comparison table */}
           <motion.div
             {...cardRise(0.15)}
             style={{
               background: "#FFFFFF",
-              border: "1px solid rgba(194, 79, 113, 0.15)",
+              border: "1px solid #EEEDEA",
               borderRadius: 20,
-              padding: "20px 24px",
-              boxShadow: "0 10px 30px rgba(194, 79, 113, 0.04)",
+              padding: "24px 28px",
+              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
               display: "flex",
-              alignItems: "center",
-              gap: 20,
+              flexDirection: "column",
+              gap: 16,
             }}
           >
-            <div style={{ fontSize: 44, fontWeight: 955, color: "#C24F71", lineHeight: 1 }}>
-              +0.026
+            <div style={{ fontSize: 13, fontWeight: 900, color: "#222222", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              Control Experiment Results (CCC)
             </div>
-            <div>
-              <h3 style={{ margin: 0, fontSize: 18, fontWeight: 900, color: "#2D3136" }}>
-                Emotion Semantics Advantage
-              </h3>
-              <p style={{ margin: "4px 0 0", fontSize: 13, color: "#626B74", fontWeight: 700 }}>
-                Absolute gain difference when comparing real emotional features against PCA baseline.
-              </p>
-            </div>
+
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+              <tbody>
+                {/* Ours Row */}
+                <tr style={{ background: "rgba(29, 158, 117, 0.06)", border: "1px solid rgba(29, 158, 117, 0.2)", borderRadius: 10 }}>
+                  <td style={{ padding: "12px 16px", fontSize: 15, fontWeight: 800, color: "#222222" }}>
+                    Ours (Real Emotions)
+                  </td>
+                  <td style={{ padding: "12px 16px", fontSize: 18, fontWeight: 900, color: "#1D9E75", textAlign: "right" }}>
+                    0.380
+                  </td>
+                </tr>
+                {/* Space between rows */}
+                <tr style={{ height: 10 }}></tr>
+                {/* Placebo Row */}
+                <tr style={{ background: "rgba(220, 38, 38, 0.04)", border: "1px dashed rgba(220, 38, 38, 0.2)", borderRadius: 10 }}>
+                  <td style={{ padding: "12px 16px", fontSize: 15, fontWeight: 700, color: "#888888" }}>
+                    Placebo (Random Noise / PCA)
+                  </td>
+                  <td style={{ padding: "12px 16px", fontSize: 18, fontWeight: 900, color: "#DC2626", textAlign: "right" }}>
+                    0.160
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </motion.div>
 
-          {/* Placebo Controls Description */}
+          {/* Caption */}
           <motion.div
             {...cardRise(0.3)}
             style={{
               background: "#FFFFFF",
-              border: "1px solid rgba(45, 49, 54, 0.08)",
-              borderRadius: 18,
-              padding: "20px 24px",
-              boxShadow: "0 8px 30px rgba(45, 49, 54, 0.03)",
-              display: "flex",
-              flexDirection: "column",
-              gap: 12,
+              border: "1px solid rgba(24, 95, 165, 0.15)",
+              borderRadius: 16,
+              padding: "16px 24px",
+              fontSize: 16,
+              color: "#222222",
+              lineHeight: 1.5,
+              fontWeight: 700,
+              boxShadow: "0 8px 24px rgba(24, 95, 165, 0.02)",
             }}
           >
-            <div style={{ fontSize: 12, fontWeight: 900, color: "#C24F71", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-              Answering the Skeptic&apos;s Question
-            </div>
-            <div style={{ fontSize: 14, fontWeight: 800, color: "#2D3136", lineHeight: 1.4 }}>
-              &ldquo;Does the accuracy improvement come from actual emotions, or just from adding an intermediate bottleneck layer?&rdquo;
-            </div>
-            <div style={{ fontSize: 12.5, color: "#626B74" }}>
-              Replacing real emotion predictions with <strong>PCA dimensions or random numbers</strong> reduces personalization gains to zero. This comparison proves that <strong>actual emotional semantics</strong> drive the preference prediction.
-            </div>
+            Ours: 0.380, Placebo: 0.160. Emotion semantics are real.
           </motion.div>
         </div>
 
@@ -86,13 +96,13 @@ export function PlaceboSlide() {
             src="/output/plots/three_tests_diagram.png"
             alt="Placebo control comparison plot"
             fallbackTitle="Placebo Controls Performance"
-            fallbackSubtitle="Personalization gains drop to zero when real emotion data is replaced by shuffles/noise"
+            fallbackSubtitle="Personalization gains drop when real emotion data is replaced by shuffles or noise"
             fallbackStats={[
-              { label: "Real Semantics Gain", value: "+0.026", color: "#C24F71" },
-              { label: "Shuffled/Random", value: "≈ 0.000", color: "#2D3136" },
-              { label: "PCA (No emotion)", value: "Lower limit", color: "#C24F71" },
+              { label: "Ours (Real)", value: "0.380", color: "#1D9E75" },
+              { label: "Placebo (Noise)", value: "0.160", color: "#DC2626" },
+              { label: "Difference", value: "+0.220", color: "#BA7517" },
             ]}
-            style={{ border: "1px solid rgba(45, 49, 54, 0.08)", boxShadow: "0 12px 40px rgba(45, 49, 54, 0.04)" }}
+            style={{ border: "1px solid #EEEDEA", boxShadow: "0 12px 40px rgba(0, 0, 0, 0.02)" }}
             maxHeight={360}
           />
         </motion.div>

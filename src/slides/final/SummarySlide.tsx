@@ -3,50 +3,44 @@ import { SlideHeader, SlideShell } from "../../components/index.ts";
 import { cardRise, fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, left: -100, size: 700, color: "194, 79, 113", opacity: 0.08 },
-  { bottom: -200, right: -100, size: 600, color: "194, 79, 113", opacity: 0.06 },
+  { top: -200, left: -100, size: 700, color: "24, 95, 165", opacity: 0.05 },
+  { bottom: -200, right: -100, size: 600, color: "29, 158, 117", opacity: 0.04 },
 ];
 
 const TAKE_HOMES = [
   {
     num: "01",
-    title: "Interpretable Pipeline",
-    desc: "Intermediate emotional representations (7 dimensions) enable readable, personalized aesthetic weight formulas.",
-    color: "#C24F71",
+    label: "Predict",
+    title: "Emotion Mediation",
+    desc: "Achieve comparable personalization accuracy to standard SOTA methods while safeguarding user privacy (no intrusive personality surveys required).",
+    color: "#185FA5",
+    glow: "rgba(24, 95, 165, 0.04)",
   },
   {
     num: "02",
-    title: "Comparable & Traits-Free",
-    desc: "Achieves accuracy comparable to state-of-the-art baselines without requiring intrusive user personality surveys.",
-    color: "#2D3136",
+    label: "Understand",
+    title: "Transparent Rationale",
+    desc: "Cleanly decompose and analyze individual aesthetic differences into shared perception vs. subjective personal weighting formulas.",
+    color: "#1D9E75",
+    glow: "rgba(29, 158, 117, 0.04)",
   },
   {
     num: "03",
-    title: "Predictability Driven",
-    desc: "Personalization gains scale in direct proportion to how accurately the system predicts the target user's emotions.",
-    color: "#C24F71",
-  },
-  {
-    num: "04",
-    title: "Ceilings & Cold-Start",
-    desc: "Establishes a realistic ceiling of 0.639 (reaching 59%) and demonstrates that emotion mediation resolves cold-start barriers.",
-    color: "#2D3136",
-  },
-  {
-    num: "05",
-    title: "Semantic Reality",
-    desc: "Placebo control tests confirm the +0.026 gain stems from real emotional semantics, not structural bottleneck artifacts.",
-    color: "#C24F71",
+    label: "Deploy",
+    title: "Cold-Start & Ceiling",
+    desc: "Requires 50 user ratings to outperform population-level baselines, aiming for a realistic temporal ceiling of 0.64.",
+    color: "#BA7517",
+    glow: "rgba(186, 117, 23, 0.04)",
   },
 ];
 
 export function SummarySlide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FCFAF6" }}>
+    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
       <SlideHeader
         label="Conclusion"
-        title="Summary: "
-        highlight="5 Take-Home Messages."
+        title="Takeaways"
+        highlight=""
       />
 
       <div
@@ -56,14 +50,17 @@ export function SummarySlide() {
           flexDirection: "column",
           justifyContent: "center",
           gap: 32,
+          maxWidth: 960,
+          margin: "0 auto",
+          width: "100%",
         }}
       >
-        {/* Sequence of 5 summaries */}
+        {/* Sequence of 3 summaries */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
-            gap: 14,
+            gridTemplateColumns: "1fr 1fr 1fr",
+            gap: 20,
           }}
         >
           {TAKE_HOMES.map((item, idx) => (
@@ -72,13 +69,13 @@ export function SummarySlide() {
               {...cardRise(0.1 + idx * 0.08)}
               style={{
                 background: "#FFFFFF",
-                border: "1px solid rgba(45, 49, 54, 0.08)",
-                borderRadius: 18,
-                padding: "20px 16px",
-                boxShadow: "0 8px 30px rgba(45, 49, 54, 0.03)",
+                border: `1px solid #EEEDEA`,
+                borderRadius: 20,
+                padding: "28px 24px",
+                boxShadow: `0 8px 30px ${item.glow}`,
                 display: "flex",
                 flexDirection: "column",
-                gap: 12,
+                gap: 16,
                 minHeight: 260,
                 position: "relative",
                 overflow: "hidden",
@@ -87,49 +84,52 @@ export function SummarySlide() {
               {/* Top highlight bar */}
               <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: item.color }} />
 
-              <div style={{ display: "flex", alignItems: "center", gap: 8, zIndex: 1 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, zIndex: 1 }}>
                 <span
                   style={{
-                    fontSize: 11,
+                    fontSize: 12,
                     fontWeight: 900,
                     color: "#FFFFFF",
                     background: item.color,
                     padding: "2px 8px",
                     borderRadius: 6,
-                    border: "1px solid rgba(45, 49, 54, 0.08)",
                   }}
                 >
                   {item.num}
                 </span>
-                <h4 style={{ margin: 0, fontSize: 13.5, fontWeight: 900, color: "#2D3136", lineHeight: 1.2 }}>
-                  {item.title}
-                </h4>
+                <span style={{ fontSize: 13, fontWeight: 900, color: item.color, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  {item.label}
+                </span>
               </div>
 
-              <p style={{ margin: 0, fontSize: 12, color: "#626B74", lineHeight: 1.45, zIndex: 1 }}>
+              <h4 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#222222", lineHeight: 1.2, zIndex: 1 }}>
+                {item.title}
+              </h4>
+
+              <p style={{ margin: 0, fontSize: 14, color: "#888888", lineHeight: 1.5, zIndex: 1, fontWeight: 500 }}>
                 {item.desc}
               </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Concluding sentence */}
+        {/* Concluding publication statement */}
         <motion.div
-          {...fadeInUp(0.6)}
+          {...fadeInUp(0.4)}
           style={{
             alignSelf: "center",
             background: "#FFFFFF",
-            border: "1px solid rgba(194, 79, 113, 0.15)",
-            borderRadius: 16,
-            padding: "16px 36px",
-            fontSize: 20,
-            fontWeight: 900,
-            color: "#2D3136",
+            border: "1px solid #EEEDEA",
+            borderRadius: 14,
+            padding: "12px 28px",
+            fontSize: 14,
+            fontWeight: 800,
+            color: "#888888",
             textAlign: "center",
-            boxShadow: "0 8px 24px rgba(194, 79, 113, 0.04)",
+            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.01)",
           }}
         >
-          &ldquo;Not a new SOTA, but an explanation of <span style={{ color: "#C24F71" }}>when, why, and how far</span>.&rdquo;
+          Publication Plan: <span style={{ color: "#185FA5" }}>Preparing conference submission for ACMMM / CVPR</span>
         </motion.div>
       </div>
     </SlideShell>

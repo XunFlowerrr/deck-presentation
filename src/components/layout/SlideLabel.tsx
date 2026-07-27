@@ -22,8 +22,8 @@ export function SlideLabel({ label, style }: SlideLabelProps) {
           width: 8,
           height: 8,
           borderRadius: "50%",
-          background: "linear-gradient(135deg, #C24F71, #E390A4)",
-          boxShadow: "0 0 6px rgba(194, 79, 113, 0.3)",
+          background: "linear-gradient(135deg, #185FA5, #1D9E75)",
+          boxShadow: "0 0 8px rgba(24, 95, 165, 0.4)",
           flexShrink: 0,
         }}
       />
@@ -32,7 +32,7 @@ export function SlideLabel({ label, style }: SlideLabelProps) {
           fontSize: 17,
           letterSpacing: "0.2em",
           textTransform: "uppercase",
-          color: "#C24F71",
+          color: "#185FA5",
           fontWeight: 700,
         }}
       >

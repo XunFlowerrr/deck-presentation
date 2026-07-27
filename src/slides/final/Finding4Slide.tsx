@@ -3,17 +3,17 @@ import { SlideHeader, SlideShell, PlotImage } from "../../components/index.ts";
 import { cardRise, fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
-  { top: -200, left: -100, size: 700, color: "194, 79, 113", opacity: 0.08 },
-  { bottom: -200, right: -100, size: 600, color: "194, 79, 113", opacity: 0.06 },
+  { top: -200, left: -100, size: 700, color: "24, 95, 165", opacity: 0.05 },
+  { bottom: -200, right: -100, size: 600, color: "29, 158, 117", opacity: 0.04 },
 ];
 
 export function Finding4Slide() {
   return (
-    <SlideShell glows={GLOWS} contentStyle={{ background: "#FCFAF6" }}>
+    <SlideShell glows={GLOWS} contentStyle={{ background: "#FAFAF8" }}>
       <SlideHeader
         label="Block 3 — Mechanism Analysis"
-        title="Finding 4: Expected Gain depends on "
-        highlight="Emotion Accuracy (emo_r)."
+        title="It helps more "
+        highlight="When We Read Emotions Well."
       />
 
       <div
@@ -32,69 +32,93 @@ export function Finding4Slide() {
             {...cardRise(0.15)}
             style={{
               background: "#FFFFFF",
-              border: "1px solid rgba(45, 49, 54, 0.08)",
+              border: "1px solid #EEEDEA",
               borderRadius: 18,
               padding: "20px 24px",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
               gap: 20,
-              boxShadow: "0 8px 30px rgba(45, 49, 54, 0.03)",
+              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
             }}
           >
             <div>
-              <div style={{ fontSize: 11, fontWeight: 900, color: "#C24F71", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              <div style={{ fontSize: 11, fontWeight: 900, color: "#185FA5", textTransform: "uppercase", letterSpacing: "0.08em" }}>
                 Core Driving Factor
               </div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: "#2D3136", marginTop: 4 }}>
+              <div style={{ fontSize: 16, fontWeight: 800, color: "#222222", marginTop: 4 }}>
                 The more accurately the system predicts a specific user&apos;s emotions, the higher the aesthetic accuracy gain.
               </div>
             </div>
-            <div style={{ background: "#FCFAF6", border: "1px solid rgba(45, 49, 54, 0.08)", borderRadius: 12, padding: "8px 16px", textAlign: "center", flexShrink: 0 }}>
-              <div style={{ fontSize: 11, color: "#6B7280", fontWeight: 700 }}>Spearman r</div>
-              <div style={{ fontSize: 20, fontWeight: 955, color: "#C24F71", marginTop: 2 }}>+0.273</div>
+            <div style={{ background: "#FAFAF8", border: "1px solid #EEEDEA", borderRadius: 12, padding: "8px 16px", textAlign: "center", flexShrink: 0 }}>
+              <div style={{ fontSize: 11, color: "#888888", fontWeight: 700 }}>Spearman r</div>
+              <div style={{ fontSize: 20, fontWeight: 900, color: "#BA7517", marginTop: 2 }}>+0.273</div>
             </div>
           </motion.div>
 
-          {/* Quartiles Comparison */}
+          {/* Quartiles Comparison (Teal Gradient Bars) */}
           <motion.div
             {...cardRise(0.3)}
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 16,
+              background: "#FFFFFF",
+              border: "1px solid #EEEDEA",
+              borderRadius: 18,
+              padding: "20px 24px",
+              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
+              display: "flex",
+              flexDirection: "column",
+              gap: 12,
             }}
           >
-            <div style={{ background: "#FFFFFF", border: "1px solid rgba(45, 49, 54, 0.08)", borderRadius: 14, padding: "16px", boxShadow: "0 8px 30px rgba(45, 49, 54, 0.02)" }}>
-              <div style={{ fontSize: 11, color: "#626B74", fontWeight: 800 }}>Worst Quartile Gain</div>
-              <div style={{ fontSize: 26, fontWeight: 955, color: "#2D3136", marginTop: 4 }}>+0.041</div>
-              <div style={{ fontSize: 11, color: "#626B74", marginTop: 2, fontWeight: 600 }}>Low emotion accuracy</div>
+            <div style={{ fontSize: 12, fontWeight: 900, color: "#888888", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              Emotion Predictability ($emo\_r$) Quartile Gain
             </div>
-
-            <div style={{ background: "#FFFFFF", border: "1px solid rgba(194, 79, 113, 0.15)", borderRadius: 14, padding: "16px", boxShadow: "0 10px 30px rgba(194, 79, 113, 0.03)" }}>
-              <div style={{ fontSize: 11, color: "#626B74", fontWeight: 800 }}>Best Quartile Gain</div>
-              <div style={{ fontSize: 26, fontWeight: 955, color: "#C24F71", marginTop: 4 }}>+0.078</div>
-              <div style={{ fontSize: 11, color: "#626B74", marginTop: 2, fontWeight: 600 }}>High emotion accuracy</div>
+            
+            {/* Horizontal gradient steps */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8, height: 60, alignItems: "flex-end", marginTop: 8 }}>
+              {/* Q1 */}
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#888888" }}>+0.041</span>
+                <div style={{ width: "100%", height: 20, background: "rgba(29, 158, 117, 0.2)", borderRadius: 4 }} />
+                <span style={{ fontSize: 9, color: "#888888", fontWeight: 700 }}>Q1 (Low)</span>
+              </div>
+              {/* Q2 */}
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#888888" }}>+0.049</span>
+                <div style={{ width: "100%", height: 28, background: "rgba(29, 158, 117, 0.4)", borderRadius: 4 }} />
+                <span style={{ fontSize: 9, color: "#888888", fontWeight: 700 }}>Q2</span>
+              </div>
+              {/* Q3 */}
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#888888" }}>+0.060</span>
+                <div style={{ width: "100%", height: 38, background: "rgba(29, 158, 117, 0.7)", borderRadius: 4 }} />
+                <span style={{ fontSize: 9, color: "#888888", fontWeight: 700 }}>Q3</span>
+              </div>
+              {/* Q4 */}
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                <span style={{ fontSize: 12, fontWeight: 900, color: "#1D9E75" }}>+0.078</span>
+                <div style={{ width: "100%", height: 48, background: "#1D9E75", borderRadius: 4, boxShadow: "0 2px 6px rgba(29, 158, 117, 0.3)" }} />
+                <span style={{ fontSize: 9, color: "#1D9E75", fontWeight: 800 }}>Q4 (High)</span>
+              </div>
             </div>
           </motion.div>
 
-          {/* Confound card - Simplified */}
+          {/* Key takeaway */}
           <motion.div
             {...fadeInUp(0.45)}
             style={{
               background: "#FFFFFF",
-              border: "1px solid rgba(194, 79, 113, 0.15)",
+              border: "1px solid rgba(29, 158, 117, 0.15)",
               borderRadius: 14,
               padding: "16px 20px",
               fontSize: 14,
-              color: "#2D3136",
+              color: "#222222",
               lineHeight: 1.5,
               fontWeight: 700,
-              boxShadow: "0 8px 24px rgba(194, 79, 113, 0.04)",
+              boxShadow: "0 8px 24px rgba(29, 158, 117, 0.02)",
             }}
           >
-            <strong style={{ color: "#C24F71" }}>Statistical Confound Check: </strong>
-            We checked if this was just a statistical side-effect, but the tests confirmed that predicting emotions accurately is the only thing that matters.
+            one clean factor; the rival explanation was a confound
           </motion.div>
         </div>
 
@@ -106,11 +130,11 @@ export function Finding4Slide() {
             fallbackTitle="Gain vs Emotion Predictability (emo_r)"
             fallbackSubtitle="Delta (Hybrid - Direct) scales with emotion prediction accuracy (Spearman +0.273)"
             fallbackStats={[
-              { label: "Spearman r", value: "+0.273", color: "#C24F71" },
-              { label: "Q1 Gain", value: "+0.041", color: "#2D3136" },
-              { label: "Q4 Gain", value: "+0.078", color: "#C24F71" },
+              { label: "Spearman r", value: "+0.273", color: "#BA7517" },
+              { label: "Q1 Gain", value: "+0.041", color: "#888888" },
+              { label: "Q4 Gain", value: "+0.078", color: "#1D9E75" },
             ]}
-            style={{ border: "1px solid rgba(45, 49, 54, 0.08)", boxShadow: "0 12px 40px rgba(45, 49, 54, 0.04)" }}
+            style={{ border: "1px solid #EEEDEA", boxShadow: "0 12px 40px rgba(0, 0, 0, 0.02)" }}
             maxHeight={360}
           />
         </motion.div>

@@ -83,7 +83,7 @@ export default function App() {
             sections={sections}
             current={currentSlideNum}
             variant="dots"
-            activeColor="#D946EF"
+            activeColor="#185FA5"
             baseColor="rgba(0,0,0,0.1)"
             thickness={6}
             gap={6}

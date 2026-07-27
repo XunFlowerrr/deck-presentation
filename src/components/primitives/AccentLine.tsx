@@ -15,7 +15,7 @@ export function AccentLine({ delay = 0, width = 140, style }: AccentLineProps) {
       style={{
         height: 3,
         width,
-        background: "linear-gradient(90deg, #C24F71, #E390A4)",
+        background: "linear-gradient(90deg, #185FA5, #1D9E75)",
         borderRadius: 2,
         transformOrigin: "left center",
         ...style,
