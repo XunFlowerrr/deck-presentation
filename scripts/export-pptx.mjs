@@ -34,7 +34,7 @@ import {
   hidePresenterChrome,
 } from "./lib/browser.mjs";
 import { extractSlidePrimitives } from "./lib/pptx-extract.mjs";
-import { createPresentation, emitSlide } from "./lib/pptx-emit.mjs";
+import { createPresentation, emitSlide, setUseWeightFaces } from "./lib/pptx-emit.mjs";
 import overrides from "./pptx-overrides.js";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -50,6 +50,11 @@ const ONLY = flag("only")
   ?.split(",")
   .map((n) => Number(n.trim()) - 1)
   .filter((n) => Number.isInteger(n) && n >= 0);
+
+// Weight-specific families ("Inter Black") are used by default. Pass
+// --no-weight-faces on a machine that only has Regular + Bold installed,
+// where naming a missing face would fall back to a wholly different font.
+setUseWeightFaces(!args.includes("--no-weight-faces"));
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 

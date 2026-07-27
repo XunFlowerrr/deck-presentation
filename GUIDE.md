@@ -272,12 +272,22 @@ It works because the canvas is a fixed 1920x1080, which maps exactly onto a 13.3
 - `scripts/lib/browser.mjs` — Chrome discovery, dev-server probing, animation settling
 - `scripts/pptx-overrides.js` — per-slide escape hatches, keyed by `slideId`
 
-Flags: `--debug` dumps the extracted primitives per slide to `scripts/.pptx-debug/`, `--only=3,7` exports selected slides, `--jpeg-quality=90` controls plot image compression.
+Flags: `--debug` dumps the extracted primitives per slide to `scripts/.pptx-debug/`, `--only=3,7` exports selected slides, `--jpeg-quality=90` controls plot image compression, `--no-weight-faces` disables weight-specific font families (see below).
+
+#### Fonts are resolved in the page, not guessed
+
+This is the part that is easy to get wrong. `SlideShell` sets `font-family: system-ui`, which Chrome resolves to **Segoe UI** on Windows — while the tracker, which lives outside `SlideShell`, inherits **Inter** from `index.css`. PowerPoint understands neither `system-ui` nor a font-weight axis.
+
+So the extractor resolves fonts *inside the browser*, where Chrome's own matching is the authority:
+- generic keywords (`system-ui`, `sans-serif`, ...) are expanded to real families and the first **installed** one wins;
+- weights other than 400/700 look for the weight-specific family (`Segoe UI Black` for `font-weight: 900`) and only use it if it is actually installed — Windows ships `Segoe UI Semibold` but no `Segoe UI Medium`.
+
+Naming the wrong family is not a subtle error: exporting Segoe UI text as Inter made every line roughly 4.5% wide, which showed up as `SlideHeader`'s black title colliding with the `GradientText` picture beside it.
 
 **What does not survive the conversion:**
-- **Fonts are referenced by name.** Inter and Noto Sans Thai must be installed on the machine opening the file, or PowerPoint substitutes them and text shifts.
+- **Fonts are referenced by name.** The faces resolved at export time must also be installed on the machine opening the file, or PowerPoint substitutes and text shifts. Use `--no-weight-faces` if the target machine only has Regular + Bold.
 - **Gradient headlines (`GradientText`), inline SVG icons, and `SlideShell` glow blobs become pictures** — native picture objects, but not editable as text or vector.
-- **Small body text runs a few percent wider** than in Chrome. PowerPoint's text metrics are not Chrome's; the exporter pins each line where the browser put it, but the line itself can render slightly long.
+- Text still drifts a few pixels per line; PowerPoint's metrics are not Chrome's. Each line is pinned where the browser put it, so drift cannot accumulate down a paragraph.
 - Multi-layer `box-shadow` collapses to its first layer.
 - The result is precisely-positioned free-floating boxes, not semantic bulleted placeholders.
 

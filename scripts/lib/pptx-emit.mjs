@@ -86,6 +86,29 @@ function primaryFontFace(stack) {
   return first;
 }
 
+let useWeightFaces = true;
+
+/** Disable weight-specific family names (for machines with only Regular+Bold). */
+export function setUseWeightFaces(enabled) {
+  useWeightFaces = enabled;
+}
+
+/**
+ * The extractor resolves fonts in the page, where Chrome's own matching decides
+ * which family `system-ui` and friends actually mean and which weight-specific
+ * faces exist. Fall back to parsing the stack only for primitives that predate
+ * that (or when weight faces are switched off).
+ */
+function resolveFace(p) {
+  if (p.fontFace && useWeightFaces) {
+    return { fontFace: p.fontFace, bold: p.bold ?? false };
+  }
+  return {
+    fontFace: p.fontFaceBase ?? primaryFontFace(p.fontFamily),
+    bold: (p.fontWeight ?? 400) >= 600,
+  };
+}
+
 function emitRect(slide, pptx, p) {
   const fill = fillProps(parseColor(p.background));
   const shadow = shadowProps(p.shadow);
@@ -149,23 +172,19 @@ function emitRect(slide, pptx, p) {
 /** Per-run character formatting, shared by single- and multi-run text boxes. */
 function runOptions(p) {
   const color = parseColor(p.color) ?? { hex: "222222", alpha: 1 };
+  const { fontFace, bold } = resolveFace(p);
   return {
-    fontFace: primaryFontFace(p.fontFamily),
+    fontFace,
     fontSize: Math.round(points(p.fontSizePx) * 100) / 100,
-    bold: (p.fontWeight ?? 400) >= 600,
+    bold,
     italic: p.fontStyle === "italic",
     underline: p.underline ? { style: "sng" } : undefined,
     strike: p.strike ? "sngStrike" : undefined,
     color: color.hex,
     transparency: color.alpha < 1 ? transparency(color.alpha) : undefined,
-    // A non-zero charSpacing is what makes pptxgenjs emit kern="0" on the run,
-    // which turns kerning on at every size. Without it the run inherits the
-    // theme default kern="1200" — PowerPoint then skips kerning below 12pt and
-    // sets all our body text noticeably wider than Chrome does. 0.001pt rounds
-    // to spc="0", so this buys kerning without shifting anything.
     charSpacing: p.letterSpacingPx
       ? Math.round(points(p.letterSpacingPx) * 100) / 100
-      : 0.001,
+      : undefined,
   };
 }
 
@@ -257,7 +276,15 @@ function emitText(slide, p) {
     w: inches(w),
     h: inches(p.h),
     align,
-    valign: "middle", // matches CSS half-leading centering within the line box
+    // The extracted rect is the font box exactly: ascent + descent, the same
+    // metrics PowerPoint reads out of the font file. Anchoring to the top and
+    // pinning line spacing to that height puts the baseline where Chrome put
+    // it. Letting PowerPoint pick the spacing instead (valign middle, default
+    // spacing) centres a slug ~1.2x taller than the box and floats the
+    // baseline high — visible where text sits beside a rasterized run, as in
+    // SlideHeader's black title next to its GradientText half.
+    valign: "top",
+    lineSpacing: Math.round(points(p.h) * 100) / 100,
     margin: 0,
     wrap: false,
     isTextBox: true,
