@@ -76,10 +76,9 @@ export function ClosingDividerSlide() {
   return (
     <SectionDividerSlide
       badge="CLOSING"
-      title="Summary & Outro"
-      highlight="Takeaways & Future Work"
-      subtitle="Wrapping up research contributions and key theoretical insights"
-      topics={["4 Key Takeaways", "Context-Dynamic Weighting", "Active Learning Querying", "Q&A Discussion"]}
+      title="Summary"
+      highlight="&amp; Future Work"
+      subtitle="Key takeaways, future directions, and Q&amp;A discussion"
     />
   );
 }
