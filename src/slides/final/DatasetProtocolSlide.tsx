@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SlideHeader, SlideShell } from "../../components/index.ts";
-import { cardRise } from "../../lib/motion.ts";
+import { cardRise, fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
   { top: -200, left: -100, size: 700, color: "194, 24, 91", opacity: 0.05 },
@@ -12,8 +12,8 @@ export function DatasetProtocolSlide() {
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Block 2 — Dataset & Protocol"
-        title="DATASET: "
-        highlight="XPASS-Vis"
+        title="Deep enough per person, "
+        highlight="and leak-free"
         accentWidth={100}
       />
 
@@ -21,153 +21,144 @@ export function DatasetProtocolSlide() {
         style={{
           flex: 1,
           display: "grid",
-          gridTemplateColumns: "1.05fr 0.95fr",
-          gap: 32,
+          gridTemplateColumns: "1fr 1fr",
+          gap: 40,
           alignItems: "center",
         }}
       >
-        {/* Left Column: 2x2 Stats Grid Card */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          <motion.div
-            {...cardRise(0.15)}
-            style={{
-              background: "#FFFFFF",
-              border: "1px solid #EEEDEA",
-              borderRadius: 20,
-              padding: "24px 28px",
-              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 24,
-            }}
-          >
-            {/* Stat 1: 129 People */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-                <span style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>129</span>
-              </div>
-              <span style={{ fontSize: 14, fontWeight: 850, color: "#4A1533" }}>People (Evaluators)</span>
-            </div>
+        {/* Left Column: Big Hero Stats */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+            {/* Stat 1 */}
+            <motion.div
+              {...cardRise(0.1)}
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid #EEEDEA",
+                borderRadius: 16,
+                padding: "20px 24px",
+                boxShadow: "0 8px 30px rgba(0, 0, 0, 0.01)",
+              }}
+            >
+              <div style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>129</div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: "#4A1533", marginTop: 4 }}>People (Evaluators)</div>
+            </motion.div>
 
-            {/* Stat 2: 6,526 Images */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-                <span style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>6,526</span>
-              </div>
-              <span style={{ fontSize: 14, fontWeight: 850, color: "#4A1533" }}>Images (Unique)</span>
-            </div>
+            {/* Stat 2 */}
+            <motion.div
+              {...cardRise(0.15)}
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid #EEEDEA",
+                borderRadius: 16,
+                padding: "20px 24px",
+                boxShadow: "0 8px 30px rgba(0, 0, 0, 0.01)",
+              }}
+            >
+              <div style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>6,526</div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: "#4A1533", marginTop: 4 }}>Images (Unique)</div>
+            </motion.div>
 
-            {/* Divider spanning 2 columns */}
-            <div style={{ gridColumn: "span 2", height: 1, background: "#EEEDEA" }} />
+            {/* Stat 3 */}
+            <motion.div
+              {...cardRise(0.2)}
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid #EEEDEA",
+                borderRadius: 16,
+                padding: "20px 24px",
+                boxShadow: "0 8px 30px rgba(0, 0, 0, 0.01)",
+              }}
+            >
+              <div style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>87,836</div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: "#4A1533", marginTop: 4 }}>Ratings (Total)</div>
+            </motion.div>
 
-            {/* Stat 3: 3 Domains */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-                <span style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>3</span>
-                <span style={{ fontSize: 14, fontWeight: 850, color: "#4A1533" }}>Domains</span>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 4 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#6B5B6E", fontWeight: 700 }}>
-                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#C2185B" }} /> Art
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#6B5B6E", fontWeight: 700 }}>
-                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#7B2C8F" }} /> Fashion
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#6B5B6E", fontWeight: 700 }}>
-                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#C2185B" }} /> Landscape
-                </div>
-              </div>
-            </div>
-
-            {/* Stat 4: 4,509 Test-Retest Pairs */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-                <span style={{ fontSize: 44, fontWeight: 900, color: "#7B2C8F", lineHeight: 1 }}>4,509</span>
-              </div>
-              <span style={{ fontSize: 14, fontWeight: 850, color: "#4A1533" }}>Test-Retest Pairs</span>
-              <p style={{ margin: 0, fontSize: 11, color: "#6B5B6E", fontWeight: 600, lineHeight: 1.35 }}>
-                Same image rated twice by same user across sessions to establish human self-consistency.
-              </p>
-            </div>
-          </motion.div>
+            {/* Stat 4 */}
+            <motion.div
+              {...cardRise(0.25)}
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid #EEEDEA",
+                borderRadius: 16,
+                padding: "20px 24px",
+                boxShadow: "0 8px 30px rgba(0, 0, 0, 0.01)",
+              }}
+            >
+              <div style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>3</div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: "#4A1533", marginTop: 4 }}>Categories</div>
+              <div style={{ fontSize: 11, color: "#6B5B6E", fontWeight: 700, marginTop: 2 }}>Art / Fashion / Landscape</div>
+            </motion.div>
+          </div>
         </div>
 
-        {/* Right Column: 3 Main Logic Points */}
+        {/* Right Column: soft pink box */}
         <motion.div
-          {...cardRise(0.25)}
+          {...cardRise(0.3)}
           style={{
-            background: "#FFFFFF",
-            border: "1px solid #EEEDEA",
+            background: "#FCE4EC", // soft pink
+            border: "1.5px solid rgba(194, 24, 91, 0.15)",
             borderRadius: 24,
-            padding: "20px 24px",
-            boxShadow: "0 12px 40px rgba(0, 0, 0, 0.02)",
+            padding: 32,
+            boxShadow: "0 12px 40px rgba(194, 24, 91, 0.02)",
             display: "flex",
             flexDirection: "column",
-            gap: 16,
+            gap: 24,
           }}
         >
-          <div style={{ fontSize: 13, fontWeight: 900, color: "#C2185B", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-            Narrative &amp; Rigor
-          </div>
-
-          {/* Point 1 */}
           <div style={{ display: "flex", gap: 16 }}>
-            <div style={{ width: 36, height: 36, borderRadius: "50%", background: "rgba(123, 44, 143, 0.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#7B2C8F", flexShrink: 0, fontWeight: 900, border: "1px solid rgba(123, 44, 143, 0.15)" }}>
+            <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", color: "#C2185B", flexShrink: 0, fontWeight: 900, border: "1px solid rgba(194, 24, 91, 0.15)" }}>
               1
             </div>
             <div>
-              <h4 style={{ margin: 0, fontSize: 16, fontWeight: 800, color: "#4A1533" }}>
+              <h4 style={{ margin: 0, fontSize: 17, fontWeight: 800, color: "#4A1533" }}>
                 Deep Ratings Per Person
               </h4>
-              <p style={{ margin: "4px 0 0", fontSize: 13, color: "#6B5B6E", lineHeight: 1.45 }}>
-                Evaluators rated hundreds of images, providing enough statistical depth to fit a robust personal weighting formula for each user.
+              <p style={{ margin: "6px 0 0", fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 600 }}>
+                Each person rated 200+ images &rarr; deep enough for a personal formula.
               </p>
             </div>
           </div>
 
-          <div style={{ width: "100%", height: 1, background: "#EEEDEA" }} />
+          <div style={{ height: 1, background: "rgba(194, 24, 91, 0.1)" }} />
 
-          {/* Point 2 */}
           <div style={{ display: "flex", gap: 16 }}>
-            <div style={{ width: 36, height: 36, borderRadius: "50%", background: "rgba(194, 24, 91, 0.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#C2185B", flexShrink: 0, fontWeight: 900, border: "1px solid rgba(194, 24, 91, 0.15)" }}>
+            <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", color: "#C2185B", flexShrink: 0, fontWeight: 900, border: "1px solid rgba(194, 24, 91, 0.15)" }}>
               2
             </div>
             <div>
-              <h4 style={{ margin: 0, fontSize: 16, fontWeight: 800, color: "#4A1533" }}>
-                Leak-Free CV Splits
+              <h4 style={{ margin: 0, fontSize: 17, fontWeight: 800, color: "#4A1533" }}>
+                Test-Retest Setup
               </h4>
-              <p style={{ margin: "4px 0 0", fontSize: 13, color: "#6B5B6E", lineHeight: 1.45 }}>
-                Strict disjoint splits prevent leakage: target users and their evaluation images are completely hidden from the Stage 1 emotion model.
+              <p style={{ margin: "6px 0 0", fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 600 }}>
+                Some images rated twice &rarr; used later to establish human noise ceilings.
               </p>
-            </div>
-          </div>
-
-          <div style={{ width: "100%", height: 1, background: "#EEEDEA" }} />
-
-          {/* Point 3 */}
-          <div style={{ display: "flex", gap: 16 }}>
-            <div style={{ width: 36, height: 36, borderRadius: "50%", background: "rgba(123, 44, 143, 0.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#7B2C8F", flexShrink: 0, fontWeight: 900, border: "1px solid rgba(123, 44, 143, 0.15)" }}>
-              3
-            </div>
-            <div>
-              <h4 style={{ margin: 0, fontSize: 16, fontWeight: 800, color: "#4A1533" }}>
-                Pipeline Comparison (CCC / SRCC)
-              </h4>
-              <p style={{ margin: "4px 0 0", fontSize: 13, color: "#6B5B6E", lineHeight: 1.45 }}>
-                We continuously compare two pipeline configurations:
-              </p>
-              <ul style={{ margin: "4px 0 0", paddingLeft: 16, fontSize: 12, color: "#6B5B6E", lineHeight: 1.4, display: "flex", flexDirection: "column", gap: 2 }}>
-                <li>
-                  <strong style={{ color: "#7B2C8F" }}>Hybrid:</strong> Our pipeline with intermediate emotions in the middle step.
-                </li>
-                <li>
-                  <strong style={{ color: "#C2185B" }}>Direct:</strong> Baseline predicting beauty scores directly (no emotions).
-                </li>
-              </ul>
             </div>
           </div>
         </motion.div>
       </div>
+
+      {/* Bottom Bar: Leak-Free Protocol */}
+      <motion.div
+        {...fadeInUp(0.35)}
+        style={{
+          background: "rgba(123, 44, 143, 0.06)", // soft purple
+          border: "1px solid rgba(123, 44, 143, 0.15)",
+          borderRadius: 16,
+          padding: "16px 24px",
+          marginTop: 32,
+          display: "flex",
+          alignItems: "center",
+          gap: 16,
+        }}
+      >
+        <span style={{ fontSize: 11, fontWeight: 900, color: "#7B2C8F", textTransform: "uppercase", letterSpacing: "0.08em", background: "#FFFFFF", padding: "4px 8px", borderRadius: 6, border: "1px solid rgba(123, 44, 143, 0.2)" }}>
+          Protocol
+        </span>
+        <span style={{ fontSize: 14, color: "#6B5B6E", fontWeight: 700 }}>
+          <strong style={{ color: "#7B2C8F" }}>leak-free:</strong> test users &amp; images never seen in training
+        </span>
+      </motion.div>
     </SlideShell>
   );
 }

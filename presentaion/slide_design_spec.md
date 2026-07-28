@@ -45,6 +45,20 @@ fig1_pipeline · fig2_support_curve · fig3_mechanism · fig4_saturation
 fig5_ceiling · fig6_coldstart · fig7_placebo
 → ถ้าสีกราฟไม่เข้าธีม ให้ recolor เป็นชมพู(#C2185B)/ม่วง(#7B2C8F)/เทา ให้เข้ากัน
 
+
+═══════════════════════════════════════════════════════════
+⚠️ อัปเดตตาม feedback อาจารย์ (สำคัญ)
+═══════════════════════════════════════════════════════════
+1. Dataset: ขยายให้เห็นหน้าตาข้อมูล (slide 6a/6b) ไม่ใช่แค่จำนวน
+2. เล่าเฉพาะ MAIN RESULT ให้จบสวยๆ เน้นคนเข้าใจ ไม่เน้นว่าทำเยอะ
+   → พูดแค่ 5 finding หลัก: 1 (helps), 3 (baseline), 4 (when/emo_r),
+     6 (ceiling), 8 (cold-start) [+ 9 placebo ถ้าเวลาพอ]
+   → ตัดออกจากการพูด: decomposition (2), redundancy (5), hard users (10)
+3. เทคนิคเล่าแบบอาจารย์แนะนำ: มีสไลด์ overview บอกว่า "นี่คือทั้งหมดที่ศึกษา
+   แต่วันนี้จะเล่าแค่ main results" แล้วค่อยลง → ดูมีเยอะแต่ไม่ยัด
+4. เล่าแบบ research question: ตั้งคำถามแล้วไล่ตอบทีละอัน (ทำอยู่แล้ว)
+
+═══════════════════════════════════════════════════════════
 ═══════════════════════════════════════════════════════════
 SLIDE-BY-SLIDE (ข้อความเป๊ะ + วางรูป + สี)
 ═══════════════════════════════════════════════════════════
@@ -94,6 +108,20 @@ BOTTOM STRIP (เทารอง): "used for recommendation, curation, ranking A
 COLOR: PIAA เด่นสุด (ชมพู) · black box เทาเข้ม · ? ชมพู
 
 ──────────────────────────────────────────
+## SLIDE 3.5 — Why emotion? (motivation, สำคัญ — เชื่อมเรื่อง)
+──────────────────────────────────────────
+LAYOUT: กลางหน้า เล่าเป็น "ความรู้สึกก่อน แล้วค่อยตัดสิน"
+TITLE (34pt, plum): "What makes a person like an image?"
+เนื้อหา (แนวคิดง่ายๆ มีภาพประกอบ):
+  - ภาพ 1 รูป → ไอคอนหน้าคน "feels calm / warm" → หัวใจ "likes it"
+  - flow: [see image] → [feel something] → [like it]
+    ไฮไลต์ [feel] สีชมพู (นี่คือ key insight)
+CAPTION (20pt, plum): "You feel first, then you judge. So emotion explains taste."
+เชิงอรรถเล็ก (เทา): "Prior work opens the black box (e.g. Ryu & Yanaka), but not in a
+  human way. We explain through emotion."
+COLOR: [feel] ชมพูเด่น · flow ม่วง
+
+──────────────────────────────────────────
 ## SLIDE 4 — Our idea
 ──────────────────────────────────────────
 LAYOUT: กลางหน้า flow ง่ายๆ
@@ -118,17 +146,48 @@ ANNOTATION สด:
 CAPTION (16pt): "The gap between Direct and Hybrid = what emotion adds"
 
 ──────────────────────────────────────────
-## SLIDE 6 — Dataset (XPASS-Vis)
+## SLIDE 5.5 — What the explanation looks like (interpretability example)
 ──────────────────────────────────────────
-LAYOUT: ซ้ายตัวเลข hero · ขวาเหตุผล
-TITLE (34pt, plum): "One dataset deep enough per person"
-LEFT (ตัวเลข hero, ชมพู Bold 44pt เรียงลง):
-  "129 people" · "6,526 images" · "3 categories"
-RIGHT (2 จุด, กล่อง soft pink):
-  1. "Deep per person → we can fit a personal formula"
-  2. "Test-retest design → used later for the ceiling"
+LAYOUT: 2 คน เทียบกัน โชว์ formula อารมณ์ (ใช้ fig_interpret.pdf)
+TITLE (34pt, plum): "What does emotion explain?"
+โชว์ 2 user เทียบ (bar chart แนวนอน):
+  - User A: อารมณ์ที่ดัน beauty มากสุด = "Impressed" (แท่งชมพูยาว)
+  - User B: อารมณ์ที่ดัน beauty มากสุด = "Nostalgic" + "Amused" (แท่งม่วงยาว)
+  - อารมณ์ที่ลด beauty (Sad, Distaste) = แท่งเทาไปทางซ้าย
+เล่า: "โมเดลบอกได้เลยว่า user A ชอบเพราะรู้สึกทึ่ง ส่วน user B ชอบเพราะคิดถึงอดีต
+  นี่คือสิ่งที่ black box บอกไม่ได้"
+CAPTION (16pt): "Because the last step is linear, we read each person's emotion weights"
+COLOR: User A ชมพู · User B ม่วง · negative เทา
+NOTE: สไลด์นี้สำคัญ ทำให้คนเห็นภาพจริงว่า "อธิบายได้" แปลว่าอะไร
+  ใช้ fig_interpret.pdf ที่สร้างให้แล้ว (recolor ได้ถ้าต้องการ)
+
+──────────────────────────────────────────
+## SLIDE 6 — Dataset (XPASS-Vis) — ขยายให้เห็นหน้าตาข้อมูล (อาจารย์ขอ)
+──────────────────────────────────────────
+LAYOUT: 2 สไลด์ย่อย (6a ตัวอย่างข้อมูลจริง · 6b ตัวเลข+protocol)
+
+### SLIDE 6a — หน้าตาข้อมูล (สำคัญ — โชว์ว่า 1 rating มีอะไรบ้าง)
+TITLE (34pt, plum): "What one rating looks like"
+โชว์ตัวอย่างจริง 1 แถว (mock ให้เหมือนข้อมูลจริง):
+  - ซ้าย: ภาพตัวอย่าง 1 รูป (เช่น landscape)
+  - ขวา: การ์ดแสดงสิ่งที่ user 1 คนให้กับภาพนี้:
+    * Aesthetic score: 6 / 7  (ตัวเลขชมพูใหญ่)
+    * 7 emotions (สเกล 1-5) แสดงเป็น bar เล็กๆ:
+      Impressed 4 · Nostalgic 5 · Amused 2 · Motivated 4
+      Intellectual 3 · [ฯลฯ ให้ครบ 7] — bar สีม่วงไล่ระดับ
+  caption: "each person gives a beauty score (1-7) and 7 emotion ratings (1-5) per image"
+NOTE: อธิบายว่า emotion มาจาก AESTHEMOS framework (9 มิติ ใช้ 7 core)
+COLOR: aesthetic score ชมพู · emotion bars ม่วง
+
+### SLIDE 6b — ขนาด + ความลึก + protocol
+TITLE (34pt, plum): "Deep enough per person, and leak-free"
+LEFT (ตัวเลข hero ชมพู Bold):
+  "129 people" · "6,526 images" · "87,836 ratings" · "3 categories (art/fashion/landscape)"
+RIGHT (กล่อง soft pink):
+  1. "Each person rated 200+ images → deep enough for a personal formula"
+  2. "Test-retest: some images rated twice → used later for the ceiling"
 BOTTOM (แถบม่วงจาง): "leak-free: test users & images never seen in training"
-COLOR: ตัวเลข hero ชมพู · box ขวา soft pink · leak-free bar ม่วงจาง
+COLOR: ตัวเลข hero ชมพู · box soft pink · leak-free ม่วงจาง
 
 ──────────────────────────────────────────
 ## SLIDE 7 — Transition: Part 2
@@ -137,6 +196,24 @@ LAYOUT: กลางหน้า minimal (สไลด์พักหายใ�
 TEXT ใหญ่ (40pt, plum): "Part 2 — Does it actually work?"
 DECOR: reuse agenda เล็กๆ มุมขวา ไฮไลต์ข้อ 2 ด้วยชมพู
 COLOR: พื้นสะอาด · ตัวหนังสือ plum · จุดชมพูเดียว
+
+──────────────────────────────────────────
+## SLIDE 7.5 — "What we studied" overview (อาจารย์แนะนำ)
+──────────────────────────────────────────
+LAYOUT: แผนภาพรวมเบาๆ บอกว่าศึกษาอะไรบ้าง แต่เน้นว่าวันนี้เล่าแค่ main
+TITLE (32pt, plum): "We studied many aspects. Today: the main results."
+โชว์ list เบาๆ (main = ชมพูเด่น, rest = เทาจาง):
+  Main results (today):
+    • Does emotion help?  (ชมพู)
+    • Comparable to baselines?  (ชมพู)
+    • When does it help?  (ชมพู)
+    • How far can it go?  (ชมพู)
+    • Is the gain real?  (ชมพู)
+  Also studied (in the paper / journal):  (เทาจาง เล็ก)
+    • perception vs weighting · backbone redundancy · hard users · traits
+CAPTION: "I'll focus on the main story, so it stays clear"
+COLOR: main ชมพู · rest เทาจาง
+NOTE: สไลด์นี้ทำให้ดูงานเยอะแต่ไม่รก + คุมเวลา 15 นาทีได้
 
 ──────────────────────────────────────────
 ## SLIDE 8 — Finding 1: emotion helps
@@ -184,16 +261,56 @@ RIGHT: fig3_mechanism (recolor แท่งไล่เฉดชมพู→ม�
 CAPTION (16pt): "the rival explanation was a confound"
 
 ──────────────────────────────────────────
-## SLIDE 12 — Finding 2: perception vs weighting
+## SLIDE 12 — Finding 2: perception vs weighting (ทำ 2 สไลด์ย่อย)
 ──────────────────────────────────────────
-LAYOUT: 3 กรณีเรียงแนวนอน (stacked bar)
-TITLE (32pt, plum): "Feeling vs weighting: it depends how we measure"
-3 แท่ง (แต่ละแท่งแบ่ง feeling/weighting):
-  same-session · cross-session · averaged
-  - feeling = ม่วง #7B2C8F · weighting = ชมพู #C2185B
-  - averaged: วงกลม "≈ 50/50" ไฮไลต์ deep plum
+### SLIDE 12a — อธิบาย 3 predictor (บล็อก + สี share/personal)
+LAYOUT: 3 บล็อกแนวนอน (P / S / S-global) แต่ละบล็อกมี 2 ชั้น
+TITLE (32pt, plum): "Where does personal taste come from?"
+
+แต่ละ predictor วาดเป็นบล็อก 2 ชั้นซ้อน (emotions-in ด้านบน + formula ด้านล่าง):
+  บล็อก P:
+    ชั้นบน "own emotions" — สี PERSONAL (ชมพู #C2185B)
+    ชั้นล่าง "own formula" — สี PERSONAL (ชมพู)
+    label ใต้บล็อก: "full personal"
+  บล็อก S:
+    ชั้นบน "average emotions" — สี SHARED (เทา #9E9E9E)
+    ชั้นล่าง "own formula" — สี PERSONAL (ชมพู)
+    label: "isolates weighting"
+  บล็อก S-global:
+    ชั้นบน "average emotions" — สี SHARED (เทา)
+    ชั้นล่าง "shared formula" — สี SHARED (เทา)
+    label: "no personalization"
+
+LEGEND (มุมขวาบน): ชมพู = personal · เทา = shared
+
+ลูกศร + label ระหว่างบล็อก:
+  P →(ลูกศร)→ S : label "difference = FEELING (perception)" สีม่วง
+  S →(ลูกศร)→ S-global : label "difference = WEIGHTING" สีชมพู
+
+CAPTION ล่าง (16pt): "perception share = (P−S) / (P−S-global)"
+
+### SLIDE 12b — test-retest เลือกอารมณ์เข้า P + ผล
+LAYOUT: บนซ้าย diagram test-retest · ขวา/ล่าง ตาราง+ข้อสรุป
+TITLE (32pt, plum): "The answer depends on how we measure the emotions"
+
+DIAGRAM (บนซ้าย) — แสดงว่าอารมณ์ที่ใส่ P มาจากไหน:
+  กล่อง "Session 1" กับ "Session 2" (คนเรทรูปเดิม 2 รอบ)
+  ลูกศร 3 เส้นชี้เข้าบล็อก P:
+    - "same-session" : อารมณ์+คะแนน จาก session เดียวกัน (ลูกศรเทา + ป้าย "unfair")
+    - "cross-session" : อารมณ์จาก S1, คะแนนจาก S2 (ลูกศรชมพู + ป้าย "honest")
+    - "averaged" : เฉลี่ย S1+S2 (ลูกศรม่วง + ป้าย "fairest")
+  หมายเหตุบน diagram: "only P changes; S and S-global stay fixed"
+
+ตาราง (ขวา/ล่าง) — perception share:
+  | measure | perception (CCC) | winner |
+  | same-session | 58% [52,65] | feeling |
+  | cross-session | 38% [30,46] | weighting |
+  | averaged (fairest) | 55% [48,62] | ≈ 50/50 (tie) |
+  แถว averaged ไฮไลต์ soft pink + วงกลม "can't tell → both matter"
+
 CAPTION: "so we report it honestly, as a supporting result with ranges"
-NOTE: พูดคร่าวๆ อย่าค้างนาน
+สี: feeling ม่วง · weighting ชมพู · averaged row เน้น soft pink
+NOTE: พูดคร่าวๆ 12a เน้นภาพบล็อก 12b เน้น diagram test-retest
 
 ──────────────────────────────────────────
 ## SLIDE 13 — Finding 6: ceiling
@@ -214,7 +331,7 @@ LAYOUT: กราฟเส้น + ข้อความ
 TITLE (34pt, plum): "Emotion makes personalizing worth it"
 CHART: fig6_coldstart — Hybrid(ม่วง)/Direct(เทา)/Population(ชมพูประ)
   ไฮไลต์จุดที่ Hybrid ตัดขึ้นเหนือ population ที่ n=50
-CAPTION (18pt): "Direct never beats the crowd. Hybrid does, from 50 ratings."
+CAPTION (18pt): "Below 50 ratings, personalizing hurts. Direct never beats the crowd; only Hybrid does, from 50 on."
 COLOR: Hybrid ม่วง · population เส้นชมพูประ · Direct เทา
 
 ──────────────────────────────────────────

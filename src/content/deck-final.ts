@@ -1,6 +1,6 @@
 /**
  * Deck configuration for the Final Presentation: Emotion-Mediated PIAA.
- * 18 slides + 6 Q&A backup slides.
+ * 21 slides + 6 Q&A backup slides.
  */
 
 import type { DeckSection, SlideComponent } from './types';
@@ -12,8 +12,10 @@ import { IaaPiaaSlide } from '../slides/final/IaaPiaaSlide';
 import { WhyEmotionSlide } from '../slides/final/WhyEmotionSlide';
 import { IdeaSlide } from '../slides/final/IdeaSlide';
 import { PipelineSlide } from '../slides/final/PipelineSlide';
+import { DatasetSampleSlide } from '../slides/final/DatasetSampleSlide';
 import { DatasetProtocolSlide } from '../slides/final/DatasetProtocolSlide';
 import { TransitionSlide } from '../slides/final/TransitionSlide';
+import { StudyOverviewSlide } from '../slides/final/StudyOverviewSlide';
 import { Finding1Slide } from '../slides/final/Finding1Slide';
 import { Finding3Slide } from '../slides/final/Finding3Slide';
 import { QuestionTransitionSlide } from '../slides/final/QuestionTransitionSlide';
@@ -49,8 +51,10 @@ const IaaPiaa = defineSlide(IaaPiaaSlide, 'IaaPiaa');
 const WhyEmotion = defineSlide(WhyEmotionSlide, 'WhyEmotion');
 const Idea = defineSlide(IdeaSlide, 'Idea');
 const Pipeline = defineSlide(PipelineSlide, 'Pipeline');
+const DatasetSample = defineSlide(DatasetSampleSlide, 'DatasetSample');
 const DatasetProtocol = defineSlide(DatasetProtocolSlide, 'DatasetProtocol');
 const Transition = defineSlide(TransitionSlide, 'Transition');
+const StudyOverview = defineSlide(StudyOverviewSlide, 'StudyOverview');
 const Finding1 = defineSlide(Finding1Slide, 'Finding1');
 const Finding3 = defineSlide(Finding3Slide, 'Finding3');
 const QuestionTransition = defineSlide(QuestionTransitionSlide, 'QuestionTransition');
@@ -82,7 +86,7 @@ const deck: DeckSection[] = [
   },
   {
     label: 'Evaluation & Baselines',
-    slides: [DatasetProtocol, Transition, Finding1, Finding3],
+    slides: [DatasetSample, DatasetProtocol, Transition, StudyOverview, Finding1, Finding3],
   },
   {
     label: 'Mechanisms',

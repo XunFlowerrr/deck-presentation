@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SlideShell } from "../../components/index.ts";
-import { cardRise, fadeInUp } from "../../lib/motion.ts";
+import { fadeInUp } from "../../lib/motion.ts";
 
 const GLOWS = [
   { top: -200, left: -100, size: 700, color: "194, 24, 91", opacity: 0.05 },
@@ -10,6 +10,48 @@ const GLOWS = [
 export function TransitionSlide() {
   return (
     <SlideShell glows={GLOWS}>
+      {/* Top-Right Agenda Tracker */}
+      <div
+        style={{
+          position: "absolute",
+          top: 40,
+          right: 60,
+          display: "flex",
+          gap: 8,
+          alignItems: "center",
+          background: "#FFFFFF",
+          border: "1px solid #EEEDEA",
+          padding: "6px 12px",
+          borderRadius: 30,
+          boxShadow: "0 4px 15px rgba(0,0,0,0.01)",
+        }}
+      >
+        <span style={{ fontSize: 11, fontWeight: 900, color: "#6B5B6E", marginRight: 4, textTransform: "uppercase", letterSpacing: "0.05em" }}>Progress:</span>
+        {[1, 2, 3, 4, 5].map((num) => {
+          const isCurrent = num === 2;
+          return (
+            <div
+              key={num}
+              style={{
+                width: isCurrent ? 24 : 18,
+                height: isCurrent ? 24 : 18,
+                borderRadius: "50%",
+                background: isCurrent ? "#C2185B" : "transparent",
+                color: isCurrent ? "#FFFFFF" : "#9E9E9E",
+                border: isCurrent ? "none" : "1px solid #EEEDEA",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: isCurrent ? 12 : 10,
+                fontWeight: 900,
+              }}
+            >
+              {num}
+            </div>
+          );
+        })}
+      </div>
+
       {/* Centered layout for transition */}
       <div
         style={{
@@ -18,109 +60,33 @@ export function TransitionSlide() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          gap: 48,
           textAlign: "center",
+          gap: 24,
         }}
       >
-        <motion.div {...fadeInUp(0.1)}>
-          <span
-            style={{
-              fontSize: 14,
-              fontWeight: 800,
-              color: "#C2185B",
-              textTransform: "uppercase",
-              letterSpacing: "0.15em",
-            }}
-          >
-            Part Two
-          </span>
+        <motion.div {...fadeInUp(0.15)}>
           <h2
             style={{
-              margin: "12px 0 0",
               fontSize: 48,
               fontWeight: 950,
               color: "#4A1533",
-              letterSpacing: "-1.5px",
+              letterSpacing: "-2px",
               lineHeight: 1.15,
+              margin: 0,
             }}
           >
-            Showing That Our Idea Actually Works
+            Part 2 &mdash; Does it actually work?
           </h2>
           <div
             style={{
-              width: 80,
-              height: 4,
-              background: "linear-gradient(90deg, #C2185B, #7B2C8F)",
-              margin: "24px auto 0",
-              borderRadius: 2,
+              width: 12,
+              height: 12,
+              borderRadius: "50%",
+              background: "#C2185B",
+              margin: "32px auto 0",
             }}
           />
         </motion.div>
-
-        {/* The 2 Core Results Sections */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 32,
-            maxWidth: 800,
-            width: "100%",
-          }}
-        >
-          {[
-            {
-              num: "01",
-              title: "Hybrid > Direct",
-              desc: "Proving that routing aesthetic predictions through intermediate emotional responses significantly improves CCC/SRCC scores.",
-              color: "#C2185B",
-            },
-            {
-              num: "02",
-              title: "Comparable to Baselines",
-              desc: "Demonstrating that our emotion-mediated model matches trait-based benchmarks without requiring any personal trait data.",
-              color: "#7B2C8F",
-            },
-          ].map((item, idx) => (
-            <motion.div
-              key={item.title}
-              {...cardRise(0.2 + idx * 0.1)}
-              style={{
-                background: "#FFFFFF",
-                border: "1px solid #EEEDEA",
-                borderRadius: 18,
-                padding: "32px 28px",
-                boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
-                textAlign: "left",
-                display: "flex",
-                flexDirection: "column",
-                gap: 12,
-                position: "relative",
-                overflow: "hidden",
-              }}
-            >
-              {/* Highlight bar */}
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: item.color }} />
-
-              <span
-                style={{
-                  fontSize: 12,
-                  fontWeight: 900,
-                  color: item.color,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                Section {item.num}
-              </span>
-              <h3 style={{ margin: 0, fontSize: 22, fontWeight: 800, color: "#4A1533" }}>
-                {item.title}
-              </h3>
-              <p style={{ margin: 0, fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 500 }}>
-                {item.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </SlideShell>
   );

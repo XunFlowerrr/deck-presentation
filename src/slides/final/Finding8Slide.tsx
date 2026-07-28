@@ -13,7 +13,8 @@ export function Finding8Slide() {
       <SlideHeader
         label="Block 4 — Cold-Start Analysis"
         title="Emotion makes "
-        highlight="Personalizing Worth It."
+        highlight="personalizing worth it"
+        accentWidth={100}
       />
 
       <div
@@ -82,14 +83,14 @@ export function Finding8Slide() {
               border: "1px solid rgba(194, 24, 91, 0.15)",
               borderRadius: 14,
               padding: "16px 20px",
-              fontSize: 16,
+              fontSize: 18,
               color: "#4A1533",
-              lineHeight: 1.5,
+              lineHeight: 1.4,
               fontWeight: 700,
               boxShadow: "0 8px 24px rgba(194, 24, 91, 0.02)",
             }}
           >
-            Direct never clearly beats the crowd. Hybrid does, from 50 ratings.
+            Below 50 ratings, personalizing hurts. Direct never beats the crowd; only Hybrid does, from 50 on.
           </motion.div>
         </div>
 
@@ -101,9 +102,9 @@ export function Finding8Slide() {
             fallbackTitle="Cold-Start Threshold Curve"
             fallbackSubtitle="Hybrid personalization begins to strictly outperform population baseline after 50 user ratings"
             fallbackStats={[
-              { label: "Critical Threshold", value: "~50 ratings", color: "#C2185B" },
-              { label: "Hybrid (Purple)", value: "Beats population at 50", color: "#7B2C8F" },
-              { label: "Direct (Muted)", value: "Sub-population", color: "#6B5B6E" },
+              { label: "Population (dashed pink)", value: "threshold limit", color: "#C2185B" },
+              { label: "Hybrid (purple)", value: "beats crowd at 50", color: "#7B2C8F" },
+              { label: "Direct (grey)", value: "fails to beat crowd", color: "#9E9E9E" },
             ]}
             style={{ border: "1px solid #EEEDEA", boxShadow: "0 12px 40px rgba(0, 0, 0, 0.02)" }}
             maxHeight={360}
