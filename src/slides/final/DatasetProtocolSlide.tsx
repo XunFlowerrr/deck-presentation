@@ -12,8 +12,8 @@ export function DatasetProtocolSlide() {
     <SlideShell glows={GLOWS}>
       <SlideHeader
         label="Block 2 — Dataset & Protocol"
-        title="One dataset "
-        highlight="Deep Enough Per Person."
+        title="DATASET: "
+        highlight="XPASS-Vis."
       />
 
       <div
@@ -25,7 +25,7 @@ export function DatasetProtocolSlide() {
           alignItems: "center",
         }}
       >
-        {/* Left Column: 3 Big Stats */}
+        {/* Left Column: 4 Big Stats in 2x2 Grid */}
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <motion.div
             {...cardRise(0.15)}
@@ -35,60 +35,41 @@ export function DatasetProtocolSlide() {
               borderRadius: 20,
               padding: "24px 28px",
               boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
-              display: "flex",
-              flexDirection: "column",
-              gap: 20,
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 24,
             }}
           >
-            {/* Stat 1 */}
-            <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
-              <span style={{ fontSize: 56, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>129</span>
-              <span style={{ fontSize: 18, fontWeight: 850, color: "#4A1533" }}>People (Evaluators)</span>
+            {/* Cell 1 */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <span style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>129</span>
+              <span style={{ fontSize: 14, fontWeight: 850, color: "#4A1533" }}>People (Evaluators)</span>
             </div>
 
-            <div style={{ height: 1, background: "#EEEDEA" }} />
-
-            {/* Stat 2 */}
-            <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
-              <span style={{ fontSize: 56, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>6,526</span>
-              <span style={{ fontSize: 18, fontWeight: 850, color: "#4A1533" }}>Images (Unique)</span>
+            {/* Cell 2 */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <span style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>3</span>
+              <span style={{ fontSize: 14, fontWeight: 850, color: "#4A1533" }}>Domains</span>
+              <div style={{ display: "flex", gap: 6, marginTop: 2 }}>
+                <span style={{ fontSize: 10, color: "#6B5B6E", fontWeight: 700, background: "rgba(107,91,110,0.06)", padding: "1px 5px", borderRadius: 4 }}>Art</span>
+                <span style={{ fontSize: 10, color: "#6B5B6E", fontWeight: 700, background: "rgba(107,91,110,0.06)", padding: "1px 5px", borderRadius: 4 }}>Fashion</span>
+                <span style={{ fontSize: 10, color: "#6B5B6E", fontWeight: 700, background: "rgba(107,91,110,0.06)", padding: "1px 5px", borderRadius: 4 }}>Land.</span>
+              </div>
             </div>
 
-            <div style={{ height: 1, background: "#EEEDEA" }} />
+            {/* Divider line */}
+            <div style={{ gridColumn: "span 2", height: 1, background: "#EEEDEA" }} />
 
-            {/* Stat 3 with Domain Icons */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
-                <span style={{ fontSize: 56, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>3</span>
-                <span style={{ fontSize: 18, fontWeight: 850, color: "#4A1533" }}>Domains</span>
-              </div>
-              <div style={{ display: "flex", gap: 16, marginTop: 4 }}>
-                {/* Art */}
-                <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "#6B5B6E", fontWeight: 700 }}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2185B" strokeWidth="2.5">
-                    <rect width="18" height="18" x="3" y="3" rx="2" />
-                    <circle cx="9" cy="9" r="2" />
-                    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-                  </svg>
-                  Art
-                </div>
-                {/* Fashion */}
-                <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "#6B5B6E", fontWeight: 700 }}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7B2C8F" strokeWidth="2.5">
-                    <path d="M20.38 3.46 16 7.84V20h-2V10l-2-2-2 2v10H8V7.84L3.62 3.46a2 2 0 0 0-2.83 0l-.09.09a2 2 0 0 0 0 2.83L5 10.76V22h14V10.76l4.3-4.38a2 2 0 0 0 0-2.83l-.09-.09a2 2 0 0 0-2.83 0z" />
-                  </svg>
-                  Fashion
-                </div>
-                {/* Landscape */}
-                <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "#6B5B6E", fontWeight: 700 }}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2185B" strokeWidth="2.5">
-                    <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                    <path d="M12 22a8 8 0 0 0-8-8c0 4.42 4 8 8 8z" />
-                    <path d="M20 22a8 8 0 0 0-8-8c0 4.42 4 8 8 8z" />
-                  </svg>
-                  Landscape
-                </div>
-              </div>
+            {/* Cell 3 */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <span style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>6,526</span>
+              <span style={{ fontSize: 14, fontWeight: 850, color: "#4A1533" }}>Images (Unique)</span>
+            </div>
+
+            {/* Cell 4 */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <span style={{ fontSize: 44, fontWeight: 900, color: "#7B2C8F", lineHeight: 1 }}>4,509</span>
+              <span style={{ fontSize: 14, fontWeight: 850, color: "#4A1533" }}>Test-Retest Pairs</span>
             </div>
           </motion.div>
         </div>

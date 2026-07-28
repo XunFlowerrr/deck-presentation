@@ -34,7 +34,7 @@ export function TransitionSlide() {
           >
             It Works.
             <br />
-            <span style={{ color: "#C2185B" }}>But When, Why, and How Far?</span>
+            <span style={{ color: "#C2185B" }}>Now three questions.</span>
           </h2>
           <div
             style={{
@@ -59,21 +59,18 @@ export function TransitionSlide() {
         >
           {[
             {
-              num: "01",
+              num: "1",
               q: "When does it help?",
-              desc: "Analyzing visual backbone strength and user emotion predictability.",
               color: "#C2185B",
             },
             {
-              num: "02",
+              num: "2",
               q: "How far can it go?",
-              desc: "Defining realistic noise ceilings and resolving the cold-start rating threshold.",
               color: "#7B2C8F",
             },
             {
-              num: "03",
+              num: "3",
               q: "Is the gain real?",
-              desc: "Testing semantic validity via placebo control controls and unusual users.",
               color: "#C2185B",
             },
           ].map((item, idx) => (
@@ -83,15 +80,18 @@ export function TransitionSlide() {
               style={{
                 background: "#FFFFFF",
                 border: "1px solid #EEEDEA",
-                borderRadius: 18,
-                padding: "24px 28px",
+                borderRadius: 20,
+                padding: "36px 20px",
                 boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
-                textAlign: "left",
+                textAlign: "center",
                 display: "flex",
                 flexDirection: "column",
-                gap: 12,
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 16,
                 position: "relative",
                 overflow: "hidden",
+                minHeight: 200,
               }}
             >
               {/* Highlight bar */}
@@ -99,21 +99,17 @@ export function TransitionSlide() {
 
               <span
                 style={{
-                  fontSize: 12,
-                  fontWeight: 900,
+                  fontSize: 52,
+                  fontWeight: 950,
                   color: item.color,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
+                  lineHeight: 1,
                 }}
               >
-                Question {item.num}
+                {item.num}
               </span>
-              <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#4A1533" }}>
+              <h3 style={{ margin: 0, fontSize: 20, fontWeight: 900, color: "#4A1533", lineHeight: 1.3 }}>
                 {item.q}
               </h3>
-              <p style={{ margin: 0, fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 500 }}>
-                {item.desc}
-              </p>
             </motion.div>
           ))}
         </div>
