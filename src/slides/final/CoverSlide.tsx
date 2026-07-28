@@ -53,7 +53,7 @@ export function CoverSlide() {
               fontWeight: 700,
             }}
           >
-            JAIST
+            Final presentation | July 30, 2026
           </span>
         </div>
       </motion.div>
@@ -105,22 +105,6 @@ export function CoverSlide() {
             Aesthetic Assessment
           </motion.h1>
 
-          {/* Subtitle */}
-          <motion.p
-            {...bodyText(0.12)}
-            style={{
-              fontSize: 22,
-              color: "#C2185B",
-              margin: "4px auto 0",
-              fontWeight: 700,
-              maxWidth: 800,
-              lineHeight: 1.35,
-              letterSpacing: "-0.5px",
-            }}
-          >
-            Predicting individual aesthetic preferences through intermediate emotional responses
-          </motion.p>
-
           <AccentLine delay={0.25} width={160} style={{ margin: "16px auto 0", background: "linear-gradient(90deg, #C2185B, #7B2C8F)" }} />
         </div>
 
@@ -136,7 +120,6 @@ export function CoverSlide() {
           }}
         >
           <span style={{ fontSize: 22, fontWeight: 800, color: "#2B2230" }}>Pinwa</span>
-          <span style={{ fontSize: 16, color: "#6B5B6E", fontWeight: 600 }}>Final presentation July 30, 2026</span>
         </motion.div>
 
         {/* Visual Mock Grid Showing Subjective Aesthetic Disagreement */}
