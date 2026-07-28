@@ -12,6 +12,7 @@ import { IaaPiaaSlide } from '../slides/final/IaaPiaaSlide';
 import { WhyEmotionSlide } from '../slides/final/WhyEmotionSlide';
 import { IdeaSlide } from '../slides/final/IdeaSlide';
 import { PipelineSlide } from '../slides/final/PipelineSlide';
+import { InterpretSlide } from '../slides/final/InterpretSlide';
 import { DatasetSampleSlide } from '../slides/final/DatasetSampleSlide';
 import { DatasetProtocolSlide } from '../slides/final/DatasetProtocolSlide';
 import { TransitionSlide } from '../slides/final/TransitionSlide';
@@ -51,6 +52,7 @@ const IaaPiaa = defineSlide(IaaPiaaSlide, 'IaaPiaa');
 const WhyEmotion = defineSlide(WhyEmotionSlide, 'WhyEmotion');
 const Idea = defineSlide(IdeaSlide, 'Idea');
 const Pipeline = defineSlide(PipelineSlide, 'Pipeline');
+const Interpret = defineSlide(InterpretSlide, 'Interpret');
 const DatasetSample = defineSlide(DatasetSampleSlide, 'DatasetSample');
 const DatasetProtocol = defineSlide(DatasetProtocolSlide, 'DatasetProtocol');
 const Transition = defineSlide(TransitionSlide, 'Transition');
@@ -82,7 +84,7 @@ const deck: DeckSection[] = [
   },
   {
     label: 'Problem & Idea',
-    slides: [IaaPiaa, WhyEmotion, Idea, Pipeline],
+    slides: [IaaPiaa, WhyEmotion, Idea, Pipeline, Interpret],
   },
   {
     label: 'Evaluation & Baselines',

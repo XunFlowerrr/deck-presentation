@@ -1,243 +1,49 @@
-# Speaking Script (v5, Pinwa's voice, ~15 min + 5 min Q&A)
+Hello everyone, I'm Pinwa. My project is called Emotion-Mediated PIAA. It is about building an explainable model that predicts how much a specific person likes an image, from the emotions that person feels toward an image.
 
-> ใช้ "I" ทั้งหมด (พรีเซนต์ในแลป ไม่เป็นทางการ) · ประโยคพูดเข้าปาก
-> ตัดให้พอดี 15 นาที · {...} = ไม่ต้องพูด · (pause) = หยุด
+Here's the content today. I'll start with the idea. Then I show how it works. Then I find when and why this model helps. Then how much accuracy the model can reach. And last, I prove that the gain is real. I will explain it one by one.
 
-═══════════════════════════════════════════
-OPENING [~2 min]
-═══════════════════════════════════════════
+First, some background. IAA is a model that predicts how much people like an image. But it usually predicts the average opinion of most people. While everyone has different taste. So there is PIAA, which predicts the preference of one specific person. It is used to make recommendations more personal and more accurate for each user. But here is the problem. The PIAA models used inside these systems are a black box. They predict well, but they cannot explain what the prediction is based on.
 
-## Slide 1 — Title
-"Hello everyone, I'm Pinwa. My project is called Emotion-Mediated PIAA.
-It is about building a model that predicts how much a person likes an image, from the
-emotions they feel toward that image. And it can also explain its own prediction."
+There are some works that try to open the box. For example, Ryu and Yanaka extract features to see where preference is stored inside a vision-language model. But it is still not defined in a detailed way.
 
-## Slide 2 — Agenda
-"Here is the plan for today.
-I'll start with the idea. Then I show it works.
-Then I ask when and why it helps.
-Then how much accuracy it can reach.
-And last, I confirm the gain is real. (pause)
-Let's go step by step."
+So my work studies how to explain a person's beauty rating, through emotion. My hypothesis is this: people rate beauty through the emotions they feel toward an image. For example, this image makes them feel inspired. This image makes them feel nostalgic. And that is why they find it beautiful. So instead of predicting the score directly, I predict it through these feelings. That is the core idea of the project.
 
-## Slide 3 — Background (IAA -> PIAA -> problem)
-"First, some background.
-IAA is a model that predicts how much people like an image. But it predicts one score,
-the average opinion of most people. (pause)
-Of course, everyone has different taste. So there is PIAA, which predicts the
-preference of one specific person. This is what makes recommendations feel personal.
-But there is a problem. These personal models are a black box. They predict well, but
-they cannot tell us what the prediction is based on."
+This is my pipeline. I put the image into a vision-language model and get an embedding vector. Then I pass that vector through a linear ridge model to get seven values. I train this part on emotion data, so it learns to project the embedding onto seven emotions. After that, I train a per-person model, learning how their seven emotions turn into a preference score. Again with ridge regression. So the first ridge, image to emotions, is shared by everyone. While the second one, emotions to score, is personal, one per person. And this is the part I can read and explain.
 
-## Slide 4 — Our hypothesis (why emotion)
-"So my work studies how to explain a person's beauty rating, through emotion.
-My hypothesis is this: people rate beauty through the emotions they feel toward an
-image. (pause)
-For example, this image makes me feel inspired. This image makes me feel nostalgic,
-like remembering old days. And that is why I find it beautiful.
-So instead of predicting the score directly, I predict it through these feelings.
-That is the core idea of the project."
+{interpretability example slide} Let me show what "explain" means here. Because the last step is linear, I get a formula for each person, showing how much each emotion matters to them. For example, user A likes images that make them feel impressed. User B likes images that make them feel nostalgic and amused. Two people, different formulas. This is exactly what a black box cannot show.
 
-{ถ้าอาจารย์/คนถามว่ามีงานรองรับไหม ค่อยเสริม: "This is supported by earlier work.
-Iigaya and colleagues show human aesthetic preference can be predicted from a
-linear combination of features, and Ryu and Yanaka show a vision-language model
-already stores preference information inside it."}
+{dataset — what data looks like} My data is a dataset called XPASS-Vis, from Hayashi-san. Let me show what one rating looks like. For each image, a person gives a beauty score from 1 to 7. And they also give seven emotion ratings, from 1 to 5, like impressed, nostalgic, and amused. These come from a psychology framework called AESTHEMOS. So every row is one person, one image, one beauty score, and seven emotion values.
 
-═══════════════════════════════════════════
-BLOCK 1 — PIPELINE & DATA [~3.5 min]
-═══════════════════════════════════════════
+{dataset — size and protocol} In total, it has 129 people, more than 6,500 images, and about 88,000 ratings, across three categories. Each person rated more than 200 images, which is deep enough to do this work. It was also designed with a test-retest setup, where people rated some images twice. This is very useful, and I will show later what I use it for. And to be safe, my data split shared no image and no person across train and test. So it is leak-free.
 
-## Slide 5 — Pipeline
-{point at figure}
-"This is my pipeline. It has two steps.
-First, I put the image into a vision-language model, and get a vector. Then I pass
-that vector through a simple linear model, to get seven emotion values. I train this
-part on emotion data, so it learns to turn an image into seven emotions. (pause)
-Second, for each person, I learn how their seven emotions turn into a preference
-score. Again with a simple linear model.
-One important detail. The first step, image to emotions, is shared by everyone. The
-second step, emotions to score, is personal, one per person. And that personal step is
-the part I can read and explain."
+For metrics, I mainly use CCC and SROCC, which measure how close the predicted scores are to the real ones. I keep comparing two models. Hybrid, my pipeline that has emotions in the middle step. And Direct, the model that predicts the beauty score directly, without emotions.
 
-## Slide 6a — Dataset: what the data looks like
-"My data is a dataset called XPASS-Vis, by Hayashi-san. Let me show you what one
-rating looks like. (pause)
-For each image, a person gives a beauty score from 1 to 7. And they also give seven
-emotion ratings, from 1 to 5, like impressed, nostalgic, amused, and so on. These
-emotions come from a psychology framework called AESTHEMOS.
-So every row is: one person, one image, one beauty score, and seven emotion values.
-That is exactly what I need, because I want to connect emotions to beauty, per person."
+{Transition} Now I go to part two, showing that my idea actually works.
 
-## Slide 6b — Dataset: size and protocol
-"In total, it has 129 people, more than 6,500 images, and about 88,000 ratings, in
-three categories: art, fashion, and landscape. (pause)
-The important thing is that each person rated more than 200 images. That is deep
-enough to learn a personal model, which most datasets cannot give us.
-It also has that nice feature: people rated some images twice. I use this later for
-the ceiling analysis.
-And my data split shares no person and no image between train and test. So it is
-leak-free."
+{Finding 1: Hybrid > Direct} {point at curve} First, I compared Hybrid and Direct on the same people, to see if going through emotion helps. I found that Hybrid raised the score, and it helped on 93 percent of all people. And the more personal data I have, the more it helps.
 
-## Slide 7 — Setup (Direct vs Hybrid)
-"Two names to remember.
-Hybrid is my pipeline, the one with emotions in the middle.
-Direct is the version that predicts the score straight from the image, with no
-emotions. (pause)
-I keep comparing these two. For scores, I use two standard measures, CCC and SROCC."
+{Finding 3: baseline comparison} {point at chart} Next, I compared my pipeline with the baselines from the XPASS-Vis paper, ICI and MIR. These baselines are trained with personality traits, while my pipeline uses only emotion. I also tried changing the vision-language model in my pipeline, from CLIP to the stronger Qwen models. Here are the results. My model is comparable to the baselines that use traits. A stronger backbone is not always necessary, since Qwen3-4B is the same as Qwen3-8B. And fine-tuning is not necessary either. This actually matches Ryu and Yanaka, who also report that fine-tuning does not beat a simple linear model. (pause) One thing to notice is that the stronger the backbone, the smaller the Hybrid gain. This means a strong model may already store emotional information inside it, so adding the emotion bottleneck helps less.
 
-═══════════════════════════════════════════
-BLOCK 2 — DOES IT WORK [~3 min]
-═══════════════════════════════════════════
+{Transition} So now we know the idea works, emotion really helps predict preference. The next questions are: when does it help? How much can it help? And is it really because of emotion?
 
-## Slide 7.5 — What I studied (overview)
-"Before the results, one quick note. I studied several aspects of this idea. Today I
-will focus on the main results, so the story stays clear: does it help, is it
-comparable to baselines, when does it help, how far can it go, and is the gain real.
-A few more analyses, like perception versus weighting, are in the paper. (pause)
-Let's start."
+{Finding 4: emo_r} {point at figure} First question: when does it help? To find out, for every person, I measured how much emotion helped them, and then checked what it depends on. (pause) And the answer is that the more accurately the model predicts emotions, the more it helps. As we can see in this graph.
 
-## Slide 8 — Transition
-"So, part two. Does the idea actually work?"
+{Finding 6: ceiling} {point at figure} Next part: how much can emotion help? I find the upper-bound accuracy that the model can reach. Here I use that test-retest setup, where people rated some images twice. I measured the ceiling three ways: same-session, cross-session, and averaged. (pause) Here is the key point. A person agrees with their own past rating only at 0.69. But same-session gives 0.81, which is impossible for a real ceiling, because a model cannot be more consistent than the person who made the labels. The honest ceiling is cross-session, 0.64, because in real use we collect a person's emotions once and predict for them later. My best model reaches about 59 percent of this. (pause) And the interesting part is averaged, 0.86. If we could measure a person's emotions stably, without mood noise, the ceiling jumps up. So the emotion-to-score relationship itself is strong. What limits us is the noise in measuring emotion.
 
-## Slide 9 — Finding 1: Hybrid > Direct
-{point at curve}
-"First, I compared Hybrid and Direct, on the same people, to see if going through
-emotion helps. (pause)
-It does. Hybrid scores higher, and it helps 93 percent of the people. And look here:
-the more personal data I have, the more emotion helps."
+{Finding 8: cold-start} {point at figure} Then I checked cold-start: from how many ratings does the model start to be useful? I compared against a model that just uses the crowd average, with no personal data. Below about 50 ratings, personalizing actually hurts. And the Direct version never really beats the crowd, even at 100 ratings. Only Hybrid does, from 50 ratings on. So emotion is what makes personalizing worth it.
 
-## Slide 10 — Finding 3: baseline comparison
-{point at chart}
-"Next, I compared my pipeline with the two baselines from the XPASS-Vis paper, ICI
-and MIR. These baselines use both emotions and personality traits. I use only
-emotions. I also tried stronger vision-language models, from CLIP to Qwen. (pause)
-Here is what I found.
-I are comparable to the baselines, even though they use traits and I don't.
-A stronger backbone is not always needed. Qwen 4B is the same as 8B.
-And fine-tuning is not needed either. This matches Ryu and Yanaka, who report the same
-thing. (pause)
-One more thing. The stronger the backbone, the smaller the emotion gain. So a strong
-model probably already stores emotion inside it, and adding emotion again helps less."
+{Finding 9: placebo} {point at figure} Finally, to be sure the benefit really comes from emotion, and not just from having a seven-value bottleneck, I replaced the emotions with fake ones: random numbers, and shuffled emotions. If the gain came from just having a layer, the fakes would still work. But the fakes added almost nothing. This confirms that what really helps is the emotion bottleneck, the real emotional content.
 
-## Slide 11 — Transition
-"So the idea works, and it is competitive.
-Now three questions. When does it help? How much can it help? And is it really because
-of emotion?"
+{Summary} To summarize what I studied. One, I built an explainable model that predicts preference through emotion. Two, it is comparable to trait-based baselines, using only emotion. Three, it helps more when we predict a person's emotions more accurately. Four, the realistic ceiling is 0.64, and emotion is what makes personalizing worthwhile.
 
-═══════════════════════════════════════════
-BLOCK 3 — WHEN & WHY [~2.5 min]
-═══════════════════════════════════════════
+{Future work + Thank you} For future work, I will bring in traits, and study more clearly in which cases emotion helps, if we could predict emotions perfectly. Thank you.
 
-## Slide 12 — Finding 4: emo_r
-{point at figure}
-"First, when does it help?
-For each person, I measured how much emotion helped, and checked what it depends on.
-(pause)
-The answer is clean: the better I predict a person's emotions, the more emotion helps.
-You can see it rising in this graph."
+═══════════════════════════════════════════ TIMING ~15 min · ตัด decomposition/redundancy/hard users จากการพูด (อยู่ในเปเปอร์/journal) ═══════════════════════════════════════════
 
-═══════════════════════════════════════════
-BLOCK 4 — HOW FAR [~2.5 min]
-═══════════════════════════════════════════
+Q&A backup (เผื่อถูกถาม):
 
-## Slide 13 — Finding 6: ceiling
-{point at figure}
-"Next, how much can emotion help? What is the best score I could reach?
-Here I use the twice-rated images. I measured this ceiling three ways: same-session,
-cross-session, and averaged. (pause)
-Here is the key. A person agrees with their own past rating at 0.69. But same-session
-gives 0.81, which is impossible for a real ceiling, because a model can't be more
-consistent than the person themselves. So that one is not realistic.
-The honest ceiling is cross-session, 0.64, because in real use I measure a person's
-emotions once, then predict later. My best model reaches 59 percent of it. (pause)
-And the interesting part: if I average emotions to remove noise, the ceiling jumps to
-0.86. So the emotion idea itself is strong. What holds us back is noise in measuring
-emotion."
-
-## Slide 14 — Finding 8: cold-start
-{point at figure}
-"Then a practical question. How much personal data do I need before personalizing is
-worth it? (pause)
-I compared against a simple model that just uses the crowd average, with no personal
-data. Below about 50 ratings, personalizing actually hurts. You'd do better with the
-crowd.
-But the Direct version never really beats the crowd, even at 100 ratings. Only Hybrid
-does, from 50 ratings on. So going through emotion is what makes personalizing worth
-it at all."
-
-═══════════════════════════════════════════
-BLOCK 5 — IS THE GAIN REAL [~1.5 min]
-═══════════════════════════════════════════
-
-## Slide 15 — Finding 9: placebo
-{point at figure}
-"Last check. Maybe the gain is not from emotion. Maybe it's just from adding a small
-seven-value layer, any layer. I had to rule that out. (pause)
-So I kept everything the same, but replaced the real emotions with fake ones: random
-numbers, and shuffled emotions. If the gain came from just having a layer, the fakes
-would still work.
-But the fakes added almost nothing. Only the real emotions gave the gain. So the
-benefit really comes from emotional content, not from the shape of the pipeline."
-
-═══════════════════════════════════════════
-CLOSING [~1.5 min]
-═══════════════════════════════════════════
-
-## Slide 16 — Summary
-"To summarize.
-One, I built a model that predicts preference through emotion, and it explains itself.
-Two, it matches trait-based baselines, using only emotion.
-Three, it helps more when I read a person's emotions better.
-Four, the realistic ceiling is 0.64, and emotion is what makes personalizing worth it."
-
-## Slide 17 — Future work + Thank you
-"For future work, I want to bring in traits, and study more clearly which cases
-emotion helps, if I could predict emotions perfectly. (pause)
-Thank you."
-
-═══════════════════════════════════════════
-TIMING ~15 min
-═══════════════════════════════════════════
-Open 2.5 (title/agenda/background/hypothesis)
-+ Pipeline & data 3.5 (pipeline/dataset 6a-6b/setup/overview)
-+ Does it work 3 (finding 1, 3)
-+ When 1.5 (finding 4)
-+ How far 2.5 (ceiling, cold-start)
-+ Real 1.5 (placebo)
-+ Close 1.5 = ~15 min
-- decomposition + hard users + redundancy ตัดออกจากการพูด (อยู่ในเปเปอร์/journal)
-- ถ้าเกิน: ย่อ placebo (slide 15) + overview (7.5)
-- ถ้าเหลือ: ขยาย ceiling หรือ cold-start
-
-═══════════════════════════════════════════
-Q&A [5 min] — คำตอบสั้น ซื่อสัตย์
-═══════════════════════════════════════════
-
-Q: Perception-vs-weighting ดูไม่นิ่ง ทำไมรายงาน?
-A: "Yes, it's unstable, and that's why I report it as a supporting result with ranges,
-   not a headline. The instability is the point: it tells us the answer depends on
-   measurement noise. I chose to be honest."
-
-Q: มั่นใจได้ไงว่าไม่มี leak?
-A: "Users and images are separate across splits, and the shared emotion model only sees
-   training images. I also saw a fine-tuned model drop when I removed the leak, while
-   frozen models didn't move. That's what I'd expect if the leak was real."
-
-Q: ทำไมใช้ linear? ง่ายไปไหม?
-A: "Two reasons. Past work shows human taste is roughly linear in features. And linear
-   is what makes the per-person formula readable, which is my whole point. A
-   non-linear version didn't do better anyway."
-
-Q: ทำไม dataset เดียว?
-A: "It's the only one deep enough per person, with emotion labels for each image. Most
-   datasets have no emotion labels. Testing on others is future work, and I say that
-   openly."
-
-Q: emotion accuracy แค่ 0.27 ต่ำไปไหม?
-A: "It is low, and it's my main bottleneck, which the ceiling measures. But even at
-   0.27, I already match trait methods. So improving it is the clearest next step."
-
-Q: ทำไมเลือกอารมณ์ ไม่ใช่อย่างอื่น?
-A: "Because emotion is how people naturally experience images. You feel something
-   first, then you judge. Emotion is also labeled per person in this dataset, so it
-   varies across people, which is what personalization needs."
+decomposition (perception vs weighting): "It depends how we measure the emotions. In the fairest case the two are about equal, so we report both as substantial, with ranges. It's a supporting result."
+leakage: users & images disjoint across splits; fine-tuned model dropped when leak removed, frozen didn't move.
+why linear: human taste is roughly linear in features (Iigaya); linear makes the formula readable; non-linear didn't do better.
+one dataset: only one deep enough per person with emotion labels; others are future work.
+emotion accuracy 0.27: it's the main bottleneck (ceiling measures it); even so we match trait methods.
