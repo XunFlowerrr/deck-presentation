@@ -119,7 +119,7 @@ export function CoverSlide() {
             marginTop: 4,
           }}
         >
-          <span style={{ fontSize: 22, fontWeight: 800, color: "#2B2230" }}>Pinwa</span>
+          <span style={{ fontSize: 26, fontWeight: 800, color: "#2B2230" }}>Pinwa</span>
         </motion.div>
 
         {/* Visual Mock Grid Showing Subjective Aesthetic Disagreement */}
@@ -146,24 +146,24 @@ export function CoverSlide() {
                 gap: 12,
                 background: "#FFFFFF",
                 borderRadius: 16,
-                padding: "10px 16px",
+                padding: "12px 18px",
                 border: "1px solid #EEEDEA",
-                width: 280,
+                width: 290,
                 boxShadow: "0 6px 20px rgba(0, 0, 0, 0.01)",
               }}
             >
               <img
-                src="/case-study/helps-3099.jpg"
+                src="/case-study/pink_purple_landscape.jpg"
                 alt="Sample landscape photo"
-                style={{ width: 50, height: 50, objectFit: "cover", borderRadius: 8, border: "1px solid #EEEDEA" }}
+                style={{ width: 55, height: 55, objectFit: "cover", borderRadius: 8, border: "1px solid #EEEDEA" }}
               />
               <div style={{ flex: 1, textAlign: "left" }}>
-                <div style={{ fontSize: 12, fontWeight: 800, color: "#6B5B6E", textTransform: "uppercase", letterSpacing: "0.03em" }}>{item.user}</div>
+                <div style={{ fontSize: 14, fontWeight: 800, color: "#6B5B6E", textTransform: "uppercase", letterSpacing: "0.03em" }}>{item.user}</div>
                 <div style={{ display: "flex", gap: 6, marginTop: 4, alignItems: "center" }}>
-                  <span style={{ fontSize: 12, background: item.bg, color: item.color, padding: "1px 6px", borderRadius: 4, fontWeight: 800, border: `1px solid ${item.border}` }}>
+                  <span style={{ fontSize: 13, background: item.bg, color: item.color, padding: "2px 6px", borderRadius: 4, fontWeight: 800, border: `1px solid ${item.border}` }}>
                     {item.score}
                   </span>
-                  <span style={{ fontSize: 10, color: "#6B5B6E", fontWeight: 500 }}>{item.label}</span>
+                  <span style={{ fontSize: 12, color: "#6B5B6E", fontWeight: 600 }}>{item.label}</span>
                 </div>
               </div>
             </div>

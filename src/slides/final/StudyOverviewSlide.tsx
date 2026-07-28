@@ -62,7 +62,7 @@ export function StudyOverviewSlide() {
           >
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#C2185B" }} />
-              <span style={{ fontSize: 13, fontWeight: 900, color: "#C2185B", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              <span style={{ fontSize: 15, fontWeight: 900, color: "#C2185B", textTransform: "uppercase", letterSpacing: "0.08em" }}>
                 Main Results (Today's Talk)
               </span>
             </div>
@@ -71,13 +71,13 @@ export function StudyOverviewSlide() {
               {mainResults.map((result, idx) => (
                 <div key={result} style={{ display: "flex", alignItems: "center", gap: 16 }}>
                   <div style={{
-                    width: 28, height: 28, borderRadius: "50%", background: "#FCE4EC",
+                    width: 32, height: 32, borderRadius: "50%", background: "#FCE4EC",
                     color: "#C2185B", display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: 13, fontWeight: 900, border: "1px solid rgba(194,24,91,0.15)"
+                    fontSize: 15, fontWeight: 900, border: "1px solid rgba(194,24,91,0.15)"
                   }}>
                     {idx + 1}
                   </div>
-                  <span style={{ fontSize: 18, fontWeight: 800, color: "#4A1533" }}>{result}</span>
+                  <span style={{ fontSize: 21, fontWeight: 800, color: "#4A1533" }}>{result}</span>
                 </div>
               ))}
             </div>
@@ -100,7 +100,7 @@ export function StudyOverviewSlide() {
           >
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#9E9E9E" }} />
-              <span style={{ fontSize: 13, fontWeight: 900, color: "#9E9E9E", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              <span style={{ fontSize: 15, fontWeight: 900, color: "#9E9E9E", textTransform: "uppercase", letterSpacing: "0.08em" }}>
                 Also Studied (In the paper &amp; journal)
               </span>
             </div>
@@ -113,8 +113,8 @@ export function StudyOverviewSlide() {
                 { name: "Trait-based Extensions", desc: "Aesthetic-personality connections" },
               ].map((item) => (
                 <div key={item.name} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                  <span style={{ fontSize: 15, fontWeight: 700, color: "#6B5B6E" }}>{item.name}</span>
-                  <span style={{ fontSize: 12, color: "#9E9E9E", fontWeight: 500 }}>{item.desc}</span>
+                  <span style={{ fontSize: 17, fontWeight: 700, color: "#6B5B6E" }}>{item.name}</span>
+                  <span style={{ fontSize: 14, color: "#9E9E9E", fontWeight: 500 }}>{item.desc}</span>
                 </div>
               ))}
             </div>
@@ -126,7 +126,7 @@ export function StudyOverviewSlide() {
           {...fadeInUp(0.35)}
           style={{
             textAlign: "center",
-            fontSize: 18,
+            fontSize: 21,
             color: "#6B5B6E",
             fontWeight: 700,
             borderTop: "1px solid #EEEDEA",

@@ -101,20 +101,20 @@ export function DatasetSampleSlide() {
 
           {/* 7 Emotions Progress Bars */}
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            <div style={{ fontSize: 11.5, fontWeight: 800, color: "#4A1533" }}>7 Intermediate Emotions (Scale 1–5):</div>
+            <div style={{ fontSize: 14.5, fontWeight: 800, color: "#4A1533" }}>7 Intermediate Emotions (Scale 1–5):</div>
             {emotions.map((emo) => (
               <div key={emo.name} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <span style={{ width: 130, fontSize: 12, fontWeight: 700, color: "#2B2230" }}>{emo.name}</span>
+                <span style={{ width: 140, fontSize: 14, fontWeight: 700, color: "#2B2230" }}>{emo.name}</span>
                 {/* Bar */}
                 <div style={{ flex: 1, height: 8, background: "#EEEDEA", borderRadius: 4, overflow: "hidden", display: "flex" }}>
                   <div style={{ width: `${(emo.value / 5) * 100}%`, height: "100%", background: "linear-gradient(90deg, #7B2C8F, #C2185B)", borderRadius: 4 }} />
                 </div>
-                <span style={{ width: 12, fontSize: 12, fontWeight: 800, color: "#7B2C8F", textAlign: "right" }}>{emo.value}</span>
+                <span style={{ width: 15, fontSize: 14, fontWeight: 800, color: "#7B2C8F", textAlign: "right" }}>{emo.value}</span>
               </div>
             ))}
           </div>
 
-          <div style={{ fontSize: 11.5, color: "#6B5B6E", fontWeight: 600, borderTop: "1px solid #EEEDEA", paddingTop: 10, marginTop: 4 }}>
+          <div style={{ fontSize: 14, color: "#6B5B6E", fontWeight: 600, borderTop: "1px solid #EEEDEA", paddingTop: 10, marginTop: 4 }}>
             * each person gives a beauty score (1-7) and 7 emotion ratings (1-5) per image
           </div>
         </motion.div>

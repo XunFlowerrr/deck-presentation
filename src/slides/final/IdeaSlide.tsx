@@ -43,7 +43,7 @@ export function IdeaSlide() {
           {/* 1. Image Node */}
           <div
             style={{
-              width: 140,
+              width: 150,
               background: "#FFFFFF",
               border: "1px solid #EEEDEA",
               borderRadius: 16,
@@ -56,11 +56,11 @@ export function IdeaSlide() {
             }}
           >
             <img
-              src="/case-study/helps-3099.jpg"
+              src="/case-study/pink_purple_landscape.jpg"
               alt="Input"
               style={{ width: "100%", height: 80, objectFit: "cover", borderRadius: 8 }}
             />
-            <span style={{ fontSize: 13, fontWeight: 800, color: "#4A1533" }}>Target Image</span>
+            <span style={{ fontSize: 15, fontWeight: 800, color: "#4A1533" }}>Target Image</span>
           </div>
 
           {/* Arrow */}
@@ -72,7 +72,7 @@ export function IdeaSlide() {
           {/* 2. 7 Emotions Node */}
           <div
             style={{
-              width: 160,
+              width: 170,
               background: "#FFFFFF",
               border: "1px solid #EEEDEA",
               borderRadius: 16,
@@ -85,9 +85,9 @@ export function IdeaSlide() {
               textAlign: "center",
             }}
           >
-            <div style={{ fontSize: 24, fontWeight: 900, color: "#C2185B" }}>7</div>
-            <span style={{ fontSize: 13, fontWeight: 800, color: "#4A1533" }}>Aesthetic Emotions</span>
-            <span style={{ fontSize: 11, color: "#6B5B6E", fontWeight: 700 }}>e.g. peaceful, nostalgic</span>
+            <div style={{ fontSize: 28, fontWeight: 900, color: "#C2185B" }}>7</div>
+            <span style={{ fontSize: 15, fontWeight: 800, color: "#4A1533" }}>Aesthetic Emotions</span>
+            <span style={{ fontSize: 13, color: "#6B5B6E", fontWeight: 700 }}>e.g. peaceful, nostalgic</span>
           </div>
 
           {/* Arrow */}
@@ -99,7 +99,7 @@ export function IdeaSlide() {
           {/* 3. Linear formula node (Highlighted) */}
           <div
             style={{
-              width: 240,
+              width: 250,
               background: "rgba(123, 44, 143, 0.04)",
               border: "2px solid #7B2C8F",
               borderRadius: 20,
@@ -119,7 +119,7 @@ export function IdeaSlide() {
                 top: -12,
                 background: "#7B2C8F",
                 color: "#FFFFFF",
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: 900,
                 textTransform: "uppercase",
                 padding: "2px 8px",
@@ -129,10 +129,10 @@ export function IdeaSlide() {
             >
               Explainable
             </div>
-            <span style={{ fontSize: 18, fontWeight: 900, color: "#7B2C8F", marginTop: 4 }}>
+            <span style={{ fontSize: 20, fontWeight: 900, color: "#7B2C8F", marginTop: 4 }}>
               Linear Weighting
             </span>
-            <span style={{ fontSize: 12, color: "#2B2230", fontWeight: 700, lineHeight: 1.3 }}>
+            <span style={{ fontSize: 14, color: "#2B2230", fontWeight: 700, lineHeight: 1.3 }}>
               Gives a readable per-person formula
             </span>
           </div>
@@ -146,7 +146,7 @@ export function IdeaSlide() {
           {/* 4. Score Node */}
           <div
             style={{
-              width: 130,
+              width: 140,
               background: "#FCE4EC",
               border: "1px solid rgba(194, 24, 91, 0.15)",
               borderRadius: 16,
@@ -158,10 +158,10 @@ export function IdeaSlide() {
               textAlign: "center",
             }}
           >
-            <span style={{ fontSize: 12, color: "#6B5B6E", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+            <span style={{ fontSize: 14, color: "#6B5B6E", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Output
             </span>
-            <span style={{ fontSize: 18, fontWeight: 900, color: "#4A1533", marginTop: 4 }}>
+            <span style={{ fontSize: 20, fontWeight: 900, color: "#4A1533", marginTop: 4 }}>
               Aesthetic Score
             </span>
           </div>
@@ -172,16 +172,16 @@ export function IdeaSlide() {
           {...fadeInUp(0.35)}
           style={{
             textAlign: "center",
-            maxWidth: 720,
+            maxWidth: 750,
             borderTop: "1px solid #EEEDEA",
             paddingTop: 24,
             width: "100%",
           }}
         >
-          <span style={{ fontSize: 13, color: "#C2185B", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.08em" }}>
+          <span style={{ fontSize: 15, color: "#C2185B", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.08em" }}>
             The Core Inquiry
           </span>
-          <h2 style={{ margin: "6px 0 0", fontSize: 24, fontWeight: 800, color: "#4A1533", lineHeight: 1.4 }}>
+          <h2 style={{ margin: "6px 0 0", fontSize: 27, fontWeight: 800, color: "#4A1533", lineHeight: 1.4 }}>
             Research Question: Do users disagree because they{" "}
             <span style={{ color: "#C2185B" }}>feel differently</span> or{" "}
             <span style={{ color: "#7B2C8F" }}>weight emotions differently</span>?

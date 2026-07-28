@@ -42,11 +42,11 @@ export function WhyEmotionSlide() {
           <motion.div
             {...cardRise(0.1)}
             style={{
-              width: 190,
+              width: 210,
               background: "#FFFFFF",
               border: "1px solid #EEEDEA",
               borderRadius: 20,
-              padding: "20px 16px",
+              padding: "24px 18px",
               boxShadow: "0 4px 15px rgba(0,0,0,0.01)",
               display: "flex",
               flexDirection: "column",
@@ -55,15 +55,15 @@ export function WhyEmotionSlide() {
               textAlign: "center",
             }}
           >
-            <div style={{ fontSize: 11, fontWeight: 900, color: "#6B5B6E", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+            <div style={{ fontSize: 13, fontWeight: 900, color: "#6B5B6E", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Step 1: Perception
             </div>
             <img
-              src="/case-study/helps-3099.jpg"
+              src="/case-study/pink_purple_landscape.jpg"
               alt="Target Visual Input"
-              style={{ width: "100%", height: 90, objectFit: "cover", borderRadius: 8 }}
+              style={{ width: "100%", height: 110, objectFit: "cover", borderRadius: 8 }}
             />
-            <span style={{ fontSize: 14, fontWeight: 800, color: "#4A1533" }}>See Image</span>
+            <span style={{ fontSize: 17, fontWeight: 800, color: "#4A1533" }}>See Image</span>
           </motion.div>
 
           {/* Arrow */}
@@ -78,11 +78,11 @@ export function WhyEmotionSlide() {
           <motion.div
             {...cardRise(0.2)}
             style={{
-              width: 220,
+              width: 230,
               background: "#FCE4EC", // Soft Pink
               border: "2.5px solid #C2185B", // Primary Pink
               borderRadius: 20,
-              padding: "24px 16px",
+              padding: "26px 18px",
               boxShadow: "0 8px 24px rgba(194, 24, 91, 0.08)",
               display: "flex",
               flexDirection: "column",
@@ -95,12 +95,12 @@ export function WhyEmotionSlide() {
             {/* Key Badge */}
             <div style={{
               position: "absolute", top: -11, background: "#C2185B", color: "#FFFFFF",
-              fontSize: 9, fontWeight: 900, padding: "2px 8px", borderRadius: 6, letterSpacing: "0.05em"
+              fontSize: 10, fontWeight: 900, padding: "2px 8px", borderRadius: 6, letterSpacing: "0.05em"
             }}>
               KEY COGNITIVE BRIDGE
             </div>
 
-            <div style={{ fontSize: 11, fontWeight: 900, color: "#C2185B", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+            <div style={{ fontSize: 13, fontWeight: 900, color: "#C2185B", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Step 2: Emotion
             </div>
             
@@ -114,8 +114,8 @@ export function WhyEmotionSlide() {
               </svg>
             </div>
 
-            <span style={{ fontSize: 15, fontWeight: 900, color: "#C2185B" }}>Feel Something</span>
-            <span style={{ fontSize: 11, color: "#6B5B6E", fontWeight: 700 }}>feels calm, nostalgic...</span>
+            <span style={{ fontSize: 18, fontWeight: 950, color: "#C2185B" }}>Feel Something</span>
+            <span style={{ fontSize: 13, color: "#6B5B6E", fontWeight: 700 }}>feels calm, nostalgic...</span>
           </motion.div>
 
           {/* Arrow */}
@@ -130,11 +130,11 @@ export function WhyEmotionSlide() {
           <motion.div
             {...cardRise(0.3)}
             style={{
-              width: 190,
+              width: 210,
               background: "#FFFFFF",
               border: "1px solid #EEEDEA",
               borderRadius: 20,
-              padding: "20px 16px",
+              padding: "24px 18px",
               boxShadow: "0 4px 15px rgba(0,0,0,0.01)",
               display: "flex",
               flexDirection: "column",
@@ -143,7 +143,7 @@ export function WhyEmotionSlide() {
               textAlign: "center",
             }}
           >
-            <div style={{ fontSize: 11, fontWeight: 900, color: "#6B5B6E", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+            <div style={{ fontSize: 13, fontWeight: 900, color: "#6B5B6E", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Step 3: Judgment
             </div>
             
@@ -156,7 +156,7 @@ export function WhyEmotionSlide() {
               </svg>
             </div>
 
-            <span style={{ fontSize: 14, fontWeight: 800, color: "#4A1533" }}>Like It</span>
+            <span style={{ fontSize: 17, fontWeight: 800, color: "#4A1533" }}>Like It</span>
           </motion.div>
         </div>
 
@@ -170,7 +170,7 @@ export function WhyEmotionSlide() {
             marginTop: 16,
           }}
         >
-          <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#4A1533", lineHeight: 1.4 }}>
+          <h3 style={{ margin: 0, fontSize: 24, fontWeight: 800, color: "#4A1533", lineHeight: 1.4 }}>
             &ldquo;You feel first, then you judge. So emotion explains taste.&rdquo;
           </h3>
         </motion.div>
@@ -179,7 +179,7 @@ export function WhyEmotionSlide() {
         <motion.div
           {...fadeInUp(0.44)}
           style={{
-            fontSize: 12,
+            fontSize: 14,
             color: "#6B5B6E",
             borderTop: "1px solid #EEEDEA",
             paddingTop: 12,

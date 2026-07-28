@@ -39,13 +39,13 @@ export function Finding8Slide() {
               boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
             }}
           >
-            <span style={{ fontSize: 11, fontWeight: 900, color: "#C2185B", textTransform: "uppercase", letterSpacing: "0.05em", background: "rgba(194, 24, 91, 0.05)", padding: "4px 10px", borderRadius: 8, alignSelf: "flex-start", marginBottom: 12, display: "inline-block", border: "1px solid rgba(194, 24, 91, 0.15)" }}>
+            <span style={{ fontSize: 13, fontWeight: 900, color: "#C2185B", textTransform: "uppercase", letterSpacing: "0.05em", background: "rgba(194, 24, 91, 0.05)", padding: "4px 10px", borderRadius: 8, alignSelf: "flex-start", marginBottom: 12, display: "inline-block", border: "1px solid rgba(194, 24, 91, 0.15)" }}>
               The 50-Ratings Threshold
             </span>
-            <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: "#4A1533" }}>
+            <h3 style={{ margin: 0, fontSize: 21, fontWeight: 800, color: "#4A1533" }}>
               When is Personalization Worthwhile?
             </h3>
-            <p style={{ margin: "8px 0 0", fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 500 }}>
+            <p style={{ margin: "8px 0 0", fontSize: 16.5, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 550 }}>
               Below approximately 50 user ratings, individual personalization performs worse than the population average model due to data sparsity.
             </p>
           </motion.div>
@@ -64,13 +64,13 @@ export function Finding8Slide() {
               boxShadow: "0 10px 30px rgba(123, 44, 143, 0.02)",
             }}
           >
-            <div style={{ fontSize: 12, fontWeight: 900, color: "#7B2C8F", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <div style={{ fontSize: 14, fontWeight: 900, color: "#7B2C8F", textTransform: "uppercase", letterSpacing: "0.08em" }}>
               Critical Practical Insight
             </div>
-            <div style={{ fontSize: 14, fontWeight: 800, color: "#4A1533", lineHeight: 1.4 }}>
+            <div style={{ fontSize: 16.5, fontWeight: 800, color: "#4A1533", lineHeight: 1.4 }}>
               &ldquo;Unless you use emotion mediation (Hybrid), personalizing with few ratings (under 50) is worse than simply using the population average.&rdquo;
             </div>
-            <div style={{ fontSize: 12.5, color: "#6B5B6E", fontWeight: 500 }}>
+            <div style={{ fontSize: 15, color: "#6B5B6E", fontWeight: 550 }}>
               The Hybrid model quickly outperforms the population average past 50 ratings, whereas the Direct baseline fails to beat the population average even with more data.
             </div>
           </motion.div>
@@ -83,7 +83,7 @@ export function Finding8Slide() {
               border: "1px solid rgba(194, 24, 91, 0.15)",
               borderRadius: 14,
               padding: "16px 20px",
-              fontSize: 18,
+              fontSize: 21,
               color: "#4A1533",
               lineHeight: 1.4,
               fontWeight: 700,

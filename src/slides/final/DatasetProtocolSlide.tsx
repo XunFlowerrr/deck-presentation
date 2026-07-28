@@ -40,8 +40,8 @@ export function DatasetProtocolSlide() {
                 boxShadow: "0 8px 30px rgba(0, 0, 0, 0.01)",
               }}
             >
-              <div style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>129</div>
-              <div style={{ fontSize: 14, fontWeight: 800, color: "#4A1533", marginTop: 4 }}>People (Evaluators)</div>
+              <div style={{ fontSize: 50, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>129</div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: "#4A1533", marginTop: 4 }}>People (Evaluators)</div>
             </motion.div>
 
             {/* Stat 2 */}
@@ -55,8 +55,8 @@ export function DatasetProtocolSlide() {
                 boxShadow: "0 8px 30px rgba(0, 0, 0, 0.01)",
               }}
             >
-              <div style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>6,526</div>
-              <div style={{ fontSize: 14, fontWeight: 800, color: "#4A1533", marginTop: 4 }}>Images (Unique)</div>
+              <div style={{ fontSize: 50, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>6,526</div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: "#4A1533", marginTop: 4 }}>Images (Unique)</div>
             </motion.div>
 
             {/* Stat 3 */}
@@ -70,8 +70,8 @@ export function DatasetProtocolSlide() {
                 boxShadow: "0 8px 30px rgba(0, 0, 0, 0.01)",
               }}
             >
-              <div style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>87,836</div>
-              <div style={{ fontSize: 14, fontWeight: 800, color: "#4A1533", marginTop: 4 }}>Ratings (Total)</div>
+              <div style={{ fontSize: 50, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>87,836</div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: "#4A1533", marginTop: 4 }}>Ratings (Total)</div>
             </motion.div>
 
             {/* Stat 4 */}
@@ -85,9 +85,9 @@ export function DatasetProtocolSlide() {
                 boxShadow: "0 8px 30px rgba(0, 0, 0, 0.01)",
               }}
             >
-              <div style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>3</div>
-              <div style={{ fontSize: 14, fontWeight: 800, color: "#4A1533", marginTop: 4 }}>Categories</div>
-              <div style={{ fontSize: 11, color: "#6B5B6E", fontWeight: 700, marginTop: 2 }}>Art / Fashion / Landscape</div>
+              <div style={{ fontSize: 50, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>3</div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: "#4A1533", marginTop: 4 }}>Categories</div>
+              <div style={{ fontSize: 13, color: "#6B5B6E", fontWeight: 700, marginTop: 2 }}>Art / Fashion / Landscape</div>
             </motion.div>
           </div>
         </div>
@@ -111,10 +111,10 @@ export function DatasetProtocolSlide() {
               1
             </div>
             <div>
-              <h4 style={{ margin: 0, fontSize: 17, fontWeight: 800, color: "#4A1533" }}>
+              <h4 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#4A1533" }}>
                 Deep Ratings Per Person
               </h4>
-              <p style={{ margin: "6px 0 0", fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 600 }}>
+              <p style={{ margin: "6px 0 0", fontSize: 16.5, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 600 }}>
                 Each person rated 200+ images &rarr; deep enough for a personal formula.
               </p>
             </div>
@@ -127,10 +127,10 @@ export function DatasetProtocolSlide() {
               2
             </div>
             <div>
-              <h4 style={{ margin: 0, fontSize: 17, fontWeight: 800, color: "#4A1533" }}>
+              <h4 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#4A1533" }}>
                 Test-Retest Setup
               </h4>
-              <p style={{ margin: "6px 0 0", fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 600 }}>
+              <p style={{ margin: "6px 0 0", fontSize: 16.5, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 600 }}>
                 Some images rated twice &rarr; used later to establish human noise ceilings.
               </p>
             </div>
@@ -152,10 +152,10 @@ export function DatasetProtocolSlide() {
           gap: 16,
         }}
       >
-        <span style={{ fontSize: 11, fontWeight: 900, color: "#7B2C8F", textTransform: "uppercase", letterSpacing: "0.08em", background: "#FFFFFF", padding: "4px 8px", borderRadius: 6, border: "1px solid rgba(123, 44, 143, 0.2)" }}>
+        <span style={{ fontSize: 13, fontWeight: 900, color: "#7B2C8F", textTransform: "uppercase", letterSpacing: "0.08em", background: "#FFFFFF", padding: "4px 8px", borderRadius: 6, border: "1px solid rgba(123, 44, 143, 0.2)" }}>
           Protocol
         </span>
-        <span style={{ fontSize: 14, color: "#6B5B6E", fontWeight: 700 }}>
+        <span style={{ fontSize: 16.5, color: "#6B5B6E", fontWeight: 700 }}>
           <strong style={{ color: "#7B2C8F" }}>leak-free:</strong> test users &amp; images never seen in training
         </span>
       </motion.div>

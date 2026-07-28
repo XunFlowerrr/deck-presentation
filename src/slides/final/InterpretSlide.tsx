@@ -44,9 +44,9 @@ export function InterpretSlide() {
           >
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
               <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#C2185B" }} />
-              <span style={{ fontSize: 13, fontWeight: 900, color: "#C2185B", textTransform: "uppercase", letterSpacing: "0.05em" }}>User A (Impressed)</span>
+              <span style={{ fontSize: 15, fontWeight: 900, color: "#C2185B", textTransform: "uppercase", letterSpacing: "0.05em" }}>User A (Impressed)</span>
             </div>
-            <p style={{ margin: 0, fontSize: 13.5, color: "#6B5B6E", lineHeight: 1.45, fontWeight: 550 }}>
+            <p style={{ margin: 0, fontSize: 16.5, color: "#6B5B6E", lineHeight: 1.45, fontWeight: 550 }}>
               The aesthetic preference is heavily driven by feeling <strong style={{ color: "#C2185B" }}>Impressed</strong> (represented by the long pink positive bar).
             </p>
           </motion.div>
@@ -67,9 +67,9 @@ export function InterpretSlide() {
           >
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
               <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#7B2C8F" }} />
-              <span style={{ fontSize: 13, fontWeight: 900, color: "#7B2C8F", textTransform: "uppercase", letterSpacing: "0.05em" }}>User B (Nostalgic &amp; Amused)</span>
+              <span style={{ fontSize: 15, fontWeight: 900, color: "#7B2C8F", textTransform: "uppercase", letterSpacing: "0.05em" }}>User B (Nostalgic &amp; Amused)</span>
             </div>
-            <p style={{ margin: 0, fontSize: 13.5, color: "#6B5B6E", lineHeight: 1.45, fontWeight: 550 }}>
+            <p style={{ margin: 0, fontSize: 16.5, color: "#6B5B6E", lineHeight: 1.45, fontWeight: 550 }}>
               Aesthetic score is driven by <strong style={{ color: "#7B2C8F" }}>Nostalgic</strong> and <strong style={{ color: "#7B2C8F" }}>Amused</strong> (long purple positive bars).
             </p>
           </motion.div>
@@ -82,7 +82,7 @@ export function InterpretSlide() {
               border: "1px dashed rgba(194, 24, 91, 0.3)",
               borderRadius: 16,
               padding: "16px 20px",
-              fontSize: 14,
+              fontSize: 17,
               color: "#4A1533",
               lineHeight: 1.5,
               fontWeight: 700,
@@ -111,7 +111,7 @@ export function InterpretSlide() {
             alt="Subjective Emotion Weights (User A vs User B)"
             style={{ width: "100%", maxHeight: 310, objectFit: "contain", borderRadius: 8 }}
           />
-          <div style={{ fontSize: 11, color: "#9E9E9E", fontWeight: 700, marginTop: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+          <div style={{ fontSize: 13, color: "#9E9E9E", fontWeight: 700, marginTop: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>
             Positive bars (Right) push beauty up · Negative bars (Left) pull it down
           </div>
         </motion.div>
@@ -122,7 +122,7 @@ export function InterpretSlide() {
         {...fadeInUp(0.35)}
         style={{
           textAlign: "center",
-          fontSize: 16,
+          fontSize: 19.5,
           color: "#6B5B6E",
           fontWeight: 700,
           borderTop: "1px solid #EEEDEA",
