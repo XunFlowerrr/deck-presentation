@@ -92,18 +92,18 @@ export function DatasetProtocolSlide() {
           </motion.div>
         </div>
 
-        {/* Right Column: 2 Main Logic Points */}
+        {/* Right Column: 3 Main Logic Points */}
         <motion.div
           {...cardRise(0.25)}
           style={{
             background: "#FFFFFF",
             border: "1px solid #EEEDEA",
             borderRadius: 24,
-            padding: 32,
+            padding: "20px 24px",
             boxShadow: "0 12px 40px rgba(0, 0, 0, 0.02)",
             display: "flex",
             flexDirection: "column",
-            gap: 24,
+            gap: 16,
           }}
         >
           <div style={{ fontSize: 13, fontWeight: 900, color: "#C2185B", letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -116,10 +116,10 @@ export function DatasetProtocolSlide() {
               1
             </div>
             <div>
-              <h4 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: "#4A1533" }}>
+              <h4 style={{ margin: 0, fontSize: 16, fontWeight: 800, color: "#4A1533" }}>
                 Deep Ratings Per Person
               </h4>
-              <p style={{ margin: "6px 0 0", fontSize: 14, color: "#6B5B6E", lineHeight: 1.5 }}>
+              <p style={{ margin: "4px 0 0", fontSize: 13, color: "#6B5B6E", lineHeight: 1.45 }}>
                 Evaluators rated hundreds of images, providing enough statistical depth to fit a robust personal weighting formula for each user.
               </p>
             </div>
@@ -133,12 +133,37 @@ export function DatasetProtocolSlide() {
               2
             </div>
             <div>
-              <h4 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: "#4A1533" }}>
+              <h4 style={{ margin: 0, fontSize: 16, fontWeight: 800, color: "#4A1533" }}>
                 Leak-Free CV Splits
               </h4>
-              <p style={{ margin: "6px 0 0", fontSize: 14, color: "#6B5B6E", lineHeight: 1.5 }}>
+              <p style={{ margin: "4px 0 0", fontSize: 13, color: "#6B5B6E", lineHeight: 1.45 }}>
                 Strict disjoint splits prevent leakage: target users and their evaluation images are completely hidden from the Stage 1 emotion model.
               </p>
+            </div>
+          </div>
+
+          <div style={{ width: "100%", height: 1, background: "#EEEDEA" }} />
+
+          {/* Point 3 */}
+          <div style={{ display: "flex", gap: 16 }}>
+            <div style={{ width: 36, height: 36, borderRadius: "50%", background: "rgba(123, 44, 143, 0.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#7B2C8F", flexShrink: 0, fontWeight: 900, border: "1px solid rgba(123, 44, 143, 0.15)" }}>
+              3
+            </div>
+            <div>
+              <h4 style={{ margin: 0, fontSize: 16, fontWeight: 800, color: "#4A1533" }}>
+                Pipeline Comparison (CCC / SRCC)
+              </h4>
+              <p style={{ margin: "4px 0 0", fontSize: 13, color: "#6B5B6E", lineHeight: 1.45 }}>
+                We continuously compare two pipeline configurations:
+              </p>
+              <ul style={{ margin: "4px 0 0", paddingLeft: 16, fontSize: 12, color: "#6B5B6E", lineHeight: 1.4, display: "flex", flexDirection: "column", gap: 2 }}>
+                <li>
+                  <strong style={{ color: "#7B2C8F" }}>Hybrid:</strong> Our pipeline with intermediate emotions in the middle step.
+                </li>
+                <li>
+                  <strong style={{ color: "#C2185B" }}>Direct:</strong> Baseline predicting beauty scores directly (no emotions).
+                </li>
+              </ul>
             </div>
           </div>
         </motion.div>
