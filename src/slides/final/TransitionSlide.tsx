@@ -23,18 +23,28 @@ export function TransitionSlide() {
         }}
       >
         <motion.div {...fadeInUp(0.1)}>
+          <span
+            style={{
+              fontSize: 14,
+              fontWeight: 800,
+              color: "#C2185B",
+              textTransform: "uppercase",
+              letterSpacing: "0.15em",
+            }}
+          >
+            Part Two
+          </span>
           <h2
             style={{
               margin: "12px 0 0",
-              fontSize: 52,
-              fontWeight: 900,
+              fontSize: 48,
+              fontWeight: 950,
               color: "#4A1533",
               letterSpacing: "-1.5px",
+              lineHeight: 1.15,
             }}
           >
-            It Works.
-            <br />
-            <span style={{ color: "#C2185B" }}>But When, Why, and How Far?</span>
+            Showing That Our Idea Actually Works
           </h2>
           <div
             style={{
@@ -47,44 +57,38 @@ export function TransitionSlide() {
           />
         </motion.div>
 
-        {/* The 3 Core Questions */}
+        {/* The 2 Core Results Sections */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            gap: 24,
-            maxWidth: 960,
+            gridTemplateColumns: "1fr 1fr",
+            gap: 32,
+            maxWidth: 800,
             width: "100%",
           }}
         >
           {[
             {
               num: "01",
-              q: "When does it help?",
-              desc: "Analyzing visual backbone strength and user emotion predictability.",
+              title: "Hybrid > Direct",
+              desc: "Proving that routing aesthetic predictions through intermediate emotional responses significantly improves CCC/SRCC scores.",
               color: "#C2185B",
             },
             {
               num: "02",
-              q: "How far can it go?",
-              desc: "Defining realistic noise ceilings and resolving the cold-start rating threshold.",
+              title: "Comparable to Baselines",
+              desc: "Demonstrating that our emotion-mediated model matches trait-based benchmarks without requiring any personal trait data.",
               color: "#7B2C8F",
-            },
-            {
-              num: "03",
-              q: "Is the gain real?",
-              desc: "Testing semantic validity via placebo control controls and unusual users.",
-              color: "#C2185B",
             },
           ].map((item, idx) => (
             <motion.div
-              key={item.q}
-              {...cardRise(0.2 + idx * 0.08)}
+              key={item.title}
+              {...cardRise(0.2 + idx * 0.1)}
               style={{
                 background: "#FFFFFF",
                 border: "1px solid #EEEDEA",
                 borderRadius: 18,
-                padding: "24px 28px",
+                padding: "32px 28px",
                 boxShadow: "0 8px 30px rgba(0, 0, 0, 0.015)",
                 textAlign: "left",
                 display: "flex",
@@ -106,10 +110,10 @@ export function TransitionSlide() {
                   letterSpacing: "0.05em",
                 }}
               >
-                Question {item.num}
+                Section {item.num}
               </span>
-              <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: "#4A1533" }}>
-                {item.q}
+              <h3 style={{ margin: 0, fontSize: 22, fontWeight: 800, color: "#4A1533" }}>
+                {item.title}
               </h3>
               <p style={{ margin: 0, fontSize: 14, color: "#6B5B6E", lineHeight: 1.5, fontWeight: 500 }}>
                 {item.desc}
