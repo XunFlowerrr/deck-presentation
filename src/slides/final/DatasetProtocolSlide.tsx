@@ -13,19 +13,20 @@ export function DatasetProtocolSlide() {
       <SlideHeader
         label="Block 2 — Dataset & Protocol"
         title="DATASET: "
-        highlight="XPASS-Vis."
+        highlight="XPASS-Vis"
+        accentWidth={100}
       />
 
       <div
         style={{
           flex: 1,
           display: "grid",
-          gridTemplateColumns: "0.95fr 1.05fr",
-          gap: 40,
+          gridTemplateColumns: "1.05fr 0.95fr",
+          gap: 32,
           alignItems: "center",
         }}
       >
-        {/* Left Column: 4 Big Stats in 2x2 Grid */}
+        {/* Left Column: 2x2 Stats Grid Card */}
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <motion.div
             {...cardRise(0.15)}
@@ -40,36 +41,53 @@ export function DatasetProtocolSlide() {
               gap: 24,
             }}
           >
-            {/* Cell 1 */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <span style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>129</span>
+            {/* Stat 1: 129 People */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                <span style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>129</span>
+              </div>
               <span style={{ fontSize: 14, fontWeight: 850, color: "#4A1533" }}>People (Evaluators)</span>
             </div>
 
-            {/* Cell 2 */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <span style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>3</span>
-              <span style={{ fontSize: 14, fontWeight: 850, color: "#4A1533" }}>Domains</span>
-              <div style={{ display: "flex", gap: 6, marginTop: 2 }}>
-                <span style={{ fontSize: 10, color: "#6B5B6E", fontWeight: 700, background: "rgba(107,91,110,0.06)", padding: "1px 5px", borderRadius: 4 }}>Art</span>
-                <span style={{ fontSize: 10, color: "#6B5B6E", fontWeight: 700, background: "rgba(107,91,110,0.06)", padding: "1px 5px", borderRadius: 4 }}>Fashion</span>
-                <span style={{ fontSize: 10, color: "#6B5B6E", fontWeight: 700, background: "rgba(107,91,110,0.06)", padding: "1px 5px", borderRadius: 4 }}>Land.</span>
+            {/* Stat 2: 6,526 Images */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                <span style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>6,526</span>
               </div>
-            </div>
-
-            {/* Divider line */}
-            <div style={{ gridColumn: "span 2", height: 1, background: "#EEEDEA" }} />
-
-            {/* Cell 3 */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <span style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>6,526</span>
               <span style={{ fontSize: 14, fontWeight: 850, color: "#4A1533" }}>Images (Unique)</span>
             </div>
 
-            {/* Cell 4 */}
+            {/* Divider spanning 2 columns */}
+            <div style={{ gridColumn: "span 2", height: 1, background: "#EEEDEA" }} />
+
+            {/* Stat 3: 3 Domains */}
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <span style={{ fontSize: 44, fontWeight: 900, color: "#7B2C8F", lineHeight: 1 }}>4,509</span>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                <span style={{ fontSize: 44, fontWeight: 900, color: "#C2185B", lineHeight: 1 }}>3</span>
+                <span style={{ fontSize: 14, fontWeight: 850, color: "#4A1533" }}>Domains</span>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 4 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#6B5B6E", fontWeight: 700 }}>
+                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#C2185B" }} /> Art
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#6B5B6E", fontWeight: 700 }}>
+                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#7B2C8F" }} /> Fashion
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#6B5B6E", fontWeight: 700 }}>
+                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#C2185B" }} /> Landscape
+                </div>
+              </div>
+            </div>
+
+            {/* Stat 4: 4,509 Test-Retest Pairs */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                <span style={{ fontSize: 44, fontWeight: 900, color: "#7B2C8F", lineHeight: 1 }}>4,509</span>
+              </div>
               <span style={{ fontSize: 14, fontWeight: 850, color: "#4A1533" }}>Test-Retest Pairs</span>
+              <p style={{ margin: 0, fontSize: 11, color: "#6B5B6E", fontWeight: 600, lineHeight: 1.35 }}>
+                Same image rated twice by same user across sessions to establish human self-consistency.
+              </p>
             </div>
           </motion.div>
         </div>
