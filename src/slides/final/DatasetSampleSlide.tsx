@@ -54,12 +54,12 @@ export function DatasetSampleSlide() {
             Visual Input (Landscape Domain)
           </div>
           <img
-            src="/case-study/helps-3099.jpg"
+            src="/case-study/pink_purple_landscape.jpg"
             alt="Sample Landscape Image"
             style={{ width: "100%", height: 260, objectFit: "cover", borderRadius: 12 }}
           />
           <div style={{ fontSize: 12, color: "#6B5B6E", fontWeight: 600, textAlign: "center" }}>
-            Image ID: 3099 (XPASS-Vis Dataset)
+            Image ID: 4102 (XPASS-Vis Dataset)
           </div>
         </motion.div>
 
